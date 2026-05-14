@@ -9,6 +9,7 @@ import clerk from '@clerk/astro';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://vaidyamandhiram.vercel.app',
   output: 'hybrid',
   adapter: vercel({
     webAnalytics: { enabled: true },
@@ -19,9 +20,7 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     clerk(),
-    sitemap({
-      filter: (page) => !page.includes('/dashboard') && !page.includes('/admin') && !page.includes('/api'),
-    }),
+    sitemap(),
     mdx(),
     keystatic(),
   ],
@@ -30,5 +29,4 @@ export default defineConfig({
       noExternal: ['lucide-react'],
     },
   },
-  site: 'https://vaidyamandhiram.vercel.app', // Replace with actual domain later
 });
