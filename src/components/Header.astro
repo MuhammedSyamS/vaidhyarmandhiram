@@ -1,0 +1,60 @@
+---
+import { Search, Phone, Calendar, Menu } from 'lucide-react';
+
+const navLinks = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Treatments', href: '/treatments' },
+  { name: 'Doctors', href: '/doctors' },
+  { name: 'Gallery', href: '/gallery' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Contact', href: '/contact' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-background-parchment/90 backdrop-blur-md border-b border-accent-gold/20">
+  <div class="bg-primary-dark text-background-parchment py-1 px-4 text-sm hidden md:block">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-4">
+        <span class="flex items-center gap-1"><Phone size={14} /> +91 000 000 0000</span>
+        <span class="font-malayalam">വൈദ്യമന്ദിരം ആയുർവേദ ഹോസ്പിറ്റൽ</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="/appointment" class="hover:text-accent-gold transition-colors flex items-center gap-1">
+          <Calendar size={14} /> Book Appointment
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="/" class="flex flex-col">
+      <span class="text-2xl font-serif font-bold text-primary tracking-widest uppercase">Vaidyamandhiram</span>
+      <span class="text-xs font-sans text-accent-gold tracking-[0.3em] uppercase">Ayurveda Hospital</span>
+    </a>
+
+    <div class="hidden lg:flex items-center gap-8">
+      {navLinks.map(link => (
+        <a 
+          href={link.href} 
+          class="font-serif text-lg text-primary-dark hover:text-accent-gold transition-colors relative group"
+        >
+          {link.name}
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-gold transition-all group-hover:width-1/2"></span>
+        </a>
+      ))}
+    </div>
+
+    <div class="flex items-center gap-4">
+      <button class="text-primary-dark hover:text-accent-gold transition-colors lg:hidden">
+        <Menu size={24} />
+      </button>
+      <a 
+        href="/appointment" 
+        class="hidden sm:block btn-primary scale-90"
+      >
+        Book Now
+      </a>
+    </div>
+  </nav>
+</header>

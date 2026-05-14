@@ -1,0 +1,86 @@
+---
+import { Mail, MapPin, Phone } from 'lucide-react';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-primary-dark text-background-parchment pt-16 pb-8 border-t-4 border-accent-gold">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      <!-- Brand Section -->
+      <div class="space-y-6">
+        <div>
+          <h2 class="text-2xl font-serif font-bold text-background-parchment tracking-widest uppercase">Vaidyamandhiram</h2>
+          <p class="text-xs font-sans text-accent-gold tracking-[0.3em] uppercase">Ayurveda Hospital</p>
+        </div>
+        <p class="text-background-parchment/70 leading-relaxed font-sans">
+          Dedicated to the ancient wisdom of Ayurveda, providing authentic healing and wellness since decades under the guidance of Dr. P. Abdul Sathar Gurukkal.
+        </p>
+        <div class="flex gap-4">
+          <a href="#" class="w-10 h-10 rounded-full border border-accent-gold/30 flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-all">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full border border-accent-gold/30 flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-all">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full border border-accent-gold/30 flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-all">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-xl font-serif font-bold mb-6 text-accent-gold">Quick Links</h3>
+        <ul class="space-y-4 font-sans">
+          <li><a href="/about" class="hover:text-accent-gold transition-colors">Our Legacy</a></li>
+          <li><a href="/treatments" class="hover:text-accent-gold transition-colors">Treatments</a></li>
+          <li><a href="/doctors" class="hover:text-accent-gold transition-colors">Our Doctors</a></li>
+          <li><a href="/gallery" class="hover:text-accent-gold transition-colors">Photo Gallery</a></li>
+          <li><a href="/blog" class="hover:text-accent-gold transition-colors">Ayurveda Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Treatments -->
+      <div>
+        <h3 class="text-xl font-serif font-bold mb-6 text-accent-gold">Treatments</h3>
+        <ul class="space-y-4 font-sans text-background-parchment/70">
+          <li>Panchakarma Therapy</li>
+          <li>Stress Management</li>
+          <li>Spine & Joint Care</li>
+          <li>Skin Rejuvenation</li>
+          <li>Weight Management</li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="space-y-6">
+        <h3 class="text-xl font-serif font-bold mb-6 text-accent-gold">Contact Us</h3>
+        <div class="space-y-4 font-sans">
+          <div class="flex gap-3">
+            <MapPin class="text-accent-gold shrink-0" size={20} />
+            <span class="text-background-parchment/70">123 Ayurvedic Lane, Heritage Town,<br/>Kerala, India - 682001</span>
+          </div>
+          <div class="flex gap-3">
+            <Phone class="text-accent-gold shrink-0" size={20} />
+            <span class="text-background-parchment/70">+91 000 000 0000</span>
+          </div>
+          <div class="flex gap-3">
+            <Mail class="text-accent-gold shrink-0" size={20} />
+            <span class="text-background-parchment/70">info@vaidyamandhiram.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-8 border-t border-background-parchment/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-sans text-background-parchment/50">
+      <p>© {currentYear} Vaidyamandhiram Ayurveda Hospital. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="/privacy" class="hover:text-accent-gold">Privacy Policy</a>
+        <a href="/terms" class="hover:text-accent-gold">Terms of Service</a>
+        <a href="/sitemap-index.xml" class="hover:text-accent-gold">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>

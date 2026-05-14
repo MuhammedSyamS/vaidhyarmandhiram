@@ -1,0 +1,64 @@
+---
+const stats = [
+  { label: 'Healed Patients', value: '25000', suffix: '+' },
+  { label: 'Years of Experience', value: '35', suffix: '+' },
+  { label: 'Expert Doctors', value: '12', suffix: '' },
+  { label: 'Authentic Treatments', value: '50', suffix: '+' },
+];
+---
+
+<div class="bg-background-cream py-12 border-y border-accent-gold/20">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      {stats.map(stat => (
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-serif font-bold text-primary mb-2">
+            <span class="stat-number" data-value={stat.value}>0</span>{stat.suffix}
+          </div>
+          <div class="text-sm md:text-base font-sans text-earth uppercase tracking-widest">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  // Simple intersection observer to trigger count up
+  const observerOptions = {
+    threshold: 0.5
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = entry.target as HTMLElement;
+        const endValue = parseInt(target.getAttribute('data-value') || '0');
+        let startValue = 0;
+        const duration = 2000;
+        const startTime = performance.now();
+
+        const updateCount = (currentTime: number) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const currentCount = Math.floor(progress * endValue);
+          target.innerText = currentCount.toString();
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCount);
+          } else {
+            target.innerText = endValue.toString();
+          }
+        };
+
+        requestAnimationFrame(updateCount);
+        observer.unobserve(target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.stat-number').forEach(stat => {
+    observer.observe(stat);
+  });
+</script>

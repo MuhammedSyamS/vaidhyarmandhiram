@@ -1,0 +1,29 @@
+---
+interface Props {
+  className?: string;
+  id?: string;
+  background?: 'parchment' | 'cream' | 'white' | 'dark';
+  withDivider?: boolean;
+}
+
+const { 
+  className = "", 
+  id, 
+  background = 'parchment',
+  withDivider = false 
+} = Astro.props;
+
+const bgClasses = {
+  parchment: 'bg-background-parchment',
+  cream: 'bg-background-cream',
+  white: 'bg-white',
+  dark: 'bg-primary-dark text-background-parchment',
+};
+---
+
+<section id={id} class:list={["py-16 md:py-24 relative", bgClasses[background], className]}>
+  <div class="container mx-auto px-4">
+    <slot />
+  </div>
+  {withDivider && <div class="section-divider"></div>}
+</section>

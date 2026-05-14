@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Section from '../components/Section.astro';
+import { Phone, Mail, MapPin, Clock, MessageSquare } from 'lucide-react';
+
+export const prerender = true;
+---
+
+<BaseLayout title="Contact Us">
+  <Header slot="header" />
+
+  <!-- Page Header -->
+  <div class="bg-primary-dark py-24 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=2070" alt="" class="w-full h-full object-cover" />
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+      <span class="text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold mb-4 block">Get in Touch</span>
+      <h1 class="text-4xl md:text-7xl font-serif text-background-parchment leading-tight">We are here to <span class="text-accent-gold italic">Listen</span></h1>
+    </div>
+  </div>
+
+  <Section background="parchment">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+      <div class="bg-white p-8 shadow-lg border-t-4 border-primary text-center space-y-4">
+        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto">
+          <Phone size={24} />
+        </div>
+        <h3 class="text-xl font-serif font-bold text-primary-dark uppercase tracking-widest">Call Us</h3>
+        <p class="text-text-muted font-sans">+91 000 000 0000</p>
+        <p class="text-text-muted font-sans">+91 000 000 1111</p>
+      </div>
+
+      <div class="bg-white p-8 shadow-lg border-t-4 border-accent-gold text-center space-y-4">
+        <div class="w-12 h-12 bg-accent-gold/10 rounded-full flex items-center justify-center text-accent-gold mx-auto">
+          <MapPin size={24} />
+        </div>
+        <h3 class="text-xl font-serif font-bold text-primary-dark uppercase tracking-widest">Visit Us</h3>
+        <p class="text-text-muted font-sans">123 Ayurvedic Lane, Heritage Town,<br/>Kerala, India - 682001</p>
+      </div>
+
+      <div class="bg-white p-8 shadow-lg border-t-4 border-earth text-center space-y-4">
+        <div class="w-12 h-12 bg-earth/10 rounded-full flex items-center justify-center text-earth mx-auto">
+          <Mail size={24} />
+        </div>
+        <h3 class="text-xl font-serif font-bold text-primary-dark uppercase tracking-widest">Email Us</h3>
+        <p class="text-text-muted font-sans">info@vaidyamandhiram.com</p>
+        <p class="text-text-muted font-sans">care@vaidyamandhiram.com</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <!-- Inquiry Form -->
+      <div class="space-y-8">
+        <div>
+          <h2 class="text-3xl font-serif font-bold text-primary-dark">Send a Message</h2>
+          <p class="text-text-muted font-sans mt-2">Have a question? Fill out the form below and we'll get back to you within 24 hours.</p>
+        </div>
+        
+        <form class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none font-sans" required />
+            <input type="email" placeholder="Email Address" class="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none font-sans" required />
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <input type="tel" placeholder="Phone Number" class="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none font-sans" required />
+            <input type="text" placeholder="Subject" class="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none font-sans" required />
+          </div>
+          <textarea placeholder="How can we help you?" rows="5" class="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none font-sans resize-none" required></textarea>
+          <button type="submit" class="btn-primary w-full">Send Inquiry</button>
+        </form>
+      </div>
+
+      <!-- Opening Hours & Map -->
+      <div class="space-y-8">
+        <div class="bg-background-cream p-8 shadow-lg border-l-4 border-accent-gold space-y-6">
+          <h3 class="text-2xl font-serif font-bold text-primary-dark flex items-center gap-2">
+            <Clock size={24} className="text-accent-gold" />
+            Opening Hours
+          </h3>
+          <div class="space-y-3 font-sans">
+            <div class="flex justify-between border-b border-accent-gold/10 pb-2">
+              <span class="text-earth font-bold">Monday - Saturday</span>
+              <span class="text-text-muted">9:00 AM - 7:00 PM</span>
+            </div>
+            <div class="flex justify-between border-b border-accent-gold/10 pb-2">
+              <span class="text-earth font-bold">Sunday</span>
+              <span class="text-text-muted font-bold text-primary">Emergencies Only</span>
+            </div>
+          </div>
+          <p class="text-sm text-text-muted italic">
+            * Therapy sessions are scheduled based on prior appointments.
+          </p>
+        </div>
+
+        <!-- WhatsApp CTA -->
+        <a 
+          href="https://wa.me/910000000000" 
+          target="_blank"
+          class="flex items-center justify-between p-6 bg-[#25D366] text-white rounded-lg shadow-lg hover:shadow-xl transition-all group"
+        >
+          <div class="flex items-center gap-4">
+            <MessageSquare size={32} />
+            <div>
+              <p class="font-sans font-bold uppercase tracking-widest text-xs opacity-80">Instant Support</p>
+              <p class="text-xl font-serif font-bold">Chat on WhatsApp</p>
+            </div>
+          </div>
+          <span class="text-2xl group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Google Map -->
+  <div class="h-[500px] w-full border-t border-accent-gold/20">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15714.475276326462!2d76.267304!3d9.931233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d514ab2d9c5%3A0x2a046a0666324a3e!2sKochi%2C%20Kerala!5e0!3m2!1sen!2sin!4v1683900000000!5m2!1sen!2sin" 
+      width="100%" 
+      height="100%" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+
+  <Footer slot="footer" />
+</BaseLayout>

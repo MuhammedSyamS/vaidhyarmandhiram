@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Stats from '../components/Stats.astro';
+import Section from '../components/Section.astro';
+import FounderSpotlight from '../components/FounderSpotlight';
+import TreatmentsGrid from '../components/TreatmentsGrid.astro';
+import { CheckCircle2, Star, Quote } from 'lucide-react';
+
+export const prerender = true;
+
+const testimonials = [
+  {
+    name: "Rajesh Kumar",
+    city: "Kochi",
+    text: "The Panchakarma treatment here was life-changing. I feel like a new person. The staff is professional and the environment is so peaceful.",
+    rating: 5
+  },
+  {
+    name: "Anjali Menon",
+    city: "Trivandrum",
+    text: "I had chronic back pain for years. After 14 days of Kativasti and Pizhichil, I am finally pain-free. Dr. Sathar is a true healer.",
+    rating: 5
+  },
+  {
+    name: "Sarah Johnson",
+    city: "London",
+    text: "Authentic Ayurveda at its best. No commercial gimmicks, just pure tradition and effective healing. Highly recommended.",
+    rating: 5
+  }
+];
+---
+
+<BaseLayout title="Home">
+  <Header slot="header" />
+
+  <Hero />
+
+  <!-- Trust Strip -->
+  <div class="bg-white py-6 border-b border-accent-gold/10 overflow-hidden">
+    <div class="container mx-auto px-4 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/52/NABH_Logo.svg/1200px-NABH_Logo.svg.png" alt="NABH Accredited" class="h-12 object-contain" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Ministry_of_Ayush_Logo.svg/2560px-Ministry_of_Ayush_Logo.svg.png" alt="Ministry of Ayush" class="h-12 object-contain" />
+      <span class="text-xl font-serif font-bold text-primary italic border-2 border-primary px-4 py-1">ISO 9001:2015</span>
+    </div>
+  </div>
+
+  <Stats />
+
+  <!-- Founder Spotlight Section -->
+  <Section id="founder" background="parchment" withDivider={true}>
+    <FounderSpotlight client:visible />
+  </Section>
+
+  <!-- Treatments Preview Section -->
+  <Section id="treatments" background="cream">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold">Our Expertise</span>
+      <h2 class="text-4xl md:text-5xl font-serif mt-4 mb-6">Healing Through Tradition</h2>
+      <p class="text-text-muted font-sans text-lg">
+        We offer a comprehensive range of traditional Ayurvedic treatments, each personalized to your unique body constitution (Prakriti).
+      </p>
+    </div>
+    <TreatmentsGrid />
+    <div class="text-center mt-12">
+      <a href="/treatments" class="btn-outline">View All Treatments</a>
+    </div>
+  </Section>
+
+  <!-- Panchakarma Feature -->
+  <Section background="dark" className="overflow-hidden">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="space-y-8">
+        <h2 class="text-4xl md:text-5xl font-serif text-background-parchment leading-tight">
+          The Art of <span class="text-accent-gold italic">Panchakarma</span>
+        </h2>
+        <p class="text-background-parchment/80 text-lg leading-relaxed">
+          Panchakarma is the cornerstone of Ayurvedic healing. It is a profound detoxification process that removes deep-rooted toxins (Ama) from the body, restoring balance and vitality.
+        </p>
+        <ul class="space-y-4">
+          {[
+            'Vamana (Therapeutic Emesis)',
+            'Virechana (Purgation)',
+            'Basti (Enema Therapy)',
+            'Nasya (Nasal Administration)',
+            'Raktamokshana (Bloodletting)'
+          ].map(item => (
+            <li class="flex items-center gap-3 text-background-parchment/90">
+              <CheckCircle2 class="text-accent-gold" size={20} />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <a href="/treatments/panchakarma" class="btn-primary !bg-accent-gold !text-primary-dark inline-block">Learn More About Panchakarma</a>
+      </div>
+      <div class="relative">
+        <img 
+          src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=1000" 
+          alt="Panchakarma Treatment" 
+          class="rounded-lg shadow-2xl relative z-10"
+        />
+        <div class="absolute -top-10 -right-10 w-full h-full border-4 border-accent-gold/20 -z-0"></div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Testimonials Section -->
+  <Section background="parchment" withDivider={true}>
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold">Patient Stories</span>
+      <h2 class="text-4xl md:text-5xl font-serif mt-4 mb-6">Healing Journeys</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonials.map(t => (
+        <div class="bg-white p-8 shadow-md border-t-4 border-accent-gold relative">
+          <Quote class="absolute top-4 right-4 text-accent-gold/10" size={48} />
+          <div class="flex gap-1 mb-4">
+            {[...Array(t.rating)].map(() => <Star class="text-accent-gold fill-accent-gold" size={16} />)}
+          </div>
+          <p class="text-text-muted italic mb-6 leading-relaxed">"{t.text}"</p>
+          <div class="border-t border-accent-gold/10 pt-4">
+            <p class="font-serif font-bold text-primary-dark">{t.name}</p>
+            <p class="text-xs text-earth uppercase tracking-widest">{t.city}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- CTA Banner -->
+  <div class="bg-primary py-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <div class="absolute top-0 left-0 w-64 h-64 bg-accent-gold rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-background-cream rounded-full blur-[120px]"></div>
+    </div>
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <h2 class="text-4xl md:text-6xl font-serif text-background-parchment mb-8">Ready to Begin Your <br/><span class="text-accent-gold italic">Path to Wellness?</span></h2>
+      <p class="text-background-parchment/80 text-xl mb-10 max-w-2xl mx-auto">
+        Schedule your consultation with Dr. P. Abdul Sathar Gurukkal and experience authentic Ayurvedic healing.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-6">
+        <a href="/appointment" class="btn-primary !bg-background-parchment !text-primary-dark text-xl px-12 py-4">Book Your Appointment</a>
+        <a href="https://wa.me/910000000000" class="btn-outline !border-background-parchment !text-background-parchment hover:!bg-background-parchment hover:!text-primary-dark text-xl px-12 py-4 flex items-center justify-center gap-2">
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</BaseLayout>

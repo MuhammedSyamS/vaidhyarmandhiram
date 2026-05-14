@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Section from '../components/Section.astro';
+import { Shield, Award, Users, Sprout } from 'lucide-react';
+
+export const prerender = true;
+
+const milestones = [
+  { year: '1985', title: 'Founding', description: 'Dr. P. Abdul Sathar Gurukkal established the first Vaidyamandhiram clinic.' },
+  { year: '1995', title: 'Hospital Expansion', description: 'Transformed into a full-fledged Ayurvedic hospital with inpatient facilities.' },
+  { year: '2005', title: 'Research Center', description: 'Established a dedicated research wing for herbal formulations.' },
+  { year: '2015', title: 'Global Recognition', description: 'Received national accreditation for quality and authentic practices.' },
+  { year: '2023', title: 'Digital Transformation', description: 'Launched online consultations and heritage awareness programs.' },
+];
+---
+
+<BaseLayout title="Our Story">
+  <Header slot="header" />
+
+  <!-- Page Header -->
+  <div class="bg-primary-dark py-24 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=2070" alt="" class="w-full h-full object-cover" />
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+      <span class="text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold mb-4 block">Our Heritage</span>
+      <h1 class="text-4xl md:text-7xl font-serif text-background-parchment leading-tight">A Legacy of <span class="text-accent-gold italic">Pure Healing</span></h1>
+    </div>
+  </div>
+
+  <!-- Founding Story -->
+  <Section background="parchment" withDivider={true}>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="relative">
+        <!-- CLIENT ACTION REQUIRED: Replace this placeholder with the actual photograph of Dr. P. Abdul Sathar Gurukkal provided by the hospital. Recommended size: 800x1000px, format: JPG or WebP, file location: /public/images/founder-dr-sathar-about.jpg -->
+        <img 
+          src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=800&h=1000" 
+          alt="Dr. P. Abdul Sathar Gurukkal" 
+          class="rounded-lg shadow-2xl relative z-10 w-full aspect-[4/5] object-cover"
+        />
+        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-accent-gold/20 -z-0"></div>
+      </div>
+      <div class="space-y-8">
+        <h2 class="text-4xl md:text-5xl font-serif text-primary-dark">The Vision of a <span class="italic">Healer</span></h2>
+        <div class="space-y-6 text-text-muted text-lg leading-relaxed">
+          <p>
+            Vaidyamandhiram was founded with a singular purpose: to bring the authentic, undiluted wisdom of Kerala Ayurveda to those in need. Dr. P. Abdul Sathar Gurukkal, inspired by his deep lineage of traditional medicine, envisioned a sanctuary where healing is not just a treatment, but a spiritual homecoming.
+          </p>
+          <p>
+            For over three decades, we have remained true to the classical texts of Ayurveda while embracing modern standards of hygiene and patient care. Our herbal medicines are prepared in-house, following traditional protocols to ensure maximum potency.
+          </p>
+          <p>
+            At Vaidyamandhiram, we believe that every individual is a unique manifestation of nature's elements. Our treatments are never generic; they are carefully crafted dialogues between the physician, the patient, and the healing power of nature.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Vision & Mission -->
+  <Section background="cream">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div class="bg-white p-12 shadow-lg border-t-4 border-primary space-y-6">
+        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-6">
+          <Shield size={32} />
+        </div>
+        <h3 class="text-3xl font-serif font-bold text-primary-dark">Our Vision</h3>
+        <p class="text-text-muted text-lg leading-relaxed">
+          To be the global benchmark for authentic Ayurvedic healing, preserving the ancient traditions of Kerala while making them accessible and relevant to the modern world.
+        </p>
+      </div>
+      <div class="bg-white p-12 shadow-lg border-t-4 border-accent-gold space-y-6">
+        <div class="w-16 h-16 bg-accent-gold/10 rounded-full flex items-center justify-center text-accent-gold mb-6">
+          <Sprout size={32} />
+        </div>
+        <h3 class="text-3xl font-serif font-bold text-primary-dark">Our Mission</h3>
+        <p class="text-text-muted text-lg leading-relaxed">
+          To provide compassionate, personalized care that restores balance and vitality through classical Ayurvedic therapies, ethically sourced herbal remedies, and lifestyle guidance.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Timeline -->
+  <Section background="parchment">
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <h2 class="text-4xl md:text-5xl font-serif text-primary-dark">Our Journey Through <span class="italic text-accent-gold">Time</span></h2>
+    </div>
+    
+    <div class="relative max-w-4xl mx-auto">
+      <!-- Vertical Line -->
+      <div class="absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-accent-gold/20 hidden md:block"></div>
+      
+      <div class="space-y-12">
+        {milestones.map((m, index) => (
+          <div class={`flex flex-col md:flex-row gap-8 items-center ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}>
+            <div class="md:w-1/2 text-center md:text-right px-4 space-y-2">
+              {index % 2 === 0 ? (
+                <>
+                  <span class="text-3xl font-serif font-bold text-accent-gold">{m.year}</span>
+                  <h4 class="text-xl font-serif font-bold text-primary-dark">{m.title}</h4>
+                  <p class="text-text-muted">{m.description}</p>
+                </>
+              ) : null}
+            </div>
+            
+            <div class="relative z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-background-parchment font-serif font-bold shadow-lg">
+              <div class="w-8 h-8 rounded-full border border-accent-gold/50 flex items-center justify-center">
+                <CheckCircle2 size={16} />
+              </div>
+            </div>
+            
+            <div class="md:w-1/2 text-center md:text-left px-4 space-y-2">
+              {index % 2 !== 0 ? (
+                <>
+                  <span class="text-3xl font-serif font-bold text-accent-gold">{m.year}</span>
+                  <h4 class="text-xl font-serif font-bold text-primary-dark">{m.title}</h4>
+                  <p class="text-text-muted">{m.description}</p>
+                </>
+              ) : null}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- Facilities Grid -->
+  <Section background="cream">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl md:text-5xl font-serif text-primary-dark">World-Class <span class="italic text-accent-gold">Facilities</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {[
+        { icon: Shield, title: 'Hygienic Therapy Rooms', desc: 'Private, serene rooms designed according to Vaastu Shastra.' },
+        { icon: Sprout, title: 'In-house Herbal Garden', desc: 'Fresh herbs grown for traditional preparations.' },
+        { icon: Award, title: 'In-patient Care', desc: 'Comfortable accommodation for intensive treatments.' },
+        { icon: Users, title: 'Expert Therapists', desc: 'Highly trained professionals with years of experience.' },
+      ].map(f => (
+        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center space-y-4">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto">
+            <f.icon size={24} />
+          </div>
+          <h4 class="text-xl font-serif font-bold text-primary-dark">{f.title}</h4>
+          <p class="text-sm text-text-muted">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Footer slot="footer" />
+</BaseLayout>

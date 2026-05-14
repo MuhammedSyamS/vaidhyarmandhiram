@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Section from '../components/Section.astro';
+import { Award, BookOpen, Clock } from 'lucide-react';
+
+export const prerender = true;
+
+const otherDoctors = [
+  {
+    name: 'Dr. Lekshmi R. Nair',
+    title: 'Senior Physician',
+    qualifications: 'BAMS, MD (Ayurveda)',
+    experience: '15 Years',
+    specialisations: ['Panchakarma', 'Skin Care'],
+    image: 'https://images.unsplash.com/photo-1559839734-2b71f15367ef?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    name: 'Dr. Manoj Prabhakar',
+    title: 'Consultant Physician',
+    qualifications: 'BAMS',
+    experience: '10 Years',
+    specialisations: ['Spine & Joint Care', 'Sports Injuries'],
+    image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=800'
+  }
+];
+---
+
+<BaseLayout title="Our Doctors">
+  <Header slot="header" />
+
+  <!-- Page Header -->
+  <div class="bg-primary-dark py-24 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=2070" alt="" class="w-full h-full object-cover" />
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+      <span class="text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold mb-4 block">Medical Team</span>
+      <h1 class="text-4xl md:text-7xl font-serif text-background-parchment leading-tight">Expert <span class="text-accent-gold italic">Physicians</span></h1>
+    </div>
+  </div>
+
+  <!-- Founder Featured Card -->
+  <Section background="parchment">
+    <div class="bg-white shadow-2xl overflow-hidden border border-accent-gold/10">
+      <div class="grid grid-cols-1 lg:grid-cols-5 items-stretch">
+        <div class="lg:col-span-2 relative">
+          <!-- CLIENT ACTION REQUIRED: Replace this placeholder with the actual photograph of Dr. P. Abdul Sathar Gurukkal provided by the hospital. Recommended size: 800x1000px, format: JPG or WebP, file location: /public/images/founder-dr-sathar-doctors.jpg -->
+          <img 
+            src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=800&h=1000" 
+            alt="Dr. P. Abdul Sathar Gurukkal" 
+            class="w-full h-full object-cover min-h-[500px]"
+          />
+          <div class="absolute bottom-0 left-0 right-0 bg-primary/90 text-background-parchment p-6 lg:hidden">
+            <h2 class="text-2xl font-serif font-bold">Dr. P. Abdul Sathar Gurukkal</h2>
+            <p class="text-accent-gold uppercase tracking-widest text-sm">Founder & Chief Physician</p>
+          </div>
+        </div>
+        <div class="lg:col-span-3 p-8 md:p-12 space-y-8">
+          <div class="hidden lg:block space-y-2">
+            <span class="text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold">The Founder</span>
+            <h2 class="text-4xl font-serif font-bold text-primary-dark">Dr. P. Abdul Sathar Gurukkal</h2>
+            <p class="text-earth uppercase tracking-widest font-bold">Founder & Chief Physician</p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex gap-4">
+              <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+                <Award size={20} />
+              </div>
+              <div>
+                <p class="text-xs text-earth uppercase font-bold tracking-wider">Qualifications</p>
+                <p class="font-serif text-lg font-bold">BAMS, MD (Ayurveda)</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+                <Clock size={20} />
+              </div>
+              <div>
+                <p class="text-xs text-earth uppercase font-bold tracking-wider">Experience</p>
+                <p class="font-serif text-lg font-bold">35+ Years</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-xl font-serif font-bold text-primary-dark flex items-center gap-2">
+              <BookOpen size={20} className="text-accent-gold" />
+              Philosophy & Expertise
+            </h3>
+            <p class="text-text-muted leading-relaxed font-sans">
+              Dr. P. Abdul Sathar Gurukkal is a pioneer in traditional Kerala Ayurveda. His clinical expertise spans over three decades, specializing in Panchakarma and chronic disease management. He believes in treating the root cause of illness by restoring the balance of Tridoshas (Vata, Pitta, Kapha).
+            </p>
+            <p class="text-text-muted leading-relaxed font-sans">
+              As a traditional Gurukkal, he carries forward the ancient wisdom of Marma Chikitsa and specialized herbal formulations passed down through generations.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            {['Panchakarma', 'Chronic Management', 'Marma Chikitsa', 'Clinical Research'].map(tag => (
+              <span class="px-3 py-1 bg-background-cream text-earth text-xs font-bold uppercase tracking-wider rounded border border-accent-gold/20">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <a href="/appointment" class="btn-primary inline-block">Book a Consultation</a>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Other Doctors Grid -->
+  <Section background="cream">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-5xl font-serif text-primary-dark">Our Medical <span class="italic text-accent-gold">Panel</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+      {otherDoctors.map(doctor => (
+        <div class="bg-white group shadow-lg hover:shadow-xl transition-all border border-accent-gold/10 overflow-hidden flex flex-col sm:flex-row">
+          <div class="sm:w-1/3 aspect-square sm:aspect-auto overflow-hidden">
+            <img src={doctor.image} alt={doctor.name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+          </div>
+          <div class="sm:w-2/3 p-8 space-y-4">
+            <div>
+              <h3 class="text-2xl font-serif font-bold text-primary-dark group-hover:text-accent-gold transition-colors">{doctor.name}</h3>
+              <p class="text-earth text-sm font-bold uppercase tracking-widest">{doctor.title}</p>
+            </div>
+            <p class="text-sm text-text-muted font-sans italic">{doctor.qualifications}</p>
+            <div class="flex items-center gap-2 text-xs text-text-muted font-sans uppercase font-bold tracking-wider">
+              <Clock size={14} className="text-accent-gold" />
+              {doctor.experience} Experience
+            </div>
+            <div class="flex flex-wrap gap-2 pt-2">
+              {doctor.specialisations.map(spec => (
+                <span class="text-[10px] px-2 py-0.5 bg-background-parchment text-primary font-bold uppercase border border-primary/20 rounded">
+                  {spec}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Footer slot="footer" />
+</BaseLayout>
