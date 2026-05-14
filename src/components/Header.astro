@@ -29,8 +29,8 @@ const navLinks = [
 
   <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
     <a href="/" class="flex flex-col">
-      <span class="text-2xl font-serif font-bold text-primary tracking-widest uppercase">Vaidyamandhiram</span>
-      <span class="text-xs font-sans text-accent-gold tracking-[0.3em] uppercase">Ayurveda Hospital</span>
+      <span class="text-xl md:text-2xl font-serif font-bold text-primary tracking-widest uppercase">Vaidyamandhiram</span>
+      <span class="text-[10px] md:text-xs font-sans text-accent-gold tracking-[0.3em] uppercase">Ayurveda Hospital</span>
     </a>
 
     <div class="hidden lg:flex items-center gap-8">
@@ -40,14 +40,14 @@ const navLinks = [
           class="font-serif text-lg text-primary-dark hover:text-accent-gold transition-colors relative group"
         >
           {link.name}
-          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-gold transition-all group-hover:width-1/2"></span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-gold transition-all group-hover:w-full"></span>
         </a>
       ))}
     </div>
 
     <div class="flex items-center gap-4">
-      <button class="text-primary-dark hover:text-accent-gold transition-colors lg:hidden">
-        <Menu size={24} />
+      <button id="menu-toggle" class="text-primary-dark hover:text-accent-gold transition-colors lg:hidden p-2" aria-label="Toggle Menu">
+        <Menu size={28} />
       </button>
       <a 
         href="/appointment" 
@@ -57,4 +57,50 @@ const navLinks = [
       </a>
     </div>
   </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="fixed inset-0 bg-primary-dark/95 z-[60] lg:hidden translate-x-full transition-transform duration-500 ease-in-out">
+    <div class="flex justify-end p-6">
+      <button id="menu-close" class="text-background-parchment hover:text-accent-gold transition-colors p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div class="flex flex-col items-center justify-center h-full -mt-16 gap-8">
+      {navLinks.map(link => (
+        <a 
+          href={link.href} 
+          class="font-serif text-3xl text-background-parchment hover:text-accent-gold transition-colors"
+        >
+          {link.name}
+        </a>
+      ))}
+      <a href="/appointment" class="btn-primary !bg-accent-gold !text-primary-dark mt-4 text-xl px-12">
+        Book Appointment
+      </a>
+    </div>
+  </div>
 </header>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuClose = document.getElementById('menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const body = document.body;
+
+  function toggleMenu() {
+    mobileMenu?.classList.toggle('translate-x-full');
+    body.classList.toggle('overflow-hidden');
+  }
+
+  menuToggle?.addEventListener('click', toggleMenu);
+  menuClose?.addEventListener('click', toggleMenu);
+
+  // Close menu on link click
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('translate-x-full');
+      body.classList.remove('overflow-hidden');
+    });
+  });
+</script>
