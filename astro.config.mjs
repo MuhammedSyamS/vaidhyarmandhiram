@@ -9,7 +9,7 @@ import clerk from '@clerk/astro';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://vaidhyarmandhiram.vercel.app',
+  site: 'https://vaidhyarmandhiram.vercel.app/',
   output: 'hybrid',
   adapter: vercel({
     webAnalytics: { enabled: true },
