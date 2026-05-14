@@ -20,9 +20,13 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     clerk(),
-    sitemap(),
     mdx(),
     keystatic(),
+    sitemap({
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date(),
+    }),
   ],
   vite: {
     ssr: {
