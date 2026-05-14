@@ -39,12 +39,12 @@ export default function Gallery() {
   return (
     <div className="space-y-12">
       {/* Filter Buttons */}
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex overflow-x-auto no-scrollbar md:flex-wrap md:justify-center gap-4 pb-4 snap-x">
         {categories.map(cat => (
           <button
             key={cat}
             onClick={() => setFilter(cat)}
-            className={`px-6 py-2 rounded-full border transition-all font-sans font-bold uppercase tracking-widest text-xs ${
+            className={`px-6 py-2 rounded-full border transition-all font-sans font-bold uppercase tracking-widest text-xs whitespace-nowrap snap-center ${
               filter === cat 
               ? 'bg-primary text-white border-primary shadow-lg' 
               : 'border-accent-gold/20 text-text-muted hover:border-accent-gold hover:text-primary'

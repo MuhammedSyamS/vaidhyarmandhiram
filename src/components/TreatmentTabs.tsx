@@ -45,12 +45,12 @@ export default function TreatmentTabs() {
   return (
     <div className="space-y-12">
       {/* Tabs */}
-      <div className="flex flex-wrap justify-center gap-2 md:gap-4 border-b border-accent-gold/20 pb-4">
+      <div className="flex overflow-x-auto no-scrollbar md:flex-wrap md:justify-center gap-2 md:gap-4 border-b border-accent-gold/20 pb-4 snap-x">
         {categories.map(cat => (
           <button
             key={cat.id}
             onClick={() => setActiveTab(cat.id)}
-            className={`px-6 py-2 font-serif text-lg transition-all relative ${
+            className={`px-6 py-2 font-serif text-lg transition-all relative whitespace-nowrap snap-center ${
               activeTab === cat.id ? 'text-primary-dark font-bold' : 'text-text-muted hover:text-primary'
             }`}
           >
