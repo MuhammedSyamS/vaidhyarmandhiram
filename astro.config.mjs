@@ -15,9 +15,6 @@ export default defineConfig({
     webAnalytics: { enabled: true },
   }),
   integrations: [
-    sitemap({
-      customPages: ['https://vaidyarmandhiram.vercel.app/'],
-    }),
     react(),
     tailwind({
       applyBaseStyles: false,
