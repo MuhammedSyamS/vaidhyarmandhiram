@@ -15,6 +15,9 @@ export default defineConfig({
     webAnalytics: { enabled: true },
   }),
   integrations: [
+    sitemap({
+      customPages: ['https://vaidyamandhiram.vercel.app/'],
+    }),
     react(),
     tailwind({
       applyBaseStyles: false,
@@ -22,11 +25,6 @@ export default defineConfig({
     clerk(),
     mdx(),
     keystatic(),
-    sitemap({
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date(),
-    }),
   ],
   vite: {
     ssr: {
