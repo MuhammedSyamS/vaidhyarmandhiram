@@ -73,7 +73,7 @@ const testimonials = [
   <Section background="dark" className="overflow-hidden">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
       <div class="space-y-8">
-        <h2 class="text-4xl md:text-5xl font-serif text-background-parchment leading-tight">
+        <h2 class="text-3xl md:text-5xl font-serif text-background-parchment leading-tight">
           The Art of <span class="text-accent-gold italic">Panchakarma</span>
         </h2>
         <p class="text-background-parchment/80 text-lg leading-relaxed">
@@ -95,13 +95,13 @@ const testimonials = [
         </ul>
         <a href="/treatments/panchakarma" class="btn-primary !bg-accent-gold !text-primary-dark inline-block">Learn More About Panchakarma</a>
       </div>
-      <div class="relative">
+      <div class="relative px-4 md:px-0">
         <img 
           src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=1000" 
           alt="Panchakarma Treatment" 
           class="rounded-lg shadow-2xl relative z-10"
         />
-        <div class="absolute -top-10 -right-10 w-full h-full border-4 border-accent-gold/20 -z-0"></div>
+        <div class="absolute -top-4 -right-4 md:-top-10 md:-right-10 w-full h-full border-4 border-accent-gold/20 -z-0"></div>
       </div>
     </div>
   </Section>
@@ -110,7 +110,7 @@ const testimonials = [
   <Section background="parchment" withDivider={true}>
     <div class="text-center max-w-3xl mx-auto mb-16">
       <span class="text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold">Patient Stories</span>
-      <h2 class="text-4xl md:text-5xl font-serif mt-4 mb-6">Healing Journeys</h2>
+      <h2 class="text-3xl md:text-5xl font-serif mt-4 mb-6">Healing Journeys</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {testimonials.map(t => (
@@ -136,8 +136,8 @@ const testimonials = [
       <div class="absolute bottom-0 right-0 w-96 h-96 bg-background-cream rounded-full blur-[120px]"></div>
     </div>
     <div class="container mx-auto px-4 text-center relative z-10">
-      <h2 class="text-4xl md:text-6xl font-serif text-background-parchment mb-8">Ready to Begin Your <br/><span class="text-accent-gold italic">Path to Wellness?</span></h2>
-      <p class="text-background-parchment/80 text-xl mb-10 max-w-2xl mx-auto">
+      <h2 class="text-3xl md:text-6xl font-serif text-background-parchment mb-8">Ready to Begin Your <br/><span class="text-accent-gold italic">Path to Wellness?</span></h2>
+      <p class="text-background-parchment/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
         Schedule your consultation with Dr. P. Abdul Sathar Gurukkal and experience authentic Ayurvedic healing.
       </p>
       <div class="flex flex-col sm:flex-row justify-center gap-6">

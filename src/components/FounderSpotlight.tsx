@@ -16,7 +16,7 @@ export default function FounderSpotlight() {
           {/* CLIENT ACTION REQUIRED: Replace this placeholder with the actual photograph of Dr. P. Abdul Sathar Gurukkal provided by the hospital. Recommended size: 800x1000px, format: JPG or WebP, file location: /public/images/founder-dr-sathar.jpg */}
           <img 
             src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=800&h=1000" 
-            alt="Dr. P. Abdul Sathar Gurukkal - Founder and Chief Physician, Vaidyamandhiram Ayurveda Hospital Kerala" 
+            alt="Dr. P. Abdul Sathar Gurukkal - Founder and Chief Physician, Vaidyarmandhiram Ayurveda Hospital Kerala" 
             className="w-full aspect-[4/5] object-cover"
           />
           <div className="absolute inset-0 border-2 border-accent-gold/30 m-2 pointer-events-none"></div>
@@ -56,13 +56,13 @@ export default function FounderSpotlight() {
 
         <div className="space-y-6 text-text-muted font-sans leading-relaxed text-lg">
           <p>
-            Vaidyamandhiram was born from the vision of Dr. P. Abdul Sathar Gurukkal, a healer whose life has been dedicated to the restoration of balance through Ayurveda. With decades of traditional training and a deep lineage of wisdom, he has touched the lives of thousands.
+            Vaidyarmandhiram was born from the vision of Dr. P. Abdul Sathar Gurukkal, a healer whose life has been dedicated to the restoration of balance through Ayurveda. With decades of traditional training and a deep lineage of wisdom, he has touched the lives of thousands.
           </p>
           <p>
             His approach combines the strict adherence to classical Ayurvedic texts with a compassionate understanding of modern lifestyle challenges. Every treatment at our hospital is overseen by his clinical expertise, ensuring that the essence of tradition remains untainted.
           </p>
           <p>
-            Today, Vaidyamandhiram stands as a testament to his commitment to authentic healing, serving as a sanctuary for those seeking physical rejuvenation and mental peace.
+            Today, Vaidyarmandhiram stands as a testament to his commitment to authentic healing, serving as a sanctuary for those seeking physical rejuvenation and mental peace.
           </p>
         </div>
 

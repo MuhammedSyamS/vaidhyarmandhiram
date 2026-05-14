@@ -36,7 +36,7 @@ export default function AppointmentForm() {
         </div>
         <h2 className="text-3xl font-serif font-bold text-primary-dark">Appointment Requested</h2>
         <p className="text-text-muted text-lg max-w-md mx-auto">
-          Thank you for choosing Vaidyamandhiram. Our team will contact you shortly to confirm your preferred time slot.
+          Thank you for choosing Vaidyarmandhiram. Our team will contact you shortly to confirm your preferred time slot.
         </p>
         <button 
           onClick={() => setStatus('idle')}
