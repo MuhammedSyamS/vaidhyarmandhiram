@@ -16,10 +16,11 @@
 
   html {
     scroll-behavior: smooth;
+    @apply overflow-x-hidden;
   }
 
   body {
-    @apply bg-background-parchment text-text font-sans selection:bg-accent-gold/30;
+    @apply bg-background-parchment text-text font-sans selection:bg-accent-gold/30 overflow-x-hidden;
     background-image: url('/images/parchment-texture.svg');
     background-repeat: repeat;
   }

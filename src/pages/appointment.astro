@@ -26,14 +26,14 @@ export const prerender = true;
   </div>
 
   <Section background="parchment">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-      <!-- Left Column: Form (2/3 width) -->
-      <div class="lg:col-span-2">
+    <div class="flex flex-col xl:flex-row gap-12">
+      <!-- Left Column: Form (stacked on mobile/tablet, 2/3 on desktop) -->
+      <div class="xl:w-2/3">
         <AppointmentForm client:load />
       </div>
 
-      <!-- Right Column: Info (1/3 width) -->
-      <div class="space-y-8">
+      <!-- Right Column: Info (stacked on mobile/tablet, 1/3 on desktop) -->
+      <div class="xl:w-1/3 space-y-8">
         <div class="bg-white p-8 shadow-lg border-l-4 border-primary space-y-6">
           <h3 class="text-2xl font-serif font-bold text-primary-dark">Why Book Online?</h3>
           <ul class="space-y-4 font-sans text-text-muted">
@@ -65,8 +65,8 @@ export const prerender = true;
               <span>Mon - Sat: 9:00 AM - 7:00 PM</span>
             </div>
             <div class="flex items-center gap-3 text-text-muted font-sans">
-              <Mail size={20} className="text-accent-gold" />
-              <span>appointments@vaidyamandhiram.com</span>
+              <Clock size={20} className="text-accent-gold" />
+              <span>Sun: Emergencies Only</span>
             </div>
           </div>
         </div>
