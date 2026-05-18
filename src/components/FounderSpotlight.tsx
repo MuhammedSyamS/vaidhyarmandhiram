@@ -27,7 +27,7 @@ export default function FounderSpotlight() {
         <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10"></div>
 
         <div className="mt-8 text-center">
-          <h3 className="text-2xl font-serif font-bold text-primary-dark tracking-widest uppercase">
+          <h3 className="text-2xl font-bold text-primary-dark tracking-widest uppercase">
             Dr. P. Abdul Sathar Gurukkal
           </h3>
           <p className="text-accent-gold font-sans uppercase tracking-[0.2em] text-sm mt-1">
@@ -48,9 +48,9 @@ export default function FounderSpotlight() {
           <span className="text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold">
             Our Founder
           </span>
-          <h2 className="text-4xl md:text-5xl font-serif text-primary-dark leading-tight">
+          <h2 className="text-4xl md:text-5xl text-primary-dark leading-tight">
             Decades of Healing, <br/>
-            <span className="italic">Rooted in Tradition</span>
+            <span className="">Rooted in Tradition</span>
           </h2>
         </div>
 
@@ -66,14 +66,14 @@ export default function FounderSpotlight() {
           </p>
         </div>
 
-        <blockquote className="border-l-4 border-accent-gold pl-6 py-2 italic text-xl text-primary font-serif">
+        <blockquote className="border-l-4 border-accent-gold pl-6 py-2 text-xl text-primary ">
           "Healing is not merely the absence of disease, but the harmonious alignment of the body, mind, and spirit with the laws of nature."
         </blockquote>
 
         <div>
           <a 
             href="/about" 
-            className="inline-flex items-center gap-2 text-primary-dark font-serif text-lg hover:text-accent-gold transition-colors group"
+            className="inline-flex items-center gap-2 text-primary-dark text-lg hover:text-accent-gold transition-colors group"
           >
             Read the Full Story
             <span className="group-hover:translate-x-1 transition-transform">→</span>

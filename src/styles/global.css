@@ -74,3 +74,29 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ── Language Switcher ─────────────────────────────────────────── */
+/* .lang-en  → English content   (hidden when data-lang="ml")      */
+/* .lang-ml  → Malayalam content (hidden when data-lang="en")      */
+/* .font-malayalam is treated as .lang-ml automatically             */
+
+/* English mode → hide ALL Malayalam text */
+html[data-lang="en"] .lang-ml,
+html[data-lang="en"] .font-malayalam {
+  display: none !important;
+}
+
+/* Malayalam mode → hide ALL English text */
+html[data-lang="ml"] .lang-en {
+  display: none !important;
+}
+
+/* In Malayalam mode, ML text takes the SAME color as its English   */
+/* sibling would have had (inherits from parent container).         */
+html[data-lang="ml"] .lang-ml,
+html[data-lang="ml"] .font-malayalam {
+  color: inherit !important;
+  font-size: inherit;
+  letter-spacing: normal;
+  text-transform: none;
+}

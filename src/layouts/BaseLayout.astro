@@ -26,12 +26,27 @@ const fullTitle = `${title} | ${siteName}`;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/vmfaviconpng.png" />
     <meta name="generator" content={Astro.generator} />
+    <!-- Language: restore saved preference on initial load AND after every View Transition -->
+    <script is:inline>
+      // Runs immediately before first paint (no flash)
+      (function applyStoredLang() {
+        var lang = localStorage.getItem('vm-lang') || 'en';
+        document.documentElement.setAttribute('data-lang', lang);
+      })();
+
+      // Re-apply after every Astro View Transition page swap
+      // (Astro replaces <html> attrs from the new page, which resets data-lang)
+      document.addEventListener('astro:after-swap', function() {
+        var lang = localStorage.getItem('vm-lang') || 'en';
+        document.documentElement.setAttribute('data-lang', lang);
+      });
+    </script>
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />

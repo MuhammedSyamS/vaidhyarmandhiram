@@ -81,7 +81,7 @@ export default function Gallery() {
                   className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-primary-dark/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="text-white font-serif text-lg border border-white/50 px-6 py-2">View Full Size</span>
+                  <span className="text-white text-lg border border-white/50 px-6 py-2">View Full Size</span>
                 </div>
               </div>
             </motion.div>
@@ -125,7 +125,7 @@ export default function Gallery() {
                 className="w-full h-auto max-h-[80vh] object-contain rounded-lg shadow-2xl"
               />
               <div className="mt-6 text-center text-white space-y-2">
-                <p className="font-serif text-2xl">{filteredImages[selectedImage].alt}</p>
+                <p className="text-2xl">{filteredImages[selectedImage].alt}</p>
                 <p className="text-accent-gold font-sans uppercase tracking-[0.2em] text-sm">
                   {filteredImages[selectedImage].category}
                 </p>

@@ -34,7 +34,7 @@ export default function AppointmentForm() {
             <CheckCircle2 size={48} />
           </div>
         </div>
-        <h2 className="text-3xl font-serif font-bold text-primary-dark">Appointment Requested</h2>
+        <h2 className="text-3xl font-bold text-primary-dark">Appointment Requested</h2>
         <p className="text-text-muted text-lg max-w-md mx-auto">
           Thank you for choosing Vaidyarmandiram. Our team will contact you shortly to confirm your preferred time slot.
         </p>

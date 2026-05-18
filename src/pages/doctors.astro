@@ -36,8 +36,10 @@ const otherDoctors = [
       <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=2070" alt="" class="w-full h-full object-cover" />
     </div>
     <div class="container mx-auto px-4 relative z-10">
-      <span class="text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold mb-4 block">Medical Team</span>
-      <h1 class="text-4xl md:text-7xl font-serif text-background-parchment leading-tight">Expert <span class="text-accent-gold italic">Physicians</span></h1>
+      <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold mb-2 block">Medical Team</span>
+      <span class="lang-ml font-malayalam text-accent-gold text-base font-semibold mb-2 block">വൈദ്യ സംഘം</span>
+      <h1 class="lang-en text-4xl md:text-7xl text-background-parchment leading-tight">Expert <span class="text-accent-gold ">Physicians</span></h1>
+      <h1 class="lang-ml font-malayalam text-4xl md:text-6xl text-background-parchment leading-tight mt-2">വിദഗ്ധ <span class="text-accent-gold">വൈദ്യൻമാർ</span></h1>
     </div>
   </div>
 
@@ -53,15 +55,18 @@ const otherDoctors = [
             class="w-full h-full object-cover min-h-[500px]"
           />
           <div class="absolute bottom-0 left-0 right-0 bg-primary/90 text-background-parchment p-6 lg:hidden">
-            <h2 class="text-2xl font-serif font-bold">Dr. P. Abdul Sathar Gurukkal</h2>
+            <h2 class="text-2xl font-bold">Dr. P. Abdul Sathar Gurukkal</h2>
             <p class="text-accent-gold uppercase tracking-widest text-sm">Founder & Chief Physician</p>
           </div>
         </div>
         <div class="lg:col-span-3 p-8 md:p-12 space-y-8">
           <div class="hidden lg:block space-y-2">
-            <span class="text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold">The Founder</span>
-            <h2 class="text-4xl font-serif font-bold text-primary-dark">Dr. P. Abdul Sathar Gurukkal</h2>
-            <p class="text-earth uppercase tracking-widest font-bold">Founder & Chief Physician</p>
+            <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold">The Founder</span>
+            <span class="lang-ml font-malayalam text-accent-gold text-sm font-semibold block">സ്ഥാപകൻ</span>
+            <h2 class="lang-en text-4xl font-bold text-primary-dark">Dr. P. Abdul Sathar Gurukkal</h2>
+            <h2 class="lang-ml font-malayalam text-3xl font-bold text-primary-dark">ഡോ. പി. അബ്ദുൾ സതാർ ഗുരുക്കൾ</h2>
+            <p class="lang-en text-primary-dark uppercase tracking-widest font-bold">Founder &amp; Chief Physician</p>
+            <p class="lang-ml font-malayalam text-primary-dark font-semibold">സ്ഥാപകൻ &amp; പ്രധാന വൈദ്യൻ</p>
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -71,7 +76,7 @@ const otherDoctors = [
               </div>
               <div>
                 <p class="text-xs text-earth uppercase font-bold tracking-wider">Qualifications</p>
-                <p class="font-serif text-lg font-bold">BAMS, MD (Ayurveda)</p>
+                <p class="text-lg font-bold">BAMS, MD (Ayurveda)</p>
               </div>
             </div>
             <div class="flex gap-4">
@@ -80,13 +85,13 @@ const otherDoctors = [
               </div>
               <div>
                 <p class="text-xs text-earth uppercase font-bold tracking-wider">Experience</p>
-                <p class="font-serif text-lg font-bold">35+ Years</p>
+                <p class="text-lg font-bold">35+ Years</p>
               </div>
             </div>
           </div>
 
           <div class="space-y-4">
-            <h3 class="text-xl font-serif font-bold text-primary-dark flex items-center gap-2">
+            <h3 class="text-xl font-bold text-primary-dark flex items-center gap-2">
               <BookOpen size={20} className="text-accent-gold" />
               Philosophy & Expertise
             </h3>
@@ -115,7 +120,7 @@ const otherDoctors = [
   <!-- Other Doctors Grid -->
   <Section background="cream">
     <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl md:text-5xl font-serif text-primary-dark">Our Medical <span class="italic text-accent-gold">Panel</span></h2>
+      <h2 class="text-3xl md:text-5xl text-primary-dark">Our Medical <span class="text-accent-gold">Panel</span></h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
       {otherDoctors.map(doctor => (
@@ -125,10 +130,10 @@ const otherDoctors = [
           </div>
           <div class="sm:w-2/3 p-8 space-y-4">
             <div>
-              <h3 class="text-2xl font-serif font-bold text-primary-dark group-hover:text-accent-gold transition-colors">{doctor.name}</h3>
+              <h3 class="text-2xl font-bold text-primary-dark group-hover:text-accent-gold transition-colors">{doctor.name}</h3>
               <p class="text-earth text-sm font-bold uppercase tracking-widest">{doctor.title}</p>
             </div>
-            <p class="text-sm text-text-muted font-sans italic">{doctor.qualifications}</p>
+            <p class="text-sm text-text-muted font-sans ">{doctor.qualifications}</p>
             <div class="flex items-center gap-2 text-xs text-text-muted font-sans uppercase font-bold tracking-wider">
               <Clock size={14} className="text-accent-gold" />
               {doctor.experience} Experience

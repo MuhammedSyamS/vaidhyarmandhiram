@@ -17,46 +17,54 @@ export const prerender = true;
       <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=2070" alt="" class="w-full h-full object-cover" />
     </div>
     <div class="container mx-auto px-4 relative z-10">
-      <span class="text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold mb-4 block">Get in Touch</span>
-      <h1 class="text-4xl md:text-7xl font-serif text-background-parchment leading-tight">We are here to <span class="text-accent-gold italic">Listen</span></h1>
+      <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold mb-2 block">Get in Touch</span>
+      <span class="lang-ml font-malayalam text-accent-gold text-base font-semibold mb-2 block">ബന്ധപ്പെടുക</span>
+      <h1 class="lang-en text-4xl md:text-7xl text-background-parchment leading-tight">We are here to <span class="text-accent-gold ">Listen</span></h1>
+      <h1 class="lang-ml font-malayalam text-4xl md:text-6xl text-background-parchment leading-tight mt-2">ഞങ്ങൾ ശ്രദ്ധിക്കാൻ <span class="text-accent-gold">ഇവിടെ ഉണ്ട്</span></h1>
     </div>
   </div>
 
   <Section background="parchment">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-      <div class="bg-white p-8 shadow-lg border-t-4 border-primary text-center space-y-4">
-        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto">
+      <div class="bg-background-parchment p-8 shadow-lg border-t-4 border-primary-dark text-center space-y-3">
+        <div class="w-12 h-12 bg-primary-dark/10 rounded-full flex items-center justify-center text-primary-dark mx-auto">
           <Phone size={24} />
         </div>
-        <h3 class="text-xl font-serif font-bold text-primary-dark uppercase tracking-widest">Call Us</h3>
-        <p class="text-text-muted font-sans">+91 000 000 0000</p>
-        <p class="text-text-muted font-sans">+91 000 000 1111</p>
+        <h3 class="lang-en text-xl font-bold text-primary-dark uppercase tracking-widest">Call Us</h3>
+        <h3 class="lang-ml font-malayalam text-xl font-bold text-primary-dark">ഫോൺ ചെയ്യൂ</h3>
+        <p class="text-primary-dark font-sans">+91 000 000 0000</p>
+        <p class="text-primary-dark font-sans">+91 000 000 1111</p>
       </div>
 
-      <div class="bg-white p-8 shadow-lg border-t-4 border-accent-gold text-center space-y-4">
+      <div class="bg-background-parchment p-8 shadow-lg border-t-4 border-accent-gold text-center space-y-3">
         <div class="w-12 h-12 bg-accent-gold/10 rounded-full flex items-center justify-center text-accent-gold mx-auto">
           <MapPin size={24} />
         </div>
-        <h3 class="text-xl font-serif font-bold text-primary-dark uppercase tracking-widest">Visit Us</h3>
-        <p class="text-text-muted font-sans">123 Ayurvedic Lane, Heritage Town,<br/>Kerala, India - 682001</p>
+        <h3 class="lang-en text-xl font-bold text-primary-dark uppercase tracking-widest">Visit Us</h3>
+        <h3 class="lang-ml font-malayalam text-xl font-bold text-primary-dark">സന്ദർശിക്കൂ</h3>
+        <p class="text-primary-dark font-sans">123 Ayurvedic Lane, Heritage Town,<br/>Kerala, India - 682001</p>
+        <p class="font-malayalam text-accent-gold text-xs">123 ആയുർവേദിക് ലെയ്ൻ, കേരള, ഇന്ത്യ</p>
       </div>
 
-      <div class="bg-white p-8 shadow-lg border-t-4 border-earth text-center space-y-4">
-        <div class="w-12 h-12 bg-earth/10 rounded-full flex items-center justify-center text-earth mx-auto">
+      <div class="bg-background-parchment p-8 shadow-lg border-t-4 border-primary-dark text-center space-y-3">
+        <div class="w-12 h-12 bg-primary-dark/10 rounded-full flex items-center justify-center text-primary-dark mx-auto">
           <Mail size={24} />
         </div>
-        <h3 class="text-xl font-serif font-bold text-primary-dark uppercase tracking-widest">Email Us</h3>
-        <p class="text-text-muted font-sans">info@Vaidyarmandiram.com</p>
-        <p class="text-text-muted font-sans">care@Vaidyarmandiram.com</p>
+        <h3 class="lang-en text-xl font-bold text-primary-dark uppercase tracking-widest">Email Us</h3>
+        <h3 class="lang-ml font-malayalam text-xl font-bold text-primary-dark">ഇമെയിൽ ചെയ്യൂ</h3>
+        <p class="text-primary-dark font-sans">info@Vaidyarmandiram.com</p>
+        <p class="text-primary-dark font-sans">care@Vaidyarmandiram.com</p>
       </div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
       <!-- Inquiry Form -->
-      <div class="space-y-8">
+      <div class="space-y-6">
         <div>
-          <h2 class="text-3xl font-serif font-bold text-primary-dark">Send a Message</h2>
-          <p class="text-text-muted font-sans mt-2">Have a question? Fill out the form below and we'll get back to you within 24 hours.</p>
+          <h2 class="lang-en text-3xl font-bold text-primary-dark">Send a Message</h2>
+          <h2 class="lang-ml font-malayalam text-3xl font-bold text-primary-dark">ഒരു സന്ദേശം അയക്കൂ</h2>
+          <p class="lang-en text-primary-dark font-sans mt-2">Have a question? Fill out the form below and we'll get back to you within 24 hours.</p>
+          <p class="lang-ml font-malayalam text-primary-dark mt-2">ഒരു ചോദ്യമുണ്ടോ? താഴെയുള്ള ഫോർം പൂര്ണമാക്കുക, 24 മണിക്കൂരിനുള്ളിൽ ഞങ്ങൾ മറുപടി നൽകും.</p>
         </div>
         
         <form class="space-y-6">
@@ -76,7 +84,7 @@ export const prerender = true;
       <!-- Opening Hours & Map -->
       <div class="space-y-8">
         <div class="bg-background-cream p-8 shadow-lg border-l-4 border-accent-gold space-y-6">
-          <h3 class="text-2xl font-serif font-bold text-primary-dark flex items-center gap-2">
+          <h3 class="text-2xl font-bold text-primary-dark flex items-center gap-2">
             <Clock size={24} className="text-accent-gold" />
             Opening Hours
           </h3>
@@ -90,7 +98,7 @@ export const prerender = true;
               <span class="text-text-muted font-bold text-primary">Emergencies Only</span>
             </div>
           </div>
-          <p class="text-sm text-text-muted italic">
+          <p class="text-sm text-text-muted ">
             * Therapy sessions are scheduled based on prior appointments.
           </p>
         </div>
@@ -105,7 +113,7 @@ export const prerender = true;
             <MessageSquare size={32} />
             <div>
               <p class="font-sans font-bold uppercase tracking-widest text-xs opacity-80">Instant Support</p>
-              <p class="text-xl font-serif font-bold">Chat on WhatsApp</p>
+              <p class="text-xl font-bold">Chat on WhatsApp</p>
             </div>
           </div>
           <span class="text-2xl group-hover:translate-x-1 transition-transform">→</span>

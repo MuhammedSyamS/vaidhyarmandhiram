@@ -18,9 +18,17 @@ export const prerender = true;
       <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=2070" alt="" class="w-full h-full object-cover" />
     </div>
     <div class="container mx-auto px-4 relative z-10">
-      <h1 class="text-4xl md:text-6xl font-serif text-background-parchment mb-4">Book Your Path to <span class="text-accent-gold italic">Wellness</span></h1>
-      <p class="text-background-parchment/70 font-sans text-lg max-w-2xl mx-auto">
+      <h1 class="lang-en text-4xl md:text-6xl text-background-parchment mb-4">
+        Book Your Path to <span class="text-accent-gold ">Wellness</span>
+      </h1>
+      <h1 class="lang-ml font-malayalam text-4xl md:text-5xl text-background-parchment mb-4">
+        ആരോഗ്യത്തിലേക്കുള്ള <span class="text-accent-gold">വഴി ബുക്ക് ചെയ്യൂ</span>
+      </h1>
+      <p class="lang-en text-background-parchment font-sans text-lg max-w-2xl mx-auto">
         Schedule a consultation with our expert physicians and begin your journey towards holistic health.
+      </p>
+      <p class="lang-ml font-malayalam text-background-parchment text-lg max-w-2xl mx-auto">
+        ഞങ്ങളുടെ വിദഗ്ധ ഡോക്ടർമാരുമായി ഒരു കൺസൾട്ടേഷൻ ഷെഡ്യൂൾ ചെയ്ത് സമഗ്ര ആരോഗ്യ യാത്ര ആരംഭിക്കൂ.
       </p>
     </div>
   </div>
@@ -34,9 +42,10 @@ export const prerender = true;
 
       <!-- Right Column: Info (stacked on mobile/tablet, 1/3 on desktop) -->
       <div class="xl:w-1/3 space-y-8">
-        <div class="bg-white p-8 shadow-lg border-l-4 border-primary space-y-6">
-          <h3 class="text-2xl font-serif font-bold text-primary-dark">Why Book Online?</h3>
-          <ul class="space-y-4 font-sans text-text-muted">
+        <div class="bg-background-parchment p-8 shadow-lg border-l-4 border-primary-dark space-y-5">
+          <h3 class="text-2xl font-bold text-primary-dark">Why Book Online?</h3>
+          <p class="font-malayalam text-accent-gold text-sm font-semibold">എന്തുകൊണ്ട് ഓൺലൈനിൽ ബുക്ക് ചെയ്യണം?</p>
+          <ul class="space-y-4 font-sans text-primary-dark">
             <li class="flex items-start gap-3">
               <span class="w-6 h-6 rounded-full bg-accent-gold/20 flex items-center justify-center text-accent-gold shrink-0 mt-0.5">1</span>
               <span>Skip the queue and get priority consultation.</span>
@@ -53,7 +62,7 @@ export const prerender = true;
         </div>
 
         <div class="bg-background-cream p-8 shadow-lg border-l-4 border-accent-gold space-y-6">
-          <h3 class="text-2xl font-serif font-bold text-primary-dark">Need Help?</h3>
+          <h3 class="text-2xl font-bold text-primary-dark">Need Help?</h3>
           <p class="text-text-muted font-sans">If you prefer to book over the phone, our reception is happy to assist you.</p>
           <div class="space-y-4">
             <a href="tel:+910000000000" class="flex items-center gap-3 text-primary-dark hover:text-accent-gold transition-colors font-bold font-sans">
@@ -72,7 +81,7 @@ export const prerender = true;
         </div>
 
         <div class="p-8 border-2 border-accent-gold/20 rounded-lg">
-          <h4 class="text-lg font-serif font-bold text-primary mb-4">Location</h4>
+          <h4 class="text-lg font-bold text-primary mb-4">Location</h4>
           <div class="flex gap-3 text-text-muted font-sans">
             <MapPin size={20} className="text-accent-gold shrink-0" />
             <span>123 Ayurvedic Lane, Heritage Town, Kerala, India - 682001</span>

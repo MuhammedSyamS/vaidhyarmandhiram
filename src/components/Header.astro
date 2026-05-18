@@ -1,131 +1,209 @@
 ---
-import { Search, Phone, Calendar, Menu } from 'lucide-react';
+import { Phone, Calendar, Menu } from 'lucide-react';
 
 const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Treatments', href: '/treatments' },
-  { name: 'Doctors', href: '/doctors' },
-  { name: 'Gallery', href: '/gallery' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Home',       ml: 'ഹോം',              href: '/' },
+  { name: 'About',      ml: 'ഞങ്ങളെ കുറിച്ച്', href: '/about' },
+  { name: 'Treatments', ml: 'ചികിത്സകൾ',       href: '/treatments' },
+  { name: 'Doctors',    ml: 'ഡോക്ടർമാർ',       href: '/doctors' },
+  { name: 'Gallery',    ml: 'ഗ്യാലറി',          href: '/gallery' },
+  { name: 'Blog',       ml: 'ബ്ലോഗ്',           href: '/blog' },
+  { name: 'Contact',    ml: 'ബന്ധപ്പെടുക',     href: '/contact' },
 ];
 ---
 
-<header class="sticky top-0 z-50 bg-background-parchment/90 backdrop-blur-md border-b border-accent-gold/20">
-  <div class="bg-primary-dark text-background-parchment py-1 px-4 text-sm hidden md:block">
-    <div class="container mx-auto flex justify-between items-center">
-      <div class="flex items-center gap-4">
-        <span class="flex items-center gap-1"><Phone size={14} /> +91 000 000 0000</span>
-        <span class="font-malayalam">വൈദ്യമന്ദിരം ആയുർവേദ ഹോസ്പിറ്റൽ</span>
+<header class="sticky top-0 z-50 bg-background-parchment backdrop-blur-md border-b-2 border-accent-gold/40 shadow-sm">
+
+  <!-- ── Top info bar ── -->
+  <div class="bg-primary-dark text-background-parchment py-1.5 px-4 hidden md:block">
+    <div class="container mx-auto flex justify-between items-center text-xs">
+
+      <div class="flex items-center gap-5">
+        <span class="flex items-center gap-1.5 font-medium font-sans">
+          <Phone size={13} />
+          +91 000 000 0000
+        </span>
+        <span class="lang-en font-sans text-accent-gold font-semibold tracking-widest uppercase text-[10px]">
+          Vaidyarmandiram Ayurveda Hospital
+        </span>
+        <span class="lang-ml font-malayalam text-accent-gold font-semibold">
+          വൈദ്യർമന്ദിരം ആയുർവേദ ഹോസ്പിറ്റൽ
+        </span>
       </div>
+
       <div class="flex items-center gap-4">
-        <a href="/appointment" class="hover:text-accent-gold transition-colors flex items-center gap-1">
-          <Calendar size={14} /> Book Appointment
+        <!-- Book Appointment -->
+        <a href="/appointment" class="flex items-center gap-1.5 text-accent-gold hover:text-white transition-colors font-semibold font-sans">
+          <Calendar size={13} />
+          <span class="lang-en">Book Appointment</span>
+          <span class="lang-ml font-malayalam normal-case tracking-normal">അപ്പോയിന്റ്മെന്റ് ബുക്ക്</span>
         </a>
+
+        <!-- ── Single Language Toggle Button ──
+             Shows the OPPOSITE language (what you'll switch TO).
+             EN mode → shows "മലയാളം" button
+             ML mode → shows "English" button                    -->
+        <button
+          id="lang-switch"
+          class="px-3 py-1 text-xs font-bold tracking-wide border border-accent-gold rounded-full text-accent-gold hover:bg-accent-gold hover:text-primary-dark transition-all duration-200 font-sans"
+          aria-label="Switch language"
+        >
+          <!-- Text is set by JS; default shown before JS loads -->
+          EN
+        </button>
       </div>
     </div>
   </div>
 
-  <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-    <a href="/" class="flex items-center gap-2 md:gap-3 shrink-0 group">
-      <img 
-        src="/images/vmpng.png" 
-        alt="Vaidyarmandiram Logo" 
-        class="h-10 md:h-14 w-auto object-contain transition-transform duration-300 scale-[1.35] md:scale-[1.5] origin-left group-hover:scale-[1.45] md:group-hover:scale-[1.6]" 
+  <!-- ── Main nav ── -->
+  <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+
+    <!-- Brand -->
+    <a href="/" class="flex items-center gap-3.5 md:gap-4 shrink-0 group">
+      <img
+        src="/vmfaviconpng.png"
+        alt="Vaidyarmandiram Icon"
+        class="h-14 w-14 md:h-18 md:w-18 rounded-full object-cover border-2 border-accent-gold shadow-lg transition-all duration-500 ease-out group-hover:scale-115 group-hover:rotate-[5deg]"
       />
       <div class="flex flex-col">
-        <span class="text-base md:text-2xl font-serif font-bold text-primary-dark tracking-widest uppercase whitespace-nowrap transition-colors duration-300 group-hover:text-accent-gold">Vaidyarmandiram</span>
-        <span class="text-[8px] md:text-xs font-sans text-accent-gold tracking-[0.2em] md:tracking-[0.3em] uppercase whitespace-nowrap">Ayurveda Hospital</span>
+        <span class="lang-en text-base md:text-2xl font-serif font-bold text-primary-dark tracking-widest uppercase whitespace-nowrap transition-colors duration-300 group-hover:text-accent-gold">Vaidyarmandiram</span>
+        <span class="lang-ml font-malayalam text-base md:text-2xl font-bold text-primary-dark whitespace-nowrap transition-colors duration-300 group-hover:text-accent-gold">വൈദ്യർമന്ദിരം</span>
+        <span class="lang-en text-[8px] md:text-xs font-sans text-accent-gold tracking-[0.2em] md:tracking-[0.3em] uppercase whitespace-nowrap">Ayurveda Hospital</span>
+        <span class="lang-ml font-malayalam text-[10px] md:text-xs text-accent-gold whitespace-nowrap">ആയുർവേദ ഹോസ്പിറ്റൽ</span>
       </div>
     </a>
 
-    <div class="hidden lg:flex items-center gap-8">
+    <!-- Desktop nav links -->
+    <div class="hidden lg:flex items-center gap-4 xl:gap-6">
       {navLinks.map(link => (
-        <a 
-          href={link.href} 
-          class="font-serif text-lg text-primary-dark hover:text-accent-gold transition-colors relative group"
-        >
-          {link.name}
-          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-gold transition-all group-hover:w-full"></span>
+        <a href={link.href} class="relative group flex flex-col items-center text-center pb-1.5">
+          <span class="lang-en font-serif text-sm xl:text-base font-semibold text-primary-dark group-hover:text-accent-gold transition-colors duration-200 leading-none">
+            {link.name}
+          </span>
+          <span class="lang-ml font-malayalam text-sm xl:text-base font-semibold text-primary-dark group-hover:text-accent-gold transition-colors duration-200 leading-none">
+            {link.ml}
+          </span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-gold transition-all duration-300 group-hover:w-full rounded-full"></span>
         </a>
       ))}
     </div>
 
-    <div class="flex items-center gap-2 md:gap-4">
+    <!-- Right: mobile lang toggle + hamburger + Book Now -->
+    <div class="flex items-center gap-2 md:gap-3">
+
+      <!-- Mobile single language toggle -->
+      <button
+        id="lang-switch-mobile"
+        class="flex lg:hidden px-2.5 py-0.5 text-[11px] font-bold border border-accent-gold rounded-full text-accent-gold hover:bg-accent-gold hover:text-primary-dark transition-all duration-200 font-sans"
+        aria-label="Switch language"
+      >EN</button>
+
       <button id="menu-toggle" class="text-primary-dark hover:text-accent-gold transition-colors lg:hidden p-2" aria-label="Toggle Menu">
-        <Menu size={28} />
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
       </button>
-      <a 
-        href="/appointment" 
-        class="hidden sm:block btn-primary scale-90"
-      >
-        Book Now
+
+      <a href="/appointment" class="hidden sm:flex flex-col items-center btn-primary scale-90 leading-tight !py-1.5">
+        <span class="lang-en font-sans font-semibold tracking-wide">Book Now</span>
+        <span class="lang-ml font-malayalam font-semibold normal-case tracking-normal">ഇപ്പോൾ ബുക്ക്</span>
       </a>
     </div>
   </nav>
 
-  <!-- Mobile Menu Overlay -->
-  <div id="mobile-menu" class="fixed inset-0 bg-primary-dark/95 z-[60] lg:hidden translate-x-full transition-transform duration-500 ease-in-out">
+  <!-- ── Mobile Menu Overlay ── -->
+  <div id="mobile-menu" class="fixed inset-0 bg-primary-dark z-[60] lg:hidden translate-x-full transition-transform duration-500 ease-in-out">
     <div class="flex justify-end p-6">
       <button id="menu-close" class="text-background-parchment hover:text-accent-gold transition-colors p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
       </button>
     </div>
-    <div class="flex flex-col items-center justify-center h-full -mt-16 gap-8">
+
+    <!-- Mobile brand -->
+    <div class="flex flex-col items-center mb-6 gap-1">
+      <img src="/vmfaviconpng.png" alt="Icon" class="h-16 w-16 rounded-full object-cover border-2 border-accent-gold shadow-lg mb-2" />
+      <span class="lang-en font-sans text-xl font-bold text-background-parchment tracking-widest uppercase">Vaidyarmandiram</span>
+      <span class="lang-ml font-malayalam text-xl font-bold text-background-parchment">വൈദ്യർമന്ദിരം</span>
+      <span class="lang-en text-[10px] text-background-parchment/70 uppercase tracking-widest font-sans">Ayurveda Hospital</span>
+      <span class="lang-ml font-malayalam text-sm text-accent-gold">ആയുർവേദ ഹോസ്പിറ്റൽ</span>
+    </div>
+
+    <div class="h-px bg-accent-gold/30 mx-10 mb-6"></div>
+
+    <div class="flex flex-col items-center gap-6">
       {navLinks.map(link => (
-        <a 
-          href={link.href} 
-          class="font-serif text-3xl text-background-parchment hover:text-accent-gold transition-colors"
-        >
-          {link.name}
+        <a href={link.href} class="flex flex-col items-center gap-0.5 group">
+          <span class="lang-en font-sans text-2xl text-background-parchment group-hover:text-accent-gold transition-colors font-semibold">
+            {link.name}
+          </span>
+          <span class="lang-ml font-malayalam text-2xl text-background-parchment group-hover:text-accent-gold transition-colors font-semibold">
+            {link.ml}
+          </span>
         </a>
       ))}
-      <a href="/appointment" class="btn-primary !bg-accent-gold !text-primary-dark mt-4 text-xl px-12">
-        Book Appointment
+
+      <a href="/appointment" class="btn-primary !bg-accent-gold !text-primary-dark mt-4 text-lg px-10 flex flex-col items-center gap-0.5 !py-3">
+        <span class="lang-en font-sans font-bold">Book Appointment</span>
+        <span class="lang-ml font-malayalam font-semibold normal-case tracking-normal">അപ്പോയിന്റ്മെന്റ് ബുക്ക്</span>
       </a>
     </div>
   </div>
+
 </header>
 
 <script>
-  let menuInitialized = false;
+  // ── Language Toggle ─────────────────────────────────────────────
+  function applyLang(lang: string) {
+    // 1. Set attribute on <html> → triggers all CSS show/hide rules
+    document.documentElement.setAttribute('data-lang', lang);
+    // 2. Persist choice
+    localStorage.setItem('vm-lang', lang);
 
-  function setupMenu() {
-    const menuToggle = document.getElementById('menu-toggle');
-    const menuClose = document.getElementById('menu-close');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const body = document.body;
+    // 3. Update every toggle button to show the OPPOSITE language label
+    const oppositeLabel = lang === 'en' ? 'മലയാളം' : 'English';
+    const oppositeTarget = lang === 'en' ? 'ml' : 'en';
 
-    if (!menuToggle || !menuClose || !mobileMenu) return;
-
-    // Remove existing listeners to avoid double-binding if any
-    menuToggle.onclick = null;
-    menuClose.onclick = null;
-
-    function openMenu() {
-      mobileMenu?.classList.remove('translate-x-full');
-      body.classList.add('overflow-hidden');
-    }
-
-    function closeMenu() {
-      mobileMenu?.classList.add('translate-x-full');
-      body.classList.remove('overflow-hidden');
-    }
-
-    menuToggle.onclick = openMenu;
-    menuClose.onclick = closeMenu;
-
-    // Close menu on link click
-    const mobileLinks = mobileMenu.querySelectorAll('a');
-    mobileLinks.forEach(link => {
-      link.onclick = closeMenu;
+    document.querySelectorAll<HTMLButtonElement>('[id^="lang-switch"]').forEach(btn => {
+      btn.textContent = oppositeLabel;
+      btn.dataset.target = oppositeTarget;
+      btn.setAttribute('aria-label', `Switch to ${lang === 'en' ? 'Malayalam' : 'English'}`);
     });
   }
 
-  // Initial setup
+  function setupLang() {
+    const saved = localStorage.getItem('vm-lang') || 'en';
+    applyLang(saved);
+
+    document.querySelectorAll<HTMLButtonElement>('[id^="lang-switch"]').forEach(btn => {
+      // Remove old listener then add fresh one (safe across View Transitions)
+      const newBtn = btn.cloneNode(true) as HTMLButtonElement;
+      btn.parentNode?.replaceChild(newBtn, btn);
+      newBtn.addEventListener('click', () => applyLang(newBtn.dataset.target || 'ml'));
+    });
+  }
+
+  // ── Mobile Menu ──────────────────────────────────────────────────
+  function setupMenu() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuClose  = document.getElementById('menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (!menuToggle || !menuClose || !mobileMenu) return;
+
+    const openMenu  = () => { mobileMenu.classList.remove('translate-x-full'); document.body.classList.add('overflow-hidden'); };
+    const closeMenu = () => { mobileMenu.classList.add('translate-x-full'); document.body.classList.remove('overflow-hidden'); };
+
+    menuToggle.onclick = openMenu;
+    menuClose.onclick  = closeMenu;
+    mobileMenu.querySelectorAll('a').forEach(link => { link.onclick = closeMenu; });
+  }
+
+  // Run on initial page load
+  setupLang();
   setupMenu();
 
-  // Re-setup on page navigation (Astro ViewTransitions)
-  document.addEventListener('astro:page-load', setupMenu);
+  // Re-run after every Astro View Transition (page swap resets the DOM)
+  document.addEventListener('astro:after-swap', () => { setupLang(); setupMenu(); });
 </script>

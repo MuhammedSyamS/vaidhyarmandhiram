@@ -17,15 +17,20 @@ export const prerender = true;
       <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=2070" alt="" class="w-full h-full object-cover" />
     </div>
     <div class="container mx-auto px-4 relative z-10">
-      <span class="text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold mb-4 block">Healing Therapies</span>
-      <h1 class="text-4xl md:text-7xl font-serif text-background-parchment leading-tight">Authentic <span class="text-accent-gold italic">Ayurvedic Care</span></h1>
+      <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold mb-2 block">Healing Therapies</span>
+      <span class="lang-ml font-malayalam text-accent-gold text-base font-semibold mb-2 block">ചികിത്സാ രീതികൾ</span>
+      <h1 class="lang-en text-4xl md:text-7xl text-background-parchment leading-tight">Authentic <span class="text-accent-gold">Ayurvedic Care</span></h1>
+      <h1 class="lang-ml font-malayalam text-4xl md:text-6xl text-background-parchment leading-tight mt-2">ആധികാരിക <span class="text-accent-gold">ആയുർവേദ ചികിത്സ</span></h1>
     </div>
   </div>
 
   <Section background="parchment">
     <div class="text-center max-w-3xl mx-auto mb-16">
-      <p class="text-xl text-text-muted font-sans">
+      <p class="lang-en text-xl text-text-muted font-sans">
         Discover our range of traditional treatments, each prescribed according to your specific needs and body type. Our experts ensure every procedure follows classical protocols for maximum benefit.
+      </p>
+      <p class="lang-ml font-malayalam text-xl text-text-muted">
+        നിങ്ങളുടെ ആവശ്യങ്ങൾക്കും ശരീരഘടനയ്ക്കും അനുസൃതമായി നിർദ്ദേശിക്കുന്ന പരമ്പരാഗത ചികിത്സാ രീതികൾ. ഓരോ ചികിത്സയും ശാസ്ത്രീയ പ്രോട്ടോക്കോൾ പാലിക്കുന്നതാണ്.
       </p>
     </div>
     <TreatmentTabs client:load />
@@ -33,11 +38,18 @@ export const prerender = true;
 
   <!-- CTA Section -->
   <Section background="dark" className="text-center">
-    <h2 class="text-3xl md:text-5xl font-serif mb-8 text-background-parchment">Consult with Our <span class="text-accent-gold">Experts</span></h2>
-    <p class="text-background-parchment/70 text-lg mb-10 max-w-2xl mx-auto">
+    <h2 class="lang-en text-3xl md:text-5xl mb-4 text-background-parchment">Consult with Our <span class="text-accent-gold">Experts</span></h2>
+    <h2 class="lang-ml font-malayalam text-3xl md:text-4xl mb-4 text-background-parchment">ഞങ്ങളുടെ <span class="text-accent-gold">വിദഗ്ധരുമായി</span> കൂടിയാലോചിക്കൂ</h2>
+    <p class="lang-en text-background-parchment/70 text-lg mb-10 max-w-2xl mx-auto">
       Not sure which treatment is right for you? Book a consultation with Dr. P. Abdul Sathar Gurukkal for a personalized health assessment.
     </p>
-    <a href="/appointment" class="btn-primary !bg-accent-gold !text-primary-dark text-xl px-12 py-4">Book Consultation</a>
+    <p class="lang-ml font-malayalam text-background-parchment/70 text-lg mb-10 max-w-2xl mx-auto">
+      ഏത് ചികിത്സയാണ് നിങ്ങൾക്ക് ശരിയെന്ന് ഉറപ്പില്ലേ? ഡോ. പി. അബ്ദുൾ സതാർ ഗുരുക്കളുമായി ഒരു വ്യക്തിഗത ആരോഗ്യ വിലയിരുത്തലിനായി ബുക്ക് ചെയ്യൂ.
+    </p>
+    <a href="/appointment" class="btn-primary !bg-accent-gold !text-primary-dark text-xl px-12 py-4">
+      <span class="lang-en">Book Consultation</span>
+      <span class="lang-ml font-malayalam normal-case tracking-normal">കൺസൾട്ടേഷൻ ബുക്ക് ചെയ്യൂ</span>
+    </a>
   </Section>
 
   <Footer slot="footer" />
