@@ -15,7 +15,7 @@ export default function FounderSpotlight() {
         <div className="relative z-10 p-4 bg-white shadow-xl rotate-[-2deg] border border-accent-gold/20">
           {/* CLIENT ACTION REQUIRED: Replace this placeholder with the actual photograph of Dr. P. Abdul Sathar Gurukkal provided by the hospital. Recommended size: 800x1000px, format: JPG or WebP, file location: /public/images/founder-dr-sathar.jpg */}
           <img 
-            src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=800&h=1000" 
+            src="/images/vmfounder.jpg" 
             alt="Dr. P. Abdul Sathar Gurukkal - Founder and Chief Physician, Vaidyarmandiram Ayurveda Hospital Kerala" 
             className="w-full aspect-[4/5] object-cover"
           />

@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Vercel & Clerk folders
+.vercel/
+.clerk/
+
