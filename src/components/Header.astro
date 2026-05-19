@@ -118,19 +118,19 @@ const navLinks = [
     <div id="mobile-menu-backdrop" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300 ease-out"></div>
     
     <!-- Slide-out Panel (Clean white side drawer) -->
-    <div id="mobile-menu-panel" class="absolute top-0 right-0 w-[92%] sm:w-[450px] h-full bg-white shadow-[-5px_0_25px_-5px_rgba(0,0,0,0.15)] translate-x-full transition-transform duration-300 ease-out flex flex-col">
+    <div id="mobile-menu-panel" class="absolute inset-y-0 right-0 w-[92%] sm:w-[450px] h-[100dvh] max-h-[100dvh] bg-white shadow-[-5px_0_25px_-5px_rgba(0,0,0,0.15)] translate-x-full transition-transform duration-300 ease-out flex flex-col">
       
       <!-- Brand Section at the top (White bg) -->
-      <div class="p-6 bg-white border-b border-accent-gold/15 flex flex-col gap-4 relative">
+      <div class="p-5 bg-white border-b border-accent-gold/15 flex flex-col gap-3 relative">
         <div class="flex justify-between items-center">
           <!-- Logo & Brand Info -->
           <div class="flex items-center gap-3">
-             <img src="/vmfaviconpng.png" class="w-12 h-12 rounded-full border-2 border-accent-gold shadow-md" alt="Vaidyarmandiram Logo" />
+             <img src="/vmfaviconpng.png" class="w-11 h-11 rounded-full border-2 border-accent-gold shadow-md" alt="Vaidyarmandiram Logo" />
              <div class="flex flex-col">
-               <span class="lang-en text-base font-serif font-bold text-primary-dark tracking-wide uppercase">Vaidyarmandiram</span>
-               <span class="lang-ml font-malayalam text-base font-bold text-primary-dark">വൈദ്യർമന്ദിരം</span>
-               <span class="lang-en text-[9px] font-sans text-accent-gold font-bold uppercase tracking-wider">Ayurvedic Healing Centre</span>
-               <span class="lang-ml font-malayalam text-[10px] text-accent-gold font-bold">ആയുർവേദിക് ഹീലിംഗ് സെന്റർ</span>
+               <span class="lang-en text-sm font-serif font-bold text-primary-dark tracking-wide uppercase">Vaidyarmandiram</span>
+               <span class="lang-ml font-malayalam text-sm font-bold text-primary-dark">വൈദ്യർമന്ദിരം</span>
+               <span class="lang-en text-[8px] font-sans text-accent-gold font-bold uppercase tracking-wider">Ayurvedic Healing Centre</span>
+               <span class="lang-ml font-malayalam text-[9px] text-accent-gold font-bold">ആയുർവേദിക് ഹീലിംഗ് സെന്റർ</span>
              </div>
           </div>
           <!-- Close Button -->
@@ -143,40 +143,40 @@ const navLinks = [
 
         <!-- Language toggle beautifully integrated -->
         <div class="flex justify-end items-center gap-2">
-          <span class="lang-en text-[10px] font-sans text-text-muted font-bold tracking-wider uppercase">Language:</span>
-          <span class="lang-ml font-malayalam text-xs text-text-muted font-bold">ഭാഷ:</span>
+          <span class="lang-en text-[9px] font-sans text-text-muted font-bold tracking-wider uppercase">Language:</span>
+          <span class="lang-ml font-malayalam text-[10px] text-text-muted font-bold">ഭാഷ:</span>
           <button
             id="lang-switch-drawer"
-            class="px-2.5 py-1 text-[11px] font-bold border-2 border-primary-dark rounded-full text-primary-dark hover:bg-primary-dark hover:text-white transition-all duration-200 font-sans"
+            class="px-2.5 py-0.5 text-[10px] font-bold border-2 border-primary-dark rounded-full text-primary-dark hover:bg-primary-dark hover:text-white transition-all duration-200 font-sans"
             aria-label="Switch language"
           >മാ</button>
         </div>
       </div>
 
       <!-- Navigation Links (Large and readable, white background) -->
-      <div class="flex-1 overflow-y-auto min-h-0 px-6 py-6 flex flex-col gap-1 bg-white">
+      <div class="flex-1 overflow-y-auto min-h-0 px-6 py-4 flex flex-col gap-0.5 bg-white">
         {navLinks.map(link => (
-          <a href={link.href} class="flex items-center justify-between group border-b border-accent-gold/5 py-4 last:border-0">
+          <a href={link.href} class="flex items-center justify-between group border-b border-accent-gold/5 py-3 last:border-0">
             <div class="flex flex-col gap-0.5">
-              <span class="lang-en font-serif text-xl sm:text-2xl text-primary-dark group-hover:text-accent-gold transition-colors duration-200">
+              <span class="lang-en font-serif text-lg sm:text-xl text-primary-dark group-hover:text-accent-gold transition-colors duration-200">
                 {link.name === 'About' ? 'About Us' : link.name}
               </span>
-              <span class="lang-ml font-malayalam text-lg sm:text-xl text-primary-dark/85 group-hover:text-accent-gold transition-colors duration-200">
+              <span class="lang-ml font-malayalam text-base sm:text-lg text-primary-dark/85 group-hover:text-accent-gold transition-colors duration-200">
                 {link.ml}
               </span>
             </div>
             <span class="text-primary-dark/30 group-hover:text-accent-gold group-hover:translate-x-1.5 transition-all duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </span>
           </a>
         ))}
 
         <!-- Contact Info Block (Location + Phone) - Moved under options -->
-        <div class="mt-8 pt-6 border-t border-accent-gold/15 flex flex-col gap-4">
+        <div class="mt-4 pt-4 border-t border-accent-gold/15 flex flex-col gap-3">
           <div class="flex items-start gap-2.5 text-xs text-text-muted">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent-gold mt-0.5 shrink-0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             <div class="flex flex-col">
-              <span class="lang-en font-sans font-bold text-[10px] uppercase tracking-wider text-primary-dark">Location</span>
+              <span class="lang-en font-sans font-bold text-[9px] uppercase tracking-wider text-primary-dark">Location</span>
               <span class="lang-ml font-malayalam font-bold text-xs text-primary-dark">സ്ഥലം</span>
               <span class="lang-en font-sans mt-0.5 text-text-muted">Main Road, Malappuram, Kerala</span>
               <span class="lang-ml font-malayalam mt-0.5 text-text-muted">മെയിൻ റോഡ്, മലപ്പുറം, കേരളം</span>
@@ -185,7 +185,7 @@ const navLinks = [
           <div class="flex items-center gap-2.5 text-xs text-text-muted">
             <Phone size={14} class="text-accent-gold" />
             <div class="flex flex-col">
-              <span class="lang-en font-sans font-bold text-[10px] uppercase tracking-wider text-primary-dark">Phone</span>
+              <span class="lang-en font-sans font-bold text-[9px] uppercase tracking-wider text-primary-dark">Phone</span>
               <span class="lang-ml font-malayalam font-bold text-xs text-primary-dark">ഫോൺ</span>
               <a href="tel:+910000000000" class="font-sans text-text-muted hover:underline mt-0.5 font-bold">+91 000 000 0000</a>
             </div>
