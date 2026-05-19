@@ -170,25 +170,25 @@ const navLinks = [
             </span>
           </a>
         ))}
-      </div>
 
-      <!-- Contact Info Block (Location + Phone) -->
-      <div class="px-6 py-5 border-t border-accent-gold/15 bg-white flex flex-col gap-3">
-        <div class="flex items-start gap-2.5 text-xs text-text-muted">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent-gold mt-0.5 shrink-0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          <div class="flex flex-col">
-            <span class="lang-en font-sans font-bold text-[10px] uppercase tracking-wider text-primary-dark">Location</span>
-            <span class="lang-ml font-malayalam font-bold text-xs text-primary-dark">സ്ഥലം</span>
-            <span class="lang-en font-sans mt-0.5 text-text-muted">Main Road, Malappuram, Kerala</span>
-            <span class="lang-ml font-malayalam mt-0.5 text-text-muted">മെയിൻ റോഡ്, മലപ്പുറം, കേരളം</span>
+        <!-- Contact Info Block (Location + Phone) - Moved under options -->
+        <div class="mt-8 pt-6 border-t border-accent-gold/15 flex flex-col gap-4">
+          <div class="flex items-start gap-2.5 text-xs text-text-muted">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent-gold mt-0.5 shrink-0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div class="flex flex-col">
+              <span class="lang-en font-sans font-bold text-[10px] uppercase tracking-wider text-primary-dark">Location</span>
+              <span class="lang-ml font-malayalam font-bold text-xs text-primary-dark">സ്ഥലം</span>
+              <span class="lang-en font-sans mt-0.5 text-text-muted">Main Road, Malappuram, Kerala</span>
+              <span class="lang-ml font-malayalam mt-0.5 text-text-muted">മെയിൻ റോഡ്, മലപ്പുറം, കേരളം</span>
+            </div>
           </div>
-        </div>
-        <div class="flex items-center gap-2.5 text-xs text-text-muted">
-          <Phone size={14} class="text-accent-gold" />
-          <div class="flex flex-col">
-            <span class="lang-en font-sans font-bold text-[10px] uppercase tracking-wider text-primary-dark">Phone</span>
-            <span class="lang-ml font-malayalam font-bold text-xs text-primary-dark">ഫോൺ</span>
-            <a href="tel:+910000000000" class="font-sans text-text-muted hover:underline mt-0.5 font-bold">+91 000 000 0000</a>
+          <div class="flex items-center gap-2.5 text-xs text-text-muted">
+            <Phone size={14} class="text-accent-gold" />
+            <div class="flex flex-col">
+              <span class="lang-en font-sans font-bold text-[10px] uppercase tracking-wider text-primary-dark">Phone</span>
+              <span class="lang-ml font-malayalam font-bold text-xs text-primary-dark">ഫോൺ</span>
+              <a href="tel:+910000000000" class="font-sans text-text-muted hover:underline mt-0.5 font-bold">+91 000 000 0000</a>
+            </div>
           </div>
         </div>
       </div>
