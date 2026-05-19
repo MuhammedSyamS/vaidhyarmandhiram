@@ -1,58 +1,240 @@
 ---
-import { ArrowRight } from 'lucide-react';
+import { Calendar, ChevronDown, ArrowRight } from 'lucide-react';
 ---
 
-<section class="relative min-h-[600px] md:h-screen md:min-h-[700px] flex items-center overflow-hidden py-20 md:py-0">
-  <!-- Background Image with Overlay -->
-  <div class="absolute inset-0 z-0">
-    <img 
-      src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=2070" 
-      alt="Ayurvedic Treatment" 
-      class="w-full h-full object-cover"
-    />
-    <div class="absolute inset-0 bg-primary-dark/75 backdrop-blur-[1px]"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-primary-dark via-transparent to-transparent opacity-60"></div>
+<section id="hero-landing" class="relative w-full h-[100dvh] min-h-[600px] flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-primary-dark via-[#062619] to-primary-dark select-none py-10">
+  
+  <!-- Glowing Golden Radial Lights in background -->
+  <div class="absolute w-[500px] h-[500px] rounded-full bg-accent-gold/10 blur-[130px] -z-10 animate-pulse-slow"></div>
+  <div class="absolute top-10 left-10 w-72 h-72 rounded-full bg-[#1B4332]/40 blur-[90px] -z-10"></div>
+  <div class="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-primary-dark/60 blur-[100px] -z-10"></div>
+
+  <!-- Decorative Floating Ayurvedic Leaf Shapes -->
+  <div class="absolute inset-0 pointer-events-none -z-5 overflow-hidden">
+    <!-- Floating Gold Leaf SVG 1 -->
+    <div class="absolute top-[20%] left-[12%] opacity-15 rotate-12 scale-75 animate-float-slow">
+      <svg class="text-accent-gold w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17,8C8,10 5.9,16.17 3.82,21.34L2.18,20.66C4.26,15.49 6.1,8.62 16,7.05V3H18V8H17M12,14C11.13,14.65 10.28,15.32 9.43,16C12.18,17.43 14.93,18.86 17.68,20.29C15.78,18.2 13.89,16.1 12,14Z" />
+      </svg>
+    </div>
+    <!-- Floating Gold Leaf SVG 2 -->
+    <div class="absolute bottom-[25%] right-[10%] opacity-10 -rotate-45 scale-90 animate-float-medium">
+      <svg class="text-accent-gold w-20 h-20" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17,8C8,10 5.9,16.17 3.82,21.34L2.18,20.66C4.26,15.49 6.1,8.62 16,7.05V3H18V8H17M12,14C11.13,14.65 10.28,15.32 9.43,16C12.18,17.43 14.93,18.86 17.68,20.29C15.78,18.2 13.89,16.1 12,14Z" />
+      </svg>
+    </div>
+    <!-- Light Sparkle Particles -->
+    <div class="absolute top-[15%] right-[20%] w-2 h-2 rounded-full bg-accent-gold/40 blur-[1px] animate-pulse-slow"></div>
+    <div class="absolute bottom-[35%] left-[15%] w-3 h-3 rounded-full bg-accent-gold/30 blur-[2px] animate-pulse-slow"></div>
   </div>
 
-  <div class="container mx-auto px-4 relative z-10">
-    <div class="max-w-3xl">
-      <h1 class="text-3xl sm:text-5xl md:text-7xl font-serif text-background-parchment leading-tight mb-6 animate-fade-in-up">
-        Authentic Healing <br/>
-        <span class="text-accent-gold italic">Rooted in Tradition</span>
-      </h1>
-      <p class="text-base md:text-xl text-background-parchment/80 font-sans mb-10 leading-relaxed max-w-xl animate-fade-in-up delay-200">
-        Experience the profound wisdom of Kerala Ayurveda at Vaidyarmandiram. Guided by decades of heritage and the expertise of Dr. P. Abdul Sathar Gurukkal.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-400">
-        <a href="/appointment" class="btn-primary flex items-center justify-center gap-2 group">
-          Book a Consultation
-          <ArrowRight size={20} class="transition-transform group-hover:translate-x-1" />
-        </a>
-        <a href="/treatments" class="btn-outline !text-background-parchment !border-background-parchment hover:!bg-background-parchment hover:!text-primary-dark flex items-center justify-center">
-          Explore Treatments
-        </a>
+  <!-- Centered Content Wrapper with Fade-in Entry -->
+  <div class="relative z-10 max-w-4xl px-6 flex flex-col items-center text-center animate-page-reveal">
+    
+    <!-- 1) Logo Emblem: Fades & scales in -->
+    <div class="relative mb-6 animate-logo-reveal flex items-center justify-center">
+      <!-- Luxury rotating gold border -->
+      <div class="absolute -inset-3.5 rounded-full border border-accent-gold/25 border-dashed animate-spin-slow"></div>
+      <div class="absolute -inset-6 rounded-full border border-accent-gold/10 animate-spin-reverse-slow"></div>
+      
+      <div class="relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-accent-gold shadow-[0_0_35px_rgba(184,134,11,0.25)] bg-[#1B4332]">
+        <img 
+          src="/vmfaviconpng.png" 
+          alt="Vaidhyar Mandhiram Logo" 
+          class="w-full h-full object-cover scale-[1.02]"
+        />
       </div>
     </div>
+
+    <!-- 2) Clinic Name & 3) Tagline -->
+    <div class="space-y-4 mb-10">
+      <div class="flex flex-col gap-1 sm:gap-2">
+        <!-- English Name -->
+        <h1 class="lang-en text-4xl sm:text-6xl md:text-7xl font-serif font-bold text-background-parchment tracking-wide leading-tight animate-text-reveal">
+          Vaidhyar Mandhiram
+        </h1>
+        <!-- Malayalam Name -->
+        <h1 class="lang-ml font-malayalam text-3xl sm:text-5xl md:text-6xl font-bold text-background-parchment leading-tight animate-text-reveal">
+          വൈദ്യർമന്ദിരം
+        </h1>
+      </div>
+
+      <!-- Golden horizontal line divider -->
+      <div class="h-[1px] w-0 bg-gradient-to-r from-transparent via-accent-gold to-transparent mx-auto animate-divider-expand"></div>
+
+      <!-- Tagline -->
+      <p class="lang-en text-sm sm:text-lg md:text-xl font-sans text-accent-gold tracking-[0.2em] md:tracking-[0.25em] uppercase font-bold max-w-2xl opacity-0 animate-subtitle-reveal">
+        Authentic Ayurvedic Healing for Modern Life
+      </p>
+      <p class="lang-ml font-malayalam text-base sm:text-xl font-bold text-accent-gold max-w-2xl opacity-0 animate-subtitle-reveal">
+        ആധുനിക ജീവിതത്തിന് അനുയോജ്യമായ പരമ്പരാഗത ആയുർവേദ ചികിത്സ
+      </p>
+    </div>
+
+    <!-- 4) Primary Action Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center w-full max-w-md opacity-0 animate-buttons-reveal">
+      
+      <!-- Enter Website (smooth scrolls down to contents) -->
+      <button id="btn-enter" class="btn-outline !border-background-parchment !text-background-parchment hover:!bg-background-parchment hover:!text-primary-dark font-sans font-bold py-3.5 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 w-full flex items-center justify-center gap-2 group">
+        <span class="lang-en uppercase tracking-wider text-sm">Enter Website</span>
+        <span class="lang-ml font-malayalam text-base">വെബ്‌സൈറ്റിലേക്ക് പ്രവേശിക്കുക</span>
+        <ArrowRight size={16} class="transition-transform group-hover:translate-x-1" />
+      </button>
+
+      <!-- Book Appointment -->
+      <a href="/appointment" class="btn-primary !bg-accent-gold !text-primary-dark font-sans font-bold py-3.5 px-8 rounded-full shadow-lg hover:shadow-accent-gold/25 transition-all duration-300 transform hover:-translate-y-0.5 w-full flex items-center justify-center gap-2">
+        <Calendar size={16} />
+        <span class="lang-en uppercase tracking-wider text-sm">Book Appointment</span>
+        <span class="lang-ml font-malayalam text-base">അപ്പോയിന്റ്മെന്റ് ബുക്ക് ചെയ്യുക</span>
+      </a>
+    </div>
+
   </div>
+
+  <!-- 5) Scroll Indicator (Bouncing down arrow) -->
+  <button id="scroll-indicator" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-background-parchment/65 hover:text-accent-gold transition-colors flex flex-col items-center gap-1 cursor-pointer opacity-0 animate-scroll-reveal" aria-label="Scroll Down">
+    <span class="lang-en text-[9px] font-sans font-bold tracking-[0.3em] uppercase">Scroll</span>
+    <span class="lang-ml font-malayalam text-[10px] font-bold">താഴേക്ക്</span>
+    <ChevronDown class="w-6 h-6 animate-bounce" />
+  </button>
 </section>
 
+<script>
+  function setupHeroScroll() {
+    const btnEnter = document.getElementById('btn-enter');
+    const scrollIndicator = document.getElementById('scroll-indicator');
+
+    const scrollToNext = () => {
+      const nextSection = document.getElementById('hero-landing')?.nextElementSibling;
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
+    if (btnEnter) btnEnter.onclick = scrollToNext;
+    if (scrollIndicator) scrollIndicator.onclick = scrollToNext;
+  }
+
+  // Run immediately on script load
+  setupHeroScroll();
+
+  // Re-run safely on Astro View Transitions page changes
+  document.addEventListener('astro:page-load', setupHeroScroll);
+</script>
 
 <style>
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* ── Custom Animations ── */
+  
+  /* Page Reveal Container */
+  @keyframes page-reveal {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
   }
 
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
+  /* Logo Reveal */
+  @keyframes logo-reveal {
+    0% { transform: scale(0.85) translateY(20px); opacity: 0; filter: blur(4px); }
+    100% { transform: scale(1) translateY(0); opacity: 1; filter: blur(0); }
   }
 
-  .delay-200 { animation-delay: 0.2s; }
-  .delay-400 { animation-delay: 0.4s; }
+  /* Name Heading Reveal */
+  @keyframes text-reveal {
+    0% { transform: translateY(15px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  /* Divider Expand */
+  @keyframes divider-expand {
+    0% { width: 0; }
+    100% { width: 50%; }
+  }
+
+  /* Tagline Subtitle Reveal */
+  @keyframes subtitle-reveal {
+    0% { transform: translateY(10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  /* Action Buttons Slide and Fade Up */
+  @keyframes buttons-reveal {
+    0% { transform: translateY(15px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  /* Scroll Arrow Indicator Reveal */
+  @keyframes scroll-reveal {
+    0% { opacity: 0; transform: translate(-50%, 10px); }
+    100% { opacity: 0.65; transform: translate(-50%, 0); }
+  }
+
+  /* Floating Animations for leaves */
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(12deg) scale(0.75); }
+    50% { transform: translateY(-12px) rotate(16deg) scale(0.8); }
+  }
+
+  @keyframes float-medium {
+    0%, 100% { transform: translateY(0) rotate(-45deg) scale(0.9); }
+    50% { transform: translateY(-16px) rotate(-40deg) scale(0.95); }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes spin-reverse-slow {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+
+  /* Trigger Classes */
+  .animate-page-reveal {
+    animation: page-reveal 1s ease-out forwards;
+  }
+  
+  .animate-logo-reveal {
+    animation: logo-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-text-reveal {
+    animation: text-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+  }
+
+  .animate-divider-expand {
+    animation: divider-expand 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.6s;
+  }
+
+  .animate-subtitle-reveal {
+    animation: subtitle-reveal 1.2s ease-out forwards 1s;
+  }
+
+  .animate-buttons-reveal {
+    animation: buttons-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 1.4s;
+  }
+
+  .animate-scroll-reveal {
+    animation: scroll-reveal 1s ease-out forwards 2s;
+  }
+
+  .animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+
+  .animate-float-medium {
+    animation: float-medium 7s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 22s linear infinite;
+  }
+
+  .animate-spin-reverse-slow {
+    animation: spin-reverse-slow 26s linear infinite;
+  }
 </style>
