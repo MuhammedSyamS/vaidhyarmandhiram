@@ -114,7 +114,7 @@ const navLinks = [
     <div id="mobile-menu-backdrop" class="absolute inset-0 bg-[#2D6A4F]/90 opacity-0 transition-opacity duration-500 ease-out"></div>
     
     <!-- Slide-out Panel -->
-    <div id="mobile-menu-panel" class="absolute top-0 right-0 w-[90%] sm:w-[380px] h-full bg-[#2D6A4F] shadow-2xl translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] flex flex-col">
+    <div id="mobile-menu-panel" class="absolute top-0 right-0 w-full sm:w-[400px] h-full bg-[#2D6A4F] shadow-2xl translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] flex flex-col">
       
       <!-- Sidebar Header (White top section) -->
       <div class="flex justify-between items-center p-5 bg-white border-b border-accent-gold/20 shadow-sm z-10">
@@ -140,14 +140,14 @@ const navLinks = [
       </div>
 
       <!-- Navigation Links (Green background, white font) -->
-      <div class="flex-1 overflow-y-auto px-6 py-8 flex flex-col gap-4 relative z-0">
+      <div class="flex-1 overflow-y-auto min-h-0 px-6 py-6 flex flex-col gap-2 relative z-0">
         {navLinks.map(link => (
-          <a href={link.href} class="flex items-center justify-between group border-b border-white/10 py-5 last:border-0">
-            <div class="flex flex-col gap-1">
-              <span class="lang-en font-serif text-3xl sm:text-4xl text-white group-hover:text-accent-gold transition-colors duration-300">
+          <a href={link.href} class="flex items-center justify-between group border-b border-white/10 py-4 last:border-0">
+            <div class="flex flex-col gap-0.5">
+              <span class="lang-en font-serif text-2xl sm:text-3xl text-white group-hover:text-accent-gold transition-colors duration-300">
                 {link.name}
               </span>
-              <span class="lang-ml font-malayalam text-2xl sm:text-3xl text-white/80 group-hover:text-accent-gold transition-colors duration-300">
+              <span class="lang-ml font-malayalam text-xl sm:text-2xl text-white/80 group-hover:text-accent-gold transition-colors duration-300">
                 {link.ml}
               </span>
             </div>
