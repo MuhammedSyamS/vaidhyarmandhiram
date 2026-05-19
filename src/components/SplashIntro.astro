@@ -112,7 +112,14 @@
       return;
     }
 
+    let isDismissing = false;
+    let autoDismissTimeout;
+
     const dismissSplash = () => {
+      if (isDismissing) return;
+      isDismissing = true;
+      if (autoDismissTimeout) clearTimeout(autoDismissTimeout);
+
       splash.style.opacity = '0';
       splash.style.visibility = 'hidden';
       splash.style.transform = 'translateY(-100%)'; // Elegantly slide up
@@ -124,6 +131,11 @@
       }, 1000);
     };
 
+    // Auto-dismiss after 3.8 seconds
+    autoDismissTimeout = setTimeout(() => {
+      dismissSplash();
+    }, 3800);
+
     // Button trigger
     const btnEnter = document.getElementById('splash-btn-enter');
     if (btnEnter) btnEnter.onclick = dismissSplash;
@@ -133,12 +145,10 @@
     if (scrollInd) scrollInd.onclick = dismissSplash;
 
     // Scroll gesture / wheel triggers
-    let isDismissing = false;
     const onScrollOrGesture = (e) => {
       if (isDismissing) return;
       // Scroll down
       if (e.deltaY > 5) {
-        isDismissing = true;
         dismissSplash();
       }
     };
@@ -156,7 +166,6 @@
       const currentY = e.touches[0].clientY;
       // Swipe up
       if (startY - currentY > 30) {
-        isDismissing = true;
         dismissSplash();
       }
     }, { passive: true });
