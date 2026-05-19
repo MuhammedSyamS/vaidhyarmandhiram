@@ -11,7 +11,7 @@ export default config({
       path: 'src/content/blog/*',
       format: { contentField: 'content' },
       schema: {
-        title: fields.string({ label: 'Title' }),
+        title: fields.text({ label: 'Title' }),
         description: fields.text({ label: 'Description' }),
         date: fields.date({ label: 'Published Date' }),
         image: fields.image({
@@ -30,7 +30,7 @@ export default config({
       path: 'src/content/treatments/*',
       format: { contentField: 'longDescription' },
       schema: {
-        name: fields.string({ label: 'Treatment Name' }),
+        name: fields.text({ label: 'Treatment Name' }),
         category: fields.select({
           label: 'Category',
           options: [
@@ -44,11 +44,11 @@ export default config({
         }),
         shortDescription: fields.text({ label: 'Short Description' }),
         longDescription: fields.mdx({ label: 'Long Description' }),
-        benefits: fields.array(fields.string({ label: 'Benefit' }), {
+        benefits: fields.array(fields.text({ label: 'Benefit' }), {
           label: 'Benefits',
           itemLabel: (props) => props.value,
         }),
-        duration: fields.string({ label: 'Duration' }),
+        duration: fields.text({ label: 'Duration' }),
         preparation: fields.text({ label: 'Preparation Notes' }),
         seoDescription: fields.text({ label: 'SEO Description' }),
         image: fields.image({
@@ -63,11 +63,11 @@ export default config({
       slugField: 'name',
       path: 'src/content/doctors/*',
       schema: {
-        name: fields.string({ label: 'Full Name' }),
-        title: fields.string({ label: 'Title' }),
-        qualifications: fields.string({ label: 'Qualifications' }),
+        name: fields.text({ label: 'Full Name' }),
+        title: fields.text({ label: 'Title' }),
+        qualifications: fields.text({ label: 'Qualifications' }),
         experience: fields.number({ label: 'Years of Experience' }),
-        specialisations: fields.array(fields.string({ label: 'Specialisation' }), {
+        specialisations: fields.array(fields.text({ label: 'Specialisation' }), {
           label: 'Specialisations',
         }),
         isFounder: fields.checkbox({ label: 'Is Founder?', defaultValue: false }),
