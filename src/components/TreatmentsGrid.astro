@@ -27,9 +27,9 @@ const categories = [
 ];
 ---
 
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+<div class="treatments-carousel flex overflow-x-auto md:overflow-x-visible snap-x snap-mandatory no-scrollbar gap-4 sm:gap-6 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-8 pb-4 md:pb-0 scroll-smooth">
   {categories.map(cat => (
-    <a href={`/treatments#${cat.slug}`} class="group relative overflow-hidden bg-white shadow-md hover:shadow-lg border border-accent-gold/10 rounded-xl transition-all duration-300">
+    <a href={`/treatments#${cat.slug}`} class="group relative overflow-hidden bg-white shadow-md hover:shadow-lg border border-accent-gold/10 rounded-xl shrink-0 w-[82vw] sm:w-[320px] md:w-auto snap-center transition-all duration-300">
       <div class="aspect-[4/3] overflow-hidden">
         <img 
           src={cat.image} 
@@ -37,19 +37,84 @@ const categories = [
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
       </div>
-      <div class="p-3 sm:p-6">
-        <h3 class="text-base sm:text-xl font-bold mb-1 sm:mb-2 group-hover:text-accent-gold transition-colors leading-tight">
+      <div class="p-5 sm:p-6">
+        <h3 class="text-lg sm:text-xl font-bold mb-2 group-hover:text-accent-gold transition-colors leading-tight">
           {cat.name}
         </h3>
-        <p class="text-xs sm:text-sm text-text-muted font-sans leading-normal sm:leading-relaxed line-clamp-2 sm:line-clamp-none">
+        <p class="text-sm text-text-muted font-sans leading-relaxed line-clamp-3 sm:line-clamp-none">
           {cat.description}
         </p>
-        <div class="mt-2 sm:mt-4 flex items-center text-primary font-bold text-xs sm:text-sm uppercase tracking-wider sm:tracking-widest">
-          View Details <span class="ml-1.5 sm:ml-2 group-hover:translate-x-1 transition-transform">→</span>
+        <div class="mt-4 flex items-center text-primary font-bold text-sm uppercase tracking-widest">
+          View Details <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
         </div>
       </div>
     </a>
   ))}
 </div>
+
+<script>
+  function initTreatmentsCarousel() {
+    const carousel = document.querySelector('.treatments-carousel') as HTMLElement;
+    if (!carousel) return;
+    
+    let autoScrollInterval: ReturnType<typeof setInterval>;
+    const items = Array.from(carousel.children) as HTMLElement[];
+    let currentIndex = 0;
+    let isProgrammaticScroll = false;
+    
+    // Robust tracking of which item is physically centered in the viewport
+    const observer = new IntersectionObserver((entries) => {
+      if (isProgrammaticScroll) return; // Ignore updates during programmatic scrolling
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          currentIndex = items.indexOf(entry.target as HTMLElement);
+        }
+      });
+    }, { root: carousel, threshold: 0.6 });
+    
+    items.forEach(item => observer.observe(item));
+
+    const startAutoScroll = () => {
+      stopAutoScroll(); 
+      
+      autoScrollInterval = setInterval(() => {
+        if (window.innerWidth >= 768) return;
+        
+        // strictly increment by 1
+        currentIndex++;
+        if (currentIndex >= items.length) {
+          currentIndex = 0;
+        }
+        
+        isProgrammaticScroll = true;
+        
+        // Native scrollIntoView centered to match our snap-center style perfectly
+        items[currentIndex].scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'nearest', 
+          inline: 'center' 
+        });
+        
+        // Unlock observer after smooth animation settles
+        setTimeout(() => {
+          isProgrammaticScroll = false;
+        }, 1000);
+        
+      }, 4500); // 4.5 seconds per card
+    };
+
+    const stopAutoScroll = () => {
+      if (autoScrollInterval) clearInterval(autoScrollInterval);
+    };
+
+    carousel.addEventListener('touchstart', stopAutoScroll, { passive: true });
+    carousel.addEventListener('touchend', startAutoScroll);
+    
+    startAutoScroll();
+  }
+
+  initTreatmentsCarousel();
+  document.addEventListener('astro:page-load', initTreatmentsCarousel);
+</script>
 
 

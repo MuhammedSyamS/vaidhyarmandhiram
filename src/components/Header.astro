@@ -43,13 +43,16 @@ const navLinks = [
              Shows the OPPOSITE language (what you'll switch TO).
              EN mode → shows "മലയാളം" button
              ML mode → shows "English" button                    -->
+        <!-- ── Single Language Toggle Button ──
+             Shows the OPPOSITE language (what you'll switch TO).
+             EN mode → shows "മാ" button
+             ML mode → shows "E" button                    -->
         <button
           id="lang-switch"
           class="px-3 py-1 text-xs font-bold tracking-wide border border-accent-gold rounded-full text-accent-gold hover:bg-accent-gold hover:text-primary-dark transition-all duration-200 font-sans"
           aria-label="Switch language"
         >
-          <!-- Text is set by JS; default shown before JS loads -->
-          EN
+          മാ
         </button>
       </div>
     </div>
@@ -96,7 +99,7 @@ const navLinks = [
         id="lang-switch-mobile"
         class="flex lg:hidden px-2.5 py-0.5 text-[11px] font-bold border border-accent-gold rounded-full text-accent-gold hover:bg-accent-gold hover:text-primary-dark transition-all duration-200 font-sans"
         aria-label="Switch language"
-      >EN</button>
+      >മാ</button>
 
       <button id="menu-toggle" class="text-primary-dark hover:text-accent-gold transition-colors lg:hidden p-2" aria-label="Toggle Menu">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -111,77 +114,71 @@ const navLinks = [
     </div>
   </nav>
 
-  <!-- ── Premium Mobile Menu Sidebar ── -->
-  <div id="mobile-menu" class="fixed inset-0 z-[60] lg:hidden pointer-events-none">
-    <!-- Dense Green Blurred Backdrop -->
-    <div id="mobile-menu-backdrop" class="absolute inset-0 bg-[#1B4332]/95 backdrop-blur-md opacity-0 transition-opacity duration-500 ease-out"></div>
+  <!-- ── Full-Screen Premium Green Mobile Menu ── -->
+  <div id="mobile-menu" class="fixed inset-0 z-[60] lg:hidden bg-[#1B4332] translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] flex flex-col">
     
-    <!-- Slide-out Panel (Changed to solid Hex green bg-[#1B4332] to guarantee color compiling) -->
-    <div id="mobile-menu-panel" class="absolute top-0 right-0 w-[85%] sm:w-[380px] h-full bg-[#1B4332] shadow-2xl translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] border-l border-white/15 flex flex-col">
-      
-      <!-- Sidebar Header -->
-      <div class="flex justify-between items-center p-5 sm:p-6 border-b border-white/10">
-        <div class="flex items-center gap-3">
-           <img src="/vmfaviconpng.png" class="w-10 h-10 rounded-full border border-white/40 shadow-md" alt="Logo" />
-           <span class="lang-en text-white font-sans font-bold tracking-[0.2em] text-xs uppercase">Menu</span>
-           <span class="lang-ml font-malayalam text-white font-bold text-sm">മെനു</span>
-        </div>
-        <div class="flex items-center gap-3">
-          <!-- Language Toggle inside Mobile Drawer -->
-          <button
-            id="lang-switch-drawer"
-            class="px-2.5 py-1 text-[11px] font-bold border border-white rounded-full text-white hover:bg-white hover:text-[#1B4332] transition-all duration-200 font-sans"
-            aria-label="Switch language"
-          >EN</button>
-          
-          <button id="menu-close" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-white hover:text-[#1B4332] transition-colors border border-white/20" aria-label="Close Menu">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
+    <!-- Sidebar Header -->
+    <div class="flex justify-between items-center p-5 border-b border-white/10">
+      <div class="flex items-center gap-3">
+         <img src="/vmfaviconpng.png" class="w-10 h-10 rounded-full border border-white/40 shadow-md" alt="Logo" />
+         <span class="lang-en text-white font-sans font-bold tracking-[0.2em] text-xs uppercase">Menu</span>
+         <span class="lang-ml font-malayalam text-white font-bold text-sm">മെനു</span>
       </div>
+      <div class="flex items-center gap-3">
+        <!-- Language Toggle inside Mobile Drawer -->
+        <button
+          id="lang-switch-drawer"
+          class="px-2.5 py-1 text-[11px] font-bold border border-white rounded-full text-white hover:bg-white hover:text-[#1B4332] transition-all duration-200 font-sans"
+          aria-label="Switch language"
+        >മാ</button>
+        
+        <button id="menu-close" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-white hover:text-[#1B4332] transition-colors border border-white/20" aria-label="Close Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
 
-      <!-- Navigation Links -->
-      <div class="flex-1 overflow-y-auto px-5 sm:px-6 py-6 sm:py-8 flex flex-col">
-        {navLinks.map(link => (
-          <a href={link.href} class="flex items-center justify-between group border-b border-white/10 py-4 last:border-0">
-            <div class="flex flex-col gap-1.5">
-              <span class="lang-en font-serif text-xl sm:text-2xl text-white group-hover:text-accent-gold transition-colors duration-300">
-                {link.name}
-              </span>
-              <span class="lang-ml font-malayalam text-lg sm:text-xl text-white/80 group-hover:text-accent-gold transition-colors duration-300">
-                {link.ml}
-              </span>
-            </div>
-            <span class="text-white/60 group-hover:text-accent-gold group-hover:translate-x-1.5 transition-all duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    <!-- Navigation Links -->
+    <div class="flex-1 overflow-y-auto px-6 py-6 flex flex-col justify-center gap-2">
+      {navLinks.map(link => (
+        <a href={link.href} class="flex items-center justify-between group border-b border-white/5 py-3.5 last:border-0">
+          <div class="flex flex-col">
+            <span class="lang-en font-serif text-2xl text-white group-hover:text-accent-gold transition-colors duration-300">
+              {link.name}
             </span>
-          </a>
-        ))}
-      </div>
-
-      <!-- Quick Contact Info -->
-      <div class="px-5 sm:px-6 py-4 border-t border-white/10 flex flex-col gap-2.5 bg-black/10">
-        <div class="flex items-center justify-between text-xs text-white/80">
-          <span class="lang-en font-sans font-semibold">Call Us:</span>
-          <span class="lang-ml font-malayalam font-bold">ഫോൺ:</span>
-          <a href="tel:+910000000000" class="font-sans font-bold text-accent-gold hover:underline">+91 000 000 0000</a>
-        </div>
-        <div class="flex items-center justify-between text-xs text-white/80">
-          <span class="lang-en font-sans font-semibold">WhatsApp:</span>
-          <span class="lang-ml font-malayalam font-bold">വാട്സ്ആപ്പ്:</span>
-          <a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer" class="font-sans font-bold text-accent-gold hover:underline">Chat Now</a>
-        </div>
-      </div>
-
-      <!-- Sticky Footer Action -->
-      <div class="p-5 sm:p-6 border-t border-white/10 bg-black/20">
-        <a href="/appointment" class="w-full btn-primary !bg-accent-gold !text-[#1B4332] text-center py-4 flex flex-col items-center justify-center rounded-xl shadow-lg shadow-accent-gold/20 hover:-translate-y-0.5 hover:shadow-accent-gold/40 transition-all duration-300">
-          <span class="lang-en font-sans font-bold text-base sm:text-lg tracking-wide">Book Appointment</span>
-          <span class="lang-ml font-malayalam font-bold text-sm sm:text-base mt-1">അപ്പോയിന്റ്മെന്റ് ബുക്ക് ചെയ്യുക</span>
+            <span class="lang-ml font-malayalam text-xl text-white/80 group-hover:text-accent-gold transition-colors duration-300">
+              {link.ml}
+            </span>
+          </div>
+          <span class="text-white/60 group-hover:text-accent-gold group-hover:translate-x-1.5 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </span>
         </a>
+      ))}
+    </div>
+
+    <!-- Quick Contact Info -->
+    <div class="px-6 py-4 border-t border-white/10 flex flex-col gap-2.5 bg-black/10">
+      <div class="flex items-center justify-between text-xs text-white/80">
+        <span class="lang-en font-sans font-semibold">Call Us:</span>
+        <span class="lang-ml font-malayalam font-bold">ഫോൺ:</span>
+        <a href="tel:+910000000000" class="font-sans font-bold text-accent-gold hover:underline">+91 000 000 0000</a>
       </div>
+      <div class="flex items-center justify-between text-xs text-white/80">
+        <span class="lang-en font-sans font-semibold">WhatsApp:</span>
+        <span class="lang-ml font-malayalam font-bold">വാട്സ്ആപ്പ്:</span>
+        <a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer" class="font-sans font-bold text-accent-gold hover:underline">Chat Now</a>
+      </div>
+    </div>
+
+    <!-- Sticky Footer Action -->
+    <div class="p-6 border-t border-white/10 bg-black/20">
+      <a href="/appointment" class="w-full btn-primary !bg-accent-gold !text-[#1B4332] text-center py-4 flex flex-col items-center justify-center rounded-xl shadow-lg shadow-accent-gold/20 hover:-translate-y-0.5 hover:shadow-accent-gold/40 transition-all duration-300">
+        <span class="lang-en font-sans font-bold text-lg tracking-wide">Book Appointment</span>
+        <span class="lang-ml font-malayalam font-bold text-base mt-1">അപ്പോയിന്റ്മെന്റ് ബുക്ക് ചെയ്യുക</span>
+      </a>
     </div>
   </div>
 
@@ -193,8 +190,6 @@ const navLinks = [
     document.documentElement.setAttribute('data-lang', lang);
     localStorage.setItem('vm-lang', lang);
 
-    // Switch toggles: Show 'മാ' when in English (to switch to Malayalam)
-    // and 'E' when in Malayalam (to switch to English)
     const oppositeLabel = lang === 'en' ? 'മാ' : 'E';
     const oppositeTarget = lang === 'en' ? 'ml' : 'en';
 
@@ -216,38 +211,26 @@ const navLinks = [
     });
   }
 
-  // ── Mobile Menu Sidebar ─────────────────────────────────────────
+  // ── Mobile Menu Full Screen ─────────────────────────────────────
   function setupMenu() {
     const menuToggle = document.getElementById('menu-toggle');
     const menuClose  = document.getElementById('menu-close');
     const mobileMenu = document.getElementById('mobile-menu');
-    const backdrop   = document.getElementById('mobile-menu-backdrop');
-    const panel      = document.getElementById('mobile-menu-panel');
 
-    if (!menuToggle || !menuClose || !mobileMenu || !backdrop || !panel) return;
+    if (!menuToggle || !menuClose || !mobileMenu) return;
 
     const openMenu = () => { 
-      mobileMenu.classList.remove('pointer-events-none');
-      // Force reflow
-      void mobileMenu.offsetWidth;
-      backdrop.classList.remove('opacity-0');
-      panel.classList.remove('translate-x-full');
+      mobileMenu.classList.remove('translate-x-full');
       document.body.classList.add('overflow-hidden'); 
     };
 
     const closeMenu = () => { 
-      backdrop.classList.add('opacity-0');
-      panel.classList.add('translate-x-full');
+      mobileMenu.classList.add('translate-x-full');
       document.body.classList.remove('overflow-hidden'); 
-      // Wait for animation to finish before removing pointer events
-      setTimeout(() => {
-        mobileMenu.classList.add('pointer-events-none');
-      }, 500);
     };
 
     menuToggle.onclick = openMenu;
     menuClose.onclick  = closeMenu;
-    backdrop.onclick   = closeMenu; // Clicking outside the panel closes it
     
     mobileMenu.querySelectorAll('a').forEach(link => { 
       link.onclick = closeMenu; 
