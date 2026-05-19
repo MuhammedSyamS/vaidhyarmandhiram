@@ -88,7 +88,8 @@
 
     // Check if splash has already been shown in this session
     const hasShown = sessionStorage.getItem('splash-shown');
-    if (hasShown) {
+    const isReload = performance.getEntriesByType('navigation')[0]?.type === 'reload';
+    if (hasShown && !isReload) {
       splash.style.display = 'none';
       splash.remove();
       return;
