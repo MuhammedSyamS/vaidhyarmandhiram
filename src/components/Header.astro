@@ -45,14 +45,14 @@ const navLinks = [
              ML mode → shows "English" button                    -->
         <!-- ── Single Language Toggle Button ──
              Shows the OPPOSITE language (what you'll switch TO).
-             EN mode → shows "മാ" button
+             EN mode → shows "മ" button
              ML mode → shows "E" button                    -->
         <button
           id="lang-switch"
           class="px-3 py-1 text-xs font-bold tracking-wide border border-accent-gold rounded-full text-accent-gold hover:bg-accent-gold hover:text-primary-dark transition-all duration-200 font-malayalam"
           aria-label="Switch language"
         >
-          മാ
+          മ
         </button>
       </div>
     </div>
@@ -149,7 +149,7 @@ const navLinks = [
             id="lang-switch-drawer"
             class="px-2.5 py-0.5 text-[10px] font-bold border-2 border-primary-dark rounded-full text-primary-dark hover:bg-primary-dark hover:text-white transition-all duration-200 font-malayalam"
             aria-label="Switch language"
-          >മാ</button>
+          >മ</button>
         </div>
       </div>
 
@@ -211,7 +211,7 @@ const navLinks = [
     document.documentElement.setAttribute('data-lang', lang);
     localStorage.setItem('vm-lang', lang);
 
-    const oppositeLabel = lang === 'en' ? 'മാ' : 'E';
+    const oppositeLabel = lang === 'en' ? 'മ' : 'E';
     const oppositeTarget = lang === 'en' ? 'ml' : 'en';
 
     document.querySelectorAll<HTMLButtonElement>('[id^="lang-switch"]').forEach(btn => {
