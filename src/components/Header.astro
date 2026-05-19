@@ -141,19 +141,19 @@ const navLinks = [
     </div>
 
     <!-- Navigation Links -->
-    <div class="flex-1 overflow-y-auto px-6 py-6 flex flex-col justify-center gap-2">
+    <div class="flex-1 overflow-y-auto px-6 py-8 flex flex-col gap-4">
       {navLinks.map(link => (
-        <a href={link.href} class="flex items-center justify-between group border-b border-white/5 py-3.5 last:border-0">
-          <div class="flex flex-col">
-            <span class="lang-en font-serif text-2xl text-white group-hover:text-accent-gold transition-colors duration-300">
+        <a href={link.href} class="flex items-center justify-between group border-b border-white/5 py-5 last:border-0">
+          <div class="flex flex-col gap-1">
+            <span class="lang-en font-serif text-3xl sm:text-4xl text-white group-hover:text-accent-gold transition-colors duration-300">
               {link.name}
             </span>
-            <span class="lang-ml font-malayalam text-xl text-white/80 group-hover:text-accent-gold transition-colors duration-300">
+            <span class="lang-ml font-malayalam text-2xl sm:text-3xl text-white/80 group-hover:text-accent-gold transition-colors duration-300">
               {link.ml}
             </span>
           </div>
-          <span class="text-white/60 group-hover:text-accent-gold group-hover:translate-x-1.5 transition-all duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <span class="text-white/40 group-hover:text-accent-gold group-hover:translate-x-1.5 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </span>
         </a>
       ))}

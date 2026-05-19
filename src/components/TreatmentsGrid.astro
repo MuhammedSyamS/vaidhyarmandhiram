@@ -105,11 +105,13 @@ const categories = [
         
         isProgrammaticScroll = true;
         
-        // Native scrollIntoView centered to match our snap-center style perfectly
-        items[currentIndex].scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'nearest', 
-          inline: 'center' 
+        // Container-only smooth scroll to prevent page jumping down
+        const targetItem = items[currentIndex];
+        const scrollTarget = targetItem.offsetLeft - (carousel.offsetWidth / 2) + (targetItem.offsetWidth / 2);
+        
+        carousel.scrollTo({
+          left: scrollTarget,
+          behavior: 'smooth'
         });
         
         // Unlock index tracking after smooth animation settles
