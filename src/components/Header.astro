@@ -1,5 +1,5 @@
 ---
-import { Phone, Calendar, Menu } from 'lucide-react';
+import { Phone, Calendar, Menu, Globe } from 'lucide-react';
 
 const navLinks = [
   { name: 'Home',       ml: 'ഹോം',              href: '/' },
@@ -64,10 +64,11 @@ const navLinks = [
       <!-- Language switch (Visible on all screen sizes in main navbar) -->
       <button
         id="lang-switch"
-        class="inline-block px-3 py-1.5 text-xs font-bold tracking-wide border border-accent-gold rounded-full text-accent-gold hover:bg-accent-gold hover:text-primary-dark transition-all duration-200 font-malayalam"
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold tracking-wide border border-accent-gold rounded-full text-accent-gold hover:bg-accent-gold hover:text-primary-dark transition-all duration-200"
         aria-label="Switch language"
       >
-        മ
+        <Globe size={13} />
+        <span class="lang-label font-malayalam">മ</span>
       </button>
 
       <!-- Book Now (desktop / tablet only) -->
@@ -114,9 +115,12 @@ const navLinks = [
           <span class="lang-ml font-malayalam text-[10px] text-text-muted font-bold">ഭാഷ:</span>
           <button
             id="lang-switch-drawer"
-            class="px-2.5 py-0.5 text-[10px] font-bold border-2 border-primary-dark rounded-full text-primary-dark hover:bg-primary-dark hover:text-white transition-all duration-200 font-malayalam"
+            class="inline-flex items-center gap-1.5 px-2.5 py-0.5 text-[10px] font-bold border-2 border-primary-dark rounded-full text-primary-dark hover:bg-primary-dark hover:text-white transition-all duration-200"
             aria-label="Switch language"
-          >മ</button>
+          >
+            <Globe size={11} />
+            <span class="lang-label font-malayalam">മ</span>
+          </button>
         </div>
       </div>
 
@@ -182,18 +186,22 @@ const navLinks = [
     const oppositeTarget = lang === 'en' ? 'ml' : 'en';
 
     document.querySelectorAll<HTMLButtonElement>('[id^="lang-switch"]').forEach(btn => {
-      btn.textContent = oppositeLabel;
+      const labelSpan = btn.querySelector('.lang-label');
+      if (labelSpan) {
+        labelSpan.textContent = oppositeLabel;
+        if (lang === 'en') {
+          labelSpan.classList.remove('font-sans');
+          labelSpan.classList.add('font-malayalam');
+        } else {
+          labelSpan.classList.remove('font-malayalam');
+          labelSpan.classList.add('font-sans');
+        }
+      } else {
+        btn.textContent = oppositeLabel;
+      }
+      
       btn.dataset.target = oppositeTarget;
       btn.setAttribute('aria-label', `Switch to ${lang === 'en' ? 'Malayalam' : 'English'}`);
-      
-      // Update font family dynamically to ensure correct rendering of Malayalam vowels
-      if (lang === 'en') {
-        btn.classList.remove('font-sans');
-        btn.classList.add('font-malayalam');
-      } else {
-        btn.classList.remove('font-malayalam');
-        btn.classList.add('font-sans');
-      }
     });
   }
 
