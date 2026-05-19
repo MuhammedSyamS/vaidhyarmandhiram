@@ -49,7 +49,7 @@ const navLinks = [
              ML mode → shows "E" button                    -->
         <button
           id="lang-switch"
-          class="px-3 py-1 text-xs font-bold tracking-wide border border-accent-gold rounded-full text-accent-gold hover:bg-accent-gold hover:text-primary-dark transition-all duration-200 font-sans"
+          class="px-3 py-1 text-xs font-bold tracking-wide border border-accent-gold rounded-full text-accent-gold hover:bg-accent-gold hover:text-primary-dark transition-all duration-200 font-malayalam"
           aria-label="Switch language"
         >
           മാ
@@ -147,7 +147,7 @@ const navLinks = [
           <span class="lang-ml font-malayalam text-[10px] text-text-muted font-bold">ഭാഷ:</span>
           <button
             id="lang-switch-drawer"
-            class="px-2.5 py-0.5 text-[10px] font-bold border-2 border-primary-dark rounded-full text-primary-dark hover:bg-primary-dark hover:text-white transition-all duration-200 font-sans"
+            class="px-2.5 py-0.5 text-[10px] font-bold border-2 border-primary-dark rounded-full text-primary-dark hover:bg-primary-dark hover:text-white transition-all duration-200 font-malayalam"
             aria-label="Switch language"
           >മാ</button>
         </div>
@@ -218,6 +218,15 @@ const navLinks = [
       btn.textContent = oppositeLabel;
       btn.dataset.target = oppositeTarget;
       btn.setAttribute('aria-label', `Switch to ${lang === 'en' ? 'Malayalam' : 'English'}`);
+      
+      // Update font family dynamically to ensure correct rendering of Malayalam vowels
+      if (lang === 'en') {
+        btn.classList.remove('font-sans');
+        btn.classList.add('font-malayalam');
+      } else {
+        btn.classList.remove('font-malayalam');
+        btn.classList.add('font-sans');
+      }
     });
   }
 
