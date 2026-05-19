@@ -1,70 +1,102 @@
 ---
+// SplashIntro Component: Centered portal page that acts as the initial launch screen.
 ---
 
-<div id="splash-intro" class="fixed inset-0 z-[9999] bg-gradient-to-br from-primary-dark via-[#092218] to-primary-dark flex flex-col items-center justify-center overflow-hidden transition-all duration-1000 ease-in-out">
-  <!-- Glowing Gold Aura in the background -->
-  <div class="absolute w-[450px] h-[450px] rounded-full bg-accent-gold/10 blur-[120px] -z-10 animate-pulse-slow"></div>
+<div id="splash-intro" class="fixed inset-0 z-[9999] bg-gradient-to-br from-primary-dark via-[#052316] to-primary-dark flex flex-col items-center justify-center overflow-hidden transition-all duration-1000 ease-out select-none">
+  
+  <!-- Glowing Golden Radial Lights in background -->
+  <div class="absolute w-[500px] h-[500px] rounded-full bg-accent-gold/10 blur-[130px] -z-10 animate-pulse-slow"></div>
+  <div class="absolute top-10 left-10 w-72 h-72 rounded-full bg-[#1B4332]/40 blur-[90px] -z-10"></div>
+  <div class="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-primary-dark/60 blur-[100px] -z-10"></div>
 
-  <!-- Ambient Light Particles -->
-  <div class="absolute inset-0 pointer-events-none -z-10">
-    <div class="absolute top-[15%] left-[20%] w-2 h-2 rounded-full bg-accent-gold/40 blur-[1px] animate-float-slow"></div>
-    <div class="absolute bottom-[25%] right-[20%] w-3 h-3 rounded-full bg-accent-gold/30 blur-[2px] animate-float-medium"></div>
-    <div class="absolute top-[65%] right-[25%] w-1.5 h-1.5 rounded-full bg-accent-gold/50 blur-[1px] animate-float-fast"></div>
+  <!-- Decorative Floating Ayurvedic Leaf Shapes -->
+  <div class="absolute inset-0 pointer-events-none -z-5 overflow-hidden">
+    <!-- Floating Gold Leaf SVG 1 -->
+    <div class="absolute top-[20%] left-[12%] opacity-15 rotate-12 scale-75 animate-float-slow">
+      <svg class="text-accent-gold w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17,8C8,10 5.9,16.17 3.82,21.34L2.18,20.66C4.26,15.49 6.1,8.62 16,7.05V3H18V8H17M12,14C11.13,14.65 10.28,15.32 9.43,16C12.18,17.43 14.93,18.86 17.68,20.29C15.78,18.2 13.89,16.1 12,14Z" />
+      </svg>
+    </div>
+    <!-- Floating Gold Leaf SVG 2 -->
+    <div class="absolute bottom-[25%] right-[10%] opacity-10 -rotate-45 scale-90 animate-float-medium">
+      <svg class="text-accent-gold w-20 h-20" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17,8C8,10 5.9,16.17 3.82,21.34L2.18,20.66C4.26,15.49 6.1,8.62 16,7.05V3H18V8H17M12,14C11.13,14.65 10.28,15.32 9.43,16C12.18,17.43 14.93,18.86 17.68,20.29C15.78,18.2 13.89,16.1 12,14Z" />
+      </svg>
+    </div>
+    <!-- Light Sparkle Particles -->
+    <div class="absolute top-[15%] right-[20%] w-2 h-2 rounded-full bg-accent-gold/40 blur-[1px] animate-pulse-slow"></div>
+    <div class="absolute bottom-[35%] left-[15%] w-3 h-3 rounded-full bg-accent-gold/30 blur-[2px] animate-pulse-slow"></div>
   </div>
 
-  <!-- Premium Frosted Glass Card Container -->
-  <div class="relative flex flex-col items-center max-w-sm w-[90%] px-8 py-12 text-center select-none bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.4)] animate-card-reveal">
+  <!-- Centered Content Wrapper with Fade-in Entry -->
+  <div class="relative z-10 max-w-4xl px-6 flex flex-col items-center text-center animate-page-reveal">
     
-    <!-- Thin Gold Decorative Frame Corners -->
-    <div class="absolute top-4 left-4 w-4 h-4 border-t border-l border-accent-gold/30 rounded-tl-md"></div>
-    <div class="absolute top-4 right-4 w-4 h-4 border-t border-r border-accent-gold/30 rounded-tr-md"></div>
-    <div class="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-accent-gold/30 rounded-bl-md"></div>
-    <div class="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-accent-gold/30 rounded-br-md"></div>
-
-    <!-- Main Emblem Container -->
+    <!-- 1) Logo Emblem: Fades & scales in -->
     <div class="relative mb-6 animate-logo-reveal flex items-center justify-center">
-      <!-- Luxury Rotating Gold Dashed Rings -->
-      <div class="absolute -inset-4 rounded-full border border-accent-gold/30 border-dashed animate-spin-slow"></div>
-      <div class="absolute -inset-7 rounded-full border border-accent-gold/10 animate-spin-reverse-slow"></div>
+      <!-- Luxury rotating gold border -->
+      <div class="absolute -inset-3.5 rounded-full border border-accent-gold/25 border-dashed animate-spin-slow"></div>
+      <div class="absolute -inset-6 rounded-full border border-accent-gold/10 animate-spin-reverse-slow"></div>
       
-      <!-- Premium Logo Image -->
-      <div class="relative z-10 w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-2 border-accent-gold shadow-[0_0_40px_rgba(184,134,11,0.25)] bg-[#1B4332]">
+      <div class="relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-accent-gold shadow-[0_0_35px_rgba(184,134,11,0.25)] bg-[#1B4332]">
         <img 
           src="/vmfaviconpng.png" 
-          alt="Vaidyarmandiram Emblem" 
+          alt="Vaidhyar Mandhiram Logo" 
           class="w-full h-full object-cover scale-[1.02]"
         />
       </div>
     </div>
 
-    <!-- Typography Sequence -->
-    <div class="space-y-4 relative z-10 w-full">
-      <div class="flex flex-col gap-1.5">
-        <!-- English Main Title -->
-        <h1 class="text-2xl md:text-3xl text-background-parchment tracking-[0.25em] uppercase font-serif font-bold animate-text-reveal leading-none">
-          Vaidyarmandiram
+    <!-- 2) Clinic Name & 3) Tagline -->
+    <div class="space-y-4 mb-10">
+      <div class="flex flex-col gap-1 sm:gap-2">
+        <!-- English Name -->
+        <h1 class="lang-en text-4xl sm:text-6xl md:text-7xl font-serif font-bold text-background-parchment tracking-wide leading-tight animate-text-reveal">
+          Vaidhyar Mandhiram
         </h1>
-        <!-- Malayalam Translation -->
-        <span class="text-lg font-malayalam text-background-parchment/90 font-bold opacity-0 animate-ml-text-reveal">
+        <!-- Malayalam Name -->
+        <h1 class="lang-ml font-malayalam text-3xl sm:text-5xl md:text-6xl font-bold text-background-parchment leading-tight animate-text-reveal">
           വൈദ്യർമന്ദിരം
-        </span>
+        </h1>
       </div>
-      
-      <!-- Slim golden horizontal divider -->
+
+      <!-- Golden horizontal line divider -->
       <div class="h-[1px] w-0 bg-gradient-to-r from-transparent via-accent-gold to-transparent mx-auto animate-divider-expand"></div>
-      
-      <!-- Subtitle -->
-      <p class="text-[9px] md:text-xs font-sans text-accent-gold tracking-[0.4em] uppercase opacity-0 animate-subtitle-reveal font-semibold">
-        Ayurveda Hospital
+
+      <!-- Tagline -->
+      <p class="lang-en text-sm sm:text-lg md:text-xl font-sans text-accent-gold tracking-[0.2em] md:tracking-[0.25em] uppercase font-bold max-w-2xl opacity-0 animate-subtitle-reveal">
+        Authentic Ayurvedic Healing for Modern Life
+      </p>
+      <p class="lang-ml font-malayalam text-base sm:text-xl font-bold text-accent-gold max-w-2xl opacity-0 animate-subtitle-reveal">
+        ആധുനിക ജീവിതത്തിന് അനുയോജ്യമായ പരമ്പരാഗത ആയുർവേദ ചികിത്സ
       </p>
     </div>
 
-    <!-- Thin elegant loading bar progress indicator -->
-    <div class="absolute bottom-0 left-[12%] right-[12%] h-[2px] bg-white/10 overflow-hidden rounded-full mb-6">
-      <div class="h-full bg-gradient-to-r from-accent-gold/60 to-accent-gold w-0 animate-loading-bar"></div>
+    <!-- 4) Primary Action Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center w-full max-w-md opacity-0 animate-buttons-reveal">
+      
+      <!-- Enter Website -->
+      <button id="splash-btn-enter" class="btn-outline !border-background-parchment !text-background-parchment hover:!bg-background-parchment hover:!text-primary-dark font-sans font-bold py-3.5 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 w-full flex items-center justify-center gap-2 group cursor-pointer">
+        <span class="lang-en uppercase tracking-wider text-sm">Enter Website</span>
+        <span class="lang-ml font-malayalam text-base font-bold">വെബ്‌സൈറ്റിലേക്ക് പ്രവേശിക്കുക</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-1"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
+
+      <!-- Book Appointment -->
+      <a href="/appointment" class="btn-primary !bg-accent-gold !text-primary-dark font-sans font-bold py-3.5 px-8 rounded-full shadow-lg hover:shadow-accent-gold/25 transition-all duration-300 transform hover:-translate-y-0.5 w-full flex items-center justify-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span class="lang-en uppercase tracking-wider text-sm">Book Appointment</span>
+        <span class="lang-ml font-malayalam text-base font-bold">അപ്പോയിന്റ്മെന്റ് ബുക്ക് ചെയ്യുക</span>
+      </a>
     </div>
 
   </div>
+
+  <!-- 5) Scroll Indicator (Bouncing down arrow) -->
+  <button id="splash-scroll-indicator" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-background-parchment/65 hover:text-accent-gold transition-colors flex flex-col items-center gap-1 cursor-pointer opacity-0 animate-scroll-reveal" aria-label="Scroll Down">
+    <span class="lang-en text-[9px] font-sans font-bold tracking-[0.3em] uppercase">Scroll</span>
+    <span class="lang-ml font-malayalam text-[10px] font-bold">താഴേക്ക്</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce"><polyline points="6 9 12 15 18 9"></polyline></svg>
+  </button>
 </div>
 
 <script>
@@ -80,18 +112,54 @@
       return;
     }
 
-    // Dismiss splash after the premium intro finishes
-    setTimeout(() => {
+    const dismissSplash = () => {
       splash.style.opacity = '0';
       splash.style.visibility = 'hidden';
-      splash.style.transform = 'scale(1.05) translateY(-5px)';
+      splash.style.transform = 'translateY(-100%)'; // Elegantly slide up
       
       sessionStorage.setItem('splash-shown', 'true');
       
       setTimeout(() => {
         splash.remove();
       }, 1000);
-    }, 2400); // 2.4 seconds is the sweet spot for elegance and speed
+    };
+
+    // Button trigger
+    const btnEnter = document.getElementById('splash-btn-enter');
+    if (btnEnter) btnEnter.onclick = dismissSplash;
+
+    // Scroll Indicator trigger
+    const scrollInd = document.getElementById('splash-scroll-indicator');
+    if (scrollInd) scrollInd.onclick = dismissSplash;
+
+    // Scroll gesture / wheel triggers
+    let isDismissing = false;
+    const onScrollOrGesture = (e) => {
+      if (isDismissing) return;
+      // Scroll down
+      if (e.deltaY > 5) {
+        isDismissing = true;
+        dismissSplash();
+      }
+    };
+
+    window.addEventListener('wheel', onScrollOrGesture, { passive: true });
+
+    // Touch gesture triggers
+    let startY = 0;
+    window.addEventListener('touchstart', (e) => {
+      startY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (isDismissing) return;
+      const currentY = e.touches[0].clientY;
+      // Swipe up
+      if (startY - currentY > 30) {
+        isDismissing = true;
+        dismissSplash();
+      }
+    }, { passive: true });
   }
 
   // Run on first load
@@ -102,43 +170,66 @@
 </script>
 
 <style>
-  /* Base Reveal Animations */
-  @keyframes card-reveal {
-    0% { transform: scale(0.96); opacity: 0; filter: blur(5px); }
-    100% { transform: scale(1); opacity: 1; filter: blur(0); }
+  /* ── Custom Animations ── */
+  
+  /* Page Reveal Container */
+  @keyframes page-reveal {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
   }
 
+  /* Logo Reveal */
   @keyframes logo-reveal {
-    0% { transform: scale(0.8) translateY(15px); opacity: 0; filter: blur(3px); }
+    0% { transform: scale(0.85) translateY(20px); opacity: 0; filter: blur(4px); }
     100% { transform: scale(1) translateY(0); opacity: 1; filter: blur(0); }
   }
 
+  /* Name Heading Reveal */
   @keyframes text-reveal {
-    0% { transform: translateY(10px); opacity: 0; letter-spacing: 0.1em; }
-    100% { transform: translateY(0); opacity: 1; letter-spacing: 0.25em; }
+    0% { transform: translateY(15px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
   }
 
-  @keyframes ml-text-reveal {
-    0% { transform: translateY(5px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 0.9; }
-  }
-
+  /* Divider Expand */
   @keyframes divider-expand {
     0% { width: 0; }
-    100% { width: 60%; }
+    100% { width: 50%; }
   }
 
+  /* Tagline Subtitle Reveal */
   @keyframes subtitle-reveal {
-    0% { opacity: 0; transform: translateY(5px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% { transform: translateY(10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
   }
 
-  @keyframes loading-bar {
-    0% { width: 0%; }
-    100% { width: 100%; }
+  /* Action Buttons Slide and Fade Up */
+  @keyframes buttons-reveal {
+    0% { transform: translateY(15px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
   }
 
-  /* Rotation animations */
+  /* Scroll Arrow Indicator Reveal */
+  @keyframes scroll-reveal {
+    0% { opacity: 0; transform: translate(-50%, 10px); }
+    100% { opacity: 0.65; transform: translate(-50%, 0); }
+  }
+
+  /* Floating Animations for leaves */
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(12deg) scale(0.75); }
+    50% { transform: translateY(-12px) rotate(16deg) scale(0.8); }
+  }
+
+  @keyframes float-medium {
+    0%, 100% { transform: translateY(0) rotate(-45deg) scale(0.9); }
+    50% { transform: translateY(-16px) rotate(-40deg) scale(0.95); }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+  }
+
   @keyframes spin-slow {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
@@ -149,32 +240,11 @@
     to { transform: rotate(0deg); }
   }
 
-  /* Floating particle animations */
-  @keyframes float-slow {
-    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
-    50% { transform: translateY(-15px) translateX(8px); opacity: 0.6; }
+  /* Trigger Classes */
+  .animate-page-reveal {
+    animation: page-reveal 1s ease-out forwards;
   }
-
-  @keyframes float-medium {
-    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
-    50% { transform: translateY(-25px) translateX(-10px); opacity: 0.7; }
-  }
-
-  @keyframes float-fast {
-    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.4; }
-    50% { transform: translateY(-12px) translateX(5px); opacity: 0.8; }
-  }
-
-  @keyframes pulse-slow {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.1); }
-  }
-
-  /* Class triggers */
-  .animate-card-reveal {
-    animation: card-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
+  
   .animate-logo-reveal {
     animation: logo-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
@@ -183,28 +253,20 @@
     animation: text-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
   }
 
-  .animate-ml-text-reveal {
-    animation: ml-text-reveal 1s ease-out forwards 0.5s;
-  }
-
   .animate-divider-expand {
-    animation: divider-expand 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.7s;
+    animation: divider-expand 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.6s;
   }
 
   .animate-subtitle-reveal {
-    animation: subtitle-reveal 1s ease-out forwards 1.2s;
+    animation: subtitle-reveal 1.2s ease-out forwards 1s;
   }
 
-  .animate-loading-bar {
-    animation: loading-bar 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  .animate-buttons-reveal {
+    animation: buttons-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 1.4s;
   }
 
-  .animate-spin-slow {
-    animation: spin-slow 20s linear infinite;
-  }
-
-  .animate-spin-reverse-slow {
-    animation: spin-reverse-slow 24s linear infinite;
+  .animate-scroll-reveal {
+    animation: scroll-reveal 1s ease-out forwards 2.5s;
   }
 
   .animate-float-slow {
@@ -212,14 +274,14 @@
   }
 
   .animate-float-medium {
-    animation: float-medium 5s ease-in-out infinite;
+    animation: float-medium 7s ease-in-out infinite;
   }
 
-  .animate-float-fast {
-    animation: float-fast 4s ease-in-out infinite;
+  .animate-spin-slow {
+    animation: spin-slow 22s linear infinite;
   }
 
-  .animate-pulse-slow {
-    animation: pulse-slow 3s ease-in-out infinite;
+  .animate-spin-reverse-slow {
+    animation: spin-reverse-slow 26s linear infinite;
   }
 </style>
