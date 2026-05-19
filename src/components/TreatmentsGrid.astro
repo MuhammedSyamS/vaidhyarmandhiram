@@ -62,17 +62,34 @@ const categories = [
     let currentIndex = 0;
     let isProgrammaticScroll = false;
     
-    // Robust tracking of which item is physically centered in the viewport
-    const observer = new IntersectionObserver((entries) => {
-      if (isProgrammaticScroll) return; // Ignore updates during programmatic scrolling
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          currentIndex = items.indexOf(entry.target as HTMLElement);
+    // Mathematically track manual scrolls using the exact center offset of each item
+    const updateIndex = () => {
+      if (items.length === 0) return;
+      const scrollLeft = carousel.scrollLeft;
+      const centerOffset = carousel.offsetWidth / 2;
+      const scrollCenter = scrollLeft + centerOffset;
+      
+      let closestIndex = 0;
+      let minDistance = Infinity;
+      
+      items.forEach((item, idx) => {
+        const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+        const distance = Math.abs(scrollCenter - itemCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = idx;
         }
       });
-    }, { root: carousel, threshold: 0.6 });
-    
-    items.forEach(item => observer.observe(item));
+      
+      currentIndex = closestIndex;
+    };
+
+    // Track scroll events on mobile devices to align manual swipes with the index
+    carousel.addEventListener('scroll', () => {
+      if (!isProgrammaticScroll) {
+        updateIndex();
+      }
+    }, { passive: true });
 
     const startAutoScroll = () => {
       stopAutoScroll(); 
@@ -95,7 +112,7 @@ const categories = [
           inline: 'center' 
         });
         
-        // Unlock observer after smooth animation settles
+        // Unlock index tracking after smooth animation settles
         setTimeout(() => {
           isProgrammaticScroll = false;
         }, 1000);
