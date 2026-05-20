@@ -171,9 +171,12 @@ const testimonials = [
       <h2 class="lang-en text-3xl md:text-5xl text-primary-dark mt-3 font-serif">Healing Journeys</h2>
       <h2 class="lang-ml font-malayalam text-3xl md:text-5xl text-primary-dark mt-3 font-bold">സൗഖ്യ യാത്രകൾ</h2>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div 
+      id="testimonials-scroll-container"
+      class="flex md:grid overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:grid-cols-3 gap-6 md:gap-8 pb-6 md:pb-0 scrollbar-none"
+    >
       {testimonials.map(t => (
-        <div class="bg-white p-8 shadow-md border border-accent-gold/15 rounded-2xl relative hover:shadow-lg transition-shadow duration-300">
+        <div class="bg-white p-8 shadow-md border border-accent-gold/15 rounded-2xl relative hover:shadow-lg transition-shadow duration-300 min-w-[85vw] sm:min-w-[450px] md:min-w-0 snap-center shrink-0 testimonial-card">
           <Quote class="absolute top-4 right-4 text-accent-gold/10" size={48} />
           <div class="flex gap-1 mb-4">
             {[...Array(t.rating)].map(() => <Star class="text-accent-gold fill-accent-gold" size={16} />)}
@@ -186,6 +189,79 @@ const testimonials = [
         </div>
       ))}
     </div>
+
+    <style>
+      .scrollbar-none::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-none {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+
+    <script>
+      function setupAutoScroll() {
+        const container = document.getElementById('testimonials-scroll-container');
+        if (!container) return;
+
+        let intervalId: any;
+        let isInteracting = false;
+
+        const startAutoScroll = () => {
+          clearInterval(intervalId);
+
+          // Only auto-scroll on mobile/tablet (below 768px screen width)
+          if (window.innerWidth >= 768) return;
+
+          intervalId = setInterval(() => {
+            if (isInteracting) return;
+
+            const cards = container.querySelectorAll('.testimonial-card');
+            if (cards.length === 0) return;
+
+            const firstCard = cards[0] as HTMLElement;
+            const cardWidth = firstCard.offsetWidth + 24; // width + gap-6 (24px)
+            
+            let nextScroll = container.scrollLeft + cardWidth;
+            
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            if (container.scrollLeft >= maxScroll - 10) {
+              nextScroll = 0;
+            }
+
+            container.scrollTo({
+              left: nextScroll,
+              behavior: 'smooth'
+            });
+          }, 4000);
+        };
+
+        const pauseScroll = () => {
+          isInteracting = true;
+        };
+        
+        const resumeScroll = () => {
+          setTimeout(() => {
+            isInteracting = false;
+          }, 1500);
+        };
+
+        container.addEventListener('mouseenter', pauseScroll);
+        container.addEventListener('mouseleave', resumeScroll);
+        container.addEventListener('touchstart', pauseScroll, { passive: true });
+        container.addEventListener('touchend', resumeScroll, { passive: true });
+
+        startAutoScroll();
+        window.addEventListener('resize', startAutoScroll);
+      }
+
+      // Initialize auto-scroll
+      setupAutoScroll();
+
+      // Re-run safely on Astro page transitions
+      document.addEventListener('astro:page-load', setupAutoScroll);
+    </script>
   </Section>
 
   <!-- CTA Banner -->
