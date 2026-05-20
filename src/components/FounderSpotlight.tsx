@@ -55,14 +55,14 @@ export default function FounderSpotlight() {
         </div>
 
         <div className="space-y-6 text-text-muted font-sans leading-relaxed text-lg">
-          <p>
-            Vaidyarmandiram was born from the vision of Dr. P. Abdul Sathar Gurukkal, a healer whose life has been dedicated to the restoration of balance through Ayurveda. With decades of traditional training and a deep lineage of wisdom, he has touched the lives of thousands.
+          <p className="first-letter:text-5xl first-letter:font-bold first-letter:text-accent-gold first-letter:mr-1 first-letter:float-left">
+            Founded in 1983 in Pangode, Trivandrum, by Dr. P. Abdul Sathar Gurukkal, our institution was created with a single vision — to preserve and share the sacred wisdom of traditional healing.
           </p>
           <p>
-            His approach combines the strict adherence to classical Ayurvedic texts with a compassionate understanding of modern lifestyle challenges. Every treatment at our hospital is overseen by his clinical expertise, ensuring that the essence of tradition remains untainted.
+            More than a clinic, it became a sanctuary where ancient Siddhis and holistic healing practices were brought together to restore peace to both body and soul.
           </p>
           <p>
-            Today, Vaidyarmandiram stands as a testament to his commitment to authentic healing, serving as a sanctuary for those seeking physical rejuvenation and mental peace.
+            Before attaining eternal peace in 2024, Dr. P. Abdul Sathar Gurukkal entrusted the complete knowledge of their ancestral Siddhis and healing traditions to the third generation, ensuring the purity of this sacred lineage would continue for years to come.
           </p>
         </div>
 
