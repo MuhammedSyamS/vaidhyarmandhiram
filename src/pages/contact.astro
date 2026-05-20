@@ -123,18 +123,113 @@ export const prerender = true;
     </div>
   </Section>
 
-  <!-- Google Map -->
-  <div class="h-[500px] w-full border-t border-accent-gold/20">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15714.475276326462!2d76.267304!3d9.931233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d514ab2d9c5%3A0x2a046a0666324a3e!2sKochi%2C%20Kerala!5e0!3m2!1sen!2sin!4v1683900000000!5m2!1sen!2sin" 
-      width="100%" 
-      height="100%" 
-      style="border:0;" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
+  <!-- Interactive Branch Maps -->
+  <div class="bg-background-cream py-16 border-t border-accent-gold/20">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-10">
+        <h2 class="lang-en text-3xl font-serif text-primary-dark">Our Locations</h2>
+        <h2 class="lang-ml font-malayalam text-3xl text-primary-dark">ഞങ്ങളുടെ ശാഖകൾ</h2>
+        <p class="lang-en text-sm text-text-muted mt-2">Select a branch to view its location and get directions</p>
+        <p class="lang-ml font-malayalam text-sm text-text-muted mt-2">ലൊക്കേഷൻ കാണാനും വഴി അറിയാനും ഒരു ശാഖ തിരഞ്ഞെടുക്കുക</p>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <button
+          class="map-tab-btn px-6 py-3 border-2 border-accent-gold text-primary-dark font-sans font-bold bg-accent-gold/15 hover:bg-accent-gold/10 transition-all rounded-lg"
+          data-map-url="https://maps.google.com/maps?q=VAIDHYARMANDHIRAM+HOSPITAL+LLP+Sidha-Ayurveda-Unani-Kalari+Marma+Thirummu-Yoga-Nattuvaidya+Chikithsalayam-Oushadhashala,+Pangodu,+Kerala+695609&output=embed"
+          data-dir-url="https://maps.app.goo.gl/NynzVNVwV4XEYYpJ7"
+        >
+          <span class="lang-en">Trivandrum (Pangode)</span>
+          <span class="lang-ml font-malayalam">തിരുവനന്തപുരം (പാങ്ങോട്)</span>
+        </button>
+        <button
+          class="map-tab-btn px-6 py-3 border-2 border-accent-gold/40 text-primary-dark/70 font-sans font-semibold hover:border-accent-gold hover:text-primary-dark hover:bg-accent-gold/5 transition-all rounded-lg"
+          data-map-url="https://maps.google.com/maps?q=VAIDHYARMANDHIRAM+HOSPITAL+LLP+Ayurveda-Siddha-Unani-kalari+marma+thirummu-Yoga-Nattuvaidhya+chikithsalayam-Oushadhashala,+Bus+stand+road,+Kadakkal,+Kerala+691536&output=embed"
+          data-dir-url="https://maps.app.goo.gl/A3vvy8Xnpr1P6w3J7"
+        >
+          <span class="lang-en">Kollam (Kadakkal)</span>
+          <span class="lang-ml font-malayalam">കൊല്ലം (കടയ്ക്കൽ)</span>
+        </button>
+        <button
+          class="map-tab-btn px-6 py-3 border-2 border-accent-gold/40 text-primary-dark/70 font-sans font-semibold hover:border-accent-gold hover:text-primary-dark hover:bg-accent-gold/5 transition-all rounded-lg"
+          data-map-url="https://maps.google.com/maps?q=Alappuzha,+Kerala,+India&output=embed"
+          data-dir-url="https://maps.google.com/?q=Alappuzha,+Kerala,+India"
+        >
+          <span class="lang-en">Alappuzha</span>
+          <span class="lang-ml font-malayalam">ആലപ്പുഴ</span>
+        </button>
+      </div>
+
+      <!-- Map Wrapper -->
+      <div class="bg-white p-4 rounded-xl shadow-xl border border-accent-gold/20 relative overflow-hidden">
+        <div class="h-[450px] w-full relative">
+          <iframe 
+            id="branch-map-iframe"
+            src="https://maps.google.com/maps?q=VAIDHYARMANDHIRAM+HOSPITAL+LLP+Sidha-Ayurveda-Unani-Kalari+Marma+Thirummu-Yoga-Nattuvaidya+Chikithsalayam-Oushadhashala,+Pangodu,+Kerala+695609&output=embed" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        
+        <!-- Get Directions Link -->
+        <div class="mt-4 flex flex-col sm:flex-row gap-2 justify-between items-center px-2">
+          <span class="text-xs font-sans text-text-muted">* Interactive view. Click below for complete Google Maps directions.</span>
+          <a
+            id="get-directions-btn"
+            href="https://maps.app.goo.gl/NynzVNVwV4XEYYpJ7"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary py-2 px-6 text-sm flex items-center gap-2"
+          >
+            <span class="lang-en">Get Directions</span>
+            <span class="lang-ml font-malayalam font-semibold">വഴി കാണിക്കുക</span>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <script>
+    function initMapTabs() {
+      const buttons = document.querySelectorAll('.map-tab-btn');
+      const iframe = document.getElementById('branch-map-iframe') as HTMLIFrameElement;
+      const dirBtn = document.getElementById('get-directions-btn') as HTMLAnchorElement;
+
+      if (!iframe || !dirBtn) return;
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active styles from all buttons
+          buttons.forEach(btn => {
+            btn.classList.remove('border-accent-gold', 'text-primary-dark', 'font-bold', 'bg-accent-gold/15');
+            btn.classList.add('border-accent-gold/40', 'text-primary-dark/70', 'font-semibold');
+          });
+
+          // Add active styles to clicked button
+          button.classList.add('border-accent-gold', 'text-primary-dark', 'font-bold', 'bg-accent-gold/15');
+          button.classList.remove('border-accent-gold/40', 'text-primary-dark/70', 'font-semibold');
+
+          // Update Map Source and Directions Link
+          const mapUrl = button.getAttribute('data-map-url');
+          const dirUrl = button.getAttribute('data-dir-url');
+
+          if (mapUrl) iframe.src = mapUrl;
+          if (dirUrl) dirBtn.href = dirUrl;
+        });
+      });
+    }
+
+    // Initialize
+    initMapTabs();
+
+    // Re-run on View Transitions
+    document.addEventListener('astro:page-load', initMapTabs);
+  </script>
 
   <Footer slot="footer" />
 </BaseLayout>
