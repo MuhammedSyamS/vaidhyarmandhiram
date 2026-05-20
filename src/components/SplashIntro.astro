@@ -2,7 +2,7 @@
 // SplashIntro Component: Centered portal page that acts as the initial launch screen.
 ---
 
-<div id="splash-intro" class="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center overflow-hidden transition-all duration-1000 ease-out select-none">
+<div id="splash-intro" class="fixed inset-0 z-[9999] bg-background-parchment flex flex-col items-center justify-center overflow-hidden transition-all duration-1000 ease-out select-none" style="background-image: url('/images/parchment-texture.svg'); background-repeat: repeat;">
   
   <!-- Centered Content Wrapper with Fade-in Entry -->
   <div class="relative z-10 max-w-4xl px-6 flex flex-col items-center text-center animate-page-reveal">
@@ -14,7 +14,7 @@
         <img 
           src="/images/vmnavbarlogo.png" 
           alt="Vaidhyar Mandhiram Logo" 
-          class="w-full h-auto object-contain"
+          class="w-full h-auto object-contain mix-blend-multiply"
         />
       </div>
     </div>
