@@ -18,15 +18,15 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
           <div class="flex items-center gap-4 mb-6 animate-fade-in-up group cursor-default">
             <div class="relative flex items-center justify-center w-20 h-20 shrink-0">
               <!-- Slowly rotating outer text ring -->
-              <svg viewBox="0 0 100 100" class="absolute w-20 h-20 animate-spin-slow pointer-events-none select-none opacity-80">
-                <path id="crestPath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+              <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full origin-center animate-spin-slow pointer-events-none select-none opacity-80">
+                <path id="crestPath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
                 <text class="font-sans font-extrabold uppercase fill-accent-gold text-[7.2px] tracking-[0.18em]">
                   <textPath href="#crestPath" startOffset="0%">• VAIDYARMANDIRAM • SINCE 1983</textPath>
                 </text>
               </svg>
               
               <!-- Static inner golden crest -->
-              <div class="w-13 h-13 rounded-full border border-accent-gold/45 bg-background-cream/60 flex flex-col items-center justify-center shadow-inner group-hover:scale-[1.03] transition-transform duration-500 relative">
+              <div class="w-14 h-14 rounded-full border border-accent-gold/45 bg-background-cream/60 flex flex-col items-center justify-center shadow-inner group-hover:scale-[1.03] transition-transform duration-500 relative">
                 <div class="absolute inset-[2.5px] rounded-full border border-dashed border-accent-gold/30"></div>
                 <span class="text-[7.5px] font-sans tracking-widest text-accent-gold font-bold uppercase leading-none z-10">Estd</span>
                 <span class="text-xs font-serif font-bold text-primary-dark mt-0.5 leading-none z-10">1983</span>
@@ -102,11 +102,11 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
           </svg>
         </div>
 
-        <!-- Grand Single Portrait Frame (Elegant Rounded Rectangle Shape) -->
-        <div class="w-full max-w-[365px] aspect-[9/13.5] rounded-[2rem] border-2 border-primary/20 p-2 shadow-[0_20px_50px_rgba(0,0,0,0.18)] bg-white/70 backdrop-blur-sm relative group/founder animate-fade-in-up delay-100 flex flex-col overflow-hidden z-10">
+        <!-- Grand Single Portrait Frame (Elegant Edge-to-Edge Shape) -->
+        <div class="w-full max-w-[365px] aspect-[9/13.5] rounded-[2rem] border-2 border-primary/20 shadow-[0_20px_50px_rgba(0,0,0,0.18)] bg-white/70 backdrop-blur-sm relative group/founder animate-fade-in-up delay-100 flex flex-col overflow-hidden z-10">
           
-          <!-- Inner frame -->
-          <div class="relative w-full h-full rounded-[1.5rem] overflow-hidden bg-background-cream/40 flex-grow">
+          <!-- Image & Overlay Container -->
+          <div class="w-full h-full relative flex-grow">
             <img 
               src="/images/vmfounder.jpg" 
               alt="Dr. P. Abdul Sathar Gurukkal" 
@@ -114,14 +114,14 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
             />
             
             <!-- Dark Vignette Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
             
-            <!-- Quote Overlay -->
-            <div class="absolute bottom-4 left-4 right-4 text-left z-20">
+            <!-- Quote Overlay (Positioned above the nameplate) -->
+            <div class="absolute bottom-28 left-4 right-4 text-left z-20">
               <span class="lang-en text-[8px] uppercase tracking-[0.25em] text-accent-gold font-sans font-bold block mb-1">Our Eternal Guide</span>
               <span class="lang-ml font-malayalam text-[8px] text-accent-gold font-bold block mb-1">ഞങ്ങളുടെ വഴികാട്ടി</span>
               
-              <div class="border-t border-white/10 mt-1.5 pt-2.5 mb-2.5">
+              <div class="border-t border-white/10 mt-1.5 pt-2.5">
                 <Quote size={12} class="text-accent-gold/40 mb-1" />
                 <p class="lang-en text-[10.5px] sm:text-xs italic text-white/95 font-serif leading-relaxed">"True cure restores the balance of life."</p>
                 <p class="lang-ml font-malayalam text-[10px] sm:text-[11px] italic text-white/95 leading-relaxed">"യഥാർത്ഥ ചികിത്സ ജീവിത സമതുലിതാവസ്ഥ വീണ്ടെടുക്കലാണ്."</p>
@@ -129,8 +129,8 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
             </div>
           </div>
 
-          <!-- Bottom Gold Nameplate inside the Frame -->
-          <div class="w-full bg-primary-dark/95 border-t border-accent-gold/25 py-3 px-3 text-center rounded-b-[1.5rem] z-20">
+          <!-- Bottom Gold Nameplate Overlay -->
+          <div class="absolute bottom-0 left-0 w-full bg-primary-dark/95 border-t border-accent-gold/25 py-3 px-3 text-center z-20">
             <h3 class="lang-en text-sm sm:text-base font-serif text-white font-bold tracking-wide">Dr. P. Abdul Sathar Gurukkal</h3>
             <h3 class="lang-ml font-malayalam text-xs sm:text-sm text-white font-bold leading-tight">ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</h3>
             <p class="lang-en text-[8.5px] sm:text-[9px] uppercase tracking-widest text-accent-gold/85 mt-1 font-sans font-bold">Founder & Chief Physician</p>
@@ -156,9 +156,11 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
   }
   .animate-spin-slow {
     animation: spinSlow 20s linear infinite;
+    transform-origin: center;
   }
   .animate-spin-slow-reverse {
     animation: spinSlowReverse 28s linear infinite;
+    transform-origin: center;
   }
 
   /* ── Fade In Up Animation for Hero Entry ── */
