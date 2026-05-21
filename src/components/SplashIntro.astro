@@ -7,17 +7,18 @@
   <!-- Centered Content Wrapper with Fade-in Entry -->
   <div class="relative z-10 w-full h-full flex flex-col items-center justify-center text-center animate-page-reveal p-4">
     
-    <!-- Main Image Display (Centered, rounded frame displaying the entire logo perfectly) -->
-    <div class="relative animate-logo-reveal w-[85vw] max-w-[420px] aspect-square flex items-center justify-center bg-white p-3 rounded-[2.5rem] shadow-[0_20px_50px_rgba(45,106,79,0.15)] border-2 border-accent-gold/25">
+    <!-- Main Image Display (Borderless, premium rounded corners) -->
+    <div class="relative animate-logo-reveal flex items-center justify-center cursor-pointer">
       <img 
         src="/images/vmlaunchingpage.jpeg" 
         alt="Vaidyarmandiram Launching" 
-        class="w-full h-full object-contain rounded-[2rem]"
+        class="w-[85vw] max-w-[420px] aspect-square object-cover rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] hover:scale-[1.02] transition-transform duration-500"
       />
     </div>
 
   </div>
 </div>
+
 
 <script>
   function setupSplash() {
@@ -32,18 +33,19 @@
     }
     window.__SPLASH_SHOWN__ = true;
 
-    const navType = window.performance ? window.performance.navigation.type : 0;
-    const isReload = navType === 1; // 1 is TYPE_RELOAD
-    
-    let isDirectEntry = true;
-    if (document.referrer) {
-      try {
-        isDirectEntry = new URL(document.referrer).hostname !== window.location.hostname;
-      } catch(e) {}
+    // Detect reload using modern navigation entries API and legacy fallback
+    const navigationEntries = performance.getEntriesByType('navigation');
+    let isReload = false;
+    if (navigationEntries.length > 0) {
+      isReload = navigationEntries[0].type === 'reload';
+    } else if (window.performance && window.performance.navigation) {
+      isReload = window.performance.navigation.type === 1;
     }
-    
-    // Only show on Reload or Direct Entry (entering the website)
-    if (!isReload && !isDirectEntry) {
+
+    const hasShownInSession = sessionStorage.getItem('splash-shown') === 'true';
+
+    // Show splash if it is a reload OR if it hasn't been shown in this session yet
+    if (!isReload && hasShownInSession) {
       splash.style.display = 'none';
       splash.remove();
       return;
@@ -68,25 +70,17 @@
       }, 1000);
     };
 
-    // Auto-dismiss after 5.5 seconds
+    // Auto-dismiss after 16 seconds
     autoDismissTimeout = setTimeout(() => {
       dismissSplash();
-    }, 5500);
+    }, 16000);
+
+    // Click anywhere to dismiss splash
+    splash.addEventListener('click', dismissSplash);
 
     // Scroll Indicator trigger
     const scrollInd = document.getElementById('splash-scroll-indicator');
     if (scrollInd) scrollInd.onclick = dismissSplash;
-
-    // Scroll gesture / wheel triggers
-    const onScrollOrGesture = (e) => {
-      if (isDismissing) return;
-      // Scroll down
-      if (e.deltaY > 5) {
-        dismissSplash();
-      }
-    };
-
-    window.addEventListener('wheel', onScrollOrGesture, { passive: true });
 
     // Touch gesture triggers
     let startY = 0;
@@ -97,8 +91,8 @@
     window.addEventListener('touchmove', (e) => {
       if (isDismissing) return;
       const currentY = e.touches[0].clientY;
-      // Swipe up
-      if (startY - currentY > 30) {
+      // Swipe up with higher threshold (80px) to prevent accidental triggers
+      if (startY - currentY > 80) {
         dismissSplash();
       }
     }, { passive: true });

@@ -12,14 +12,12 @@ export default function FounderSpotlight() {
         viewport={{ once: true }}
         className="relative"
       >
-        <div className="relative z-10 p-4 bg-white shadow-xl rotate-[-2deg] border border-accent-gold/20">
-          {/* CLIENT ACTION REQUIRED: Replace this placeholder with the actual photograph of Dr. P. Abdul Sathar Gurukkal provided by the hospital. Recommended size: 800x1000px, format: JPG or WebP, file location: /public/images/founder-dr-sathar.jpg */}
+        <div className="relative z-10 shadow-2xl rotate-[-2deg] border border-accent-gold/20 rounded-2xl overflow-hidden">
           <img 
             src="/images/vmfounder.jpg" 
             alt="Dr. P. Abdul Sathar Gurukkal - Founder and Chief Physician, Vaidyarmandiram Ayurveda Hospital Kerala" 
             className="w-full aspect-[4/5] object-cover"
           />
-          <div className="absolute inset-0 border-2 border-accent-gold/30 m-2 pointer-events-none"></div>
         </div>
         
         {/* Decorative elements */}
