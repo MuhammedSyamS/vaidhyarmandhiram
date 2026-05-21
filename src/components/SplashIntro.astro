@@ -5,14 +5,14 @@
 <div id="splash-intro" class="fixed inset-0 z-[9999] bg-background-parchment flex flex-col items-center justify-center overflow-hidden transition-all duration-1000 ease-out select-none" style="background-image: url('/images/parchment-texture.svg'); background-repeat: repeat;">
   
   <!-- Centered Content Wrapper with Fade-in Entry -->
-  <div class="relative z-10 w-full h-full flex flex-col items-center justify-center text-center animate-page-reveal">
+  <div class="relative z-10 w-full h-full flex flex-col items-center justify-center text-center animate-page-reveal p-4">
     
-    <!-- Main Image Display -->
-    <div class="relative animate-logo-reveal w-full h-full flex items-center justify-center">
+    <!-- Main Image Display (Centered, rounded frame displaying the entire logo perfectly) -->
+    <div class="relative animate-logo-reveal w-[85vw] max-w-[420px] aspect-square flex items-center justify-center bg-white p-3 rounded-[2.5rem] shadow-[0_20px_50px_rgba(45,106,79,0.15)] border-2 border-accent-gold/25">
       <img 
         src="/images/vmlaunchingpage.jpeg" 
         alt="Vaidyarmandiram Launching" 
-        class="w-full h-full object-cover"
+        class="w-full h-full object-contain rounded-[2rem]"
       />
     </div>
 
@@ -68,10 +68,10 @@
       }, 1000);
     };
 
-    // Auto-dismiss after 3.8 seconds
+    // Auto-dismiss after 5.5 seconds
     autoDismissTimeout = setTimeout(() => {
       dismissSplash();
-    }, 3800);
+    }, 5500);
 
     // Scroll Indicator trigger
     const scrollInd = document.getElementById('splash-scroll-indicator');
