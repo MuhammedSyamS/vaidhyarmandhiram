@@ -1,108 +1,172 @@
 ---
-import { Heart, Flower2, Sparkles, ArrowRight } from 'lucide-react';
+import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, ArrowRight, CalendarHeart, PhoneCall, Baby, PersonStanding, UserPlus } from 'lucide-react';
 ---
 
-<div class="relative bg-white py-24 overflow-hidden border-b border-accent-gold/20">
-  <!-- Subtle background patterns -->
-  <div class="absolute inset-0 opacity-[0.03] mix-blend-multiply pointer-events-none bg-parchment-texture bg-repeat z-0"></div>
-  <div class="absolute -top-32 -right-32 w-96 h-96 bg-accent-gold/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
-  <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
+<div class="relative bg-[#F9F6F0] py-24 overflow-hidden border-y border-[#2D4A3E]/10 font-sans">
+  <!-- Subtle Background Accents -->
+  <div class="absolute inset-0 opacity-[0.02] mix-blend-multiply pointer-events-none bg-parchment-texture bg-repeat z-0"></div>
+  <div class="absolute -top-40 -right-40 w-96 h-96 bg-[#E8F0EA] rounded-full blur-[120px] pointer-events-none z-0"></div>
+  <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-[#E8F0EA] rounded-full blur-[120px] pointer-events-none z-0"></div>
 
-  <div class="container mx-auto px-4 relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
+  <div class="container mx-auto px-4 max-w-7xl relative z-10">
+    
+    <!-- 1. Hero Section -->
+    <div class="text-center max-w-3xl mx-auto mb-20 animate-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out">
+      <div class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[#2D4A3E]/5 border border-[#2D4A3E]/10 mb-6">
+        <Heart class="text-[#2D4A3E] w-4 h-4" />
+        <span class="text-[#2D4A3E] text-xs uppercase tracking-[0.2em] font-bold">Complete Women's Wellness Program</span>
+      </div>
       
-      <!-- Left Column: Content (Text) -->
-      <div class="order-2 lg:order-1 space-y-8 animate-on-scroll opacity-0 translate-x-[-30px] transition-all duration-1000 ease-out">
-        <div class="space-y-4">
-          <div class="flex items-center gap-3">
-            <Heart class="text-accent-gold" size={20} />
-            <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.25em] text-sm font-bold">Women's Wellness</span>
-            <span class="lang-ml font-malayalam text-accent-gold text-base font-semibold block">സ്ത്രീകളുടെ ആരോഗ്യം</span>
-          </div>
-          
-          <h2 class="lang-en text-4xl md:text-5xl text-primary-dark font-serif leading-tight">
-            Exclusive <span class="text-accent-gold italic">"She Care"</span> Package
-          </h2>
-          <h2 class="lang-ml font-malayalam text-4xl md:text-5xl text-primary-dark font-bold leading-tight">
-            പ്രത്യേക <span class="text-accent-gold">"ഷി കെയർ"</span> പാക്കേജ്
-          </h2>
-          
-          <p class="lang-en text-primary-dark/80 font-sans text-lg md:text-xl mt-4 leading-relaxed">
-            A comprehensive Ayurvedic wellness package tailored exclusively for women. Rediscover your natural balance, vitality, and inner strength through authentic, holistic care.
-          </p>
-          <p class="lang-ml font-malayalam text-primary-dark/80 text-lg md:text-xl mt-4 leading-relaxed">
-            സ്ത്രീകൾക്കായി പ്രത്യേകമായി രൂപകൽപ്പന ചെയ്ത സമഗ്ര ആയുർവേദ വെൽനസ് പാക്കേജ്. ആധികാരികവും സമഗ്രവുമായ പരിചരണത്തിലൂടെ നിങ്ങളുടെ സ്വാഭാവിക സന്തുലിതാവസ്ഥയും ഉന്മേഷവും വീണ്ടെടുക്കുക.
-          </p>
-        </div>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl text-[#2D4A3E] font-serif mb-6 leading-tight">
+        She Care Package
+      </h2>
+      
+      <p class="text-[#2D4A3E]/80 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+        A holistic wellness package designed to support women through every stage of life including menarche, pregnancy, postnatal recovery, and menopause care using Ayurveda, Siddha, Yoga, and natural therapies.
+      </p>
+    </div>
 
-        <!-- Features Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-          <div class="flex gap-4 items-start">
-            <div class="w-10 h-10 rounded-full bg-accent-gold/10 flex items-center justify-center shrink-0">
-              <Flower2 class="text-accent-gold" size={20} />
+    <!-- 2. Minimal Icon-Based Care Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-24">
+      {
+        [
+          {
+            title: "Menarche Care",
+            desc: "Guiding young women through their first transition with natural hormonal balance.",
+            delay: "0",
+            icon: Sparkles,
+            color: "bg-[#f5f8f6]"
+          },
+          {
+            title: "Prenatal Care",
+            desc: "Nurturing mother and baby with specialized Ayurvedic diets and gentle therapies.",
+            delay: "150",
+            icon: Heart,
+            color: "bg-[#fcf8f6]"
+          },
+          {
+            title: "Postnatal Care",
+            desc: "Aiding recovery with traditional strengthening treatments and restorative care.",
+            delay: "300",
+            icon: Baby,
+            color: "bg-[#f6f8fa]"
+          },
+          {
+            title: "Menopause Care",
+            desc: "Easing the transition with cooling therapies and natural emotional balance.",
+            delay: "450",
+            icon: PersonStanding,
+            color: "bg-[#fdf6f9]"
+          }
+        ].map(card => {
+          const Icon = card.icon;
+          return (
+            <div 
+              class={`group relative rounded-[2rem] p-8 overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgb(45,74,62,0.08)] transition-all duration-500 hover:-translate-y-2 animate-on-scroll opacity-0 translate-y-8 ${card.color} border border-white flex flex-col`}
+              style={`transition-delay: ${card.delay}ms`}
+            >
+              <!-- Decorative Circle -->
+              <div class="absolute -top-10 -right-10 w-32 h-32 bg-white rounded-full opacity-50 group-hover:scale-150 transition-transform duration-700 ease-out z-0"></div>
+              
+              <div class="relative z-10 flex flex-col h-full">
+                <div class="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-6 text-[#2D4A3E] group-hover:scale-110 group-hover:bg-[#2D4A3E] group-hover:text-white transition-all duration-500">
+                  <Icon class="w-7 h-7" strokeWidth={1.5} />
+                </div>
+                
+                <h3 class="text-2xl text-[#2D4A3E] font-serif font-bold mb-3">{card.title}</h3>
+                
+                <p class="text-[#2D4A3E]/75 text-sm leading-relaxed mb-6 flex-grow">{card.desc}</p>
+                
+                <div class="flex items-center text-xs font-bold uppercase tracking-wider text-[#2D4A3E] group-hover:text-accent-gold transition-colors mt-auto">
+                  Explore Therapy
+                  <ArrowRight class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" />
+                </div>
+              </div>
             </div>
-            <div>
-              <h4 class="lang-en font-serif font-bold text-primary-dark text-lg mb-1">Holistic Healing</h4>
-              <h4 class="lang-ml font-malayalam font-bold text-primary-dark text-base mb-1">സമഗ്ര സൗഖ്യം</h4>
-              <p class="lang-en text-sm text-text-muted font-sans">Traditional therapies to balance hormones and rejuvenate the body.</p>
-              <p class="lang-ml font-malayalam text-xs text-text-muted">ശരീരത്തെ പുനരുജ്ജീവിപ്പിക്കാനുള്ള പരമ്പരാഗത ചികിത്സകൾ.</p>
-            </div>
-          </div>
-          <div class="flex gap-4 items-start">
-            <div class="w-10 h-10 rounded-full bg-accent-gold/10 flex items-center justify-center shrink-0">
-              <Sparkles class="text-accent-gold" size={20} />
-            </div>
-            <div>
-              <h4 class="lang-en font-serif font-bold text-primary-dark text-lg mb-1">Expert Care</h4>
-              <h4 class="lang-ml font-malayalam font-bold text-primary-dark text-base mb-1">വിദഗ്ദ്ധ പരിചരണം</h4>
-              <p class="lang-en text-sm text-text-muted font-sans">Guided by experienced female physicians ensuring absolute comfort.</p>
-              <p class="lang-ml font-malayalam text-xs text-text-muted">വിദഗ്ദ്ധരായ വനിതാ ഡോക്ടർമാരുടെ പരിചരണം.</p>
-            </div>
-          </div>
-        </div>
+          )
+        })
+      }
+    </div>
 
-        <div class="pt-6">
-          <a href="/treatments" class="inline-flex items-center gap-2 text-primary hover:text-accent-gold font-serif text-lg font-bold transition-colors duration-300 group">
-            <span class="lang-en border-b-2 border-primary group-hover:border-accent-gold pb-1 transition-colors">Explore Package Details</span>
-            <span class="lang-ml font-malayalam border-b-2 border-primary group-hover:border-accent-gold pb-1 transition-colors">പാക്കേജ് വിവരങ്ങൾ കാണുക</span>
-            <ArrowRight size={20} class="group-hover:translate-x-1.5 transition-transform" />
+    <!-- 3. Benefits Section -->
+    <div class="mb-24 animate-on-scroll opacity-0 translate-y-8">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl md:text-4xl text-[#2D4A3E] font-serif mb-4">Holistic Care Pillars</h3>
+        <div class="w-16 h-1 bg-[#2D4A3E]/20 mx-auto rounded-full"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          [
+            { icon: Leaf, title: "Authentic Treatments", text: "Traditional Ayurvedic & Siddha Treatments" },
+            { icon: Apple, title: "Nutrition", text: "Personalized Diet & Lifestyle Guidance" },
+            { icon: Flower2, title: "Wellness", text: "Yoga & Wellness Support" },
+            { icon: Sparkles, title: "Natural Care", text: "Natural Therapies for Women’s Health" },
+            { icon: Smile, title: "Mental Health", text: "Postpartum Emotional Wellness Support" }
+          ].map(benefit => {
+            const Icon = benefit.icon;
+            return (
+              <div class="bg-white/60 backdrop-blur-md rounded-2xl p-6 flex items-start gap-5 border border-white hover:border-[#2D4A3E]/20 hover:shadow-lg transition-all duration-300 group">
+                <div class="w-12 h-12 rounded-xl bg-[#E8F0EA] text-[#2D4A3E] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <Icon strokeWidth={1.5} size={24} />
+                </div>
+                <div>
+                  <h4 class="text-[#2D4A3E] font-bold font-serif text-lg mb-1">{benefit.title}</h4>
+                  <p class="text-[#2D4A3E]/70 text-sm leading-snug">{benefit.text}</p>
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
+    </div>
+
+    <!-- 4. CTA Section -->
+    <div class="bg-[#2D4A3E] rounded-[2.5rem] p-10 md:p-16 text-center relative overflow-hidden shadow-2xl shadow-[#2D4A3E]/20 animate-on-scroll opacity-0 translate-y-8">
+      <!-- Deco elements -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[50px] mix-blend-overlay"></div>
+      <div class="absolute bottom-0 left-0 w-64 h-64 bg-[#E8F0EA]/10 rounded-full blur-[50px] mix-blend-overlay"></div>
+      
+      <div class="relative z-10 max-w-2xl mx-auto">
+        <h4 class="text-3xl md:text-5xl text-white font-serif mb-6 leading-tight">Book Your Consultation Today</h4>
+        <p class="text-white/80 text-lg mb-10">
+          Take the first step towards holistic feminine health and balance. Our female specialists are here to guide you.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+          <a href="/appointment" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-[#E8F0EA] text-[#2D4A3E] rounded-full font-bold uppercase tracking-wider text-sm hover:bg-white hover:-translate-y-1 transition-all duration-300 shadow-lg">
+            <CalendarHeart class="w-5 h-5 mr-2" />
+            Book Appointment
+          </a>
+          
+          <a href="tel:+918593821553" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/30 text-white rounded-full font-bold uppercase tracking-wider text-sm hover:border-white hover:bg-white/10 hover:-translate-y-1 transition-all duration-300">
+            <PhoneCall class="w-5 h-5 mr-2" />
+            Call Now
           </a>
         </div>
       </div>
-
-      <!-- Right Column: Image -->
-      <div class="order-1 lg:order-2 relative animate-on-scroll opacity-0 translate-x-[30px] transition-all duration-1000 ease-out delay-200">
-        <!-- Decorative frame elements -->
-        <div class="absolute -inset-4 border border-accent-gold/30 rounded-[2rem] transform translate-x-4 translate-y-4 -z-10 transition-transform duration-700 group-hover:translate-x-0 group-hover:translate-y-0"></div>
-        
-        <div class="relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] group cursor-pointer border-2 border-accent-gold/20 bg-white p-2">
-          <img 
-            src="/images/we care package.jpeg" 
-            alt="She Care Package" 
-            class="w-full h-auto max-h-[600px] object-contain group-hover:scale-[1.02] transition-transform duration-[4000ms] ease-out rounded-xl"
-          />
-          
-          <!-- Subtle vignette removed to not obscure any text on the package flyer -->
-          <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm border border-accent-gold/30 rounded-xl px-5 py-3 shadow-lg transform group-hover:-translate-y-2 transition-transform duration-500">
-            <p class="lang-en text-xs uppercase tracking-[0.2em] text-accent-gold font-bold mb-0.5">Special Offer</p>
-            <p class="lang-ml font-malayalam text-[10px] text-accent-gold font-bold mb-0.5">പ്രത്യേക ഓഫർ</p>
-            <p class="lang-en font-serif text-primary-dark font-bold text-lg">"She Care" Wellness</p>
-            <p class="lang-ml font-malayalam font-bold text-primary-dark text-sm">"ഷി കെയർ" വെൽനസ്</p>
-          </div>
-        </div>
-      </div>
-
     </div>
+
   </div>
 </div>
 
+<style>
+  /* Fix for smooth height transition on hover */
+  .grid-rows-\[0fr\] {
+    grid-template-rows: 0fr;
+  }
+  .grid-rows-\[1fr\] {
+    grid-template-rows: 1fr;
+  }
+</style>
+
 <script>
-  function initSheCareAnimation() {
+  function initSheCareAnimations() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.remove('opacity-0', 'translate-x-[-30px]', 'translate-x-[30px]');
-          entry.target.classList.add('opacity-100', 'translate-x-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-6', 'translate-y-8');
+          entry.target.classList.add('opacity-100', 'translate-y-0');
           observer.unobserve(entry.target);
         }
       });
@@ -113,9 +177,6 @@ import { Heart, Flower2, Sparkles, ArrowRight } from 'lucide-react';
     });
   }
 
-  // Run on initial load
-  initSheCareAnimation();
-
-  // Re-run safely on View Transitions
-  document.addEventListener('astro:page-load', initSheCareAnimation);
+  initSheCareAnimations();
+  document.addEventListener('astro:page-load', initSheCareAnimations);
 </script>

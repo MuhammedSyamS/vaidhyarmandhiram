@@ -40,9 +40,10 @@ const treatments = [
 ---
 
 <div class="relative w-full overflow-hidden py-4">
-  <div id="treatments-scroll-container" class="flex overflow-x-auto no-scrollbar gap-4 sm:gap-6 pb-4 scroll-smooth treatments-carousel snap-x snap-mandatory">
-    {treatments.map(t => (
-      <a href={`/treatments#${t.slug}`} class="treatment-card group relative overflow-hidden bg-white shadow-md hover:shadow-lg border border-accent-gold/10 rounded-xl shrink-0 w-[85vw] sm:w-[350px] md:w-[400px] snap-center transition-all duration-300">
+  <div id="treatments-scroll-container" class="flex overflow-x-auto no-scrollbar gap-4 sm:gap-6 pb-4 treatments-carousel">
+    {/* Duplicate the treatments array to allow infinite seamless scrolling */}
+    {[...treatments, ...treatments].map(t => (
+      <a href={`/treatments#${t.slug}`} class="treatment-card group relative overflow-hidden bg-white shadow-md hover:shadow-lg border border-accent-gold/10 rounded-xl shrink-0 w-[85vw] sm:w-[350px] md:w-[400px] transition-all duration-300 transform hover:-translate-y-1">
       <div class="aspect-[4/3] overflow-hidden">
         <img 
           src={t.image} 
@@ -81,76 +82,40 @@ const treatments = [
     const carousel = document.getElementById('treatments-scroll-container') as HTMLElement;
     if (!carousel) return;
     
-    let autoScrollInterval: ReturnType<typeof setInterval>;
-    const items = Array.from(carousel.querySelectorAll('.treatment-card')) as HTMLElement[];
-    let currentIndex = 0;
-    let isProgrammaticScroll = false;
-    
-    const updateIndex = () => {
-      if (items.length === 0) return;
-      const scrollLeft = carousel.scrollLeft;
-      const centerOffset = carousel.offsetWidth / 2;
-      const scrollCenter = scrollLeft + centerOffset;
-      
-      let closestIndex = 0;
-      let minDistance = Infinity;
-      
-      items.forEach((item, idx) => {
-        const itemCenter = item.offsetLeft + item.offsetWidth / 2;
-        const distance = Math.abs(scrollCenter - itemCenter);
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestIndex = idx;
-        }
-      });
-      
-      currentIndex = closestIndex;
-    };
+    let isHovered = false;
+    let animationId: number;
+    // Speed of scroll (pixels per frame)
+    const scrollSpeed = 1; 
 
-    carousel.addEventListener('scroll', () => {
-      if (!isProgrammaticScroll) {
-        updateIndex();
+    // Hover listeners to pause animation
+    carousel.addEventListener('mouseenter', () => isHovered = true);
+    carousel.addEventListener('mouseleave', () => isHovered = false);
+    carousel.addEventListener('touchstart', () => isHovered = true, { passive: true });
+    carousel.addEventListener('touchend', () => isHovered = false);
+
+    const scrollLoop = () => {
+      if (!isHovered) {
+        carousel.scrollLeft += scrollSpeed;
+        
+        // Because we duplicated the array exactly once, 
+        // the total scroll width is double the original content.
+        // Once we scroll past halfway, instantly jump back to 0.
+        // (Minus a tiny fraction to ensure it doesn't snap visibly due to gaps)
+        if (carousel.scrollLeft >= (carousel.scrollWidth / 2)) {
+          carousel.scrollLeft = 0;
+        }
       }
-    }, { passive: true });
-
-    const startAutoScroll = () => {
-      stopAutoScroll(); 
-      
-      autoScrollInterval = setInterval(() => {
-        if (items.length === 0) return;
-        
-        currentIndex++;
-        if (currentIndex >= items.length) {
-          currentIndex = 0;
-        }
-        
-        isProgrammaticScroll = true;
-        
-        const targetItem = items[currentIndex];
-        const scrollTarget = targetItem.offsetLeft - (carousel.offsetWidth / 2) + (targetItem.offsetWidth / 2);
-        
-        carousel.scrollTo({
-          left: scrollTarget,
-          behavior: 'smooth'
-        });
-        
-        setTimeout(() => {
-          isProgrammaticScroll = false;
-        }, 1000);
-        
-      }, 4000); 
+      animationId = requestAnimationFrame(scrollLoop);
     };
 
-    const stopAutoScroll = () => {
-      if (autoScrollInterval) clearInterval(autoScrollInterval);
-    };
-
-    carousel.addEventListener('mouseenter', stopAutoScroll);
-    carousel.addEventListener('mouseleave', startAutoScroll);
-    carousel.addEventListener('touchstart', stopAutoScroll, { passive: true });
-    carousel.addEventListener('touchend', startAutoScroll);
+    // Clean up any existing animation before starting a new one
+    if ((window as any)._treatmentsCarouselAnimation) {
+      cancelAnimationFrame((window as any)._treatmentsCarouselAnimation);
+    }
     
-    startAutoScroll();
+    // Start loop
+    animationId = requestAnimationFrame(scrollLoop);
+    (window as any)._treatmentsCarouselAnimation = animationId;
   }
 
   initTreatmentsCarousel();
