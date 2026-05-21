@@ -17,9 +17,10 @@ const categories = [
   { id: 'localized-basti', label: 'Localized Basti', ml: 'ലോക്കലൈസ്ഡ് ബസ്തി' },
   { id: 'sudation-scrub', label: 'Sudation & Scrubbing', ml: 'സ്വേദനവും സ്ക്രബ്ബിംഗും' },
   { id: 'eye-ear-care', label: 'Eye & Ear Care', ml: 'കണ്ണ് & ചെവി പരിചരണം' },
+  { id: 'special-treatments', label: 'Special Treatments', ml: 'പ്രത്യേക ചികിത്സകൾ' },
 ];
 
-const treatments = {
+const treatments: Record<string, any[]> = {
   'panchakarma': [
     {
       name: 'Vamana',
@@ -153,26 +154,330 @@ const treatments = {
       desc: 'Dropping warm medicated oil into the ears to treat earaches or Vata-related issues like tinnitus.',
       benefits: ['Reduces tinnitus & earache', 'Cleanses ear canal', 'Calms jaws and neck tension']
     }
+  ],
+  'special-treatments': [
+    {
+      name: 'Piles (Arsha)',
+      subtitle: 'Anorectal disorder',
+      dosha: 'Digestive & Rectal Care',
+      desc: 'Ayurvedic management of hemorrhoids using herbal formulations, Kshara application, and dietary protocols to shrink piles and relieve pain.',
+      benefits: ['Reduces bleeding & pain', 'Shrinks hemorrhoidal tissue', 'Prevents recurrence with diet']
+    },
+    {
+      name: 'Fissure',
+      subtitle: 'Anal fissure healing',
+      dosha: 'Anorectal Care',
+      desc: 'Treatment of anal fissures using soothing medicated oils, Kshara Sutra, and internal Ayurvedic medications to heal the tear and relieve spasm.',
+      benefits: ['Heals anal fissures', 'Relieves pain during bowel movement', 'Reduces anal sphincter spasm']
+    },
+    {
+      name: 'Fistula (Bhagandara)',
+      subtitle: 'Fistula-in-ano treatment',
+      dosha: 'Surgical & Herbal Care',
+      desc: 'Classical Kshara Sutra therapy — a proven para-surgical Ayurvedic procedure for fistula-in-ano with minimal recurrence rate.',
+      benefits: ['Treats fistula without major surgery', 'Minimal recurrence rate', 'Faster healing with herbal protocol']
+    },
+    {
+      name: 'IBS (Irritable Bowel Syndrome)',
+      subtitle: 'Gut health management',
+      dosha: 'Digestive Balancing',
+      desc: 'Comprehensive treatment of IBS using Panchakarma, herbal formulations, and gut-healing dietary changes to restore digestive balance.',
+      benefits: ['Reduces bloating & cramps', 'Regulates bowel movements', 'Heals intestinal lining']
+    },
+    {
+      name: 'Psoriasis',
+      subtitle: 'Chronic skin disorder',
+      dosha: 'Skin & Blood Purification',
+      desc: 'Deep-acting Ayurvedic protocol for psoriasis including Panchakarma, blood purifying herbs, and Takradhara to reduce plaques and inflammation.',
+      benefits: ['Reduces skin plaques', 'Decreases itching & inflammation', 'Long-term remission achievable']
+    },
+    {
+      name: 'Allergy',
+      subtitle: 'Allergic conditions',
+      dosha: 'Immune Balancing',
+      desc: 'Treatment of respiratory, skin, and food allergies using Rasayana herbs, Nasya therapy, and immune modulating Ayurvedic protocols.',
+      benefits: ['Strengthens immune response', 'Reduces allergic reaction severity', 'Long-term desensitization']
+    },
+    {
+      name: 'Kidney Stone',
+      subtitle: 'Renal calculi management',
+      dosha: 'Urinary & Renal Care',
+      desc: 'Herbal diuretic formulations to dissolve and flush small kidney stones combined with dietary protocol to prevent new stone formation.',
+      benefits: ['Dissolves small kidney stones', 'Reduces urinary tract inflammation', 'Prevents stone recurrence']
+    },
+    {
+      name: 'Sciatica',
+      subtitle: 'Sciatic nerve pain',
+      dosha: 'Vata & Nerve Balancing',
+      desc: 'Treatment of sciatic nerve pain using Kati Basti, Basti enema therapy, and Kizhi. Highly effective for radiating pain from the lower back to the leg.',
+      benefits: ['Relieves radiating nerve pain', 'Reduces lumbar disc pressure', 'Restores walking comfort']
+    },
+    {
+      name: 'Cervical Spondylitis',
+      subtitle: 'Cervical spine inflammation',
+      dosha: 'Cervical Spine Support',
+      desc: 'Anti-inflammatory herbal therapies and Greeva Basti to reduce inflammation of the cervical vertebrae and restore neck mobility.',
+      benefits: ['Reduces cervical inflammation', 'Restores neck mobility', 'Relieves radiating arm pain']
+    },
+    {
+      name: 'Cervical Spondylosis',
+      subtitle: 'Cervical spine degeneration',
+      dosha: 'Cervical Spine Support',
+      desc: 'Greeva Basti combined with internal medicated oils to nourish and regenerate degenerated cervical spinal discs and relieve compression.',
+      benefits: ['Nourishes spinal discs', 'Slows disc degeneration', 'Relieves neck & arm numbness']
+    },
+    {
+      name: 'Bone Alignment',
+      subtitle: 'Skeletal alignment therapy',
+      dosha: 'Musculoskeletal Care',
+      desc: 'Specialized Marma therapy and manual bone alignment techniques combined with strengthening herbal oils to correct postural imbalances.',
+      benefits: ['Corrects postural deviations', 'Relieves joint misalignment pain', 'Strengthens supporting muscles']
+    },
+    {
+      name: 'Fracture Management',
+      subtitle: 'Post-fracture healing',
+      dosha: 'Bone Strengthening',
+      desc: 'Accelerated bone healing using Asthi-vriddhikar (bone-strengthening) herbs, medicated casts, and calcium-rich Ayurvedic preparations.',
+      benefits: ['Accelerates bone healing', 'Strengthens bone density', 'Reduces post-fracture stiffness']
+    },
+    {
+      name: 'Scoliosis',
+      subtitle: 'Spinal curvature correction',
+      dosha: 'Spinal & Postural Care',
+      desc: 'Therapeutic Yoga, specialized spinal therapies, Kati Basti, and herbal oils to manage and improve spinal curvature in scoliosis.',
+      benefits: ['Improves spinal curvature', 'Relieves associated back pain', 'Strengthens paraspinal muscles']
+    },
+    {
+      name: 'Frozen Shoulder',
+      subtitle: 'Adhesive capsulitis',
+      dosha: 'Shoulder Joint Care',
+      desc: 'Amsana Basti, deep-penetrating medicated oils, and targeted physiotherapy-combined Ayurvedic treatment to restore shoulder mobility.',
+      benefits: ['Restores shoulder range of motion', 'Reduces shoulder joint stiffness', 'Relieves chronic shoulder pain']
+    },
+    {
+      name: 'Diabetic Care',
+      subtitle: 'Diabetes management',
+      dosha: 'Metabolic Balancing',
+      desc: 'Comprehensive Ayurvedic management of Type 2 diabetes using Meha-hara herbs, Panchakarma detox, and strict dietary counseling.',
+      benefits: ['Regulates blood sugar levels', 'Improves insulin sensitivity', 'Prevents diabetic complications']
+    },
+    {
+      name: 'Diabetic Neuropathy',
+      subtitle: 'Nerve damage from diabetes',
+      dosha: 'Nerve & Metabolic Care',
+      desc: 'Specialized nerve-rejuvenating treatments using Basti therapy and Medhya Rasayana herbs to repair and protect nerve endings damaged by diabetes.',
+      benefits: ['Reduces tingling & burning sensation', 'Improves nerve conduction', 'Protects remaining nerve tissue']
+    },
+    {
+      name: 'Cholesterol Care',
+      subtitle: 'Lipid management',
+      dosha: 'Cardiovascular & Lipid Care',
+      desc: 'Medohar (fat-reducing) herbs, Virechana therapy, and dietary protocol to reduce bad cholesterol (LDL) and improve cardiovascular health.',
+      benefits: ['Reduces LDL cholesterol', 'Improves HDL levels', 'Prevents arterial plaque buildup']
+    },
+    {
+      name: 'Fatty Liver',
+      subtitle: 'Hepatic fat management',
+      dosha: 'Liver & Digestive Care',
+      desc: 'Liver-cleansing herbal formulations and Virechana to detoxify the liver, reduce fat accumulation, and restore healthy hepatic function.',
+      benefits: ['Reduces liver fat accumulation', 'Restores healthy liver enzymes', 'Improves digestion & metabolism']
+    },
+    {
+      name: 'BP Care',
+      subtitle: 'Blood pressure management',
+      dosha: 'Cardiovascular Care',
+      desc: 'Shirodhara, stress-reduction protocols, heart-balancing herbs (Sarpagandha, Arjuna) and dietary counseling for managing hypertension naturally.',
+      benefits: ['Reduces systolic & diastolic BP', 'Calms the nervous system', 'Reduces stress-induced hypertension']
+    },
+    {
+      name: 'Paediatric Section',
+      subtitle: 'Children\'s Ayurvedic care',
+      dosha: 'Kaumarabhritya (Child Care)',
+      desc: 'Specialized gentle Ayurvedic treatments for children — Abhyanga, Nasya, and Bala Rasayana herbs for growth, immunity, and pediatric ailments.',
+      benefits: ['Boosts childhood immunity', 'Improves growth & development', 'Treats pediatric respiratory issues']
+    },
+    {
+      name: 'Chicken Pox Care',
+      subtitle: 'Post-viral recovery',
+      dosha: 'Skin & Immune Recovery',
+      desc: 'Ayurvedic management of chicken pox and post-viral recovery using blood-purifying herbs, cooling treatments, and scar-preventing skin protocols.',
+      benefits: ['Reduces viral spread & severity', 'Prevents post-pox scarring', 'Accelerates full recovery']
+    },
+    {
+      name: 'Infertility (Men & Women)',
+      subtitle: 'Fertility enhancement',
+      dosha: 'Reproductive Wellness',
+      desc: 'Deep Shukra and Artava Dhatu nourishing protocol using Vajikarana Rasayana herbs, Panchakarma, and targeted fertility treatments for both partners.',
+      benefits: ['Improves sperm quality & count', 'Regulates ovulation in women', 'Enhances overall reproductive health']
+    },
+    {
+      name: 'Sexual Related Issues',
+      subtitle: 'Sexual health & wellness',
+      dosha: 'Vajikarana (Reproductive)',
+      desc: 'Confidential Vajikarana (aphrodisiac) therapy using classical herbs and treatments to restore sexual vitality, stamina, and hormonal balance.',
+      benefits: ['Restores sexual vitality', 'Balances reproductive hormones', 'Improves stamina & confidence']
+    },
+    {
+      name: 'Libido Enhancement',
+      subtitle: 'Desire & vitality restoration',
+      dosha: 'Vajikarana (Reproductive)',
+      desc: 'Tailored herbal Rasayana and Basti therapy to restore natural libido, address hormonal imbalances, and rejuvenate reproductive tissue.',
+      benefits: ['Naturally restores libido', 'Balances sex hormones', 'Rejuvenates reproductive tissues']
+    },
+    {
+      name: 'Migraine',
+      subtitle: 'Chronic headache management',
+      dosha: 'Pitta & Vata Balancing',
+      desc: 'Nasya therapy, Shirodhara, and Pitta-pacifying internal medications to reduce migraine frequency, intensity, and associated sensitivity.',
+      benefits: ['Reduces migraine frequency', 'Relieves throbbing head pain', 'Reduces light & sound sensitivity']
+    },
+    {
+      name: 'PCOD & PCOS',
+      subtitle: 'Hormonal imbalance in women',
+      dosha: 'Women\'s Hormonal Care',
+      desc: 'Hormonal balancing treatments using Stanya and Artava vriddhikar herbs, Virechana, Uttara Basti, and strict dietary counseling for PCOD/PCOS management.',
+      benefits: ['Regulates menstrual cycles', 'Reduces ovarian cysts', 'Balances hormonal levels naturally']
+    },
+    {
+      name: 'Endometriosis',
+      subtitle: 'Uterine tissue management',
+      dosha: 'Women\'s Reproductive Care',
+      desc: 'Classical Ayurvedic management of endometriosis using Uttara Basti, anti-inflammatory herbs, and Vata-Pitta balancing protocols.',
+      benefits: ['Reduces endometrial tissue growth', 'Relieves severe menstrual pain', 'Improves fertility outcomes']
+    },
+    {
+      name: 'White Discharge (Leucorrhoea)',
+      subtitle: 'Vaginal discharge treatment',
+      dosha: 'Women\'s Gynaecological Care',
+      desc: 'Treatment of abnormal vaginal discharge using Kapha-Pitta balancing herbs, Yoni Pichu, and Uttara Basti to restore healthy vaginal flora.',
+      benefits: ['Reduces abnormal discharge', 'Restores healthy vaginal pH', 'Prevents recurrent infections']
+    },
+    {
+      name: 'Cosmetology',
+      subtitle: 'Beauty & skin enhancement',
+      dosha: 'Skin Radiance & Beauty',
+      desc: 'Natural Ayurvedic cosmetology treatments using herbal face packs, Mukhaabhyanga, and Varnya (complexion-enhancing) herbs for glowing skin.',
+      benefits: ['Improves skin radiance & glow', 'Reduces dark spots & blemishes', 'Anti-aging & skin firming']
+    },
+    {
+      name: 'Dermatology',
+      subtitle: 'Skin disease treatment',
+      dosha: 'Skin & Blood Purification',
+      desc: 'Treatment of chronic skin diseases like eczema, urticaria, and contact dermatitis using Panchakarma blood purification and herbal protocols.',
+      benefits: ['Treats chronic skin diseases', 'Purifies blood of skin toxins', 'Prevents skin disease recurrence']
+    },
+    {
+      name: 'Nethra Chikithsa',
+      subtitle: 'Classical eye care',
+      dosha: 'Eye Care (Netra)',
+      desc: 'Specialized Ayurvedic eye therapies including Netra Tarpana, Anjana, and Pindi to strengthen vision, treat eye diseases, and reduce strain.',
+      benefits: ['Strengthens eyesight', 'Treats dry eyes & strain', 'Manages early-stage eye conditions']
+    },
+    {
+      name: 'Karna Chikithsa',
+      subtitle: 'Classical ear care',
+      dosha: 'Ear Care (Karna)',
+      desc: 'Ayurvedic ear care using Karna Purana (medicated oil ear drops), Dhoopana, and herbal fumigation to treat earaches, tinnitus, and hearing issues.',
+      benefits: ['Relieves ear pain & tinnitus', 'Improves hearing function', 'Clears ear canal blockages']
+    },
+    {
+      name: 'Dandruff Treatment',
+      subtitle: 'Scalp & hair care',
+      dosha: 'Hair & Scalp Care',
+      desc: 'Medicated Shirobhyanga, Takradhara, and anti-fungal herbal hair packs to eliminate dandruff, nourish the scalp, and strengthen hair roots.',
+      benefits: ['Eliminates dandruff completely', 'Nourishes scalp & hair follicles', 'Prevents hair loss from dandruff']
+    },
+    {
+      name: 'De-Tan Treatment',
+      subtitle: 'Skin brightening therapy',
+      dosha: 'Skin Care & Brightening',
+      desc: 'Herbal Ubtan and Varnya herb combinations to remove sun tan, brighten skin tone, and restore the skin\'s natural luminosity.',
+      benefits: ['Removes sun tan effectively', 'Brightens & evens skin tone', 'Reduces UV-induced pigmentation']
+    },
+    {
+      name: 'Rejuvenation Therapy',
+      subtitle: 'Rasayana anti-aging',
+      dosha: 'Anti-Aging & Vitality',
+      desc: 'Comprehensive Rasayana (rejuvenation) programme using classical anti-aging herbs, Panchakarma, Abhyanga, and Rasayana dietary protocols.',
+      benefits: ['Slows cellular aging process', 'Rejuvenates body & mind completely', 'Boosts vitality, immunity & longevity']
+    },
+    {
+      name: 'Weight Loss Treatment',
+      subtitle: 'Medohar (fat reduction)',
+      dosha: 'Weight & Metabolism',
+      desc: 'Kapha-balancing Panchakarma with Udvartana, Medohar herbs, and strict dietary counseling for sustainable, healthy weight loss.',
+      benefits: ['Reduces excess body fat', 'Boosts metabolism naturally', 'Prevents weight regain with lifestyle changes']
+    },
+    {
+      name: 'Weight Gain Treatment',
+      subtitle: 'Brimhana (nourishing) therapy',
+      dosha: 'Nourishing & Strengthening',
+      desc: 'Brimhana (nourishing) protocol using Ashwagandha, Shatavari, medicated ghee, and muscle-building herbal preparations for healthy weight gain.',
+      benefits: ['Promotes healthy muscle mass gain', 'Improves nutrient absorption', 'Strengthens body tissues (Dhatus)']
+    },
   ]
 };
+
+// Group special treatments into sub-categories for display
+const specialTreatmentGroups = [
+  {
+    groupName: 'Anorectal & Digestive',
+    groupMl: 'ദഹനസംബന്ധമായ',
+    ids: ['Piles (Arsha)', 'Fissure', 'Fistula (Bhagandara)', 'IBS (Irritable Bowel Syndrome)']
+  },
+  {
+    groupName: 'Spine, Joint & Ortho',
+    groupMl: 'അസ്ഥി & സന്ധി',
+    ids: ['Sciatica', 'Cervical Spondylitis', 'Cervical Spondylosis', 'Bone Alignment', 'Fracture Management', 'Scoliosis', 'Frozen Shoulder']
+  },
+  {
+    groupName: 'Lifestyle & Metabolic',
+    groupMl: 'ജീവിതശൈലി',
+    ids: ['Diabetic Care', 'Diabetic Neuropathy', 'Cholesterol Care', 'Fatty Liver', 'BP Care', 'Weight Loss Treatment', 'Weight Gain Treatment']
+  },
+  {
+    groupName: 'Women\'s Health',
+    groupMl: 'സ്ത്രീരോഗങ്ങൾ',
+    ids: ['PCOD & PCOS', 'Endometriosis', 'White Discharge (Leucorrhoea)', 'Infertility (Men & Women)', 'Sexual Related Issues', 'Libido Enhancement']
+  },
+  {
+    groupName: 'Skin, Hair & Beauty',
+    groupMl: 'ചർമ്മ & കേശം',
+    ids: ['Psoriasis', 'Allergy', 'Cosmetology', 'Dermatology', 'Dandruff Treatment', 'De-Tan Treatment']
+  },
+  {
+    groupName: 'Specialized & Children',
+    groupMl: 'ബാലരോഗം & മറ്റ്',
+    ids: ['Kidney Stone', 'Migraine', 'Paediatric Section', 'Chicken Pox Care', 'Rejuvenation Therapy', 'Nethra Chikithsa', 'Karna Chikithsa']
+  },
+];
 
 export default function TreatmentTabs() {
   const lang = useLang();
   const ml = lang === 'ml';
   const [activeTab, setActiveTab] = useState('panchakarma');
   const [selectedTreatment, setSelectedTreatment] = useState<any | null>(null);
+  const [activeGroup, setActiveGroup] = useState('Anorectal & Digestive');
+
+  const isSpecial = activeTab === 'special-treatments';
+
+  const filteredSpecialTreatments = isSpecial
+    ? (treatments['special-treatments'] as any[]).filter(t =>
+        specialTreatmentGroups.find(g => g.groupName === activeGroup)?.ids.includes(t.name)
+      )
+    : [];
 
   return (
-    <div className="space-y-16">
-      {/* Tabs */}
+    <div className="space-y-10">
+      {/* Main Category Tabs */}
       <div className="flex overflow-x-auto no-scrollbar md:flex-wrap md:justify-center gap-2 md:gap-4 border-b border-accent-gold/20 pb-4 snap-x">
         {categories.map(cat => (
           <button
             key={cat.id}
             onClick={() => setActiveTab(cat.id)}
-            className={`px-6 py-3 text-lg transition-all duration-300 relative whitespace-nowrap snap-center flex items-center gap-2 rounded-t-lg ${
-              activeTab === cat.id 
-                ? 'text-primary-dark font-bold bg-accent-gold/10 border-b-2 border-accent-gold' 
+            className={`px-5 py-3 text-base transition-all duration-300 relative whitespace-nowrap snap-center flex items-center gap-2 rounded-t-lg ${
+              activeTab === cat.id
+                ? 'text-primary-dark font-bold bg-accent-gold/10 border-b-2 border-accent-gold'
                 : 'text-text-muted hover:text-primary hover:bg-primary-dark/5'
             }`}
           >
@@ -181,11 +486,30 @@ export default function TreatmentTabs() {
         ))}
       </div>
 
+      {/* Sub-category tabs for Special Treatments */}
+      {isSpecial && (
+        <div className="flex flex-wrap gap-2 justify-center">
+          {specialTreatmentGroups.map(group => (
+            <button
+              key={group.groupName}
+              onClick={() => setActiveGroup(group.groupName)}
+              className={`px-4 py-2 text-sm rounded-full border transition-all duration-300 ${
+                activeGroup === group.groupName
+                  ? 'bg-primary-dark text-background-parchment border-primary-dark font-bold'
+                  : 'bg-white text-text-muted border-accent-gold/20 hover:border-accent-gold hover:text-primary-dark'
+              }`}
+            >
+              {ml ? group.groupMl : group.groupName}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Content Grid */}
       <div className="min-h-[400px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {treatments[activeTab as keyof typeof treatments].map((item, index) => (
-            <div 
+          {(isSpecial ? filteredSpecialTreatments : treatments[activeTab as keyof typeof treatments]).map((item, index) => (
+            <div
               key={index}
               className="bg-white p-8 shadow-md border-t-2 border-primary-dark/10 hover:border-accent-gold transition-all duration-300 space-y-4 group flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 rounded-lg"
             >
@@ -195,13 +519,13 @@ export default function TreatmentTabs() {
                     {item.dosha}
                   </span>
                 </div>
-                <h3 className="text-2xl text-primary-dark group-hover:text-accent-gold transition-colors duration-300">{item.name}</h3>
-                <p className="text-xs font-sans text-text-muted">{item.subtitle}</p>
+                <h3 className="text-xl text-primary-dark group-hover:text-accent-gold transition-colors duration-300 font-bold">{item.name}</h3>
+                <p className="text-xs font-sans text-text-muted italic">{item.subtitle}</p>
                 <p className="text-text-muted font-sans text-sm leading-relaxed line-clamp-3">{item.desc}</p>
               </div>
               <div className="flex justify-between items-center pt-4 border-t border-accent-gold/10 mt-4">
                 <span className="text-xs font-sans uppercase tracking-widest text-earth">{ml ? 'ഹോസ്പിറ്റൽ തെറാപ്പി' : 'Hospital Therapy'}</span>
-                <button 
+                <button
                   onClick={() => setSelectedTreatment(item)}
                   className="text-primary font-bold text-sm hover:text-accent-gold transition-colors duration-300 flex items-center gap-1"
                 >
@@ -213,60 +537,57 @@ export default function TreatmentTabs() {
         </div>
       </div>
 
-      {/* Sequence of Treatment Timeline Section */}
-      <div className="bg-primary-dark/5 p-8 md:p-12 rounded-2xl border border-accent-gold/20 space-y-8 mt-24">
-        <div className="text-center max-w-2xl mx-auto space-y-4">
-          <span className="text-accent-gold font-sans uppercase tracking-[0.2em] text-xs font-bold block">{ml ? 'ചികിത്സാ പ്രോട്ടോക്കോൾ' : 'Treatment Protocol'}</span>
-          <h3 className="text-3xl md:text-4xl text-primary-dark">{ml ? 'ചികിത്സയുടെ ക്രമം' : 'The Sequence of Treatment'}</h3>
-          <p className="text-text-muted font-sans text-sm">
-            {ml ? 'ഫലപ്രദമാകാൻ, ക്ലാസിക്കൽ ആയുർവേദ കർമ്മങ്ങൾ കൃത്യമായ ഒരു മൂന്ന്-ഘട്ട പ്രോട്ടോക്കോൾ പിന്തുടരുന്നു:' : 'To be highly effective, classical Ayurvedic karmas follow a precise, scientifically structured three-stage protocol:'}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative mt-12">
-          {/* Connecting line for desktop */}
-          <div className="hidden lg:block absolute top-1/2 left-4 right-4 h-0.5 bg-accent-gold/20 -translate-y-1/2 z-0" />
-
-          {/* Step 1 */}
-          <div className="bg-white p-8 rounded-xl shadow-sm border-t-4 border-accent-gold flex flex-col items-center text-center relative z-10 space-y-4 hover:shadow-md transition-shadow">
-            <div className="w-14 h-14 rounded-full bg-accent-gold text-primary-dark text-xl flex items-center justify-center font-bold">1</div>
-            <h4 className="text-2xl text-primary-dark">{ml ? 'പൂർവ്വകർമ്മ' : 'Purvakarma'}</h4>
-            <span className="text-xs font-sans uppercase tracking-widest text-earth font-bold">{ml ? 'തയ്യാറെടുപ്പ് ഘട്ടം' : 'Preparatory Stage'}</span>
-            <p className="text-text-muted font-sans text-sm leading-relaxed">
-              Preparing the body via <strong>Snehana</strong> (oleation) and <strong>Swedana</strong> (fomentation/sweating) to loosen deep-seated toxins and guide them to primary channels.
+      {/* Treatment Protocol Timeline — only for non-special tabs */}
+      {!isSpecial && (
+        <div className="bg-primary-dark/5 p-8 md:p-12 rounded-2xl border border-accent-gold/20 space-y-8 mt-24">
+          <div className="text-center max-w-2xl mx-auto space-y-4">
+            <span className="text-accent-gold font-sans uppercase tracking-[0.2em] text-xs font-bold block">{ml ? 'ചികിത്സാ പ്രോട്ടോക്കോൾ' : 'Treatment Protocol'}</span>
+            <h3 className="text-3xl md:text-4xl text-primary-dark">{ml ? 'ചികിത്സയുടെ ക്രമം' : 'The Sequence of Treatment'}</h3>
+            <p className="text-text-muted font-sans text-sm">
+              {ml ? 'ഫലപ്രദമാകാൻ, ക്ലാസിക്കൽ ആയുർവേദ കർമ്മങ്ങൾ കൃത്യമായ ഒരു മൂന്ന്-ഘട്ട പ്രോട്ടോക്കോൾ പിന്തുടരുന്നു:' : 'To be highly effective, classical Ayurvedic karmas follow a precise, scientifically structured three-stage protocol:'}
             </p>
           </div>
 
-          {/* Step 2 */}
-          <div className="bg-white p-8 rounded-xl shadow-sm border-t-4 border-primary-dark flex flex-col items-center text-center relative z-10 space-y-4 hover:shadow-md transition-shadow">
-            <div className="w-14 h-14 rounded-full bg-primary-dark text-background-parchment text-xl flex items-center justify-center font-bold">2</div>
-            <h4 className="text-2xl text-primary-dark">{ml ? 'പ്രധാന കർമ്മ' : 'Pradhana Karma'}</h4>
-            <span className="text-xs font-sans uppercase tracking-widest text-earth font-bold">{ml ? 'ശുദ്ധീകരണ ഘട്ടം' : 'Elimination Stage'}</span>
-            <p className="text-text-muted font-sans text-sm leading-relaxed">
-              The actual elimination of toxins (<strong>Panchakarma</strong>) using the five specialized cleansing actions to flush out deep cellular wastes based on your primary dosha imbalance.
-            </p>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative mt-12">
+            <div className="hidden lg:block absolute top-1/2 left-4 right-4 h-0.5 bg-accent-gold/20 -translate-y-1/2 z-0" />
 
-          {/* Step 3 */}
-          <div className="bg-white p-8 rounded-xl shadow-sm border-t-4 border-accent-gold flex flex-col items-center text-center relative z-10 space-y-4 hover:shadow-md transition-shadow">
-            <div className="w-14 h-14 rounded-full bg-accent-gold text-primary-dark text-xl flex items-center justify-center font-bold">3</div>
-            <h4 className="text-2xl text-primary-dark">{ml ? 'പശ്ചാത് കർമ്മ' : 'Paschat Karma'}</h4>
-            <span className="text-xs font-sans uppercase tracking-widest text-earth font-bold">{ml ? 'ചികിത്സാനന്തര പരിചരണം' : 'Post-Treatment Care'}</span>
-            <p className="text-text-muted font-sans text-sm leading-relaxed">
-              Post-treatment rehabilitation, including <strong>Samsarjana Krama</strong> (gradual reintroduction of diet) to rekindle the digestive fire (<strong>Agni</strong>) and build vitality.
-            </p>
+            <div className="bg-white p-8 rounded-xl shadow-sm border-t-4 border-accent-gold flex flex-col items-center text-center relative z-10 space-y-4 hover:shadow-md transition-shadow">
+              <div className="w-14 h-14 rounded-full bg-accent-gold text-primary-dark text-xl flex items-center justify-center font-bold">1</div>
+              <h4 className="text-2xl text-primary-dark">{ml ? 'പൂർവ്വകർമ്മ' : 'Purvakarma'}</h4>
+              <span className="text-xs font-sans uppercase tracking-widest text-earth font-bold">{ml ? 'തയ്യാറെടുപ്പ് ഘട്ടം' : 'Preparatory Stage'}</span>
+              <p className="text-text-muted font-sans text-sm leading-relaxed">
+                Preparing the body via <strong>Snehana</strong> (oleation) and <strong>Swedana</strong> (fomentation/sweating) to loosen deep-seated toxins and guide them to primary channels.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-xl shadow-sm border-t-4 border-primary-dark flex flex-col items-center text-center relative z-10 space-y-4 hover:shadow-md transition-shadow">
+              <div className="w-14 h-14 rounded-full bg-primary-dark text-background-parchment text-xl flex items-center justify-center font-bold">2</div>
+              <h4 className="text-2xl text-primary-dark">{ml ? 'പ്രധാന കർമ്മ' : 'Pradhana Karma'}</h4>
+              <span className="text-xs font-sans uppercase tracking-widest text-earth font-bold">{ml ? 'ശുദ്ധീകരണ ഘട്ടം' : 'Elimination Stage'}</span>
+              <p className="text-text-muted font-sans text-sm leading-relaxed">
+                The actual elimination of toxins (<strong>Panchakarma</strong>) using the five specialized cleansing actions to flush out deep cellular wastes based on your primary dosha imbalance.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-xl shadow-sm border-t-4 border-accent-gold flex flex-col items-center text-center relative z-10 space-y-4 hover:shadow-md transition-shadow">
+              <div className="w-14 h-14 rounded-full bg-accent-gold text-primary-dark text-xl flex items-center justify-center font-bold">3</div>
+              <h4 className="text-2xl text-primary-dark">{ml ? 'പശ്ചാത് കർമ്മ' : 'Paschat Karma'}</h4>
+              <span className="text-xs font-sans uppercase tracking-widest text-earth font-bold">{ml ? 'ചികിത്സാനന്തര പരിചരണം' : 'Post-Treatment Care'}</span>
+              <p className="text-text-muted font-sans text-sm leading-relaxed">
+                Post-treatment rehabilitation, including <strong>Samsarjana Krama</strong> (gradual reintroduction of diet) to rekindle the digestive fire (<strong>Agni</strong>) and build vitality.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
-      {/* Pure CSS Modal Dialog */}
+      {/* Detail Modal */}
       {selectedTreatment && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300">
           <div className="bg-background-parchment max-w-lg w-full rounded-2xl overflow-hidden shadow-2xl border border-accent-gold/30 flex flex-col relative transform transition-transform duration-300 scale-100">
-            {/* Decorative gold line */}
             <div className="h-2 bg-accent-gold w-full" />
-            
-            <button 
+
+            <button
               onClick={() => setSelectedTreatment(null)}
               className="absolute top-4 right-4 text-text-muted hover:text-primary-dark transition-colors text-2xl"
             >
@@ -281,7 +602,7 @@ export default function TreatmentTabs() {
                 <h4 className="text-3xl text-primary-dark font-bold pt-2">
                   {selectedTreatment.name}
                 </h4>
-                <p className="text-xs font-sans text-text-muted">
+                <p className="text-xs font-sans text-text-muted italic">
                   {selectedTreatment.subtitle}
                 </p>
               </div>
@@ -299,8 +620,8 @@ export default function TreatmentTabs() {
                   <ul className="grid grid-cols-1 gap-2">
                     {selectedTreatment.benefits.map((b: string, i: number) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-text-muted font-sans">
-                        <svg class="text-accent-gold w-4 h-4 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        <svg className="text-accent-gold w-4 h-4 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                         <span>{b}</span>
                       </li>

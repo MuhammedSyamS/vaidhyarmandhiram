@@ -1,0 +1,224 @@
+---
+import { 
+  Activity, 
+  Baby, 
+  Bone, 
+  Brain, 
+  Droplets, 
+  Eye, 
+  Heart, 
+  Leaf, 
+  Sparkles, 
+  Stethoscope, 
+  Scissors
+} from 'lucide-react';
+
+const categories = [
+  {
+    title: "Anorectal & Digestive",
+    titleMl: "ദഹനസംബന്ധമായ രോഗങ്ങൾ",
+    icon: Activity,
+    conditions: ["Piles", "Fissure", "Fistula", "IBS (Irritable Bowel Syndrome)"]
+  },
+  {
+    title: "Spine, Joint & Ortho",
+    titleMl: "അസ്ഥി, സന്ധി രോഗങ്ങൾ",
+    icon: Bone,
+    conditions: ["Sciatica", "Cervical Spondylitis", "Cervical Spondylosis", "Bone Alignment", "Fracture Management", "Scoliosis", "Frozen Shoulder"]
+  },
+  {
+    title: "Lifestyle & Metabolic",
+    titleMl: "ജീവിതശൈലി രോഗങ്ങൾ",
+    icon: Heart,
+    conditions: ["Diabetic Care", "Diabetic Neuropathy", "Cholesterol Care", "Fatty Liver", "BP Care", "Weight Loss", "Weight Gain"]
+  },
+  {
+    title: "Women's Health & Fertility",
+    titleMl: "സ്ത്രീരോഗങ്ങൾ & വന്ധ്യതാ ചികിത്സ",
+    icon: Sparkles,
+    conditions: ["PCOD & PCOS", "Endometriosis", "White Discharge", "Infertility (Men/Women)", "Sexual Wellness", "Libido Enhancement"]
+  },
+  {
+    title: "Skin, Hair & Beauty",
+    titleMl: "ചർമ്മ-കേശ സംരക്ഷണം",
+    icon: Leaf,
+    conditions: ["Psoriasis", "Allergies", "Dandruff Treatment", "De-Tan Treatment", "Cosmetology", "Dermatology"]
+  },
+  {
+    title: "Specialized Care",
+    titleMl: "പ്രത്യേക ചികിത്സകൾ",
+    icon: Stethoscope,
+    conditions: ["Kidney Stone", "Migraine", "Paediatric Section", "Chicken Pox Care", "Rejuvenation Therapy"]
+  },
+  {
+    title: "Sense Organs (Shalakya)",
+    titleMl: "നേത്ര-കർണ്ണ ചികിത്സകൾ",
+    icon: Eye,
+    conditions: ["Nethra Chikithsa (Eye Care)", "Karna Chikithsa (Ear Care)"]
+  }
+];
+---
+
+<div class="bg-white py-24 border-y border-accent-gold/10">
+  <div class="container mx-auto px-4 max-w-7xl">
+    <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0 translate-y-4 transition-all duration-700">
+      <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.25em] text-sm font-bold block mb-2">Comprehensive Healing</span>
+      <span class="lang-ml font-malayalam text-accent-gold text-sm font-bold block mb-2">സമ്പൂർണ്ണ സൗഖ്യം</span>
+      <h2 class="lang-en text-4xl md:text-5xl text-primary-dark font-serif mb-4">Conditions We <span class="text-accent-gold italic">Treat</span></h2>
+      <h2 class="lang-ml font-malayalam text-4xl md:text-5xl text-primary-dark font-bold mb-4">ഞങ്ങൾ ചികിത്സിക്കുന്ന <span class="text-accent-gold">രോഗങ്ങൾ</span></h2>
+      <p class="lang-en text-text-muted font-sans text-lg">
+        Our specialized Ayurvedic protocols are highly effective in treating and managing a wide range of chronic and acute health conditions.
+      </p>
+      <p class="lang-ml font-malayalam text-text-muted text-lg">
+        വിവിധങ്ങളായ വിട്ടുമാറാത്ത രോഗങ്ങൾക്ക് ഞങ്ങളുടെ പ്രത്യേക ആയുർവേദ ചികിത്സകൾ വളരെ ഫലപ്രദമാണ്.
+      </p>
+    </div>
+
+    <div id="conditions-scroll-container" class="flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-6 lg:gap-8 pb-8 scroll-smooth conditions-carousel">
+      {categories.map((category, index) => {
+        const Icon = category.icon;
+        return (
+          <div 
+            class="condition-card bg-background-cream p-8 rounded-[2rem] border border-accent-gold/10 hover:border-accent-gold/40 hover:shadow-xl transition-all duration-500 group shrink-0 w-[85vw] sm:w-[350px] md:w-[400px] snap-center"
+          >
+            <div class="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-accent-gold mb-6 group-hover:scale-110 transition-transform duration-500 border border-accent-gold/10 shrink-0">
+              <Icon size={28} strokeWidth={1.5} />
+            </div>
+            
+            <h3 class="lang-en font-serif text-2xl text-primary-dark font-bold mb-1 group-hover:text-accent-gold transition-colors duration-300">
+              {category.title}
+            </h3>
+            <h3 class="lang-ml font-malayalam text-xl text-primary-dark font-bold mb-4 group-hover:text-accent-gold transition-colors duration-300">
+              {category.titleMl}
+            </h3>
+            
+            <div class="w-12 h-1 bg-accent-gold/30 rounded-full mb-6 group-hover:w-24 group-hover:bg-accent-gold transition-all duration-500"></div>
+
+            <ul class="space-y-3">
+              {category.conditions.map((condition) => (
+                <li class="flex items-start gap-3">
+                  <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent-gold/60 shrink-0"></div>
+                  <span class="text-primary-dark/80 font-sans text-sm md:text-base leading-snug">{condition}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</div>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  function initConditionsCarousel() {
+    const container = document.getElementById('conditions-scroll-container') as HTMLElement;
+    if (!container) return;
+
+    let autoScrollInterval: ReturnType<typeof setInterval>;
+    const items = Array.from(container.querySelectorAll('.condition-card')) as HTMLElement[];
+    let currentIndex = 0;
+    let isProgrammaticScroll = false;
+
+    const updateIndex = () => {
+      if (items.length === 0) return;
+      const scrollLeft = container.scrollLeft;
+      const centerOffset = container.offsetWidth / 2;
+      const scrollCenter = scrollLeft + centerOffset;
+      
+      let closestIndex = 0;
+      let minDistance = Infinity;
+      
+      items.forEach((item, idx) => {
+        const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+        const distance = Math.abs(scrollCenter - itemCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = idx;
+        }
+      });
+      
+      currentIndex = closestIndex;
+    };
+
+    container.addEventListener('scroll', () => {
+      if (!isProgrammaticScroll) {
+        updateIndex();
+      }
+    }, { passive: true });
+
+    const startAutoScroll = () => {
+      stopAutoScroll();
+
+      autoScrollInterval = setInterval(() => {
+        if (items.length === 0) return;
+
+        currentIndex++;
+        if (currentIndex >= items.length) {
+          currentIndex = 0;
+        }
+
+        isProgrammaticScroll = true;
+
+        const targetItem = items[currentIndex];
+        const scrollTarget = targetItem.offsetLeft - (container.offsetWidth / 2) + (targetItem.offsetWidth / 2);
+
+        container.scrollTo({
+          left: scrollTarget,
+          behavior: 'smooth'
+        });
+
+        setTimeout(() => {
+          isProgrammaticScroll = false;
+        }, 1000);
+      }, 4000);
+    };
+
+    const stopAutoScroll = () => {
+      if (autoScrollInterval) clearInterval(autoScrollInterval);
+    };
+
+    container.addEventListener('mouseenter', stopAutoScroll);
+    container.addEventListener('mouseleave', startAutoScroll);
+    container.addEventListener('touchstart', stopAutoScroll, { passive: true });
+    container.addEventListener('touchend', startAutoScroll);
+
+    startAutoScroll();
+  }
+
+  // Intersection Observer for scroll animation (header)
+  function initConditionsAnimation() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('opacity-0', 'translate-y-4');
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+  }
+
+  // Run on initial load
+  initConditionsCarousel();
+  initConditionsAnimation();
+
+  // Re-run safely on View Transitions
+  document.addEventListener('astro:page-load', () => {
+    initConditionsCarousel();
+    initConditionsAnimation();
+  });
+</script>

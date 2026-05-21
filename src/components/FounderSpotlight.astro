@@ -1,82 +1,81 @@
 ---
-import { Calendar, Shield, Award, ArrowRight, Quote, Sparkles } from 'lucide-react';
+import { Calendar, Shield, Award, ArrowRight, Quote } from 'lucide-react';
 ---
 
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-  <!-- Left Column: Photo & Plaque (5/12 width on desktop) -->
-  <div class="lg:col-span-5 relative animate-on-scroll opacity-0 translate-x-[-30px] transition-all duration-1000 ease-out group/founder-card pb-10">
-    
-    <!-- Museum-Style Portrait Frame with Double Gold-Cream Borders (Upright & Clean) -->
-    <div class="relative max-w-[350px] mx-auto z-10 shadow-[0_22px_50px_rgba(0,0,0,0.22)] rounded-2xl border-2 border-accent-gold/45 p-3.5 bg-background-cream/70 backdrop-blur-sm group-hover/founder-card:scale-[1.01] transition-transform duration-500 ease-out mb-6">
-      
-      <!-- Internal photo container with solid border and ornate corners -->
-      <div class="relative rounded-xl overflow-hidden aspect-[3/4] border border-accent-gold/25 bg-primary-dark">
-        <img 
-          src="/images/vmfounder.jpg" 
-          alt="Dr. P. Abdul Sathar Gurukkal - Founder and Chief Physician, Vaidyarmandiram Ayurveda Hospital Kerala" 
-          class="w-full h-full object-cover object-top hover:scale-[1.05] transition-transform duration-[6000ms] ease-out"
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
+  <!-- ══════════════════════════════════════════
+       Left Column: Portrait Card (5/12)
+  ══════════════════════════════════════════ -->
+  <div class="lg:col-span-5 relative animate-on-scroll opacity-0 translate-x-[-30px] transition-all duration-1000 ease-out group/founder-card">
+
+    <!-- Offset shadow border (behind the card) -->
+    <div class="absolute inset-0 border border-accent-gold/20 rounded-2xl pointer-events-none translate-x-3 translate-y-3 group-hover/founder-card:translate-x-0 group-hover/founder-card:translate-y-0 transition-all duration-700 ease-out -z-10"></div>
+
+    <!-- Soft aura glows -->
+    <div class="absolute -top-12 -left-12 w-44 h-44 bg-accent-gold/8 rounded-full blur-3xl -z-20 pointer-events-none"></div>
+    <div class="absolute -bottom-12 -right-12 w-52 h-52 bg-primary/8 rounded-full blur-3xl -z-20 pointer-events-none"></div>
+
+    <!-- Main Portrait Card -->
+    <div class="relative z-10 rounded-2xl border-2 border-accent-gold/40 p-3 bg-background-cream/60 backdrop-blur-sm shadow-[0_24px_55px_rgba(0,0,0,0.18)] group-hover/founder-card:scale-[1.01] transition-transform duration-500 ease-out">
+
+      <!-- ── Top Badge: Ornate Corner (Right) ── -->
+      <div class="absolute -top-3 -right-3 w-8 h-8 z-30">
+        <div class="w-full h-full border-t-2 border-r-2 border-accent-gold/50 rounded-tr-lg"></div>
+      </div>
+
+      <!-- ── Photo Container ── -->
+      <div class="relative rounded-xl overflow-hidden aspect-[3/4] border border-accent-gold/20 bg-primary-dark">
+        <img
+          src="/images/vmfounder.jpg"
+          alt="Dr. P. Abdul Sathar Gurukkal - Founder and Chief Physician, Vaidyarmandiram Ayurveda Hospital Kerala"
+          class="w-full h-full object-cover object-top hover:scale-[1.04] transition-transform duration-[7000ms] ease-out"
         />
-        <!-- Elegant gradient overlay -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
 
-        <!-- Ornate gold corners inside the photo frame -->
-        <div class="absolute top-2 left-2 w-4 h-4 border-t border-l border-accent-gold/60"></div>
-        <div class="absolute top-2 right-2 w-4 h-4 border-t border-r border-accent-gold/60"></div>
-        <div class="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-accent-gold/60"></div>
-        <div class="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-accent-gold/60"></div>
+        <!-- Gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+
+        <!-- Photo corner accents -->
+        <div class="absolute top-3 left-3 w-5 h-5 border-t border-l border-accent-gold/50"></div>
+        <div class="absolute top-3 right-3 w-5 h-5 border-t border-r border-accent-gold/50"></div>
+        <div class="absolute bottom-3 left-3 w-5 h-5 border-b border-l border-accent-gold/50"></div>
+        <div class="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-accent-gold/50"></div>
       </div>
 
-      <!-- Floating Heritage Crest (Top-Left) with Rotating Text Ring (Continuous double-text) -->
-      <div class="absolute -top-5 -left-5 w-20 h-20 shrink-0 z-20 shadow-lg group-hover/founder-card:scale-110 transition-transform duration-500">
-        <!-- Rotating SVG Text Ring -->
-        <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full origin-center animate-spin-slow pointer-events-none select-none">
-          <path id="crestPathFounder" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
-          <text class="font-sans font-extrabold uppercase fill-accent-gold text-[6.5px] tracking-[0.18em]">
-            <textPath href="#crestPathFounder" startOffset="0%">• VAIDYARMANDIRAM • ESTD 1983 • VAIDYARMANDIRAM • ESTD 1983</textPath>
-          </text>
-        </svg>
-        
-        <!-- Static Center Medallion -->
-        <div class="absolute inset-[19px] rounded-full border border-accent-gold/45 bg-primary-dark flex flex-col items-center justify-center shadow-md">
-          <div class="absolute inset-[1.5px] rounded-full border border-dashed border-accent-gold/20"></div>
-          <Sparkles size={12} class="text-accent-gold z-10" />
-        </div>
+      <!-- ── Name Plaque (inside card, below photo) ── -->
+      <div class="mt-3 px-4 py-3.5 text-center relative border-t border-accent-gold/15">
+        <!-- Corner accents on plaque -->
+        <div class="absolute top-2 left-2 w-2.5 h-2.5 border-t border-l border-accent-gold/35"></div>
+        <div class="absolute top-2 right-2 w-2.5 h-2.5 border-t border-r border-accent-gold/35"></div>
+        <div class="absolute bottom-2 left-2 w-2.5 h-2.5 border-b border-l border-accent-gold/35"></div>
+        <div class="absolute bottom-2 right-2 w-2.5 h-2.5 border-b border-r border-accent-gold/35"></div>
+
+        <h3 class="lang-en text-base font-serif text-primary-dark font-bold tracking-wide">Dr. P. Abdul Sathar Gurukkal</h3>
+        <h3 class="lang-ml font-malayalam text-sm text-primary-dark font-bold leading-snug">ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</h3>
+        <p class="lang-en text-[9px] uppercase tracking-widest text-accent-gold font-sans font-bold mt-1">Founder &amp; Chief Physician</p>
+        <p class="lang-ml font-malayalam text-[9px] text-accent-gold mt-0.5 leading-none">സ്ഥാപകൻ &amp; ചീഫ് ഫിസിഷ്യൻ</p>
       </div>
 
-      <!-- Wood-Brass Styled Name Plaque with Corner Marks (Overlapping the bottom edge of the frame) -->
-      <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[85%] text-center bg-gradient-to-br from-primary-dark to-primary border border-accent-gold/35 rounded-xl py-3 px-4 shadow-[0_15px_35px_rgba(0,0,0,0.22)] z-30 group-hover/founder-card:scale-[1.02] transition-transform duration-500">
-        <!-- Decorative gold corner lines -->
-        <div class="absolute top-1.5 left-1.5 w-2 h-2 border-t border-l border-accent-gold/40"></div>
-        <div class="absolute top-1.5 right-1.5 w-2 h-2 border-t border-r border-accent-gold/40"></div>
-        <div class="absolute bottom-1.5 left-1.5 w-2 h-2 border-b border-l border-accent-gold/40"></div>
-        <div class="absolute bottom-1.5 right-1.5 w-2 h-2 border-b border-r border-accent-gold/40"></div>
-        
-        <h3 class="lang-en text-base sm:text-lg font-serif text-white font-bold tracking-wide">Dr. P. Abdul Sathar Gurukkal</h3>
-        <h3 class="lang-ml font-malayalam text-sm sm:text-base text-white font-bold leading-tight">ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</h3>
-        <p class="lang-en text-[9px] uppercase tracking-widest text-accent-gold font-sans font-bold mt-1.5">Founder & Chief Physician</p>
-        <p class="lang-ml font-malayalam text-[9px] text-accent-gold mt-0.5 leading-none">സ്ഥാപകൻ & ചീഫ് ഫിസിഷ്യൻ</p>
-      </div>
+    </div><!-- /Main Portrait Card -->
+
+    <!-- ── Bottom corner ornament ── -->
+    <div class="absolute -bottom-3 -left-3 w-8 h-8 z-30">
+      <div class="w-full h-full border-b-2 border-l-2 border-accent-gold/50 rounded-bl-lg"></div>
     </div>
-    
-    <!-- Sophisticated Offset Border Behind the Photo (Upright & Clean alignment) -->
-    <div class="absolute -inset-4 max-w-[350px] mx-auto border border-accent-gold/25 rounded-2xl -z-10 pointer-events-none translate-x-3.5 translate-y-3.5 group-hover/founder-card:translate-x-0 group-hover/founder-card:translate-y-0 transition-all duration-700 ease-out"></div>
-    
-    <!-- Decorative Glowing Aura Background Elements -->
-    <div class="absolute -top-10 -left-10 w-40 h-40 bg-accent-gold/10 rounded-full blur-3xl -z-20 pointer-events-none"></div>
-    <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-20 pointer-events-none"></div>
-  </div>
 
-  <!-- Right Column: Bio (7/12 width on desktop) -->
-  <div class="lg:col-span-7 space-y-8 animate-on-scroll opacity-0 translate-x-[30px] transition-all duration-1000 ease-out delay-200">
+  </div><!-- /Left Column -->
+
+
+  <!-- ══════════════════════════════════════════
+       Right Column: Bio Content (7/12)
+  ══════════════════════════════════════════ -->
+  <div class="lg:col-span-7 space-y-7 animate-on-scroll opacity-0 translate-x-[30px] transition-all duration-1000 ease-out delay-200">
+
+    <!-- Section tag -->
     <div class="space-y-4">
-      <!-- Section Tag -->
-      <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-xs font-bold block">
-        Our Founder
-      </span>
-      <span class="lang-ml font-malayalam text-accent-gold uppercase tracking-wider text-sm font-semibold block">
-        ഞങ്ങളുടെ സ്ഥാപകൻ
-      </span>
-      
+      <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-xs font-bold block">Our Founder</span>
+      <span class="lang-ml font-malayalam text-accent-gold uppercase tracking-wider text-sm font-semibold block">ഞങ്ങളുടെ സ്ഥാപകൻ</span>
+
       <!-- Heading -->
       <h2 class="lang-en text-4xl md:text-5xl text-primary-dark leading-tight font-serif">
         Decades of Healing, <br/>
@@ -88,101 +87,106 @@ import { Calendar, Shield, Award, ArrowRight, Quote, Sparkles } from 'lucide-rea
       </h2>
 
       <!-- Ornate Gold Divider -->
-      <div class="flex items-center gap-3 pt-2">
+      <div class="flex items-center gap-3 pt-1">
         <div class="h-[1px] w-16 bg-gradient-to-r from-transparent to-accent-gold/60"></div>
         <div class="w-1.5 h-1.5 rotate-45 bg-accent-gold"></div>
         <div class="h-[1px] w-16 bg-gradient-to-l from-transparent to-accent-gold/60"></div>
       </div>
     </div>
 
-    <!-- Biography Introduction Paragraph -->
-    <div class="text-text-muted font-sans text-base sm:text-lg leading-relaxed">
-      <p class="lang-en first-letter:text-5xl first-letter:font-serif first-letter:font-bold first-letter:text-accent-gold first-letter:mr-3 first-letter:float-left first-letter:leading-[0.8] first-letter:mt-1 text-primary-dark/90 italic font-serif">
+    <!-- Biography paragraph -->
+    <div>
+      <p class="lang-en first-letter:text-5xl first-letter:font-serif first-letter:font-bold first-letter:text-accent-gold first-letter:mr-3 first-letter:float-left first-letter:leading-[0.8] first-letter:mt-1 text-primary-dark/85 italic font-serif text-base sm:text-lg leading-relaxed">
         Founded in 1983 in Pangode, Trivandrum, by Dr. P. Abdul Sathar Gurukkal, our institution was created with a single vision — to preserve and share the sacred wisdom of traditional healing.
       </p>
-      <p class="lang-ml font-malayalam text-primary-dark/95 font-semibold text-lg leading-relaxed text-justify">
+      <p class="lang-ml font-malayalam text-primary-dark/90 font-semibold text-base sm:text-lg leading-relaxed text-justify">
         1983-ൽ തിരുവനന്തപുരം പാങ്ങോട്, ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ സ്ഥാപിച്ച ഈ സ്ഥാപനം, പരമ്പരാഗത ചികിത്സയുടെ പാവനമായ അറിവുകൾ സംരക്ഷിക്കുകയും പ്രചരിപ്പിക്കുകയും ചെയ്യുക എന്ന ഏക ലക്ഷ്യത്തോടെയാണ് രൂപീകൃതമായത്.
       </p>
     </div>
 
     <!-- Legacy Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <!-- Card 1: Founding -->
-      <div class="bg-background-cream/35 border border-accent-gold/20 rounded-2xl p-5 hover:bg-white hover:border-accent-gold/60 hover:-translate-y-1.5 hover:shadow-[0_15px_30px_rgba(184,134,11,0.08)] transition-all duration-500 group/legacy-card">
-        <div class="w-12 h-12 rounded-full bg-background-cream/60 border border-accent-gold/25 flex items-center justify-center text-accent-gold mb-4 group-hover/legacy-card:bg-primary-dark group-hover/legacy-card:text-white group-hover/legacy-card:border-transparent transition-all duration-500 shadow-sm relative">
-          <div class="absolute inset-[1.5px] rounded-full border border-dashed border-accent-gold/20 group-hover/legacy-card:border-white/20"></div>
-          <Calendar size={18} class="group-hover/legacy-card:scale-110 transition-transform duration-500" />
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+      <!-- Card 1: 1983 Founding -->
+      <div class="bg-background-cream/30 border border-accent-gold/20 rounded-xl p-4 hover:bg-white hover:border-accent-gold/55 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(184,134,11,0.09)] transition-all duration-400 group/card">
+        <div class="w-11 h-11 rounded-full bg-background-cream/70 border border-accent-gold/25 flex items-center justify-center text-accent-gold mb-3 group-hover/card:bg-primary-dark group-hover/card:text-white group-hover/card:border-transparent transition-all duration-400 shadow-sm relative">
+          <div class="absolute inset-[2px] rounded-full border border-dashed border-accent-gold/20 group-hover/card:border-white/20"></div>
+          <Calendar size={16} class="group-hover/card:scale-110 transition-transform duration-400 relative z-10" />
         </div>
         <h4 class="lang-en text-sm font-serif text-primary-dark font-bold tracking-wide">1983 Founding</h4>
         <h4 class="lang-ml font-malayalam text-sm text-primary-dark font-bold">1983 സ്ഥാപനം</h4>
-        <p class="lang-en text-xs text-text-muted mt-2 font-sans leading-relaxed">Established in Pangode, Trivandrum to preserve the sacred ancient wisdom of Ayurveda.</p>
-        <p class="lang-ml font-malayalam text-xs text-text-muted mt-2 leading-relaxed">ആയുർവേദത്തിന്റെ പാവനമായ പുരാതന ജ്ഞാനം സംരക്ഷിക്കാൻ തിരുവനന്തപുരം പാങ്ങോട് ആരംഭിച്ചു.</p>
+        <p class="lang-en text-xs text-text-muted mt-1.5 font-sans leading-relaxed">Established in Pangode, Trivandrum to preserve the ancient wisdom of Ayurveda.</p>
+        <p class="lang-ml font-malayalam text-xs text-text-muted mt-1.5 leading-relaxed">ആയുർവേദ ജ്ഞാനം സംരക്ഷിക്കാൻ തിരുവനന്തപുരം പാങ്ങോട് ആരംഭിച്ചു.</p>
       </div>
 
       <!-- Card 2: Healing Sanctuary -->
-      <div class="bg-background-cream/35 border border-accent-gold/20 rounded-2xl p-5 hover:bg-white hover:border-accent-gold/60 hover:-translate-y-1.5 hover:shadow-[0_15px_30px_rgba(184,134,11,0.08)] transition-all duration-500 group/legacy-card">
-        <div class="w-12 h-12 rounded-full bg-background-cream/60 border border-accent-gold/25 flex items-center justify-center text-accent-gold mb-4 group-hover/legacy-card:bg-primary-dark group-hover/legacy-card:text-white group-hover/legacy-card:border-transparent transition-all duration-500 shadow-sm relative">
-          <div class="absolute inset-[1.5px] rounded-full border border-dashed border-accent-gold/20 group-hover/legacy-card:border-white/20"></div>
-          <Shield size={18} class="group-hover/legacy-card:scale-110 transition-transform duration-500" />
+      <div class="bg-background-cream/30 border border-accent-gold/20 rounded-xl p-4 hover:bg-white hover:border-accent-gold/55 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(184,134,11,0.09)] transition-all duration-400 group/card">
+        <div class="w-11 h-11 rounded-full bg-background-cream/70 border border-accent-gold/25 flex items-center justify-center text-accent-gold mb-3 group-hover/card:bg-primary-dark group-hover/card:text-white group-hover/card:border-transparent transition-all duration-400 shadow-sm relative">
+          <div class="absolute inset-[2px] rounded-full border border-dashed border-accent-gold/20 group-hover/card:border-white/20"></div>
+          <Shield size={16} class="group-hover/card:scale-110 transition-transform duration-400 relative z-10" />
         </div>
         <h4 class="lang-en text-sm font-serif text-primary-dark font-bold tracking-wide">Healing Sanctuary</h4>
         <h4 class="lang-ml font-malayalam text-sm text-primary-dark font-bold">ചികിത്സാ സങ്കേതം</h4>
-        <p class="lang-en text-xs text-text-muted mt-2 font-sans leading-relaxed">A sanctuary where ancient Siddhis and holistic care restore balance to body and soul.</p>
-        <p class="lang-ml font-malayalam text-xs text-text-muted mt-2 leading-relaxed">പുരാതന സിദ്ധികളിലൂടെയും സമഗ്ര പരിചരണത്തിലൂടെയും ശരീരവും മനസ്സും സുഖപ്പെടുത്തുന്നു.</p>
+        <p class="lang-en text-xs text-text-muted mt-1.5 font-sans leading-relaxed">A sanctuary where ancient Siddhis and holistic care restore balance to body and soul.</p>
+        <p class="lang-ml font-malayalam text-xs text-text-muted mt-1.5 leading-relaxed">പുരാതന സിദ്ധികളിലൂടെ ശരീരവും മനസ്സും സുഖപ്പെടുത്തുന്നു.</p>
       </div>
 
       <!-- Card 3: Pure Lineage -->
-      <div class="bg-background-cream/35 border border-accent-gold/20 rounded-2xl p-5 hover:bg-white hover:border-accent-gold/60 hover:-translate-y-1.5 hover:shadow-[0_15px_30px_rgba(184,134,11,0.08)] transition-all duration-500 group/legacy-card">
-        <div class="w-12 h-12 rounded-full bg-background-cream/60 border border-accent-gold/25 flex items-center justify-center text-accent-gold mb-4 group-hover/legacy-card:bg-primary-dark group-hover/legacy-card:text-white group-hover/legacy-card:border-transparent transition-all duration-500 shadow-sm relative">
-          <div class="absolute inset-[1.5px] rounded-full border border-dashed border-accent-gold/20 group-hover/legacy-card:border-white/20"></div>
-          <Award size={18} class="group-hover/legacy-card:scale-110 transition-transform duration-500" />
+      <div class="bg-background-cream/30 border border-accent-gold/20 rounded-xl p-4 hover:bg-white hover:border-accent-gold/55 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(184,134,11,0.09)] transition-all duration-400 group/card">
+        <div class="w-11 h-11 rounded-full bg-background-cream/70 border border-accent-gold/25 flex items-center justify-center text-accent-gold mb-3 group-hover/card:bg-primary-dark group-hover/card:text-white group-hover/card:border-transparent transition-all duration-400 shadow-sm relative">
+          <div class="absolute inset-[2px] rounded-full border border-dashed border-accent-gold/20 group-hover/card:border-white/20"></div>
+          <Award size={16} class="group-hover/card:scale-110 transition-transform duration-400 relative z-10" />
         </div>
         <h4 class="lang-en text-sm font-serif text-primary-dark font-bold tracking-wide">Pure Lineage</h4>
         <h4 class="lang-ml font-malayalam text-sm text-primary-dark font-bold">പാവന പാരമ്പര്യം</h4>
-        <p class="lang-en text-xs text-text-muted mt-2 font-sans leading-relaxed">Inherited traditions passed onto the third generation, ensuring absolute purity of care.</p>
-        <p class="lang-ml font-malayalam text-xs text-text-muted mt-2 leading-relaxed">ചികിത്സാ ജ്ഞാനം മൂന്നാം തലമുറയ്ക്ക് വിശ്വസ്തതയോടെ കൈമാറി പാരമ്പര്യശുദ്ധി നിലനിർത്തുന്നു.</p>
+        <p class="lang-en text-xs text-text-muted mt-1.5 font-sans leading-relaxed">Traditions passed onto the third generation, ensuring absolute purity of care.</p>
+        <p class="lang-ml font-malayalam text-xs text-text-muted mt-1.5 leading-relaxed">ചികിത്സാ ജ്ഞാനം മൂന്നാം തലമുറയ്ക്ക് കൈമാറി പാരമ്പര്യം നിലനിർത്തുന്നു.</p>
       </div>
-    </div>
 
-    <!-- Parchment Scroll Quote Block (Strengthened contrast background & double gold frames) -->
-    <div class="relative bg-background-cream/50 border border-accent-gold/25 p-7 sm:p-8 rounded-2xl shadow-sm italic font-serif text-center max-w-2xl mx-auto overflow-hidden">
-      <!-- Faint parchment texture overlay inside the quote card -->
-      <div class="absolute inset-0 bg-parchment-texture opacity-[0.03] pointer-events-none"></div>
-      
-      <!-- Elegant inner double border -->
-      <div class="absolute inset-[3px] rounded-xl border border-dashed border-accent-gold/25 pointer-events-none"></div>
-      
-      <Quote size={38} class="mx-auto text-accent-gold/20 mb-4" />
-      
-      <p class="lang-en text-lg sm:text-xl text-primary-dark leading-relaxed font-serif relative z-10">
+    </div><!-- /Legacy Cards -->
+
+    <!-- Parchment Quote Block -->
+    <div class="relative bg-background-cream/45 border border-accent-gold/22 p-6 sm:p-7 rounded-2xl shadow-sm font-serif text-center overflow-hidden">
+      <!-- Inner dashed border -->
+      <div class="absolute inset-[3px] rounded-xl border border-dashed border-accent-gold/22 pointer-events-none"></div>
+      <!-- Corner dots -->
+      <div class="absolute top-3 left-3 w-1 h-1 rounded-full bg-accent-gold/40"></div>
+      <div class="absolute top-3 right-3 w-1 h-1 rounded-full bg-accent-gold/40"></div>
+      <div class="absolute bottom-3 left-3 w-1 h-1 rounded-full bg-accent-gold/40"></div>
+      <div class="absolute bottom-3 right-3 w-1 h-1 rounded-full bg-accent-gold/40"></div>
+
+      <Quote size={34} class="mx-auto text-accent-gold/20 mb-3" />
+
+      <p class="lang-en text-base sm:text-lg text-primary-dark leading-relaxed font-serif italic relative z-10">
         "Healing is not merely the absence of disease, but the harmonious alignment of the body, mind, and spirit with the laws of nature."
       </p>
-      <p class="lang-ml font-malayalam text-base sm:text-lg text-primary-dark leading-relaxed font-semibold relative z-10">
+      <p class="lang-ml font-malayalam text-sm sm:text-base text-primary-dark leading-relaxed font-semibold relative z-10">
         "രോഗമില്ലാത്ത അവസ്ഥ മാത്രമല്ല ആരോഗ്യം, മറിച്ച് ശരീരവും മനസ്സും ആത്മാവും പ്രകൃതിനിയമങ്ങളുമായി പൊരുത്തപ്പെടുന്ന സന്തുലിതാവസ്ഥയാണ്."
       </p>
-      
-      <!-- Signature Line -->
-      <div class="mt-5 border-t border-accent-gold/15 pt-3.5 max-w-[200px] mx-auto relative z-10">
-        <p class="lang-en text-[10px] uppercase tracking-widest text-accent-gold font-sans font-bold">Dr. P. Abdul Sathar Gurukkal</p>
-        <p class="lang-ml font-malayalam text-[9px] text-accent-gold font-bold">ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</p>
-      </div>
-    </div>
 
-    <!-- Story Link with Custom Expanding Underline -->
-    <div class="pt-2">
-      <a 
-        href="/about" 
+      <!-- Signature -->
+      <div class="mt-4 border-t border-accent-gold/15 pt-3 max-w-[210px] mx-auto relative z-10">
+        <p class="lang-en text-[9px] uppercase tracking-widest text-accent-gold font-sans font-bold">Dr. P. Abdul Sathar Gurukkal</p>
+        <p class="lang-ml font-malayalam text-[8px] text-accent-gold font-bold mt-0.5">ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</p>
+      </div>
+    </div><!-- /Quote Block -->
+
+    <!-- Story Link -->
+    <div class="pt-1">
+      <a
+        href="/about"
         class="relative inline-flex items-center gap-2.5 text-primary-dark hover:text-accent-gold transition-colors duration-300 group font-serif text-lg font-bold pb-1 overflow-hidden"
       >
         <span class="lang-en">Read the Full Story</span>
         <span class="lang-ml font-malayalam">കൂടുതൽ വായിക്കുക</span>
         <ArrowRight size={16} class="transition-transform group-hover:translate-x-1.5 shrink-0 text-accent-gold" />
-        <!-- Custom expanding bottom line -->
         <span class="absolute bottom-0 left-0 w-full h-[2px] bg-accent-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
       </a>
     </div>
-  </div>
-</div>
+
+  </div><!-- /Right Column -->
+
+</div><!-- /Grid -->
 
 <script>
   function initFounderSpotlightAnimation() {
@@ -207,15 +211,3 @@ import { Calendar, Shield, Award, ArrowRight, Quote, Sparkles } from 'lucide-rea
   // Re-run safely on View Transitions
   document.addEventListener('astro:page-load', initFounderSpotlightAnimation);
 </script>
-
-<style>
-  /* ── Slow spin animation for outer text ring ── */
-  @keyframes spinSlow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  .animate-spin-slow {
-    animation: spinSlow 20s linear infinite;
-    transform-origin: center;
-  }
-</style>

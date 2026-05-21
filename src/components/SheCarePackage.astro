@@ -1,0 +1,121 @@
+---
+import { Heart, Flower2, Sparkles, ArrowRight } from 'lucide-react';
+---
+
+<div class="relative bg-white py-24 overflow-hidden border-b border-accent-gold/20">
+  <!-- Subtle background patterns -->
+  <div class="absolute inset-0 opacity-[0.03] mix-blend-multiply pointer-events-none bg-parchment-texture bg-repeat z-0"></div>
+  <div class="absolute -top-32 -right-32 w-96 h-96 bg-accent-gold/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
+  <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
+      
+      <!-- Left Column: Content (Text) -->
+      <div class="order-2 lg:order-1 space-y-8 animate-on-scroll opacity-0 translate-x-[-30px] transition-all duration-1000 ease-out">
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <Heart class="text-accent-gold" size={20} />
+            <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.25em] text-sm font-bold">Women's Wellness</span>
+            <span class="lang-ml font-malayalam text-accent-gold text-base font-semibold block">സ്ത്രീകളുടെ ആരോഗ്യം</span>
+          </div>
+          
+          <h2 class="lang-en text-4xl md:text-5xl text-primary-dark font-serif leading-tight">
+            Exclusive <span class="text-accent-gold italic">"She Care"</span> Package
+          </h2>
+          <h2 class="lang-ml font-malayalam text-4xl md:text-5xl text-primary-dark font-bold leading-tight">
+            പ്രത്യേക <span class="text-accent-gold">"ഷി കെയർ"</span> പാക്കേജ്
+          </h2>
+          
+          <p class="lang-en text-primary-dark/80 font-sans text-lg md:text-xl mt-4 leading-relaxed">
+            A comprehensive Ayurvedic wellness package tailored exclusively for women. Rediscover your natural balance, vitality, and inner strength through authentic, holistic care.
+          </p>
+          <p class="lang-ml font-malayalam text-primary-dark/80 text-lg md:text-xl mt-4 leading-relaxed">
+            സ്ത്രീകൾക്കായി പ്രത്യേകമായി രൂപകൽപ്പന ചെയ്ത സമഗ്ര ആയുർവേദ വെൽനസ് പാക്കേജ്. ആധികാരികവും സമഗ്രവുമായ പരിചരണത്തിലൂടെ നിങ്ങളുടെ സ്വാഭാവിക സന്തുലിതാവസ്ഥയും ഉന്മേഷവും വീണ്ടെടുക്കുക.
+          </p>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+          <div class="flex gap-4 items-start">
+            <div class="w-10 h-10 rounded-full bg-accent-gold/10 flex items-center justify-center shrink-0">
+              <Flower2 class="text-accent-gold" size={20} />
+            </div>
+            <div>
+              <h4 class="lang-en font-serif font-bold text-primary-dark text-lg mb-1">Holistic Healing</h4>
+              <h4 class="lang-ml font-malayalam font-bold text-primary-dark text-base mb-1">സമഗ്ര സൗഖ്യം</h4>
+              <p class="lang-en text-sm text-text-muted font-sans">Traditional therapies to balance hormones and rejuvenate the body.</p>
+              <p class="lang-ml font-malayalam text-xs text-text-muted">ശരീരത്തെ പുനരുജ്ജീവിപ്പിക്കാനുള്ള പരമ്പരാഗത ചികിത്സകൾ.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 items-start">
+            <div class="w-10 h-10 rounded-full bg-accent-gold/10 flex items-center justify-center shrink-0">
+              <Sparkles class="text-accent-gold" size={20} />
+            </div>
+            <div>
+              <h4 class="lang-en font-serif font-bold text-primary-dark text-lg mb-1">Expert Care</h4>
+              <h4 class="lang-ml font-malayalam font-bold text-primary-dark text-base mb-1">വിദഗ്ദ്ധ പരിചരണം</h4>
+              <p class="lang-en text-sm text-text-muted font-sans">Guided by experienced female physicians ensuring absolute comfort.</p>
+              <p class="lang-ml font-malayalam text-xs text-text-muted">വിദഗ്ദ്ധരായ വനിതാ ഡോക്ടർമാരുടെ പരിചരണം.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6">
+          <a href="/treatments" class="inline-flex items-center gap-2 text-primary hover:text-accent-gold font-serif text-lg font-bold transition-colors duration-300 group">
+            <span class="lang-en border-b-2 border-primary group-hover:border-accent-gold pb-1 transition-colors">Explore Package Details</span>
+            <span class="lang-ml font-malayalam border-b-2 border-primary group-hover:border-accent-gold pb-1 transition-colors">പാക്കേജ് വിവരങ്ങൾ കാണുക</span>
+            <ArrowRight size={20} class="group-hover:translate-x-1.5 transition-transform" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Image -->
+      <div class="order-1 lg:order-2 relative animate-on-scroll opacity-0 translate-x-[30px] transition-all duration-1000 ease-out delay-200">
+        <!-- Decorative frame elements -->
+        <div class="absolute -inset-4 border border-accent-gold/30 rounded-[2rem] transform translate-x-4 translate-y-4 -z-10 transition-transform duration-700 group-hover:translate-x-0 group-hover:translate-y-0"></div>
+        
+        <div class="relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] group cursor-pointer border-2 border-accent-gold/20 bg-white p-2">
+          <img 
+            src="/images/we care package.jpeg" 
+            alt="She Care Package" 
+            class="w-full h-auto max-h-[600px] object-contain group-hover:scale-[1.02] transition-transform duration-[4000ms] ease-out rounded-xl"
+          />
+          
+          <!-- Subtle vignette removed to not obscure any text on the package flyer -->
+          <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm border border-accent-gold/30 rounded-xl px-5 py-3 shadow-lg transform group-hover:-translate-y-2 transition-transform duration-500">
+            <p class="lang-en text-xs uppercase tracking-[0.2em] text-accent-gold font-bold mb-0.5">Special Offer</p>
+            <p class="lang-ml font-malayalam text-[10px] text-accent-gold font-bold mb-0.5">പ്രത്യേക ഓഫർ</p>
+            <p class="lang-en font-serif text-primary-dark font-bold text-lg">"She Care" Wellness</p>
+            <p class="lang-ml font-malayalam font-bold text-primary-dark text-sm">"ഷി കെയർ" വെൽനസ്</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function initSheCareAnimation() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('opacity-0', 'translate-x-[-30px]', 'translate-x-[30px]');
+          entry.target.classList.add('opacity-100', 'translate-x-0');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+  }
+
+  // Run on initial load
+  initSheCareAnimation();
+
+  // Re-run safely on View Transitions
+  document.addEventListener('astro:page-load', initSheCareAnimation);
+</script>

@@ -1,0 +1,126 @@
+---
+import { Video, Mail, MessageCircle, UserCheck } from 'lucide-react';
+---
+
+<div class="bg-background-cream py-20 border-y border-accent-gold/20">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
+      
+      <!-- Left Column: Authentic Hospital Image -->
+      <div class="lg:col-span-5 relative animate-on-scroll opacity-0 translate-x-[-30px] transition-all duration-1000 ease-out">
+        <!-- Decorative background glow -->
+        <div class="absolute inset-0 bg-accent-gold/10 rounded-[2rem] transform translate-x-4 translate-y-4 -z-10"></div>
+        <div class="absolute -top-10 -left-10 w-40 h-40 bg-accent-gold/15 rounded-full blur-3xl z-0 pointer-events-none"></div>
+        
+        <div class="relative z-10 rounded-[2rem] overflow-hidden border-2 border-accent-gold/30 shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-white aspect-[4/5] sm:aspect-[4/5] group">
+          <img 
+            src="/images/treatment-room-1.jpg" 
+            alt="Ayurvedic Consultation and Care" 
+            class="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-[6000ms] ease-out"
+          />
+          
+          <!-- Elegant gradient overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-primary-dark/80 via-transparent to-transparent opacity-70"></div>
+          
+          <!-- Decorative gold corners -->
+          <div class="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-accent-gold/60"></div>
+          <div class="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-accent-gold/60"></div>
+          <div class="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-accent-gold/60"></div>
+          <div class="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-accent-gold/60"></div>
+        </div>
+      </div>
+
+      <!-- Right Column: Consultation Options (7/12 width) -->
+      <div class="lg:col-span-7 space-y-8 animate-on-scroll opacity-0 translate-x-[30px] transition-all duration-1000 ease-out delay-200">
+        <div class="space-y-3">
+          <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.25em] text-sm font-bold">Expert Guidance</span>
+          <span class="lang-ml font-malayalam text-accent-gold text-base font-semibold block">വിദഗ്ദ്ധ മാർഗ്ഗനിർദ്ദേശം</span>
+          
+          <h2 class="lang-en text-3xl md:text-5xl text-primary-dark font-serif leading-tight">
+            Flexible <span class="text-accent-gold italic">Consultations</span>
+          </h2>
+          <h2 class="lang-ml font-malayalam text-3xl md:text-5xl text-primary-dark font-bold leading-tight">
+            നിങ്ങൾക്കനുയോജ്യമായ <span class="text-accent-gold">കൺസൾട്ടേഷൻ</span>
+          </h2>
+          
+          <p class="lang-en text-primary-dark/80 font-sans text-lg mt-4 max-w-xl">
+            Connecting with our experienced Ayurvedic physicians is easy. Choose from our various consultation modes designed for your convenience.
+          </p>
+          <p class="lang-ml font-malayalam text-primary-dark/80 text-lg mt-4 max-w-xl leading-relaxed">
+            ഞങ്ങളുടെ വിദഗ്ദ്ധ ഡോക്ടർമാരുമായി ബന്ധപ്പെടാൻ ഇപ്പോൾ എളുപ്പമാണ്. നിങ്ങൾക്ക് ഏറ്റവും സൗകര്യപ്രദമായ കൺസൾട്ടേഷൻ രീതി തിരഞ്ഞെടുക്കുക.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Option 1: Personal -->
+          <a href="/appointment" class="block bg-white border border-accent-gold/20 p-5 rounded-xl hover:shadow-[0_8px_20px_rgba(184,134,11,0.12)] hover:border-accent-gold/50 transition-all duration-300 group">
+            <div class="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-300 text-accent-gold">
+              <UserCheck size={24} />
+            </div>
+            <h3 class="lang-en font-serif text-xl font-bold text-primary-dark mb-1">In-Person Visit</h3>
+            <h3 class="lang-ml font-malayalam text-lg font-bold text-primary-dark mb-1">നേരിട്ടുള്ള സന്ദർശനം</h3>
+            <p class="lang-en text-sm text-text-muted font-sans">Visit our hospital for a comprehensive pulse diagnosis.</p>
+            <p class="lang-ml font-malayalam text-sm text-text-muted">നേരിട്ടുള്ള പരിശോധനയ്ക്കായി ആശുപത്രി സന്ദർശിക്കുക.</p>
+          </a>
+
+          <!-- Option 2: Video -->
+          <a href="/appointment" class="block bg-white border border-accent-gold/20 p-5 rounded-xl hover:shadow-[0_8px_20px_rgba(184,134,11,0.12)] hover:border-accent-gold/50 transition-all duration-300 group">
+            <div class="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-300 text-accent-gold">
+              <Video size={24} />
+            </div>
+            <h3 class="lang-en font-serif text-xl font-bold text-primary-dark mb-1">Video Consultation</h3>
+            <h3 class="lang-ml font-malayalam text-lg font-bold text-primary-dark mb-1">വീഡിയോ കൺസൾട്ടേഷൻ</h3>
+            <p class="lang-en text-sm text-text-muted font-sans">Face-to-face expert diagnosis from your home.</p>
+            <p class="lang-ml font-malayalam text-sm text-text-muted">വീട്ടിലിരുന്ന് ഡോക്ടർമാരുമായി നേരിട്ട് സംസാരിക്കാം.</p>
+          </a>
+
+          <!-- Option 3: WhatsApp -->
+          <a href="https://wa.me/918593821553" class="block bg-white border border-accent-gold/20 p-5 rounded-xl hover:shadow-[0_8px_20px_rgba(184,134,11,0.12)] hover:border-accent-gold/50 transition-all duration-300 group">
+            <div class="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-300 text-accent-gold">
+              <MessageCircle size={24} />
+            </div>
+            <h3 class="lang-en font-serif text-xl font-bold text-primary-dark mb-1">WhatsApp Chat</h3>
+            <h3 class="lang-ml font-malayalam text-lg font-bold text-primary-dark mb-1">വാട്സ്ആപ്പ്</h3>
+            <p class="lang-en text-sm text-text-muted font-sans">Quick guidance and seamless follow-ups via messaging.</p>
+            <p class="lang-ml font-malayalam text-sm text-text-muted">വാട്സ്ആപ്പ് വഴി വേഗത്തിലുള്ള മാർഗ്ഗനിർദ്ദേശങ്ങൾ.</p>
+          </a>
+
+          <!-- Option 4: Email -->
+          <a href="mailto:consult@vaidyarmandiram.com" class="block bg-white border border-accent-gold/20 p-5 rounded-xl hover:shadow-[0_8px_20px_rgba(184,134,11,0.12)] hover:border-accent-gold/50 transition-all duration-300 group">
+            <div class="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-300 text-accent-gold">
+              <Mail size={24} />
+            </div>
+            <h3 class="lang-en font-serif text-xl font-bold text-primary-dark mb-1">Email Advise</h3>
+            <h3 class="lang-ml font-malayalam text-lg font-bold text-primary-dark mb-1">ഇമെയിൽ ഉപദേശം</h3>
+            <p class="lang-en text-sm text-text-muted font-sans">Share reports and get detailed written advice.</p>
+            <p class="lang-ml font-malayalam text-sm text-text-muted">ഇമെയിൽ വഴി വിശദമായ ഉപദേശങ്ങൾ നേടുക.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initConsultationAnimation() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('opacity-0', 'translate-x-[-30px]', 'translate-x-[30px]');
+          entry.target.classList.add('opacity-100', 'translate-x-0');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+  }
+
+  // Run on initial load
+  initConsultationAnimation();
+
+  // Re-run safely on View Transitions
+  document.addEventListener('astro:page-load', initConsultationAnimation);
+</script>
