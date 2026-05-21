@@ -40,10 +40,10 @@ const treatments = [
 ---
 
 <div class="relative w-full overflow-hidden py-4">
-  <div id="treatments-scroll-container" class="flex overflow-x-auto no-scrollbar gap-4 sm:gap-6 pb-4 treatments-carousel">
+  <div id="treatments-scroll-container" class="flex overflow-x-auto no-scrollbar gap-4 sm:gap-6 pb-4 treatments-carousel scroll-smooth snap-x snap-mandatory">
     {/* Duplicate the treatments array to allow infinite seamless scrolling */}
-    {[...treatments, ...treatments].map(t => (
-      <a href={`/treatments#${t.slug}`} class="treatment-card group relative overflow-hidden bg-white shadow-md hover:shadow-lg border border-accent-gold/10 rounded-xl shrink-0 w-[85vw] sm:w-[350px] md:w-[400px] transition-all duration-300 transform hover:-translate-y-1">
+    {[...treatments, ...treatments, ...treatments].map(t => (
+      <a href={`/treatments#${t.slug}`} class="treatment-card group relative overflow-hidden bg-white shadow-md hover:shadow-lg border border-accent-gold/10 rounded-xl shrink-0 w-[85vw] sm:w-[350px] md:w-[400px] snap-center transition-all duration-300 transform hover:-translate-y-1">
       <div class="aspect-[4/3] overflow-hidden">
         <img 
           src={t.image} 
@@ -82,40 +82,111 @@ const treatments = [
     const carousel = document.getElementById('treatments-scroll-container') as HTMLElement;
     if (!carousel) return;
     
+    const items = Array.from(carousel.querySelectorAll('.treatment-card')) as HTMLElement[];
+    if (items.length === 0) return;
+    
+    // The original number of items (since we duplicated it 3 times: [original, duplicate, duplicate])
+    const originalCount = items.length / 3;
+    
+    let currentIndex = originalCount; // Start in the middle set to allow scrolling left/right safely
+    let autoScrollInterval: ReturnType<typeof setInterval>;
     let isHovered = false;
-    let animationId: number;
-    // Speed of scroll (pixels per frame)
-    const scrollSpeed = 1; 
+    let isProgrammaticScroll = false;
+    
+    // Initially scroll to the middle set without animation
+    setTimeout(() => {
+      const startItem = items[currentIndex];
+      const scrollTarget = startItem.offsetLeft - (carousel.offsetWidth / 2) + (startItem.offsetWidth / 2);
+      carousel.style.scrollBehavior = 'auto';
+      carousel.scrollLeft = scrollTarget;
+      carousel.style.scrollBehavior = 'smooth';
+    }, 100);
 
-    // Hover listeners to pause animation
+    const slideToNext = () => {
+      if (isHovered) return;
+      
+      currentIndex++;
+      isProgrammaticScroll = true;
+      
+      const targetItem = items[currentIndex];
+      const scrollTarget = targetItem.offsetLeft - (carousel.offsetWidth / 2) + (targetItem.offsetWidth / 2);
+      
+      carousel.scrollTo({
+        left: scrollTarget,
+        behavior: 'smooth'
+      });
+      
+      // If we've reached the start of the 3rd set, silently snap back to the start of the 2nd set
+      if (currentIndex >= originalCount * 2) {
+        setTimeout(() => {
+          currentIndex = originalCount;
+          const resetItem = items[currentIndex];
+          const resetTarget = resetItem.offsetLeft - (carousel.offsetWidth / 2) + (resetItem.offsetWidth / 2);
+          
+          carousel.style.scrollBehavior = 'auto';
+          carousel.scrollLeft = resetTarget;
+          carousel.style.scrollBehavior = 'smooth';
+          isProgrammaticScroll = false;
+        }, 800); // Wait for smooth scroll to finish
+      } else {
+        setTimeout(() => { isProgrammaticScroll = false; }, 800);
+      }
+    };
+
+    const startAutoScroll = () => {
+      stopAutoScroll(); 
+      // Give users plenty of time to read, especially on mobile
+      const readingTime = window.innerWidth < 768 ? 6500 : 5000;
+      autoScrollInterval = setInterval(slideToNext, readingTime); 
+    };
+
+    const stopAutoScroll = () => {
+      if (autoScrollInterval) clearInterval(autoScrollInterval);
+    };
+
+    // Manual scroll handling to keep index updated and handle infinite boundary snapping
+    carousel.addEventListener('scroll', () => {
+      if (!isProgrammaticScroll) {
+        // Calculate which item is closest to center
+        const centerOffset = carousel.offsetWidth / 2;
+        const scrollCenter = carousel.scrollLeft + centerOffset;
+        
+        let closestIndex = 0;
+        let minDistance = Infinity;
+        
+        items.forEach((item, idx) => {
+          const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+          const distance = Math.abs(scrollCenter - itemCenter);
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestIndex = idx;
+          }
+        });
+        
+        currentIndex = closestIndex;
+        
+        // If user manually scrolled to the extremes, snap them back to the middle set silently
+        if (currentIndex < originalCount / 2 || currentIndex >= originalCount * 2.5) {
+          // Snap back to the middle equivalent
+          const relativeIndex = currentIndex % originalCount;
+          currentIndex = originalCount + relativeIndex;
+          
+          const resetItem = items[currentIndex];
+          const resetTarget = resetItem.offsetLeft - (carousel.offsetWidth / 2) + (resetItem.offsetWidth / 2);
+          
+          carousel.style.scrollBehavior = 'auto';
+          carousel.scrollLeft = resetTarget;
+          carousel.style.scrollBehavior = 'smooth';
+        }
+      }
+    }, { passive: true });
+
     carousel.addEventListener('mouseenter', () => isHovered = true);
     carousel.addEventListener('mouseleave', () => isHovered = false);
     carousel.addEventListener('touchstart', () => isHovered = true, { passive: true });
     carousel.addEventListener('touchend', () => isHovered = false);
 
-    const scrollLoop = () => {
-      if (!isHovered) {
-        carousel.scrollLeft += scrollSpeed;
-        
-        // Because we duplicated the array exactly once, 
-        // the total scroll width is double the original content.
-        // Once we scroll past halfway, instantly jump back to 0.
-        // (Minus a tiny fraction to ensure it doesn't snap visibly due to gaps)
-        if (carousel.scrollLeft >= (carousel.scrollWidth / 2)) {
-          carousel.scrollLeft = 0;
-        }
-      }
-      animationId = requestAnimationFrame(scrollLoop);
-    };
-
-    // Clean up any existing animation before starting a new one
-    if ((window as any)._treatmentsCarouselAnimation) {
-      cancelAnimationFrame((window as any)._treatmentsCarouselAnimation);
-    }
-    
-    // Start loop
-    animationId = requestAnimationFrame(scrollLoop);
-    (window as any)._treatmentsCarouselAnimation = animationId;
+    startAutoScroll();
   }
 
   initTreatmentsCarousel();
