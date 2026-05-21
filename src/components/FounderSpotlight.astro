@@ -1,66 +1,107 @@
 ---
 ---
 
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-  <!-- Left Column: Photo -->
-  <div class="relative animate-on-scroll opacity-0 translate-x-[-30px] transition-all duration-1000 ease-out">
-    <div class="relative z-10 shadow-2xl rotate-[-2deg] border border-accent-gold/20 rounded-2xl overflow-hidden">
-      <img 
-        src="/images/vmfounder.jpg" 
-        alt="Dr. P. Abdul Sathar Gurukkal - Founder and Chief Physician, Vaidyarmandiram Ayurveda Hospital Kerala" 
-        class="w-full aspect-[4/5] object-cover"
-      />
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+  <!-- Left Column: Photo & Plaque (5/12 width on desktop) -->
+  <div class="lg:col-span-5 relative animate-on-scroll opacity-0 translate-x-[-30px] transition-all duration-1000 ease-out">
+    
+    <!-- Royal Arched Window Frame with Double Gold Borders -->
+    <div class="relative max-w-[360px] mx-auto z-10 shadow-[0_20px_50px_rgba(0,0,0,0.18)] rounded-t-full rounded-b-3xl border border-accent-gold/45 p-2 bg-background-cream/60 backdrop-blur-sm">
+      <div class="relative rounded-t-full rounded-b-2xl overflow-hidden aspect-[3/4] border border-accent-gold/20">
+        <img 
+          src="/images/vmfounder.jpg" 
+          alt="Dr. P. Abdul Sathar Gurukkal - Founder and Chief Physician, Vaidyarmandiram Ayurveda Hospital Kerala" 
+          class="w-full h-full object-cover object-top hover:scale-[1.04] transition-transform duration-[6000ms] ease-out"
+        />
+        <!-- Elegant gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+      </div>
     </div>
     
-    <!-- Decorative elements -->
-    <div class="absolute -top-8 -left-8 w-32 h-32 bg-accent-gold/10 rounded-full blur-3xl -z-10"></div>
-    <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+    <!-- Sophisticated Offset Border Behind the Photo -->
+    <div class="absolute -inset-4 max-w-[360px] mx-auto border border-accent-gold/25 rounded-t-full rounded-b-[2.5rem] -z-10 pointer-events-none translate-x-3 translate-y-3"></div>
+    
+    <!-- Decorative Glowing Aura Background Elements -->
+    <div class="absolute -top-10 -left-10 w-40 h-40 bg-accent-gold/10 rounded-full blur-3xl -z-20 pointer-events-none"></div>
+    <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-20 pointer-events-none"></div>
 
-    <div class="mt-8 text-center">
-      <h3 class="text-2xl font-bold text-primary-dark tracking-widest uppercase">
-        Dr. P. Abdul Sathar Gurukkal
-      </h3>
-      <p class="text-accent-gold font-sans uppercase tracking-[0.2em] text-sm mt-1">
-        Founder & Chief Physician
-      </p>
+    <!-- Wood-Brass Styled Name Plaque -->
+    <div class="mt-8 text-center bg-primary-dark/95 border border-accent-gold/30 rounded-xl py-3.5 px-5 shadow-[0_10px_25px_rgba(0,0,0,0.15)] max-w-[320px] mx-auto z-10 relative">
+      <h3 class="lang-en text-lg sm:text-xl font-serif text-white font-bold tracking-wide">Dr. P. Abdul Sathar Gurukkal</h3>
+      <h3 class="lang-ml font-malayalam text-base sm:text-lg text-white font-bold leading-tight">ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</h3>
+      <p class="lang-en text-[10px] uppercase tracking-widest text-accent-gold font-sans font-bold mt-1.5">Founder & Chief Physician</p>
+      <p class="lang-ml font-malayalam text-[10px] text-accent-gold mt-0.5 leading-none">സ്ഥാപകൻ & ചീഫ് ഫിസിഷ്യൻ</p>
     </div>
   </div>
 
-  <!-- Right Column: Bio -->
-  <div class="space-y-8 animate-on-scroll opacity-0 translate-x-[30px] transition-all duration-1000 ease-out delay-200">
+  <!-- Right Column: Bio (7/12 width on desktop) -->
+  <div class="lg:col-span-7 space-y-8 animate-on-scroll opacity-0 translate-x-[30px] transition-all duration-1000 ease-out delay-200">
     <div class="space-y-4">
-      <span class="text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold">
+      <!-- Section Tag -->
+      <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold block">
         Our Founder
       </span>
-      <h2 class="text-4xl md:text-5xl text-primary-dark leading-tight">
+      <span class="lang-ml font-malayalam text-accent-gold uppercase tracking-wider text-base font-semibold block">
+        ഞങ്ങളുടെ സ്ഥാപകൻ
+      </span>
+      
+      <!-- Heading -->
+      <h2 class="lang-en text-4xl md:text-5xl text-primary-dark leading-tight font-serif">
         Decades of Healing, <br/>
-        <span class="">Rooted in Tradition</span>
+        <span class="text-accent-gold italic">Rooted in Tradition</span>
+      </h2>
+      <h2 class="lang-ml font-malayalam text-3xl md:text-4xl text-primary-dark leading-tight font-bold">
+        പാരമ്പര്യത്തിൽ അധിഷ്ഠിതമായ <br/>
+        <span class="text-accent-gold font-semibold">പതിറ്റാണ്ടുകളുടെ സൗഖ്യം</span>
       </h2>
     </div>
 
-    <div class="space-y-6 text-text-muted font-sans leading-relaxed text-lg">
-      <p class="first-letter:text-5xl first-letter:font-bold first-letter:text-accent-gold first-letter:mr-1 first-letter:float-left">
-        Founded in 1983 in Pangode, Trivandrum, by Dr. P. Abdul Sathar Gurukkal, our institution was created with a single vision — to preserve and share the sacred wisdom of traditional healing.
-      </p>
-      <p>
-        More than a clinic, it became a sanctuary where ancient Siddhis and holistic healing practices were brought together to restore peace to both body and soul.
-      </p>
-      <p>
-        Before attaining eternal peace in 2024, Dr. P. Abdul Sathar Gurukkal entrusted the complete knowledge of their ancestral Siddhis and healing traditions to the third generation, ensuring the purity of this sacred lineage would continue for years to come.
-      </p>
+    <!-- Biography Paragraphs -->
+    <div class="space-y-6 text-text-muted font-sans leading-relaxed text-base sm:text-lg">
+      <div class="lang-en space-y-6">
+        <p class="first-letter:text-5xl first-letter:font-bold first-letter:text-accent-gold first-letter:mr-2 first-letter:float-left font-serif text-primary-dark/90 italic">
+          Founded in 1983 in Pangode, Trivandrum, by Dr. P. Abdul Sathar Gurukkal, our institution was created with a single vision — to preserve and share the sacred wisdom of traditional healing.
+        </p>
+        <p>
+          More than a clinic, it became a sanctuary where ancient Siddhis and holistic healing practices were brought together to restore peace to both body and soul.
+        </p>
+        <p>
+          Before attaining eternal peace in 2024, Dr. P. Abdul Sathar Gurukkal entrusted the complete knowledge of their ancestral Siddhis and healing traditions to the third generation, ensuring the purity of this sacred lineage would continue for years to come.
+        </p>
+      </div>
+
+      <div class="lang-ml font-malayalam space-y-5 text-justify">
+        <p class="text-primary-dark/95 font-semibold text-lg leading-relaxed">
+          1983-ൽ തിരുവനന്തപുരം പാങ്ങോട്, ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ സ്ഥാപിച്ച ഈ സ്ഥാപനം, പരമ്പരാഗത ചികിത്സയുടെ പാവനമായ അറിവുകൾ സംരക്ഷിക്കുകയും പ്രചരിപ്പിക്കുകയും ചെയ്യുക എന്ന ഏക ലക്ഷ്യത്തോടെയാണ് രൂപീകൃതമായത്.
+        </p>
+        <p class="leading-relaxed">
+          ഒരു ക്ലിനിക്കിനപ്പുറം, ശരീരത്തിനും മനസ്സിനും സമാധാനം വീണ്ടെടുക്കുന്നതിനായി പുരാതന സിദ്ധികളും സമഗ്രമായ ചികിത്സാരീതികളും ഒരുമിച്ച് കൊണ്ടുവന്ന ഒരു സങ്കേതമായി ഇത് മാറി.
+        </p>
+        <p class="leading-relaxed">
+          2024-ൽ സമാധിയാകുന്നതിന് മുൻപ്, ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ തന്റെ പരമ്പരാഗത സിദ്ധികളുടെയും ചികിത്സാരീതികളുടെയും സമ്പൂർണ്ണ ജ്ഞാനം മൂന്നാം തലമുറയെ വിശ്വസ്തതയോടെ ഏൽപ്പിച്ചു. ഈ പാവനമായ പാരമ്പര്യത്തിന്റെ പവിത്രത വരും തലമുറകൾക്കും ലഭ്യമാകുമെന്ന് ഇത് ഉറപ്പാക്കുന്നു.
+        </p>
+      </div>
     </div>
 
-    <blockquote class="border-l-4 border-accent-gold pl-6 py-2 text-xl text-primary ">
-      "Healing is not merely the absence of disease, but the harmonious alignment of the body, mind, and spirit with the laws of nature."
+    <!-- Quote Block -->
+    <blockquote class="border-l-4 border-accent-gold pl-6 py-2">
+      <p class="lang-en text-lg sm:text-xl font-serif text-primary italic">
+        "Healing is not merely the absence of disease, but the harmonious alignment of the body, mind, and spirit with the laws of nature."
+      </p>
+      <p class="lang-ml font-malayalam text-base sm:text-lg text-primary italic leading-relaxed">
+        "രോഗമില്ലാത്ത അവസ്ഥ മാത്രമല്ല ആരോഗ്യം, മറിച്ച് ശരീരവും മനസ്സും ആത്മാവും പ്രകൃതിനിയമങ്ങളുമായി പൊരുത്തപ്പെടുന്ന സന്തുലിതാവസ്ഥയാണ്."
+      </p>
     </blockquote>
 
+    <!-- Story Link -->
     <div>
       <a 
         href="/about" 
-        class="inline-flex items-center gap-2 text-primary-dark text-lg hover:text-accent-gold transition-colors group"
+        class="inline-flex items-center gap-2 text-primary-dark text-lg hover:text-accent-gold transition-colors group font-serif font-bold"
       >
-        Read the Full Story
-        <span class="group-hover:translate-x-1 transition-transform">→</span>
+        <span class="lang-en">Read the Full Story</span>
+        <span class="lang-ml font-malayalam">കൂടുതൽ വായിക്കുക</span>
+        <span class="group-hover:translate-x-1.5 transition-transform">→</span>
       </a>
     </div>
   </div>
