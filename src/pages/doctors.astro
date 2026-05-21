@@ -44,6 +44,83 @@ const otherDoctors = [
   </div>
 
 
+  <!-- Founder Featured Card (In Memoriam) -->
+  <Section background="parchment">
+    <div class="bg-white shadow-2xl overflow-hidden border border-accent-gold/10">
+      <div class="grid grid-cols-1 lg:grid-cols-5 items-stretch">
+        <div class="lg:col-span-2 relative">
+          <img 
+            src="/images/vmfounder.jpg" 
+            alt="Dr. P. Abdul Sathar Gurukkal" 
+            class="w-full h-full object-cover min-h-[500px]"
+          />
+          <div class="absolute bottom-0 left-0 right-0 bg-primary/90 text-background-parchment p-6 lg:hidden">
+            <h2 class="text-2xl font-bold">Dr. P. Abdul Sathar Gurukkal</h2>
+            <p class="text-accent-gold uppercase tracking-widest text-sm">Founder & Chief Physician</p>
+          </div>
+        </div>
+        <div class="lg:col-span-3 p-8 md:p-12 space-y-8 flex flex-col justify-center">
+          <div class="hidden lg:block space-y-2">
+            <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold">Our Founder</span>
+            <span class="lang-ml font-malayalam text-accent-gold text-sm font-semibold block">ഞങ്ങളുടെ സ്ഥാപകൻ</span>
+            <h2 class="lang-en text-4xl font-bold text-primary-dark">Dr. P. Abdul Sathar Gurukkal</h2>
+            <h2 class="lang-ml font-malayalam text-3xl font-bold text-primary-dark">ഡോ. പി. അബ്ദുൾ സതാർ ഗുരുക്കൾ</h2>
+            <p class="lang-en text-earth uppercase tracking-widest font-bold text-sm">Founder &amp; Chief Physician (1983 - 2024)</p>
+            <p class="lang-ml font-malayalam text-earth font-semibold text-sm">സ്ഥാപകൻ &amp; പ്രധാന വൈദ്യൻ (1983 - 2024)</p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex gap-4">
+              <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+                <Award size={20} />
+              </div>
+              <div>
+                <p class="text-xs text-text-muted uppercase font-bold tracking-wider font-sans">Qualifications</p>
+                <p class="text-lg font-bold text-primary-dark">BAMS, MD (Ayurveda)</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+                <Clock size={20} />
+              </div>
+              <div>
+                <p class="text-xs text-text-muted uppercase font-bold tracking-wider font-sans">Legacy</p>
+                <p class="text-lg font-bold text-primary-dark">35+ Years of Service</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-xl font-bold text-primary-dark flex items-center gap-2">
+              <BookOpen size={20} className="text-accent-gold" />
+              Philosophy & Expertise
+            </h3>
+            <p class="text-text-muted leading-relaxed font-sans">
+              Dr. P. Abdul Sathar Gurukkal was a pioneer in traditional Kerala Ayurveda. His clinical expertise spanned over three decades, specializing in Panchakarma and chronic disease management. He believed in treating the root cause of illness by restoring the balance of Tridoshas (Vata, Pitta, Kapha).
+            </p>
+            <p class="text-text-muted leading-relaxed font-sans">
+              As a traditional Gurukkal, he carried forward the ancient wisdom of Marma Chikitsa and specialized herbal formulations passed down through generations.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            {['Panchakarma', 'Chronic Management', 'Marma Chikitsa', 'Clinical Research'].map(tag => (
+              <span class="px-3 py-1 bg-background-parchment text-primary text-xs font-bold uppercase tracking-wider rounded border border-primary/20">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div class="pt-6 border-t border-accent-gold/25">
+            <p class="text-sm text-primary font-medium italic font-serif leading-relaxed">
+              "Before attaining eternal peace in 2024, Dr. P. Abdul Sathar Gurukkal entrusted the complete knowledge of their ancestral Siddhis and healing traditions to the third generation, ensuring the purity of this sacred lineage would continue for years to come."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
   <!-- Other Doctors Grid -->
   <Section background="cream">
     <div class="text-center max-w-3xl mx-auto mb-16">
