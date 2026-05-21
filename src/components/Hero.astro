@@ -1,247 +1,227 @@
 ---
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Sparkles, Quote } from 'lucide-react';
 ---
 
-<section class="relative bg-background-parchment overflow-hidden border-b border-accent-gold/20 py-16 lg:py-24 flex flex-col justify-center min-h-[600px]">
+<section class="relative bg-background-parchment overflow-hidden border-b border-accent-gold/20 py-16 lg:py-24 flex flex-col justify-center min-h-[700px] lg:min-h-screen lg:h-screen w-full">
   <!-- Decorative background elements -->
-  <div class="absolute inset-0 opacity-5 mix-blend-multiply pointer-events-none bg-parchment-texture bg-repeat"></div>
+  <div class="absolute inset-0 opacity-[0.04] mix-blend-multiply pointer-events-none bg-parchment-texture bg-repeat"></div>
   <div class="absolute -top-40 -left-40 w-96 h-96 bg-accent-gold/5 rounded-full blur-[120px] pointer-events-none"></div>
   <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
 
+  <!-- Slow-Rotating Gold Mandala Watermark in Background -->
+  <div class="absolute top-1/2 right-10 -translate-y-1/2 w-[550px] h-[550px] opacity-[0.035] text-accent-gold pointer-events-none select-none animate-spin-slow z-0 hidden lg:block">
+    <svg viewBox="0 0 100 100" fill="currentColor" class="w-full h-full">
+      <path d="M50 0C48.8 0 47.9 1 47.9 2.1C47.9 6.2 46 10.1 42.9 12.9C39.8 15.7 35.8 17.1 31.7 16.9C30.5 16.9 29.5 17.8 29.5 19C29.5 20.2 30.5 21.1 31.7 21.1C35.8 20.9 39.8 22.3 42.9 25.1C46 27.9 47.9 31.8 47.9 35.9C47.9 37 48.9 38 50 38C51.1 38 52.1 37 52.1 35.9C52.1 31.8 54 27.9 57.1 25.1C60.2 22.3 64.2 20.9 68.3 21.1C69.5 21.1 70.5 20.2 70.5 19C70.5 17.8 69.5 16.9 68.3 16.9C64.2 17.1 60.2 15.7 57.1 12.9C54 10.1 52.1 6.2 52.1 2.1C52.1 1 51.2 0 50 0Z"/>
+      <path d="M50 42C45.6 42 42 45.6 42 50C42 54.4 45.6 58 50 58C54.4 58 58 54.4 58 50C58 45.6 54.4 42 50 42ZM50 55C47.2 55 45 52.8 45 50C45 47.2 47.2 45 50 45C52.8 45 55 47.2 55 50C55 52.8 52.8 55 50 55Z"/>
+      <path d="M19 29.5C17.8 29.5 16.9 30.5 16.9 31.7C17.1 35.8 15.7 39.8 12.9 42.9C10.1 46 6.2 47.9 2.1 47.9C1 47.9 0 48.8 0 50C0 51.2 1 52.1 2.1 52.1C6.2 52.1 10.1 54 12.9 57.1C15.7 60.2 17.1 64.2 16.9 68.3C16.9 69.5 17.8 70.5 19 70.5C20.2 70.5 21.1 69.5 21.1 68.3C20.9 64.2 22.3 60.2 25.1 57.1C27.9 54 31.8 52.1 35.9 52.1C37 52.1 38 51.1 38 50C38 48.9 37 47.9 35.9 47.9C31.8 47.9 27.9 46 25.1 42.9C22.3 39.8 20.9 35.8 21.1 31.7C21.1 30.5 20.2 29.5 19 29.5Z"/>
+      <path d="M81 29.5C79.8 29.5 78.9 30.5 78.9 31.7C79.1 35.8 77.7 39.8 74.9 42.9C72.1 46 68.2 47.9 64.1 47.9C63 47.9 62 48.8 62 50C62 51.2 63 52.1 64.1 52.1C68.2 52.1 72.1 54 74.9 57.1C77.7 60.2 79.1 64.2 78.9 68.3C78.9 69.5 79.8 70.5 81 70.5C82.2 70.5 83.1 69.5 83.1 68.3C82.9 64.2 84.3 60.2 87.1 57.1C89.9 54 93.8 52.1 97.9 52.1C99 52.1 100 51.2 100 50C100 48.8 99 47.9 97.9 47.9C93.8 47.9 89.9 46 87.1 42.9C84.3 39.8 82.9 35.8 83.1 31.7C83.1 30.5 82.2 29.5 81 29.5Z"/>
+      <path d="M50 62C48.9 62 47.9 63 47.9 64.1C47.9 68.2 46 72.1 42.9 74.9C39.8 77.7 35.8 79.1 31.7 78.9C30.5 78.9 29.5 79.8 29.5 81C29.5 82.2 30.5 83.1 31.7 83.1C35.8 82.9 39.8 84.3 42.9 87.1C46 89.9 47.9 93.8 47.9 97.9C47.9 99 48.9 100 50 100C51.1 100 52.1 99 52.1 97.9C52.1 93.8 54 89.9 57.1 87.1C60.2 84.3 64.2 82.9 68.3 83.1C69.5 83.1 70.5 82.2 70.5 81C70.5 79.8 69.5 78.9 68.3 78.9C64.2 79.1 60.2 77.7 57.1 74.9C54 72.1 52.1 68.2 52.1 64.1C52.1 63 51.1 62 50 62Z"/>
+    </svg>
+  </div>
+
   <div class="container mx-auto px-4 relative z-10 w-full">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-0 items-stretch">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
       
       <!-- Column 1: Institutional Heritage (Left - 5/12 width) -->
-      <div class="lg:col-span-5 flex flex-col justify-between space-y-6 text-left lg:pr-8 xl:pr-12 lg:border-r lg:border-accent-gold/15">
+      <div class="lg:col-span-5 flex flex-col justify-center space-y-6 text-left relative z-10">
         <div>
-          <!-- Double-Ring Gold Badge (Heritage Emblem) -->
-          <div class="flex items-center gap-3.5 mb-6 animate-fade-in-up group cursor-default">
-            <div class="relative flex flex-col items-center justify-center w-16 h-16 rounded-full border border-accent-gold/45 bg-background-cream/40 shrink-0 shadow-inner group-hover:rotate-6 transition-transform duration-500">
-              <div class="absolute inset-[3px] rounded-full border border-dashed border-accent-gold/30"></div>
-              <span class="text-[8px] font-sans tracking-widest text-accent-gold font-bold uppercase leading-none z-10">Estd</span>
-              <span class="text-sm font-serif font-bold text-primary-dark mt-0.5 leading-none z-10">1983</span>
+          <!-- Double-Ring Gold Badge (Heritage Emblem) with Rotating Text -->
+          <div class="flex items-center gap-4 mb-6 animate-fade-in-up group cursor-default">
+            <div class="relative flex items-center justify-center w-20 h-20 shrink-0">
+              <!-- Slowly rotating outer text ring -->
+              <svg viewBox="0 0 100 100" class="absolute w-20 h-20 animate-spin-slow pointer-events-none select-none opacity-80">
+                <path id="crestPath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                <text class="font-sans font-extrabold uppercase fill-accent-gold text-[7.2px] tracking-[0.18em]">
+                  <textPath href="#crestPath" startOffset="0%">• VAIDYARMANDIRAM • SINCE 1983</textPath>
+                </text>
+              </svg>
+              
+              <!-- Static inner golden crest -->
+              <div class="w-13 h-13 rounded-full border border-accent-gold/45 bg-background-cream/60 flex flex-col items-center justify-center shadow-inner group-hover:scale-[1.03] transition-transform duration-500 relative">
+                <div class="absolute inset-[2.5px] rounded-full border border-dashed border-accent-gold/30"></div>
+                <span class="text-[7.5px] font-sans tracking-widest text-accent-gold font-bold uppercase leading-none z-10">Estd</span>
+                <span class="text-xs font-serif font-bold text-primary-dark mt-0.5 leading-none z-10">1983</span>
+              </div>
             </div>
-            <div class="flex flex-col">
-              <span class="lang-en text-xs font-sans tracking-[0.22em] text-accent-gold uppercase font-bold">Kerala Traditional Ayurveda</span>
-              <span class="lang-ml font-malayalam text-xs text-accent-gold font-semibold leading-none">കേരള പരമ്പരാഗത ആയുർവേദം</span>
+            
+            <div class="flex flex-col justify-center">
+              <span class="lang-en text-[11px] font-sans tracking-[0.22em] text-accent-gold uppercase font-bold">Kerala Traditional Ayurveda</span>
+              <span class="lang-ml font-malayalam text-xs text-accent-gold font-semibold leading-none mb-0.5">കേരള പരമ്പരാഗത ആയുർവേദം</span>
               <span class="text-[10px] text-text-muted mt-0.5 font-sans tracking-wider uppercase">Legacy of Holistic Healing</span>
             </div>
           </div>
 
           <!-- Heading -->
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-serif text-primary-dark leading-tight mb-2 animate-fade-in-up">
-            <span class="lang-en">Authentic Healing <br/><span class="text-accent-gold italic">Rooted in Tradition</span></span>
-            <span class="lang-ml font-malayalam block text-3xl sm:text-4xl leading-tight font-bold">പരമ്പരാഗത ശൈലിയിൽ <br/><span class="text-accent-gold">ആധികാരിക ചികിത്സ</span></span>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif text-primary-dark leading-tight mb-2 animate-fade-in-up">
+            <span class="lang-en">A Legacy of <br/><span class="text-accent-gold italic">Pure Healing</span></span>
+            <span class="lang-ml font-malayalam block text-3xl sm:text-4xl md:text-5xl leading-tight font-bold">ശുദ്ധമായ <br/><span class="text-accent-gold">ചികിത്സാ പാരമ്പര്യം</span></span>
           </h1>
 
           <!-- Copy -->
-          <p class="lang-en text-base text-text/90 font-sans leading-relaxed max-w-xl animate-fade-in-up delay-100 mt-4">
-            Experience the profound wisdom of Kerala Ayurveda at Vaidyarmandiram Hospital. We provide authentic treatments focused on root-cause healing, preserving the rich legacy of our beloved founder Dr. P. Abdul Sathar Gurukkal.
+          <p class="lang-en text-sm sm:text-base text-text/90 font-sans leading-relaxed max-w-xl animate-fade-in-up delay-100 mt-4">
+            Rooted in the ancient wisdom of Kerala, Vaidyarmandiram Hospital offers personalized care that heals from within, preserving the rich lineage of our beloved founder Dr. P. Abdul Sathar Gurukkal.
           </p>
-          <p class="lang-ml font-malayalam text-base text-text/90 leading-relaxed max-w-xl animate-fade-in-up delay-100 mt-4">
-            വൈദ്യർമന്ദിരം ആയുർവേദ ഹോസ്പിറ്റലിൽ കേരളീയ ആയുർവേദത്തിന്റെ ആധികാരികത അനുഭവിക്കുക. ഞങ്ങളുടെ സ്ഥാപകൻ ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കളുടെ സമ്പന്നമായ പാരമ്പര്യം കാത്തുസൂക്ഷിച്ചുകൊണ്ട്, രോഗകാരണം കണ്ടെത്തിയുള്ള ചികിത്സകൾ ഞങ്ങൾ നൽകുന്നു.
+          <p class="lang-ml font-malayalam text-sm sm:text-base text-text/90 leading-relaxed max-w-xl animate-fade-in-up delay-100 mt-4">
+            കേരളീയ ആയുർവേദത്തിന്റെ തനിമയാർന്ന പാരമ്പര്യത്തിൽ ഊന്നി, ഞങ്ങളുടെ പ്രിയ സ്ഥാപകൻ ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കളുടെ ആപ്തവാക്യങ്ങളെ നെഞ്ചേറ്റി, ശരീരവും മനസ്സും സുഖപ്പെടുത്തുന്ന ആധികാരിക ചികിത്സകൾ ഞങ്ങൾ നൽകുന്നു.
           </p>
 
-          <!-- Mini Stats Line -->
-          <div class="grid grid-cols-3 gap-2 sm:gap-4 border-y border-accent-gold/15 py-3.5 my-6 animate-fade-in-up delay-150">
+          <!-- Mini Stats Line with Gold Borders -->
+          <div class="grid grid-cols-3 gap-2 border-y border-accent-gold/15 py-3.5 my-6 animate-fade-in-up delay-150 max-w-xl">
             <div class="text-center md:text-left">
-              <p class="text-lg md:text-xl font-serif font-bold text-primary-dark leading-none">40+</p>
-              <p class="lang-en text-[9px] uppercase tracking-wider text-text-muted mt-1 font-sans">Years Legacy</p>
-              <p class="lang-ml font-malayalam text-[9px] text-text-muted mt-1 leading-none">വർഷത്തെ പാരമ്പര്യം</p>
+              <p class="text-xl md:text-2xl font-serif font-bold text-primary-dark leading-none">40+</p>
+              <p class="lang-en text-[9px] uppercase tracking-wider text-text-muted mt-1.5 font-sans">Years Legacy</p>
+              <p class="lang-ml font-malayalam text-[9px] text-text-muted mt-1.5 leading-none">വർഷത്തെ പാരമ്പര്യം</p>
             </div>
-            <div class="text-center md:text-left border-x border-accent-gold/15 px-2">
-              <p class="text-lg md:text-xl font-serif font-bold text-primary-dark leading-none">3</p>
-              <p class="lang-en text-[9px] uppercase tracking-wider text-text-muted mt-1 font-sans">Hospitals</p>
-              <p class="lang-ml font-malayalam text-[9px] text-text-muted mt-1 leading-none">ആശുപത്രികൾ</p>
+            <div class="text-center md:text-left border-x border-accent-gold/15 px-2 sm:px-4">
+              <p class="text-xl md:text-2xl font-serif font-bold text-primary-dark leading-none">3</p>
+              <p class="lang-en text-[9px] uppercase tracking-wider text-text-muted mt-1.5 font-sans">Hospitals</p>
+              <p class="lang-ml font-malayalam text-[9px] text-text-muted mt-1.5 leading-none">ആശുപത്രികൾ</p>
             </div>
             <div class="text-center md:text-left">
-              <p class="text-lg md:text-xl font-serif font-bold text-primary-dark leading-none">25K+</p>
-              <p class="lang-en text-[9px] uppercase tracking-wider text-text-muted mt-1 font-sans">Cured Patients</p>
-              <p class="lang-ml font-malayalam text-[9px] text-text-muted mt-1 leading-none">സുഖം പ്രാപിച്ചവർ</p>
+              <p class="text-xl md:text-2xl font-serif font-bold text-primary-dark leading-none">25K+</p>
+              <p class="lang-en text-[9px] uppercase tracking-wider text-text-muted mt-1.5 font-sans">Cured Patients</p>
+              <p class="lang-ml font-malayalam text-[9px] text-text-muted mt-1.5 leading-none">സുഖം പ്രാപിച്ചവർ</p>
             </div>
           </div>
         </div>
 
-        <!-- Buttons -->
-        <div class="flex flex-col sm:flex-row gap-3 pt-2 animate-fade-in-up delay-200">
-          <a href="/appointment" class="btn-primary !bg-primary hover:!bg-primary-dark text-white flex items-center justify-center gap-2 group shadow-md hover:shadow-lg rounded-lg px-6 py-3.5 text-base">
+        <!-- Buttons with Shimmer & Expand Effects -->
+        <div class="flex flex-col sm:flex-row gap-3.5 pt-2 animate-fade-in-up delay-200">
+          <a href="/appointment" class="btn-shimmer bg-primary hover:bg-primary-dark text-white flex items-center justify-center gap-2 group shadow-md hover:shadow-lg rounded-lg px-8 py-4 text-base font-serif font-bold transition-all duration-300">
             <span class="lang-en">Book Consultation</span>
             <span class="lang-ml font-malayalam normal-case tracking-normal">കൺസൾട്ടേഷൻ ബുക്ക് ചെയ്യൂ</span>
             <ArrowRight size={18} class="transition-transform group-hover:translate-x-1 shrink-0" />
           </a>
-          <a href="/treatments" class="btn-outline !border-accent-gold/60 !text-accent-gold hover:!bg-accent-gold hover:!text-white flex items-center justify-center rounded-lg px-6 py-3.5 text-base">
+          <a href="/treatments" class="btn-expand-border border-2 border-accent-gold/60 text-accent-gold hover:text-white flex items-center justify-center rounded-lg px-8 py-4 text-base font-serif font-bold transition-all duration-300">
             <span class="lang-en">Explore Treatments</span>
             <span class="lang-ml font-malayalam normal-case tracking-normal">ചികിത്സകൾ കാണുക</span>
           </a>
         </div>
       </div>
 
-      <!-- Column 2: Interactive Slideshow (Middle - 4/12 width) -->
-      <div class="lg:col-span-4 flex flex-col justify-center lg:px-6 xl:px-8 lg:border-r lg:border-accent-gold/15 mt-8 lg:mt-0">
-        <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-accent-gold/30 shadow-lg bg-background-cream/30 group/slider animate-fade-in-up delay-150">
-          <!-- Slides Container -->
-          <div id="hero-slider" class="relative w-full h-full">
-            <!-- Slide 1 -->
-            <div class="absolute inset-0 opacity-100 transition-opacity duration-1000 ease-in-out hero-slide z-10 overflow-hidden">
-              <img src="/images/treatment-room-1.jpg" alt="Treatment Room" class="w-full h-full object-cover slide-img" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-              <div class="absolute bottom-5 left-5 right-5 text-left">
-                <span class="lang-en text-[9px] uppercase tracking-[0.2em] text-accent-gold font-sans font-bold">Our Infrastructure</span>
-                <span class="lang-ml font-malayalam text-[9px] text-accent-gold font-bold block">ഞങ്ങളുടെ സൗകര്യങ്ങൾ</span>
-                <h3 class="lang-en text-sm font-serif text-white font-bold leading-tight mt-0.5">Authentic & Clean Treatment Rooms</h3>
-                <h3 class="lang-ml font-malayalam text-sm text-white font-bold leading-tight mt-0.5">വൃത്തിയുള്ള ആധികാരിക ചികിത്സാ മുറികൾ</h3>
-              </div>
-            </div>
-            <!-- Slide 2 -->
-            <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out hero-slide z-0 overflow-hidden">
-              <img src="/images/herbal-garden-1.jpg" alt="Herbal Garden" class="w-full h-full object-cover slide-img" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-              <div class="absolute bottom-5 left-5 right-5 text-left">
-                <span class="lang-en text-[9px] uppercase tracking-[0.2em] text-accent-gold font-sans font-bold">Nature's Pharmacy</span>
-                <span class="lang-ml font-malayalam text-[9px] text-accent-gold font-bold block">പ്രകൃതിദത്ത ഔഷധങ്ങൾ</span>
-                <h3 class="lang-en text-sm font-serif text-white font-bold leading-tight mt-0.5">Organic In-House Herbal Garden</h3>
-                <h3 class="lang-ml font-malayalam text-sm text-white font-bold leading-tight mt-0.5">സ്വന്തം ഔഷധ സസ്യത്തോട്ടം</h3>
-              </div>
-            </div>
-            <!-- Slide 3 -->
-            <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out hero-slide z-0 overflow-hidden">
-              <img src="/images/spine-joint.jpg" alt="Traditional Therapies" class="w-full h-full object-cover slide-img" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-              <div class="absolute bottom-5 left-5 right-5 text-left">
-                <span class="lang-en text-[9px] uppercase tracking-[0.2em] text-accent-gold font-sans font-bold">Specialized Care</span>
-                <span class="lang-ml font-malayalam text-[9px] text-accent-gold font-bold block">പ്രത്യേക ചികിത്സകൾ</span>
-                <h3 class="lang-en text-sm font-serif text-white font-bold leading-tight mt-0.5">Traditional Spine & Joint Therapies</h3>
-                <h3 class="lang-ml font-malayalam text-sm text-white font-bold leading-tight mt-0.5">തനത് നട്ടെല്ല്, സന്ധി രോഗ ചികിത്സകൾ</h3>
-              </div>
-            </div>
-            <!-- Slide 4 -->
-            <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out hero-slide z-0 overflow-hidden">
-              <img src="/images/yoga-meditation.jpg" alt="Yoga & Meditation" class="w-full h-full object-cover slide-img" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-              <div class="absolute bottom-5 left-5 right-5 text-left">
-                <span class="lang-en text-[9px] uppercase tracking-[0.2em] text-accent-gold font-sans font-bold">Holistic Well-being</span>
-                <span class="lang-ml font-malayalam text-[9px] text-accent-gold font-bold block">ഹോലിസ്റ്റിക് വെൽനസ്സ്</span>
-                <h3 class="lang-en text-sm font-serif text-white font-bold leading-tight mt-0.5">Integrated Yoga & Wellness Guidance</h3>
-                <h3 class="lang-ml font-malayalam text-sm text-white font-bold leading-tight mt-0.5">യോഗയും അനുബന്ധ ചികിത്സാ മാർഗ്ഗങ്ങളും</h3>
+      <!-- Column 2: Dual-Arched Heritage Showcase (Right - 7/12 width) -->
+      <div class="lg:col-span-7 flex flex-row items-center justify-center gap-4 sm:gap-6 relative mt-12 lg:mt-0 px-2 sm:px-0">
+        
+        <!-- Left Arch: The Founder (Legacy Pillar) -->
+        <div class="w-[48%] max-w-[245px] aspect-[9/15] rounded-t-full rounded-b-2xl border-2 border-primary/20 p-1.5 shadow-[0_15px_30px_rgba(0,0,0,0.12)] bg-white/70 backdrop-blur-sm relative group/founder animate-fade-in-up delay-100 flex flex-col overflow-hidden">
+          <!-- Inner container -->
+          <div class="relative w-full h-full rounded-t-full rounded-b-[10px] overflow-hidden bg-background-cream/40 flex-grow">
+            <img 
+              src="/images/vmfounder.jpg" 
+              alt="Dr. P. Abdul Sathar Gurukkal" 
+              class="w-full h-full object-cover object-top transition-transform duration-[6000ms] ease-out scale-100 group-hover/founder:scale-105" 
+            />
+            <!-- Dark Vignette Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-transparent"></div>
+            
+            <!-- Embedded Quote & Details -->
+            <div class="absolute bottom-3 left-3 right-3 text-left">
+              <span class="lang-en text-[7.5px] uppercase tracking-[0.2em] text-accent-gold font-sans font-bold block mb-0.5">Our Eternal Guide</span>
+              <span class="lang-ml font-malayalam text-[8px] text-accent-gold font-bold block mb-0.5">ഞങ്ങളുടെ വഴികാട്ടി</span>
+              
+              <!-- Quote snippet -->
+              <div class="border-t border-white/10 mt-1 pt-1.5 mb-1.5">
+                <Quote size={10} class="text-accent-gold/40 mb-1" />
+                <p class="lang-en text-[9.5px] italic text-white/90 font-serif leading-snug">"True cure restores the balance of life."</p>
+                <p class="lang-ml font-malayalam text-[9px] italic text-white/90 leading-snug">"യഥാർത്ഥ ചികിത്സ ജീവിത സമതുലിതാവസ്ഥ വീണ്ടെടുക്കലാണ്."</p>
               </div>
             </div>
           </div>
 
-          <!-- Manual Arrow Controls (Hover Activated) -->
-          <button id="prev-slide" class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full border border-white/20 bg-black/30 hover:bg-black/60 text-white flex items-center justify-center z-30 opacity-0 group-hover/slider:opacity-100 transition-opacity duration-300" aria-label="Previous Slide">
-            <ChevronLeft size={18} />
+          <!-- Permanent Gold Nameplate at the Arch Bottom -->
+          <div class="w-full bg-primary-dark/95 border-t border-accent-gold/20 py-2.5 px-2 text-center rounded-b-[10px]">
+            <h3 class="lang-en text-[11px] sm:text-xs font-serif text-white font-bold tracking-wide">Dr. P. Abdul Sathar Gurukkal</h3>
+            <h3 class="lang-ml font-malayalam text-[10px] sm:text-[11px] text-white font-bold leading-tight">ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</h3>
+            <p class="lang-en text-[8px] uppercase tracking-wider text-accent-gold/80 mt-0.5 font-sans">Founder & Chief Physician</p>
+            <p class="lang-ml font-malayalam text-[8px] text-accent-gold/80 mt-0.5 leading-none">സ്ഥാപകൻ & ചീഫ് ഫിസിഷ്യൻ</p>
+          </div>
+        </div>
+
+        <!-- Right Arch: Sanctuary Slider (Facilities Showcase) - Offset Downwards & Overlapping slightly -->
+        <div class="w-[48%] max-w-[245px] aspect-[9/15] rounded-t-full rounded-b-2xl border-2 border-accent-gold/25 p-1.5 shadow-[0_20px_40px_rgba(0,0,0,0.15)] bg-white/70 backdrop-blur-sm relative group/slider animate-fade-in-up delay-200 flex flex-col overflow-hidden translate-y-8 sm:translate-y-12">
+          
+          <!-- Inner Slides Container -->
+          <div id="sanctuary-slider" class="relative w-full h-full rounded-t-full rounded-b-[10px] overflow-hidden bg-background-cream/40 flex-grow">
+            
+            <!-- Slide 1: Treatment Room -->
+            <div class="absolute inset-0 opacity-100 transition-opacity duration-1000 ease-in-out sanctuary-slide z-10 overflow-hidden">
+              <img src="/images/treatment-room-1.jpg" alt="Treatment Room" class="w-full h-full object-cover sanctuary-slide-img" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent"></div>
+              <div class="absolute bottom-4 left-3.5 right-3.5 text-left z-20">
+                <span class="lang-en text-[8px] uppercase tracking-[0.2em] text-accent-gold font-sans font-bold block mb-0.5">Facility</span>
+                <span class="lang-ml font-malayalam text-[8px] text-accent-gold font-bold block mb-0.5">സൗകര്യം</span>
+                <h4 class="lang-en text-xs sm:text-sm font-serif text-white font-bold leading-tight">Authentic Treatment Rooms</h4>
+                <h4 class="lang-ml font-malayalam text-[11px] sm:text-xs text-white font-bold leading-tight">ചികിത്സാ മുറികൾ</h4>
+              </div>
+            </div>
+            
+            <!-- Slide 2: Herbal Garden -->
+            <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out sanctuary-slide z-0 overflow-hidden">
+              <img src="/images/herbal-garden-1.jpg" alt="Herbal Garden" class="w-full h-full object-cover sanctuary-slide-img" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent"></div>
+              <div class="absolute bottom-4 left-3.5 right-3.5 text-left z-20">
+                <span class="lang-en text-[8px] uppercase tracking-[0.2em] text-accent-gold font-sans font-bold block mb-0.5">Natural Herbs</span>
+                <span class="lang-ml font-malayalam text-[8px] text-accent-gold font-bold block mb-0.5">ഔഷധങ്ങൾ</span>
+                <h4 class="lang-en text-xs sm:text-sm font-serif text-white font-bold leading-tight">Organic In-House Garden</h4>
+                <h4 class="lang-ml font-malayalam text-[11px] sm:text-xs text-white font-bold leading-tight">ഔഷധ സസ്യത്തോട്ടം</h4>
+              </div>
+            </div>
+            
+            <!-- Slide 3: Spine & Joint -->
+            <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out sanctuary-slide z-0 overflow-hidden">
+              <img src="/images/spine-joint.jpg" alt="Traditional Therapies" class="w-full h-full object-cover sanctuary-slide-img" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent"></div>
+              <div class="absolute bottom-4 left-3.5 right-3.5 text-left z-20">
+                <span class="lang-en text-[8px] uppercase tracking-[0.2em] text-accent-gold font-sans font-bold block mb-0.5">Expertise</span>
+                <span class="lang-ml font-malayalam text-[8px] text-accent-gold font-bold block mb-0.5">വൈദഗ്ദ്ധ്യം</span>
+                <h4 class="lang-en text-xs sm:text-sm font-serif text-white font-bold leading-tight">Traditional Spine & Joint Care</h4>
+                <h4 class="lang-ml font-malayalam text-[11px] sm:text-xs text-white font-bold leading-tight">നട്ടെല്ല്, സന്ധി രോഗ ചികിത്സ</h4>
+              </div>
+            </div>
+            
+            <!-- Slide 4: Yoga -->
+            <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out sanctuary-slide z-0 overflow-hidden">
+              <img src="/images/yoga-meditation.jpg" alt="Yoga & Meditation" class="w-full h-full object-cover sanctuary-slide-img" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent"></div>
+              <div class="absolute bottom-4 left-3.5 right-3.5 text-left z-20">
+                <span class="lang-en text-[8px] uppercase tracking-[0.2em] text-accent-gold font-sans font-bold block mb-0.5">Wellness</span>
+                <span class="lang-ml font-malayalam text-[8px] text-accent-gold font-bold block mb-0.5">വെൽനസ്സ്</span>
+                <h4 class="lang-en text-xs sm:text-sm font-serif text-white font-bold leading-tight">Yoga & Meditation Guidance</h4>
+                <h4 class="lang-ml font-malayalam text-[11px] sm:text-xs text-white font-bold leading-tight">ശാസ്ത്രീയ യോഗാ പരിശീലനങ്ങൾ</h4>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Manual Arrow Controls (Hover Activated on Arch) -->
+          <button id="prev-sanctuary" class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full border border-white/20 bg-black/40 hover:bg-black/70 text-white flex items-center justify-center z-30 opacity-0 group-hover/slider:opacity-100 transition-opacity duration-300 shadow-md" aria-label="Previous Slide">
+            <ChevronLeft size={16} />
           </button>
-          <button id="next-slide" class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full border border-white/20 bg-black/30 hover:bg-black/60 text-white flex items-center justify-center z-30 opacity-0 group-hover/slider:opacity-100 transition-opacity duration-300" aria-label="Next Slide">
-            <ChevronRight size={18} />
+          <button id="next-sanctuary" class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full border border-white/20 bg-black/40 hover:bg-black/70 text-white flex items-center justify-center z-30 opacity-0 group-hover/slider:opacity-100 transition-opacity duration-300 shadow-md" aria-label="Next Slide">
+            <ChevronRight size={16} />
           </button>
           
           <!-- Slide Navigation Indicators -->
-          <div class="absolute bottom-5 right-5 flex gap-1.5 z-20">
-            <button class="w-2 h-2 rounded-full bg-white transition-all duration-300 hero-dot active-dot" aria-label="Slide 1"></button>
-            <button class="w-2 h-2 rounded-full bg-white/40 hover:bg-white transition-all duration-300 hero-dot" aria-label="Slide 2"></button>
-            <button class="w-2 h-2 rounded-full bg-white/40 hover:bg-white transition-all duration-300 hero-dot" aria-label="Slide 3"></button>
-            <button class="w-2 h-2 rounded-full bg-white/40 hover:bg-white transition-all duration-300 hero-dot" aria-label="Slide 4"></button>
+          <div class="absolute top-3 right-3 flex gap-1 z-20 bg-black/30 backdrop-blur-sm px-1.5 py-1 rounded-full border border-white/10">
+            <button class="w-1.5 h-1.5 rounded-full bg-white transition-all duration-300 sanctuary-dot active-dot" aria-label="Slide 1"></button>
+            <button class="w-1.5 h-1.5 rounded-full bg-white/40 hover:bg-white transition-all duration-300 sanctuary-dot" aria-label="Slide 2"></button>
+            <button class="w-1.5 h-1.5 rounded-full bg-white/40 hover:bg-white transition-all duration-300 sanctuary-dot" aria-label="Slide 3"></button>
+            <button class="w-1.5 h-1.5 rounded-full bg-white/40 hover:bg-white transition-all duration-300 sanctuary-dot" aria-label="Slide 4"></button>
           </div>
         </div>
-      </div>
 
-      <!-- Column 3: Founder Spotlight Card (Right - 3/12 width) -->
-      <div class="lg:col-span-3 flex flex-col justify-center lg:pl-6 xl:pl-8 mt-8 lg:mt-0">
-        <div class="relative w-full bg-white border border-accent-gold/25 rounded-2xl p-4 shadow-md flex flex-col items-center text-center group animate-fade-in-up delay-200 max-w-[280px] sm:max-w-[320px] lg:max-w-none mx-auto h-full justify-between min-h-[380px]">
-          <!-- Elegant arched background overlay pattern inside border -->
-          <div class="absolute inset-0 bg-gradient-to-b from-background-parchment/30 to-transparent rounded-2xl pointer-events-none"></div>
-
-          <!-- Traditional Arch Portrait Frame -->
-          <div class="relative w-full aspect-[4/5] rounded-t-[3.5rem] rounded-b-xl overflow-hidden border border-accent-gold/20 mb-4 shadow-md bg-background-parchment/50">
-            <img 
-              src="/images/vmfounder.jpg" 
-              alt="Dr. P. Abdul Sathar Gurukkal"
-              class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-103"
-            />
-          </div>
-          
-          <!-- Content -->
-          <div class="flex flex-col items-center w-full">
-            <span class="lang-en text-[9px] uppercase tracking-[0.25em] text-accent-gold font-sans font-bold mb-1 block">Founder & Visionary</span>
-            <span class="lang-ml font-malayalam text-[9px] text-accent-gold font-bold block mb-1">സ്ഥാപകനും മാർഗ്ഗദർശിയും</span>
-
-            <h3 class="lang-en text-base font-serif text-primary-dark font-bold leading-tight">Dr. P. Abdul Sathar Gurukkal</h3>
-            <h3 class="lang-ml font-malayalam text-base text-primary-dark font-bold leading-tight">ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</h3>
-            
-            <p class="lang-en text-[11px] text-text-muted font-sans mt-0.5 leading-none">Chief Physician (1983 - 2024)</p>
-            <p class="lang-ml font-malayalam text-[11px] text-text-muted mt-0.5 leading-none">ചീഫ് ഫിസിഷ്യൻ (1983 - 2024)</p>
-          </div>
-          
-          <!-- Philosophy/Quote -->
-          <div class="w-full border-t border-accent-gold/10 mt-3 pt-3">
-            <p class="lang-en text-[11px] italic text-primary font-serif leading-snug">
-              "Curing illness is not just symptom management; it is reviving the natural balance of life."
-            </p>
-            <p class="lang-ml font-malayalam text-[11px] italic text-primary leading-snug">
-              "രോഗം സുഖപ്പെടുത്തുക എന്നാൽ ലക്ഷണങ്ങൾ മാറ്റുക മാത്രമല്ല; അത് ജീവിതത്തിന്റെ സ്വാഭാവിക സമതുലിതാവസ്ഥ വീണ്ടെടുക്കുകയാണ്."
-            </p>
-          </div>
-        </div>
       </div>
       
     </div>
-
-    <!-- Trust Strip Integration (Accreditation Badges with Custom SVGs) -->
-    <div class="w-full border-t border-accent-gold/20 mt-12 lg:mt-16 pt-6">
-      <div class="flex flex-wrap justify-center items-center gap-y-4 gap-x-8 lg:gap-x-12 text-center">
-        
-        <div class="flex items-center gap-2.5 bg-white/60 border border-accent-gold/15 px-4 py-2 rounded-full shadow-sm transition-all duration-300 hover:shadow hover:border-accent-gold/30">
-          <svg class="text-accent-gold w-4.5 h-4.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <path d="M12 8v4"/>
-            <circle cx="12" cy="15" r="0.5" fill="currentColor"/>
-          </svg>
-          <div class="flex flex-col text-left">
-            <span class="lang-en text-[9px] uppercase tracking-wider text-text-muted font-sans font-bold leading-none">Approved Standard</span>
-            <span class="lang-ml font-malayalam text-[8px] text-text-muted font-bold leading-none">അംഗീകൃത നിലവാരം</span>
-            <span class="lang-en text-xs font-serif font-bold text-primary-dark mt-0.5 leading-none">NABH Approved Hospital</span>
-            <span class="lang-ml font-malayalam text-xs font-bold text-primary-dark mt-0.5 leading-none">NABH അംഗീകൃത ആശുപത്രി</span>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-2.5 bg-white/60 border border-accent-gold/15 px-4 py-2 rounded-full shadow-sm transition-all duration-300 hover:shadow hover:border-accent-gold/30">
-          <svg class="text-accent-gold w-4.5 h-4.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
-            <path d="M12 6v6l4 2"/>
-          </svg>
-          <div class="flex flex-col text-left">
-            <span class="lang-en text-[9px] uppercase tracking-wider text-text-muted font-sans font-bold leading-none">Government Authority</span>
-            <span class="lang-ml font-malayalam text-[8px] text-text-muted font-bold leading-none">സർക്കാർ അംഗീകാരം</span>
-            <span class="lang-en text-xs font-serif font-bold text-primary-dark mt-0.5 leading-none">Ministry of AYUSH Certified</span>
-            <span class="lang-ml font-malayalam text-xs font-bold text-primary-dark mt-0.5 leading-none">മിനിസ്ട്രി ഓഫ് ആയുഷ് സാക്ഷ്യപ്പെടുത്തിയത്</span>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-2.5 bg-white/60 border border-accent-gold/15 px-4 py-2 rounded-full shadow-sm transition-all duration-300 hover:shadow hover:border-accent-gold/30">
-          <svg class="text-accent-gold w-4.5 h-4.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-            <polyline points="22 4 12 14.01 9 11.01"/>
-          </svg>
-          <div class="flex flex-col text-left">
-            <span class="lang-en text-[9px] uppercase tracking-wider text-text-muted font-sans font-bold leading-none">Quality Management</span>
-            <span class="lang-ml font-malayalam text-[8px] text-text-muted font-bold leading-none">ഗുണനിലവാര നിയന്ത്രണം</span>
-            <span class="lang-en text-xs font-serif font-bold text-primary-dark mt-0.5 leading-none">ISO 9001:2015 Certified</span>
-            <span class="lang-ml font-malayalam text-xs font-bold text-primary-dark mt-0.5 leading-none">ISO 9001:2015 അംഗീകൃതം</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
   </div>
 </section>
 
 <script>
-  function initHeroSlider() {
-    const slides = document.querySelectorAll('.hero-slide');
-    const dots = document.querySelectorAll('.hero-dot');
-    const prevBtn = document.getElementById('prev-slide');
-    const nextBtn = document.getElementById('next-slide');
+  function initSanctuarySlider() {
+    const slides = document.querySelectorAll('.sanctuary-slide');
+    const dots = document.querySelectorAll('.sanctuary-dot');
+    const prevBtn = document.getElementById('prev-sanctuary');
+    const nextBtn = document.getElementById('next-sanctuary');
     if (slides.length === 0) return;
 
     let currentSlide = 0;
@@ -285,7 +265,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
     function startTimer() {
       stopTimer();
-      timer = setInterval(nextSlide, 4500);
+      timer = setInterval(nextSlide, 5000); // 5 seconds interval
     }
 
     function stopTimer() {
@@ -319,26 +299,37 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
   }
 
   // Initialize
-  initHeroSlider();
+  initSanctuarySlider();
 
   // Re-run safely on Astro page transitions
-  document.addEventListener('astro:page-load', initHeroSlider);
+  document.addEventListener('astro:page-load', initSanctuarySlider);
 </script>
 
 <style>
-  .slide-img {
+  /* ── Ken Burns Slow Zoom for Sanctuary Slide Images ── */
+  .sanctuary-slide-img {
     transform: scale(1.0);
-    transition: transform 5s ease-out;
+    transition: transform 6s ease-out;
   }
   
-  .hero-slide.z-10 .slide-img {
-    transform: scale(1.05);
+  .sanctuary-slide.z-10 .sanctuary-slide-img {
+    transform: scale(1.07);
   }
 
+  /* ── Slow spin animation for outer text ring ── */
+  @keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spinSlow 18s linear infinite;
+  }
+
+  /* ── Fade In Up Animation for Hero Entry ── */
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(24px);
     }
     to {
       opacity: 1;
@@ -347,10 +338,62 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
   }
 
   .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .delay-100 { animation-delay: 0.1s; }
   .delay-150 { animation-delay: 0.15s; }
   .delay-200 { animation-delay: 0.2s; }
+
+  /* ── Shimmering Gold Button Effect ── */
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -70%;
+    width: 40%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.25),
+      transparent
+    );
+    transform: rotate(30deg);
+    transition: none;
+  }
+  .btn-shimmer:hover::after {
+    left: 170%;
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  /* ── Expanding Outline for Secondary Button ── */
+  .btn-expand-border {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .btn-expand-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #B8860B; /* accent-gold */
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-expand-border:hover::before {
+    transform: scaleX(1);
+  }
+  .btn-expand-border:hover {
+    border-color: transparent;
+  }
 </style>
