@@ -38,8 +38,32 @@ const testimonials = [
 
   <Hero />
 
+  <!-- Treatments Preview -->
+  <Section id="treatments" background="white">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold">Our Expertise</span>
+      <span class="lang-ml font-malayalam text-accent-gold text-base font-semibold block">ഞങ്ങളുടെ വൈദഗ്ദ്ധ്യം</span>
+      <h2 class="lang-en text-4xl md:text-5xl text-primary-dark mt-3 mb-6 font-serif">Healing Through Tradition</h2>
+      <h2 class="lang-ml font-malayalam text-4xl md:text-5xl text-primary-dark mt-3 mb-6 font-bold">പൈതൃകത്തിലൂടെ സൗഖ്യം</h2>
+      <p class="lang-en text-primary-dark font-sans text-lg">
+        We offer a comprehensive range of traditional Ayurvedic treatments, each personalized to your unique body constitution (Prakriti).
+      </p>
+      <p class="lang-ml font-malayalam text-primary-dark text-lg">
+        ഓരോ വ്യക്തിയുടെയും ശരീരഘടനയ്ക്ക് (പ്രകൃതി) അനുസൃതമായ വൈവിധ്യമാർന്ന ആയുർവേദ ചികിത്സകൾ ഞങ്ങൾ നൽകുന്നു.
+      </p>
+    </div>
+    <TreatmentsGrid />
+    <div class="text-center mt-12">
+      <a href="/treatments" class="btn-outline">
+        <span class="lang-en">View All Treatments</span>
+        <span class="lang-ml font-malayalam normal-case tracking-normal">എല്ലാ ചികിത്സകളും കാണൂ</span>
+      </a>
+    </div>
+  </Section>
+
+
   <!-- Premium Trust Accreditation Strip -->
-  <div class="bg-background-cream/35 py-6 md:py-10 border-b border-accent-gold/20">
+  <div class="bg-white py-6 md:py-10 border-b border-accent-gold/20">
     <div class="container mx-auto px-2 sm:px-4">
       <div class="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 max-w-5xl mx-auto">
         {[
@@ -87,84 +111,13 @@ const testimonials = [
   <Stats />
 
   <!-- Founder Spotlight -->
-  <Section id="founder" background="parchment" withDivider={true}>
+  <Section id="founder" background="white" withDivider={true}>
     <FounderSpotlight />
   </Section>
 
-  <!-- Treatments Preview -->
-  <Section id="treatments" background="cream">
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold">Our Expertise</span>
-      <span class="lang-ml font-malayalam text-accent-gold text-base font-semibold block">ഞങ്ങളുടെ വൈദഗ്ദ്ധ്യം</span>
-      <h2 class="lang-en text-4xl md:text-5xl text-primary-dark mt-3 mb-6 font-serif">Healing Through Tradition</h2>
-      <h2 class="lang-ml font-malayalam text-4xl md:text-5xl text-primary-dark mt-3 mb-6 font-bold">പൈതൃകത്തിലൂടെ സൗഖ്യം</h2>
-      <p class="lang-en text-primary-dark font-sans text-lg">
-        We offer a comprehensive range of traditional Ayurvedic treatments, each personalized to your unique body constitution (Prakriti).
-      </p>
-      <p class="lang-ml font-malayalam text-primary-dark text-lg">
-        ഓരോ വ്യക്തിയുടെയും ശരീരഘടനയ്ക്ക് (പ്രകൃതി) അനുസൃതമായ വൈവിധ്യമാർന്ന ആയുർവേദ ചികിത്സകൾ ഞങ്ങൾ നൽകുന്നു.
-      </p>
-    </div>
-    <TreatmentsGrid />
-    <div class="text-center mt-12">
-      <a href="/treatments" class="btn-outline">
-        <span class="lang-en">View All Treatments</span>
-        <span class="lang-ml font-malayalam normal-case tracking-normal">എല്ലാ ചികിത്സകളും കാണൂ</span>
-      </a>
-    </div>
-  </Section>
-
-  <!-- Panchakarma Feature -->
-  <Section background="dark" className="overflow-hidden">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      <div class="space-y-6">
-        <h2 class="lang-en text-3xl md:text-5xl text-background-parchment leading-tight font-serif">
-          The Art of <span class="text-accent-gold ">Panchakarma</span>
-        </h2>
-        <h2 class="lang-ml font-malayalam text-3xl md:text-5xl text-background-parchment leading-tight font-bold">
-          <span class="text-accent-gold">പഞ്ചകർമ്മ</span>ത്തിന്റെ കല
-        </h2>
-        <p class="lang-en text-background-parchment text-lg leading-relaxed">
-          Panchakarma is the cornerstone of Ayurvedic healing — a profound detoxification process that removes deep-rooted toxins (Ama) from the body, restoring balance and vitality.
-        </p>
-        <p class="lang-ml font-malayalam text-background-parchment text-lg leading-relaxed">
-          ആയുർവേദ ചികിത്സയുടെ അടിസ്ഥാനശില — ശരീരത്തിൽ നിന്ന് ആഴത്തിൽ പതിഞ്ഞ വിഷാംശങ്ങൾ (ആമ) നീക്കം ചെയ്ത് സന്തുലിതാവസ്ഥ പുനഃസ്ഥാപിക്കുന്ന ആഴത്തിലുള്ള ശുദ്ധീകരണ പ്രക്രിയ.
-        </p>
-        <ul class="space-y-3">
-          {[
-            { en: 'Vamana (Therapeutic Emesis)',   ml: 'വമനം (ഔഷധ ഛർദ്ദി)' },
-            { en: 'Virechana (Purgation)',         ml: 'വിരേചനം' },
-            { en: 'Basti (Enema Therapy)',         ml: 'ബസ്തി (ഔഷധ എനിമ)' },
-            { en: 'Nasya (Nasal Administration)', ml: 'നസ്യം (നാസാ ചികിത്സ)' },
-            { en: 'Raktamokshana (Bloodletting)', ml: 'രക്തമോക്ഷണം' },
-          ].map(item => (
-            <li class="flex items-start gap-3">
-              <CheckCircle2 class="text-accent-gold shrink-0 mt-1" size={18} />
-              <div>
-                <span class="lang-en text-background-parchment font-sans">{item.en}</span>
-                <span class="lang-ml font-malayalam text-background-parchment">{item.ml}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <a href="/treatments" class="btn-primary !bg-accent-gold !text-primary-dark inline-block mt-4">
-          <span class="lang-en">Learn More About Panchakarma</span>
-          <span class="lang-ml font-malayalam normal-case tracking-normal">പഞ്ചകർമ്മത്തെ കുറിച്ച് അറിയൂ</span>
-        </a>
-      </div>
-      <div class="relative px-4 md:px-0">
-        <img
-          src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=1000"
-          alt="Panchakarma Treatment"
-          class="rounded-lg shadow-2xl relative z-10"
-        />
-        <div class="absolute -top-4 -right-4 md:-top-10 md:-right-10 w-full h-full border-4 border-accent-gold/20 -z-0"></div>
-      </div>
-    </div>
-  </Section>
 
   <!-- Testimonials -->
-  <Section background="parchment" withDivider={true}>
+  <Section background="white" withDivider={true}>
     <div class="text-center max-w-3xl mx-auto mb-16">
       <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold">Patient Stories</span>
       <span class="lang-ml font-malayalam text-accent-gold text-base font-semibold block">രോഗി അനുഭവങ്ങൾ</span>
@@ -176,7 +129,7 @@ const testimonials = [
       class="flex md:grid overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:grid-cols-3 gap-6 md:gap-8 pb-6 md:pb-0 scrollbar-none"
     >
       {testimonials.map(t => (
-        <div class="bg-white p-8 shadow-md border border-accent-gold/15 rounded-2xl relative hover:shadow-lg transition-shadow duration-300 min-w-[85vw] sm:min-w-[450px] md:min-w-0 snap-center shrink-0 testimonial-card">
+        <div class="bg-white p-6 sm:p-8 shadow-md border border-accent-gold/15 rounded-2xl relative hover:shadow-lg transition-shadow duration-300 w-[75vw] sm:w-[350px] md:w-auto snap-center shrink-0 testimonial-card">
           <Quote class="absolute top-4 right-4 text-accent-gold/10" size={48} />
           <div class="flex gap-1 mb-4">
             {[...Array(t.rating)].map(() => <Star class="text-accent-gold fill-accent-gold" size={16} />)}
@@ -202,55 +155,77 @@ const testimonials = [
 
     <script>
       function setupAutoScroll() {
-        const container = document.getElementById('testimonials-scroll-container');
+        const container = document.getElementById('testimonials-scroll-container') as HTMLElement;
         if (!container) return;
 
-        let intervalId: any;
-        let isInteracting = false;
+        let autoScrollInterval: ReturnType<typeof setInterval>;
+        const items = Array.from(container.querySelectorAll('.testimonial-card')) as HTMLElement[];
+        let currentIndex = 0;
+        let isProgrammaticScroll = false;
+
+        const updateIndex = () => {
+          if (items.length === 0) return;
+          const scrollLeft = container.scrollLeft;
+          const centerOffset = container.offsetWidth / 2;
+          const scrollCenter = scrollLeft + centerOffset;
+          
+          let closestIndex = 0;
+          let minDistance = Infinity;
+          
+          items.forEach((item, idx) => {
+            const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+            const distance = Math.abs(scrollCenter - itemCenter);
+            if (distance < minDistance) {
+              minDistance = distance;
+              closestIndex = idx;
+            }
+          });
+          
+          currentIndex = closestIndex;
+        };
+
+        container.addEventListener('scroll', () => {
+          if (!isProgrammaticScroll) {
+            updateIndex();
+          }
+        }, { passive: true });
 
         const startAutoScroll = () => {
-          clearInterval(intervalId);
+          stopAutoScroll();
 
           // Only auto-scroll on mobile/tablet (below 768px screen width)
           if (window.innerWidth >= 768) return;
 
-          intervalId = setInterval(() => {
-            if (isInteracting) return;
+          autoScrollInterval = setInterval(() => {
+            if (items.length === 0) return;
 
-            const cards = container.querySelectorAll('.testimonial-card');
-            if (cards.length === 0) return;
-
-            const firstCard = cards[0] as HTMLElement;
-            const cardWidth = firstCard.offsetWidth + 24; // width + gap-6 (24px)
-            
-            let nextScroll = container.scrollLeft + cardWidth;
-            
-            const maxScroll = container.scrollWidth - container.clientWidth;
-            if (container.scrollLeft >= maxScroll - 10) {
-              nextScroll = 0;
+            currentIndex++;
+            if (currentIndex >= items.length) {
+              currentIndex = 0;
             }
 
+            isProgrammaticScroll = true;
+
+            const targetItem = items[currentIndex];
+            const scrollTarget = targetItem.offsetLeft - (container.offsetWidth / 2) + (targetItem.offsetWidth / 2);
+
             container.scrollTo({
-              left: nextScroll,
+              left: scrollTarget,
               behavior: 'smooth'
             });
-          }, 4000);
+
+            setTimeout(() => {
+              isProgrammaticScroll = false;
+            }, 1000);
+          }, 4500);
         };
 
-        const pauseScroll = () => {
-          isInteracting = true;
-        };
-        
-        const resumeScroll = () => {
-          setTimeout(() => {
-            isInteracting = false;
-          }, 1500);
+        const stopAutoScroll = () => {
+          if (autoScrollInterval) clearInterval(autoScrollInterval);
         };
 
-        container.addEventListener('mouseenter', pauseScroll);
-        container.addEventListener('mouseleave', resumeScroll);
-        container.addEventListener('touchstart', pauseScroll, { passive: true });
-        container.addEventListener('touchend', resumeScroll, { passive: true });
+        container.addEventListener('touchstart', stopAutoScroll, { passive: true });
+        container.addEventListener('touchend', startAutoScroll);
 
         startAutoScroll();
         window.addEventListener('resize', startAutoScroll);

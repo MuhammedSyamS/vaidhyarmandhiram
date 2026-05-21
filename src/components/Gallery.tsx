@@ -3,14 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const images = [
-  { id: 1, src: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800', category: 'Treatment Rooms', alt: 'Panchakarma Treatment Room' },
-  { id: 2, src: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800', category: 'Treatment Rooms', alt: 'Abhyangam Session' },
-  { id: 3, src: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800', category: 'Patient Wellness', alt: 'Yoga and Meditation' },
-  { id: 4, src: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800', category: 'Facilities', alt: 'Hospital Entrance' },
-  { id: 5, src: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=800', category: 'Facilities', alt: 'Consultation Room' },
-  { id: 6, src: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=800', category: 'Herbal Garden', alt: 'Ayurvedic Herbs' },
-  { id: 7, src: 'https://images.unsplash.com/photo-1603513492128-ba7bc9b3e143?auto=format&fit=crop&q=80&w=800', category: 'Herbal Garden', alt: 'Drying Herbs' },
-  { id: 8, src: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=800', category: 'Treatment Rooms', alt: 'Therapy Session' },
+  { id: 1, src: '/images/treatment-room-1.jpg', category: 'Treatment Rooms', alt: 'Panchakarma Treatment Room' },
+  { id: 2, src: '/images/hero-bg.jpg', category: 'Treatment Rooms', alt: 'Abhyangam Session' },
+  { id: 3, src: '/images/yoga-meditation.jpg', category: 'Patient Wellness', alt: 'Yoga and Meditation' },
+  { id: 4, src: '/images/skin-treatment.jpg', category: 'Facilities', alt: 'Hospital Entrance' },
+  { id: 5, src: '/images/consultation-room.jpg', category: 'Facilities', alt: 'Consultation Room' },
+  { id: 6, src: '/images/herbal-garden-1.jpg', category: 'Herbal Garden', alt: 'Ayurvedic Herbs' },
+  { id: 7, src: '/images/herbal-garden-2.jpg', category: 'Herbal Garden', alt: 'Drying Herbs' },
+  { id: 8, src: '/images/spine-joint.jpg', category: 'Treatment Rooms', alt: 'Therapy Session' },
 ];
 
 const categories = ['All', 'Treatment Rooms', 'Herbal Garden', 'Facilities', 'Patient Wellness'];

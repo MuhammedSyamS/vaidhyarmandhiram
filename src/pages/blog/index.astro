@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Section from '../../components/Section.astro';
+import { getCollection } from 'astro:content';
+
+export const prerender = true;
+
+const allPosts = await getCollection('blog').catch(() => []);
+const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Blog - Vaidyarmandiram">
+  <Header slot="header" />
+
+  <!-- Page Header -->
+  <div class="bg-primary-dark py-24 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <img src="/images/herbal-garden-1.jpg" alt="" class="w-full h-full object-cover" />
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+      <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold mb-2 block">Knowledge Base</span>
+      <span class="lang-ml font-malayalam text-accent-gold text-base font-semibold mb-2 block">അറിവ്</span>
+      <h1 class="lang-en text-4xl md:text-7xl text-background-parchment leading-tight">Our <span class="text-accent-gold ">Blog</span></h1>
+      <h1 class="lang-ml font-malayalam text-4xl md:text-6xl text-background-parchment leading-tight mt-2">ഞങ്ങളുടെ <span class="text-accent-gold">ബ്ലോഗ്</span></h1>
+    </div>
+  </div>
+
+  <Section background="parchment">
+    <div class="container mx-auto max-w-5xl px-4">
+      {posts.length === 0 ? (
+        <div class="text-center py-20 bg-white rounded-2xl shadow-lg border border-accent-gold/20 max-w-2xl mx-auto">
+          <h2 class="text-3xl text-primary-dark font-bold mb-4">Coming Soon</h2>
+          <p class="text-text-muted font-sans text-lg">We are currently preparing insightful articles about Ayurveda, health, and wellness. Check back soon!</p>
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map(post => (
+            <a href={`/blog/${post.slug}`} class="bg-white group rounded-xl shadow-md border border-accent-gold/10 overflow-hidden hover:shadow-xl transition-all">
+              {post.data.image ? (
+                <div class="aspect-[16/10] overflow-hidden">
+                  <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                </div>
+              ) : (
+                <div class="aspect-[16/10] bg-primary-dark/5 flex items-center justify-center">
+                  <span class="text-accent-gold/50 font-serif text-3xl font-bold">Vaidyarmandiram</span>
+                </div>
+              )}
+              <div class="p-6 space-y-3">
+                <span class="text-xs font-sans text-accent-gold font-bold uppercase tracking-widest">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                <h3 class="text-xl font-bold text-primary-dark group-hover:text-accent-gold transition-colors line-clamp-2">{post.data.title}</h3>
+                <p class="text-sm text-text-muted font-sans line-clamp-3">{post.data.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </Section>
+
+  <Footer slot="footer" />
+</BaseLayout>

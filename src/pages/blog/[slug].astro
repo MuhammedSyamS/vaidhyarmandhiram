@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Section from '../../components/Section.astro';
+import { getCollection } from 'astro:content';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog').catch(() => []);
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BaseLayout title={post.data.title}>
+  <Header slot="header" />
+
+  <!-- Page Header -->
+  <div class="bg-primary-dark py-24 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      {post.data.image ? (
+        <img src={post.data.image} alt="" class="w-full h-full object-cover" />
+      ) : (
+        <img src="/images/herbal-garden-1.jpg" alt="" class="w-full h-full object-cover" />
+      )}
+    </div>
+    <div class="container mx-auto px-4 relative z-10 max-w-4xl">
+      <span class="text-accent-gold font-sans uppercase tracking-[0.2em] text-sm font-bold mb-4 block">
+        {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </span>
+      <h1 class="text-3xl md:text-5xl lg:text-6xl text-background-parchment leading-tight font-bold">{post.data.title}</h1>
+    </div>
+  </div>
+
+  <Section background="parchment">
+    <div class="container mx-auto max-w-3xl">
+      <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-accent-gold/10 prose prose-lg prose-headings:text-primary-dark prose-headings:font-serif prose-a:text-accent-gold prose-p:text-text-muted prose-p:font-sans mx-auto">
+        <Content />
+      </div>
+    </div>
+  </Section>
+
+  <Footer slot="footer" />
+</BaseLayout>

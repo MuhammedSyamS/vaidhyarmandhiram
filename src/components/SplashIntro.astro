@@ -5,18 +5,15 @@
 <div id="splash-intro" class="fixed inset-0 z-[9999] bg-background-parchment flex flex-col items-center justify-center overflow-hidden transition-all duration-1000 ease-out select-none" style="background-image: url('/images/parchment-texture.svg'); background-repeat: repeat;">
   
   <!-- Centered Content Wrapper with Fade-in Entry -->
-  <div class="relative z-10 max-w-4xl px-6 flex flex-col items-center text-center animate-page-reveal">
+  <div class="relative z-10 w-full h-full flex flex-col items-center justify-center text-center animate-page-reveal">
     
-    <!-- Main Logo Display -->
-    <div class="relative animate-logo-reveal flex items-center justify-center">
-      <!-- Simple Logo Image Wrapper -->
-      <div class="w-80 sm:w-[500px] flex items-center justify-center">
-        <img 
-          src="/images/vmnavbarlogo.png" 
-          alt="Vaidhyar Mandhiram Logo" 
-          class="w-full h-auto object-contain mix-blend-multiply"
-        />
-      </div>
+    <!-- Main Image Display -->
+    <div class="relative animate-logo-reveal w-full h-full flex items-center justify-center">
+      <img 
+        src="/images/vmlaunchingpage.jpeg" 
+        alt="Vaidyarmandiram Launching" 
+        class="w-full h-full object-cover"
+      />
     </div>
 
   </div>
@@ -27,10 +24,26 @@
     const splash = document.getElementById('splash-intro');
     if (!splash) return;
 
-    // Check if splash has already been shown in this session
-    const hasShown = sessionStorage.getItem('splash-shown');
-    const isReload = performance.getEntriesByType('navigation')[0]?.type === 'reload';
-    if (hasShown && !isReload) {
+    // Ensure it only runs once per actual full page load/view transition sequence
+    if (window.__SPLASH_SHOWN__) {
+      splash.style.display = 'none';
+      splash.remove();
+      return;
+    }
+    window.__SPLASH_SHOWN__ = true;
+
+    const navType = window.performance ? window.performance.navigation.type : 0;
+    const isReload = navType === 1; // 1 is TYPE_RELOAD
+    
+    let isDirectEntry = true;
+    if (document.referrer) {
+      try {
+        isDirectEntry = new URL(document.referrer).hostname !== window.location.hostname;
+      } catch(e) {}
+    }
+    
+    // Only show on Reload or Direct Entry (entering the website)
+    if (!isReload && !isDirectEntry) {
       splash.style.display = 'none';
       splash.remove();
       return;

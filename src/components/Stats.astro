@@ -2,18 +2,17 @@
 const stats = [
   { en: 'Healed Patients',      ml: 'രോഗ നിവൃത്തി',       value: '25000', suffix: '+' },
   { en: 'Years of Experience',  ml: 'വർഷത്തെ അനുഭവം',     value: '35',    suffix: '+' },
-  { en: 'Expert Doctors',       ml: 'വിദഗ്ധ ഡോക്ടർമാർ',   value: '12',    suffix: '' },
   { en: 'Authentic Treatments', ml: 'ആധികാരിക ചികിത്സകൾ', value: '50',    suffix: '+' },
 ];
 ---
 
-<div class="bg-background-parchment py-8 md:py-16 border-y border-accent-gold/20 relative overflow-hidden">
+<div class="bg-white py-8 md:py-16 border-y border-accent-gold/20 relative overflow-hidden">
   
   <!-- Subtle organic background details -->
   <div class="absolute inset-0 bg-parchment-texture opacity-[0.02]"></div>
   
   <div class="container mx-auto px-2 sm:px-4 relative z-10">
-    <div class="grid grid-cols-4 gap-1.5 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
+    <div class="grid grid-cols-3 gap-1.5 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
       {stats.map((stat, index) => (
         <div class="bg-white p-2.5 sm:p-6 lg:p-8 rounded-lg md:rounded-2xl border border-accent-gold/15 shadow-sm hover:shadow-lg sm:hover:-translate-y-1 transition-all duration-300 text-center relative group">
           
