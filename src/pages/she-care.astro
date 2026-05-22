@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SheCarePackage from '../components/SheCarePackage.astro';
+
+export const prerender = true;
+---
+
+<BaseLayout title="She Care Package">
+  <Header slot="header" />
+
+  <!-- Page Header -->
+  <div class="bg-primary-dark py-24 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <img src="/images/womens_health.png" alt="" class="w-full h-full object-cover" />
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+      <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold mb-2 block">Women's Wellness</span>
+      <span class="lang-ml font-malayalam text-accent-gold text-base font-semibold mb-2 block">വനിതാ വെൽനസ്</span>
+      <h1 class="lang-en text-4xl md:text-7xl text-background-parchment leading-tight">She Care <span class="text-accent-gold">Package</span></h1>
+      <h1 class="lang-ml font-malayalam text-4xl md:text-6xl text-background-parchment leading-tight mt-2">ഷീ കെയർ <span class="text-accent-gold">പാക്കേജ്</span></h1>
+    </div>
+  </div>
+
+  <SheCarePackage />
+
+  <Footer slot="footer" />
+</BaseLayout>

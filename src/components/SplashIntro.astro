@@ -12,7 +12,7 @@
       <img 
         src="/images/vmlaunchingpage.jpeg" 
         alt="Vaidyarmandiram Launching" 
-        class="w-[85vw] max-w-[420px] aspect-square object-cover rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] hover:scale-[1.02] transition-transform duration-500"
+        class="w-[85vw] max-w-[420px] aspect-square object-cover rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.15)] hover:scale-[1.02] transition-transform duration-500"
       />
     </div>
 
@@ -42,14 +42,14 @@
       isReload = window.performance.navigation.type === 1;
     }
 
-    const hasShownInSession = sessionStorage.getItem('splash-shown') === 'true';
+    // const hasShownInSession = sessionStorage.getItem('splash-shown') === 'true';
 
     // Show splash if it is a reload OR if it hasn't been shown in this session yet
-    if (!isReload && hasShownInSession) {
-      splash.style.display = 'none';
-      splash.remove();
-      return;
-    }
+    // if (!isReload && hasShownInSession) {
+    //   splash.style.display = 'none';
+    //   splash.remove();
+    //   return;
+    // }
 
     let isDismissing = false;
     let autoDismissTimeout;
@@ -70,13 +70,13 @@
       }, 1000);
     };
 
-    // Auto-dismiss after 16 seconds
+    // Auto-dismiss after 3 seconds
     autoDismissTimeout = setTimeout(() => {
       dismissSplash();
-    }, 16000);
+    }, 3000);
 
-    // Click anywhere to dismiss splash
-    splash.addEventListener('click', dismissSplash);
+    // Click anywhere to dismiss splash (Disabled to ensure it stays visible)
+    // splash.addEventListener('click', dismissSplash);
 
     // Scroll Indicator trigger
     const scrollInd = document.getElementById('splash-scroll-indicator');

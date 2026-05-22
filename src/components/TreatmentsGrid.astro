@@ -19,7 +19,7 @@ const treatments = [
     slug: 'special-treatments' 
   },
   { 
-    name: 'Women\'s Health & Fertility', 
+    name: "Women's Health & Fertility", 
     description: 'Hormonal balancing for PCOD/PCOS, Endometriosis, and reproductive wellness.', 
     image: '/images/womens_health.png', 
     slug: 'special-treatments' 
@@ -40,40 +40,85 @@ const treatments = [
 ---
 
 <div class="relative w-full overflow-hidden py-4">
-  <div id="treatments-scroll-container" class="flex overflow-x-auto no-scrollbar gap-4 sm:gap-6 pb-4 treatments-carousel scroll-smooth snap-x snap-mandatory">
-    {/* Duplicate the treatments array to allow infinite seamless scrolling */}
+  <div
+    id="treatments-scroll-container"
+    class="treatments-carousel flex overflow-x-auto no-scrollbar pb-4"
+  >
+    {/* Duplicate 3x for infinite-loop illusion */}
     {[...treatments, ...treatments, ...treatments].map(t => (
-      <a href={`/treatments#${t.slug}`} class="treatment-card group relative overflow-hidden bg-white shadow-md hover:shadow-lg border border-accent-gold/10 rounded-xl shrink-0 w-[85vw] sm:w-[350px] md:w-[400px] snap-center transition-all duration-300 transform hover:-translate-y-1">
-      <div class="aspect-[4/3] overflow-hidden">
-        <img 
-          src={t.image} 
-          alt={t.name} 
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-      </div>
-      <div class="p-5 sm:p-6">
-        <h3 class="text-lg sm:text-xl font-bold mb-2 group-hover:text-accent-gold transition-colors leading-tight">
-          {t.name}
-        </h3>
-        <p class="text-sm text-text-muted font-sans leading-relaxed line-clamp-3 sm:line-clamp-none">
-          {t.description}
-        </p>
-        <div class="mt-4 flex items-center text-primary font-bold text-sm uppercase tracking-widest">
-          View Details <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+      <a
+        href={`/treatments#${t.slug}`}
+        class="treatment-card group relative overflow-hidden bg-white shadow-md hover:shadow-lg border border-accent-gold/10 rounded-xl shrink-0 transition-all duration-300 transform hover:-translate-y-1"
+      >
+        <div class="aspect-[4/3] overflow-hidden">
+          <img
+            src={t.image}
+            alt={t.name}
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
         </div>
-      </div>
-    </a>
-  ))}
+        <div class="p-5 sm:p-6">
+          <h3 class="text-lg sm:text-xl font-bold mb-2 group-hover:text-accent-gold transition-colors leading-tight">
+            {t.name}
+          </h3>
+          <p class="text-sm text-text-muted font-sans leading-relaxed line-clamp-3 sm:line-clamp-none">
+            {t.description}
+          </p>
+          <div class="mt-4 flex items-center text-primary font-bold text-sm uppercase tracking-widest">
+            View Details <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+      </a>
+    ))}
   </div>
 </div>
 
 <style>
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* Carousel layout: CSS-scroll-snapping handles everything */
+  .treatments-carousel {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    /* gap applied via card margin so snap math stays correct */
+  }
+
+  /* Each card occupies the full carousel width on mobile */
+  .treatment-card {
+    /* Mobile: full width, 16px side padding from the container */
+    width: calc(100% - 2rem); /* accounts for 1rem gap on each side */
+    margin: 0 0.5rem;
+    scroll-snap-align: start;
+    scroll-snap-stop: always; /* forces 1 card at a time on mobile */
+  }
+
+  /* Tablet: fixed width */
+  @media (min-width: 640px) {
+    .treatment-card {
+      width: 350px;
+      margin: 0 0.75rem;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .treatment-card {
+      width: 400px;
+      margin: 0 0.75rem;
+    }
+  }
+
+  /* Add leading/trailing phantom padding so first/last card snaps flush */
+  .treatments-carousel::before,
+  .treatments-carousel::after {
+    content: '';
+    display: block;
+    flex-shrink: 0;
+    width: 0.5rem;
   }
 </style>
 
@@ -81,110 +126,127 @@ const treatments = [
   function initTreatmentsCarousel() {
     const carousel = document.getElementById('treatments-scroll-container') as HTMLElement;
     if (!carousel) return;
-    
+
     const items = Array.from(carousel.querySelectorAll('.treatment-card')) as HTMLElement[];
     if (items.length === 0) return;
-    
-    // The original number of items (since we duplicated it 3 times: [original, duplicate, duplicate])
-    const originalCount = items.length / 3;
-    
-    let currentIndex = originalCount; // Start in the middle set to allow scrolling left/right safely
-    let autoScrollInterval: ReturnType<typeof setInterval>;
-    let isHovered = false;
-    let isProgrammaticScroll = false;
-    
-    // Initially scroll to the middle set without animation
-    setTimeout(() => {
-      const startItem = items[currentIndex];
-      const scrollTarget = startItem.offsetLeft - (carousel.offsetWidth / 2) + (startItem.offsetWidth / 2);
-      carousel.style.scrollBehavior = 'auto';
-      carousel.scrollLeft = scrollTarget;
-      carousel.style.scrollBehavior = 'smooth';
-    }, 100);
 
-    const slideToNext = () => {
-      if (isHovered) return;
-      
-      currentIndex++;
+    const originalCount = items.length / 3;
+
+    let currentIndex = originalCount; // start in the middle set
+    let autoScrollInterval: ReturnType<typeof setInterval>;
+    let isUserInteracting = false;
+    let isProgrammaticScroll = false;
+    let interactionTimeout: ReturnType<typeof setTimeout>;
+
+    // Helper: scroll to a specific item index (left-edge snap)
+    const scrollToItem = (index: number, instant = false) => {
+      const item = items[index];
+      if (!item) return;
+      const target = item.offsetLeft - carousel.offsetLeft;
       isProgrammaticScroll = true;
-      
-      const targetItem = items[currentIndex];
-      const scrollTarget = targetItem.offsetLeft - (carousel.offsetWidth / 2) + (targetItem.offsetWidth / 2);
-      
-      carousel.scrollTo({
-        left: scrollTarget,
-        behavior: 'smooth'
-      });
-      
-      // If we've reached the start of the 3rd set, silently snap back to the start of the 2nd set
-      if (currentIndex >= originalCount * 2) {
+      if (instant) {
+        carousel.style.scrollBehavior = 'auto';
+        carousel.scrollLeft = target;
+        // small delay to restore smooth + reset flag
         setTimeout(() => {
-          currentIndex = originalCount;
-          const resetItem = items[currentIndex];
-          const resetTarget = resetItem.offsetLeft - (carousel.offsetWidth / 2) + (resetItem.offsetWidth / 2);
-          
-          carousel.style.scrollBehavior = 'auto';
-          carousel.scrollLeft = resetTarget;
-          carousel.style.scrollBehavior = 'smooth';
+          carousel.style.scrollBehavior = '';
           isProgrammaticScroll = false;
-        }, 800); // Wait for smooth scroll to finish
+        }, 50);
       } else {
-        setTimeout(() => { isProgrammaticScroll = false; }, 800);
+        carousel.style.scrollBehavior = 'smooth';
+        carousel.scrollLeft = target;
+        setTimeout(() => {
+          carousel.style.scrollBehavior = '';
+          isProgrammaticScroll = false;
+        }, 700);
       }
     };
 
+    // Snap silently back to middle set if at extremes
+    const resetIfNeeded = () => {
+      if (currentIndex < Math.floor(originalCount / 2) || currentIndex >= originalCount * 2 + Math.ceil(originalCount / 2)) {
+        const relativeIndex = ((currentIndex % originalCount) + originalCount) % originalCount;
+        currentIndex = originalCount + relativeIndex;
+        scrollToItem(currentIndex, true);
+      }
+    };
+
+    // Determine which card is currently visible (leftmost snapped card)
+    const updateCurrentIndex = () => {
+      const scrollLeft = carousel.scrollLeft + carousel.offsetLeft;
+      let closestIndex = 0;
+      let minDist = Infinity;
+      items.forEach((item, idx) => {
+        const dist = Math.abs(item.offsetLeft - carousel.offsetLeft - carousel.scrollLeft);
+        if (dist < minDist) {
+          minDist = dist;
+          closestIndex = idx;
+        }
+      });
+      currentIndex = closestIndex;
+    };
+
+    // Auto-advance one card
+    const slideToNext = () => {
+      if (isUserInteracting) return;
+      currentIndex++;
+      // Silently reset if entering the 3rd copy
+      if (currentIndex >= originalCount * 2) {
+        // Jump back to the 2nd copy equivalent
+        const target = currentIndex - originalCount;
+        scrollToItem(target, true);
+        currentIndex = target + 1;
+        setTimeout(() => {
+          scrollToItem(currentIndex, false);
+        }, 80);
+        return;
+      }
+      scrollToItem(currentIndex, false);
+    };
+
     const startAutoScroll = () => {
-      stopAutoScroll(); 
-      // Give users plenty of time to read, especially on mobile
-      const readingTime = window.innerWidth < 768 ? 6500 : 5000;
-      autoScrollInterval = setInterval(slideToNext, readingTime); 
+      stopAutoScroll();
+      const delay = window.innerWidth < 768 ? 6000 : 4500;
+      autoScrollInterval = setInterval(slideToNext, delay);
     };
 
     const stopAutoScroll = () => {
       if (autoScrollInterval) clearInterval(autoScrollInterval);
     };
 
-    // Manual scroll handling to keep index updated and handle infinite boundary snapping
+    // Scroll to middle set on init
+    scrollToItem(currentIndex, true);
+
+    // Track scroll position for index updates and boundary reset
+    let scrollEndTimeout: ReturnType<typeof setTimeout>;
     carousel.addEventListener('scroll', () => {
-      if (!isProgrammaticScroll) {
-        // Calculate which item is closest to center
-        const centerOffset = carousel.offsetWidth / 2;
-        const scrollCenter = carousel.scrollLeft + centerOffset;
-        
-        let closestIndex = 0;
-        let minDistance = Infinity;
-        
-        items.forEach((item, idx) => {
-          const itemCenter = item.offsetLeft + item.offsetWidth / 2;
-          const distance = Math.abs(scrollCenter - itemCenter);
-          if (distance < minDistance) {
-            minDistance = distance;
-            closestIndex = idx;
-          }
-        });
-        
-        currentIndex = closestIndex;
-        
-        // If user manually scrolled to the extremes, snap them back to the middle set silently
-        if (currentIndex < originalCount / 2 || currentIndex >= originalCount * 2.5) {
-          // Snap back to the middle equivalent
-          const relativeIndex = currentIndex % originalCount;
-          currentIndex = originalCount + relativeIndex;
-          
-          const resetItem = items[currentIndex];
-          const resetTarget = resetItem.offsetLeft - (carousel.offsetWidth / 2) + (resetItem.offsetWidth / 2);
-          
-          carousel.style.scrollBehavior = 'auto';
-          carousel.scrollLeft = resetTarget;
-          carousel.style.scrollBehavior = 'smooth';
-        }
-      }
+      if (isProgrammaticScroll) return;
+      clearTimeout(scrollEndTimeout);
+      scrollEndTimeout = setTimeout(() => {
+        updateCurrentIndex();
+        resetIfNeeded();
+      }, 200);
     }, { passive: true });
 
-    carousel.addEventListener('mouseenter', () => isHovered = true);
-    carousel.addEventListener('mouseleave', () => isHovered = false);
-    carousel.addEventListener('touchstart', () => isHovered = true, { passive: true });
-    carousel.addEventListener('touchend', () => isHovered = false);
+    // Pause auto-scroll on user interaction, resume after
+    const onInteractionStart = () => {
+      isUserInteracting = true;
+      stopAutoScroll();
+      clearTimeout(interactionTimeout);
+    };
+
+    const onInteractionEnd = () => {
+      clearTimeout(interactionTimeout);
+      interactionTimeout = setTimeout(() => {
+        isUserInteracting = false;
+        startAutoScroll();
+      }, 2000);
+    };
+
+    carousel.addEventListener('mouseenter', onInteractionStart);
+    carousel.addEventListener('mouseleave', onInteractionEnd);
+    carousel.addEventListener('touchstart', onInteractionStart, { passive: true });
+    carousel.addEventListener('touchend', onInteractionEnd, { passive: true });
 
     startAutoScroll();
   }
@@ -192,5 +254,3 @@ const treatments = [
   initTreatmentsCarousel();
   document.addEventListener('astro:page-load', initTreatmentsCarousel);
 </script>
-
-

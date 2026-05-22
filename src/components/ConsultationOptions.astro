@@ -2,20 +2,20 @@
 import { Video, Mail, MessageCircle, UserCheck } from 'lucide-react';
 ---
 
-<div class="bg-background-cream py-20 border-y border-accent-gold/20">
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
+<div class="bg-background-cream py-12 md:py-20 border-y border-accent-gold/20 overflow-hidden">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
       
-      <!-- Left Column: Authentic Hospital Image -->
-      <div class="lg:col-span-5 relative animate-on-scroll opacity-0 translate-x-[-30px] transition-all duration-1000 ease-out">
+      <!-- Left Column: Consultation Visual -->
+      <div class="lg:col-span-5 relative animate-on-scroll opacity-0 translate-y-8 lg:translate-y-0 lg:-translate-x-8 transition-all duration-1000 ease-out">
         <!-- Decorative background glow -->
-        <div class="absolute inset-0 bg-accent-gold/10 rounded-[2rem] transform translate-x-4 translate-y-4 -z-10"></div>
-        <div class="absolute -top-10 -left-10 w-40 h-40 bg-accent-gold/15 rounded-full blur-3xl z-0 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-accent-gold/10 rounded-[2rem] transform translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4 -z-10"></div>
+        <div class="absolute -top-10 -left-10 w-32 h-32 md:w-40 md:h-40 bg-accent-gold/15 rounded-full blur-3xl z-0 pointer-events-none"></div>
         
-        <div class="relative z-10 rounded-[2rem] overflow-hidden border-2 border-accent-gold/30 shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-white aspect-[4/5] sm:aspect-[4/5] group">
+        <div class="relative z-10 rounded-[1.5rem] md:rounded-[2rem] overflow-hidden border-2 border-accent-gold/30 shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-white aspect-[4/3] sm:aspect-square lg:aspect-[4/5] group">
           <img 
-            src="/images/treatment-room-1.jpg" 
-            alt="Ayurvedic Consultation and Care" 
+            src="/images/online_consultation.png" 
+            alt="Flexible Online Ayurvedic Consultation" 
             class="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-[6000ms] ease-out"
           />
           
@@ -31,22 +31,22 @@ import { Video, Mail, MessageCircle, UserCheck } from 'lucide-react';
       </div>
 
       <!-- Right Column: Consultation Options (7/12 width) -->
-      <div class="lg:col-span-7 space-y-8 animate-on-scroll opacity-0 translate-x-[30px] transition-all duration-1000 ease-out delay-200">
-        <div class="space-y-3">
-          <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.25em] text-sm font-bold">Expert Guidance</span>
-          <span class="lang-ml font-malayalam text-accent-gold text-base font-semibold block">വിദഗ്ദ്ധ മാർഗ്ഗനിർദ്ദേശം</span>
+      <div class="lg:col-span-7 space-y-6 md:space-y-8 animate-on-scroll opacity-0 translate-y-8 lg:translate-y-0 lg:translate-x-8 transition-all duration-1000 ease-out lg:delay-200">
+        <div class="space-y-2 md:space-y-3 text-center lg:text-left">
+          <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.25em] text-[11px] md:text-sm font-bold">Expert Guidance</span>
+          <span class="lang-ml font-malayalam text-accent-gold text-sm md:text-base font-semibold block">വിദഗ്ദ്ധ മാർഗ്ഗനിർദ്ദേശം</span>
           
-          <h2 class="lang-en text-3xl md:text-5xl text-primary-dark font-serif leading-tight">
+          <h2 class="lang-en text-2xl sm:text-3xl md:text-5xl text-primary-dark font-serif leading-tight">
             Flexible <span class="text-accent-gold italic">Consultations</span>
           </h2>
-          <h2 class="lang-ml font-malayalam text-3xl md:text-5xl text-primary-dark font-bold leading-tight">
+          <h2 class="lang-ml font-malayalam text-2xl sm:text-3xl md:text-5xl text-primary-dark font-bold leading-tight">
             നിങ്ങൾക്കനുയോജ്യമായ <span class="text-accent-gold">കൺസൾട്ടേഷൻ</span>
           </h2>
           
-          <p class="lang-en text-primary-dark/80 font-sans text-lg mt-4 max-w-xl">
+          <p class="lang-en text-primary-dark/80 font-sans text-sm sm:text-base md:text-lg mt-3 md:mt-4 max-w-xl mx-auto lg:mx-0">
             Connecting with our experienced Ayurvedic physicians is easy. Choose from our various consultation modes designed for your convenience.
           </p>
-          <p class="lang-ml font-malayalam text-primary-dark/80 text-lg mt-4 max-w-xl leading-relaxed">
+          <p class="lang-ml font-malayalam text-primary-dark/80 text-sm sm:text-base md:text-lg mt-3 md:mt-4 max-w-xl mx-auto lg:mx-0 leading-relaxed">
             ഞങ്ങളുടെ വിദഗ്ദ്ധ ഡോക്ടർമാരുമായി ബന്ധപ്പെടാൻ ഇപ്പോൾ എളുപ്പമാണ്. നിങ്ങൾക്ക് ഏറ്റവും സൗകര്യപ്രദമായ കൺസൾട്ടേഷൻ രീതി തിരഞ്ഞെടുക്കുക.
           </p>
         </div>
@@ -106,8 +106,8 @@ import { Video, Mail, MessageCircle, UserCheck } from 'lucide-react';
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.remove('opacity-0', 'translate-x-[-30px]', 'translate-x-[30px]');
-          entry.target.classList.add('opacity-100', 'translate-x-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-8', 'lg:-translate-x-8', 'lg:translate-x-8', 'translate-x-[-30px]', 'translate-x-[30px]');
+          entry.target.classList.add('opacity-100', 'translate-y-0', 'lg:translate-x-0');
           observer.unobserve(entry.target);
         }
       });
