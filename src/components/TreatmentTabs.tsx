@@ -469,12 +469,16 @@ export default function TreatmentTabs() {
 
   return (
     <div className="space-y-10">
+      {/* Debug UI */}
+      <div className="hidden md:block text-sm text-muted mb-2">Active Tab: {activeTab} | Active Group: {activeGroup}</div>
+
       {/* Main Category Tabs */}
-      <div className="flex overflow-x-auto no-scrollbar md:flex-wrap md:justify-center gap-2 md:gap-4 border-b border-accent-gold/20 pb-4 snap-x">
+      <div className="relative z-10 flex overflow-x-auto no-scrollbar md:flex-wrap md:justify-center gap-2 md:gap-4 border-b border-accent-gold/20 pb-4 snap-x">
         {categories.map(cat => (
           <button
+            type="button"
             key={cat.id}
-            onClick={() => setActiveTab(cat.id)}
+            onClick={() => { console.log('Tab clicked:', cat.id); setActiveTab(cat.id); }}
             className={`px-5 py-3 text-base transition-all duration-300 relative whitespace-nowrap snap-center flex items-center gap-2 rounded-t-lg ${
               activeTab === cat.id
                 ? 'text-primary-dark font-bold bg-accent-gold/10 border-b-2 border-accent-gold'
@@ -488,11 +492,12 @@ export default function TreatmentTabs() {
 
       {/* Sub-category tabs for Special Treatments */}
       {isSpecial && (
-        <div className="flex flex-wrap gap-2 justify-center">
+        <div className="relative z-10 flex overflow-x-auto no-scrollbar gap-2 justify-center pointer-events-auto">
           {specialTreatmentGroups.map(group => (
             <button
+              type="button"
               key={group.groupName}
-              onClick={() => setActiveGroup(group.groupName)}
+              onClick={() => { console.log('Group clicked:', group.groupName); setActiveGroup(group.groupName); }}
               className={`px-4 py-2 text-sm rounded-full border transition-all duration-300 ${
                 activeGroup === group.groupName
                   ? 'bg-primary-dark text-background-parchment border-primary-dark font-bold'
