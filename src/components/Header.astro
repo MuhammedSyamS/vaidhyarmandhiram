@@ -15,10 +15,12 @@ const navLinks = [
 
 <header class="sticky top-0 z-50 shadow-sm flex flex-col w-full">
   <!-- ── Top Bar ── -->
-  <div class="hidden md:block bg-primary-dark w-full py-1.5 border-b border-accent-gold/20">
-    <div class="container mx-auto px-4 flex justify-between items-center text-xs font-sans text-background-parchment">
-      <div class="flex items-center gap-1.5 opacity-90 hidden lg:flex">
-        <MapPin size={12} class="text-accent-gold" />
+  <div class="bg-primary-dark w-full border-b border-accent-gold/20">
+    
+    <!-- Desktop Top Bar -->
+    <div class="hidden sm:flex container mx-auto px-4 py-2 justify-between items-center text-xs font-sans text-background-parchment">
+      <div class="flex items-center gap-1.5 opacity-90">
+        <MapPin size={12} class="text-accent-gold shrink-0" />
         <span class="tracking-wide flex items-center gap-1.5">
           <a href="https://maps.app.goo.gl/NynzVNVwV4XEYYpJ7" target="_blank" rel="noopener noreferrer" class="hover:text-accent-gold transition-colors">Trivandrum</a>
           <span class="text-accent-gold/40">|</span>
@@ -29,13 +31,66 @@ const navLinks = [
       </div>
       <div class="flex items-center gap-3">
         <a href="tel:+918593821553" class="flex items-center gap-1.5 hover:text-accent-gold transition-colors">
-          <Phone size={12} class="text-accent-gold" />
-          <span class="font-bold tracking-widest">+91 85938 21553</span>
+          <Phone size={12} class="text-accent-gold shrink-0" />
+          <span class="font-bold tracking-wider">+91 85938 21553</span>
         </a>
         <span class="text-accent-gold/40">|</span>
         <a href="tel:+919495556497" class="flex items-center gap-1.5 hover:text-accent-gold transition-colors">
-          <span class="font-bold tracking-widest">+91 94955 56497</span>
+          <span class="font-bold tracking-wider">+91 94955 56497</span>
         </a>
+      </div>
+    </div>
+
+    <!-- Mobile Marquee Top Bar -->
+    <div class="sm:hidden w-full overflow-hidden flex text-[11px] font-sans text-background-parchment relative">
+      <!-- Gradient masks for smooth fade effect at edges -->
+      <div class="absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-primary-dark to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-primary-dark to-transparent z-10 pointer-events-none"></div>
+      
+      <div class="flex items-center whitespace-nowrap animate-marquee py-2 w-max hover:[animation-play-state:paused]">
+        <!-- First Block -->
+        <div class="flex items-center gap-6 px-4">
+          <div class="flex items-center gap-1.5 opacity-90">
+            <MapPin size={10} class="text-accent-gold shrink-0" />
+            <span class="tracking-wide flex items-center gap-1.5">
+              <a href="https://maps.app.goo.gl/NynzVNVwV4XEYYpJ7">Trivandrum</a>
+              <span class="text-accent-gold/40">|</span>
+              <a href="https://maps.app.goo.gl/A3vvy8Xnpr1P6w3J7">Kollam</a>
+              <span class="text-accent-gold/40">|</span>
+              <a href="https://maps.google.com/?q=Alappuzha,+Kerala,+India">Alappuzha</a>
+            </span>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="tel:+918593821553" class="flex items-center gap-1.5">
+              <Phone size={10} class="text-accent-gold shrink-0" />
+              <span class="font-bold tracking-wider">+91 85938 21553</span>
+            </a>
+            <span class="text-accent-gold/40">|</span>
+            <a href="tel:+919495556497" class="font-bold tracking-wider">+91 94955 56497</a>
+          </div>
+        </div>
+        
+        <!-- Identical Second Block (Creates the seamless loop) -->
+        <div class="flex items-center gap-6 px-4" aria-hidden="true">
+          <div class="flex items-center gap-1.5 opacity-90">
+            <MapPin size={10} class="text-accent-gold shrink-0" />
+            <span class="tracking-wide flex items-center gap-1.5">
+              <a href="https://maps.app.goo.gl/NynzVNVwV4XEYYpJ7">Trivandrum</a>
+              <span class="text-accent-gold/40">|</span>
+              <a href="https://maps.app.goo.gl/A3vvy8Xnpr1P6w3J7">Kollam</a>
+              <span class="text-accent-gold/40">|</span>
+              <a href="https://maps.google.com/?q=Alappuzha,+Kerala,+India">Alappuzha</a>
+            </span>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="tel:+918593821553" class="flex items-center gap-1.5">
+              <Phone size={10} class="text-accent-gold shrink-0" />
+              <span class="font-bold tracking-wider">+91 85938 21553</span>
+            </a>
+            <span class="text-accent-gold/40">|</span>
+            <a href="tel:+919495556497" class="font-bold tracking-wider">+91 94955 56497</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -291,3 +346,13 @@ const navLinks = [
     setupMenu(); 
   });
 </script>
+
+<style>
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+</style>

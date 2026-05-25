@@ -228,31 +228,31 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
     let isProgrammaticScroll = false;
     let interactionTimeout;
 
-    // Helper: scroll to a specific item index (left-edge snap)
+    let scrollTimeout;
     const scrollToItem = (index, instant = false) => {
       const item = items[index];
       if (!item) return;
       const target = item.offsetLeft - carousel.offsetLeft;
       isProgrammaticScroll = true;
+      clearTimeout(scrollTimeout);
       if (instant) {
         carousel.style.scrollBehavior = 'auto';
         carousel.scrollLeft = target;
-        // small delay to restore smooth + reset flag
-        setTimeout(() => {
+        scrollTimeout = setTimeout(() => {
           carousel.style.scrollBehavior = '';
           isProgrammaticScroll = false;
         }, 50);
       } else {
         carousel.style.scrollBehavior = 'smooth';
         carousel.scrollLeft = target;
-        setTimeout(() => {
+        scrollTimeout = setTimeout(() => {
           carousel.style.scrollBehavior = '';
           isProgrammaticScroll = false;
+          if (!isDown) resetIfNeeded();
         }, 700);
       }
     };
 
-    // Snap silently back to middle set if at extremes
     const resetIfNeeded = () => {
       if (currentIndex < Math.floor(originalCount / 2) || currentIndex >= originalCount * 2 + Math.ceil(originalCount / 2)) {
         const relativeIndex = ((currentIndex % originalCount) + originalCount) % originalCount;
@@ -261,7 +261,6 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
       }
     };
 
-    // Determine which card is currently visible (leftmost snapped card)
     const updateCurrentIndex = () => {
       const scrollLeft = carousel.scrollLeft + carousel.offsetLeft;
       let closestIndex = 0;
@@ -276,21 +275,15 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
       currentIndex = closestIndex;
     };
 
-    // Auto-advance one card
-    const slideToNext = () => {
-      if (isUserInteracting) return;
+    const slideToNext = (force = false) => {
+      if (isUserInteracting && !force) return;
       currentIndex++;
-      // Silently reset if entering the 3rd copy
-      if (currentIndex >= originalCount * 2) {
-        // Jump back to the 2nd copy equivalent
-        const target = currentIndex - originalCount;
-        scrollToItem(target, true);
-        currentIndex = target + 1;
-        setTimeout(() => {
-          scrollToItem(currentIndex, false);
-        }, 80);
-        return;
-      }
+      scrollToItem(currentIndex, false);
+    };
+
+    const slideToPrev = (force = false) => {
+      if (isUserInteracting && !force) return;
+      currentIndex--;
       scrollToItem(currentIndex, false);
     };
 
@@ -304,24 +297,20 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
       if (autoScrollInterval) clearInterval(autoScrollInterval);
     };
 
-    // Scroll to middle set on init
     scrollToItem(currentIndex, true);
 
-    // Track scroll position for index updates and boundary reset
     let scrollEndTimeout;
     carousel.addEventListener('scroll', () => {
       if (isProgrammaticScroll) return;
       clearTimeout(scrollEndTimeout);
       scrollEndTimeout = setTimeout(() => {
         updateCurrentIndex();
-        // NEVER reset the loop boundary while the user is actively holding/dragging!
         if (!isDown) {
           resetIfNeeded();
         }
       }, 200);
     }, { passive: true });
 
-    // Pause auto-scroll on user interaction, resume after
     const onInteractionStart = () => {
       isUserInteracting = true;
       stopAutoScroll();
@@ -349,11 +338,10 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
       carousel.style.scrollBehavior = 'smooth';
       setTimeout(() => {
          updateCurrentIndex();
-         resetIfNeeded();
+         if (!isDown) resetIfNeeded();
       }, 500);
     }, { passive: true });
 
-    // Also support mouse dragging exactly like requested
     let isDown = false;
     let startX;
     let scrollLeftState;
@@ -385,7 +373,7 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
       // After letting go, give the CSS time to snap, then fix boundaries if needed
       setTimeout(() => {
         updateCurrentIndex();
-        resetIfNeeded();
+        if (!isDown) resetIfNeeded();
       }, 500);
     });
     
@@ -393,24 +381,9 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - carousel.offsetLeft;
-      // 1.5x multiplier feels more natural and less jerky than 2x
       const walk = (x - startX) * 1.5;
       carousel.scrollLeft = scrollLeftState - walk;
     });
-
-    const slideToPrev = () => {
-      currentIndex--;
-      if (currentIndex < originalCount) {
-        const target = currentIndex + originalCount;
-        scrollToItem(target, true);
-        currentIndex = target - 1;
-        setTimeout(() => {
-          scrollToItem(currentIndex, false);
-        }, 80);
-        return;
-      }
-      scrollToItem(currentIndex, false);
-    };
 
     const prevBtn = document.getElementById('shecare-prev-btn');
     const nextBtn = document.getElementById('shecare-next-btn');
@@ -418,7 +391,7 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
         onInteractionStart();
-        slideToPrev();
+        slideToPrev(true);
         onInteractionEnd();
       });
     }
@@ -426,7 +399,7 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
         onInteractionStart();
-        slideToNext();
+        slideToNext(true);
         onInteractionEnd();
       });
     }

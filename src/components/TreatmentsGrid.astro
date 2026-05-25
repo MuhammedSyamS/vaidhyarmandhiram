@@ -159,25 +159,28 @@ const treatments = [
     let isUserInteracting = false;
     let isProgrammaticScroll = false;
     let interactionTimeout;
+    let scrollTimeout;
 
     const scrollToItem = (index, instant = false) => {
       const item = items[index];
       if (!item) return;
       const target = item.offsetLeft - carousel.offsetLeft;
       isProgrammaticScroll = true;
+      clearTimeout(scrollTimeout);
       if (instant) {
         carousel.style.scrollBehavior = 'auto';
         carousel.scrollLeft = target;
-        setTimeout(() => {
+        scrollTimeout = setTimeout(() => {
           carousel.style.scrollBehavior = '';
           isProgrammaticScroll = false;
         }, 50);
       } else {
         carousel.style.scrollBehavior = 'smooth';
         carousel.scrollLeft = target;
-        setTimeout(() => {
+        scrollTimeout = setTimeout(() => {
           carousel.style.scrollBehavior = '';
           isProgrammaticScroll = false;
+          if (!isDown) resetIfNeeded();
         }, 700);
       }
     };
@@ -191,7 +194,6 @@ const treatments = [
     };
 
     const updateCurrentIndex = () => {
-      const scrollLeft = carousel.scrollLeft + carousel.offsetLeft;
       let closestIndex = 0;
       let minDist = Infinity;
       items.forEach((item, idx) => {
@@ -204,18 +206,15 @@ const treatments = [
       currentIndex = closestIndex;
     };
 
-    const slideToNext = () => {
-      if (isUserInteracting) return;
+    const slideToNext = (force = false) => {
+      if (isUserInteracting && !force) return;
       currentIndex++;
-      if (currentIndex >= originalCount * 2) {
-        const target = currentIndex - originalCount;
-        scrollToItem(target, true);
-        currentIndex = target + 1;
-        setTimeout(() => {
-          scrollToItem(currentIndex, false);
-        }, 80);
-        return;
-      }
+      scrollToItem(currentIndex, false);
+    };
+
+    const slideToPrev = (force = false) => {
+      if (isUserInteracting && !force) return;
+      currentIndex--;
       scrollToItem(currentIndex, false);
     };
 
@@ -231,15 +230,12 @@ const treatments = [
 
     scrollToItem(currentIndex, true);
 
-    let scrollEndTimeout;
     carousel.addEventListener('scroll', () => {
       if (isProgrammaticScroll) return;
-      clearTimeout(scrollEndTimeout);
-      scrollEndTimeout = setTimeout(() => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
         updateCurrentIndex();
-        if (!isDown) {
-          resetIfNeeded();
-        }
+        if (!isDown) resetIfNeeded();
       }, 200);
     }, { passive: true });
 
@@ -261,14 +257,16 @@ const treatments = [
     carousel.addEventListener('mouseleave', onInteractionEnd);
     carousel.addEventListener('touchstart', () => {
       onInteractionStart();
+      carousel.classList.remove('scroll-smooth');
       carousel.style.scrollBehavior = 'auto';
     }, { passive: true });
     carousel.addEventListener('touchend', () => {
       onInteractionEnd();
+      carousel.classList.add('scroll-smooth');
       carousel.style.scrollBehavior = 'smooth';
       setTimeout(() => {
          updateCurrentIndex();
-         resetIfNeeded();
+         if (!isDown) resetIfNeeded();
       }, 500);
     }, { passive: true });
 
@@ -279,7 +277,10 @@ const treatments = [
     carousel.addEventListener('mousedown', (e) => {
       isDown = true;
       carousel.style.cursor = 'grabbing';
+      
+      carousel.classList.remove('scroll-smooth');
       carousel.style.scrollBehavior = 'auto'; 
+      
       startX = e.pageX - carousel.offsetLeft;
       scrollLeftState = carousel.scrollLeft;
       onInteractionStart();
@@ -289,11 +290,15 @@ const treatments = [
       if (!isDown) return;
       isDown = false;
       carousel.style.cursor = 'grab';
+      
+      carousel.classList.add('scroll-smooth');
       carousel.style.scrollBehavior = 'smooth';
+      
       onInteractionEnd();
+      
       setTimeout(() => {
         updateCurrentIndex();
-        resetIfNeeded();
+        if (!isDown) resetIfNeeded();
       }, 500);
     });
     
@@ -305,27 +310,13 @@ const treatments = [
       carousel.scrollLeft = scrollLeftState - walk;
     });
 
-    const slideToPrev = () => {
-      currentIndex--;
-      if (currentIndex < originalCount) {
-        const target = currentIndex + originalCount;
-        scrollToItem(target, true);
-        currentIndex = target - 1;
-        setTimeout(() => {
-          scrollToItem(currentIndex, false);
-        }, 80);
-        return;
-      }
-      scrollToItem(currentIndex, false);
-    };
-
     const prevBtn = document.getElementById('treatments-prev-btn');
     const nextBtn = document.getElementById('treatments-next-btn');
     
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
         onInteractionStart();
-        slideToPrev();
+        slideToPrev(true);
         onInteractionEnd();
       });
     }
@@ -333,7 +324,7 @@ const treatments = [
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
         onInteractionStart();
-        slideToNext();
+        slideToNext(true);
         onInteractionEnd();
       });
     }
