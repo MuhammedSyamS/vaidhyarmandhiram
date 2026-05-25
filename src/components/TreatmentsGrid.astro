@@ -39,7 +39,28 @@ const treatments = [
 ];
 ---
 
-<div class="relative w-full overflow-hidden py-4">
+<div class="relative w-full overflow-hidden py-4 group">
+  <!-- Navigation Arrows (Desktop) -->
+  <button 
+    id="treatments-prev-btn" 
+    class="absolute left-2 top-1/2 -translate-y-1/2 z-30 hidden md:flex w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors border border-gray-100 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 duration-300"
+    aria-label="Previous"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+  
+  <button 
+    id="treatments-next-btn" 
+    class="absolute right-2 top-1/2 -translate-y-1/2 z-30 hidden md:flex w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors border border-gray-100 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 duration-300"
+    aria-label="Next"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+
   <div
     id="treatments-scroll-container"
     class="treatments-carousel flex overflow-x-auto no-scrollbar pb-4"
@@ -48,13 +69,15 @@ const treatments = [
     {[...treatments, ...treatments, ...treatments].map(t => (
       <a
         href={`/treatments#${t.slug}`}
-        class="treatment-card group relative overflow-hidden bg-white shadow-md hover:shadow-lg border border-accent-gold/10 rounded-xl shrink-0 transition-all duration-300 transform hover:-translate-y-1"
+        class="treatment-card group relative overflow-hidden bg-white shadow-md hover:shadow-lg border border-accent-gold/10 rounded-xl shrink-0 transition-all duration-300 transform hover:-translate-y-1 select-none"
+        draggable="false"
       >
         <div class="aspect-[4/3] overflow-hidden">
           <img
             src={t.image}
             alt={t.name}
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 pointer-events-none"
+            draggable="false"
           />
         </div>
         <div class="p-5 sm:p-6">
@@ -124,22 +147,20 @@ const treatments = [
 
 <script>
   function initTreatmentsCarousel() {
-    const carousel = document.getElementById('treatments-scroll-container') as HTMLElement;
+    const carousel = document.getElementById('treatments-scroll-container');
     if (!carousel) return;
 
-    const items = Array.from(carousel.querySelectorAll('.treatment-card')) as HTMLElement[];
+    const items = Array.from(carousel.querySelectorAll('.treatment-card'));
     if (items.length === 0) return;
 
     const originalCount = items.length / 3;
-
-    let currentIndex = originalCount; // start in the middle set
-    let autoScrollInterval: ReturnType<typeof setInterval>;
+    let currentIndex = originalCount;
+    let autoScrollInterval;
     let isUserInteracting = false;
     let isProgrammaticScroll = false;
-    let interactionTimeout: ReturnType<typeof setTimeout>;
+    let interactionTimeout;
 
-    // Helper: scroll to a specific item index (left-edge snap)
-    const scrollToItem = (index: number, instant = false) => {
+    const scrollToItem = (index, instant = false) => {
       const item = items[index];
       if (!item) return;
       const target = item.offsetLeft - carousel.offsetLeft;
@@ -147,7 +168,6 @@ const treatments = [
       if (instant) {
         carousel.style.scrollBehavior = 'auto';
         carousel.scrollLeft = target;
-        // small delay to restore smooth + reset flag
         setTimeout(() => {
           carousel.style.scrollBehavior = '';
           isProgrammaticScroll = false;
@@ -162,7 +182,6 @@ const treatments = [
       }
     };
 
-    // Snap silently back to middle set if at extremes
     const resetIfNeeded = () => {
       if (currentIndex < Math.floor(originalCount / 2) || currentIndex >= originalCount * 2 + Math.ceil(originalCount / 2)) {
         const relativeIndex = ((currentIndex % originalCount) + originalCount) % originalCount;
@@ -171,7 +190,6 @@ const treatments = [
       }
     };
 
-    // Determine which card is currently visible (leftmost snapped card)
     const updateCurrentIndex = () => {
       const scrollLeft = carousel.scrollLeft + carousel.offsetLeft;
       let closestIndex = 0;
@@ -186,13 +204,10 @@ const treatments = [
       currentIndex = closestIndex;
     };
 
-    // Auto-advance one card
     const slideToNext = () => {
       if (isUserInteracting) return;
       currentIndex++;
-      // Silently reset if entering the 3rd copy
       if (currentIndex >= originalCount * 2) {
-        // Jump back to the 2nd copy equivalent
         const target = currentIndex - originalCount;
         scrollToItem(target, true);
         currentIndex = target + 1;
@@ -214,21 +229,20 @@ const treatments = [
       if (autoScrollInterval) clearInterval(autoScrollInterval);
     };
 
-    // Scroll to middle set on init
     scrollToItem(currentIndex, true);
 
-    // Track scroll position for index updates and boundary reset
-    let scrollEndTimeout: ReturnType<typeof setTimeout>;
+    let scrollEndTimeout;
     carousel.addEventListener('scroll', () => {
       if (isProgrammaticScroll) return;
       clearTimeout(scrollEndTimeout);
       scrollEndTimeout = setTimeout(() => {
         updateCurrentIndex();
-        resetIfNeeded();
+        if (!isDown) {
+          resetIfNeeded();
+        }
       }, 200);
     }, { passive: true });
 
-    // Pause auto-scroll on user interaction, resume after
     const onInteractionStart = () => {
       isUserInteracting = true;
       stopAutoScroll();
@@ -245,8 +259,84 @@ const treatments = [
 
     carousel.addEventListener('mouseenter', onInteractionStart);
     carousel.addEventListener('mouseleave', onInteractionEnd);
-    carousel.addEventListener('touchstart', onInteractionStart, { passive: true });
-    carousel.addEventListener('touchend', onInteractionEnd, { passive: true });
+    carousel.addEventListener('touchstart', () => {
+      onInteractionStart();
+      carousel.style.scrollBehavior = 'auto';
+    }, { passive: true });
+    carousel.addEventListener('touchend', () => {
+      onInteractionEnd();
+      carousel.style.scrollBehavior = 'smooth';
+      setTimeout(() => {
+         updateCurrentIndex();
+         resetIfNeeded();
+      }, 500);
+    }, { passive: true });
+
+    let isDown = false;
+    let startX;
+    let scrollLeftState;
+
+    carousel.addEventListener('mousedown', (e) => {
+      isDown = true;
+      carousel.style.cursor = 'grabbing';
+      carousel.style.scrollBehavior = 'auto'; 
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeftState = carousel.scrollLeft;
+      onInteractionStart();
+    });
+    
+    window.addEventListener('mouseup', () => {
+      if (!isDown) return;
+      isDown = false;
+      carousel.style.cursor = 'grab';
+      carousel.style.scrollBehavior = 'smooth';
+      onInteractionEnd();
+      setTimeout(() => {
+        updateCurrentIndex();
+        resetIfNeeded();
+      }, 500);
+    });
+    
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      carousel.scrollLeft = scrollLeftState - walk;
+    });
+
+    const slideToPrev = () => {
+      currentIndex--;
+      if (currentIndex < originalCount) {
+        const target = currentIndex + originalCount;
+        scrollToItem(target, true);
+        currentIndex = target - 1;
+        setTimeout(() => {
+          scrollToItem(currentIndex, false);
+        }, 80);
+        return;
+      }
+      scrollToItem(currentIndex, false);
+    };
+
+    const prevBtn = document.getElementById('treatments-prev-btn');
+    const nextBtn = document.getElementById('treatments-next-btn');
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        onInteractionStart();
+        slideToPrev();
+        onInteractionEnd();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        onInteractionStart();
+        slideToNext();
+        onInteractionEnd();
+      });
+    }
 
     startAutoScroll();
   }

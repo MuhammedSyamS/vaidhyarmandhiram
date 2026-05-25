@@ -492,16 +492,16 @@ export default function TreatmentTabs() {
 
       {/* Sub-category tabs for Special Treatments */}
       {isSpecial && (
-        <div className="relative z-10 flex overflow-x-auto no-scrollbar gap-2 justify-center pointer-events-auto">
+        <div className="relative z-10 flex overflow-x-auto no-scrollbar gap-2 justify-center pointer-events-auto snap-x">
           {specialTreatmentGroups.map(group => (
             <button
               type="button"
               key={group.groupName}
               onClick={() => { console.log('Group clicked:', group.groupName); setActiveGroup(group.groupName); }}
-              className={`px-4 py-2 text-sm rounded-full border transition-all duration-300 ${
+              className={`flex items-center justify-center w-12 h-12 text-sm md:text-base rounded-full border transition-all duration-300 flex-shrink-0 snap-center ${
                 activeGroup === group.groupName
-                  ? 'bg-primary-dark text-background-parchment border-primary-dark font-bold'
-                  : 'bg-white text-text-muted border-accent-gold/20 hover:border-accent-gold hover:text-primary-dark'
+                  ? 'bg-primary-dark text-background-parchment border-primary-dark font-bold shadow-lg'
+                  : 'bg-white text-text-muted border-accent-gold/20 hover:border-accent-gold hover:text-primary-dark hover:bg-accent-gold/5'
               }`}
             >
               {ml ? group.groupMl : group.groupName}

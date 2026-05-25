@@ -15,7 +15,7 @@ export default function FounderSpotlight() {
         <div className="relative z-10 shadow-2xl rotate-[-2deg] border border-accent-gold/20 rounded-2xl overflow-hidden">
           <img 
             src="/images/vmfounder.jpg" 
-            alt="Dr. P. Abdul Sathar Gurukkal - Founder and Chief Physician, Vaidyarmandiram Ayurveda Hospital Kerala" 
+            alt="Dr. P. Abdul Sathar Gurukkal - Founder, Vaidyarmandiram Ayurveda Hospital Kerala" 
             className="w-full aspect-[4/5] object-cover"
           />
         </div>
@@ -28,8 +28,8 @@ export default function FounderSpotlight() {
           <h3 className="text-2xl font-bold text-primary-dark tracking-widest uppercase">
             Dr. P. Abdul Sathar Gurukkal
           </h3>
-          <p className="text-accent-gold font-sans uppercase tracking-[0.2em] text-sm mt-1">
-            Founder & Chief Physician
+          <p className="text-[10px] sm:text-xs uppercase tracking-widest text-accent-gold/80 font-bold mb-2">
+            Founder
           </p>
         </div>
       </motion.div>

@@ -1,5 +1,5 @@
 ---
-import { Phone, Calendar, Menu, Globe } from 'lucide-react';
+import { Phone, Calendar, Menu, Globe, MapPin } from 'lucide-react';
 
 const navLinks = [
   { name: 'Home',       ml: 'ഹോം',              href: '/' },
@@ -13,12 +13,36 @@ const navLinks = [
 ];
 ---
 
-<header class="sticky top-0 z-50 bg-background-parchment backdrop-blur-md border-b-2 border-accent-gold/40 shadow-sm">
+<header class="sticky top-0 z-50 shadow-sm flex flex-col w-full">
+  <!-- ── Top Bar ── -->
+  <div class="hidden md:block bg-primary-dark w-full py-1.5 border-b border-accent-gold/20">
+    <div class="container mx-auto px-4 flex justify-between items-center text-xs font-sans text-background-parchment">
+      <div class="flex items-center gap-1.5 opacity-90 hidden lg:flex">
+        <MapPin size={12} class="text-accent-gold" />
+        <span class="tracking-wide flex items-center gap-1.5">
+          <a href="https://maps.app.goo.gl/NynzVNVwV4XEYYpJ7" target="_blank" rel="noopener noreferrer" class="hover:text-accent-gold transition-colors">Trivandrum</a>
+          <span class="text-accent-gold/40">|</span>
+          <a href="https://maps.app.goo.gl/A3vvy8Xnpr1P6w3J7" target="_blank" rel="noopener noreferrer" class="hover:text-accent-gold transition-colors">Kollam</a>
+          <span class="text-accent-gold/40">|</span>
+          <a href="https://maps.google.com/?q=Alappuzha,+Kerala,+India" target="_blank" rel="noopener noreferrer" class="hover:text-accent-gold transition-colors">Alappuzha</a>
+        </span>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="tel:+918593821553" class="flex items-center gap-1.5 hover:text-accent-gold transition-colors">
+          <Phone size={12} class="text-accent-gold" />
+          <span class="font-bold tracking-widest">+91 85938 21553</span>
+        </a>
+        <span class="text-accent-gold/40">|</span>
+        <a href="tel:+919495556497" class="flex items-center gap-1.5 hover:text-accent-gold transition-colors">
+          <span class="font-bold tracking-widest">+91 94955 56497</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
-
-
-  <!-- ── Main nav ── -->
-  <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+  <div class="bg-background-parchment/95 backdrop-blur-md border-b-2 border-accent-gold/40 w-full">
+    <!-- ── Main nav ── -->
+    <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
 
     <!-- Brand -->
     <a href="/" class="flex items-center gap-3.5 md:gap-4 shrink-0 group">
@@ -63,11 +87,6 @@ const navLinks = [
 
 
 
-      <!-- Contact details (desktop only) -->
-      <div class="hidden xl:flex flex-col text-right text-[10px] font-sans mr-2">
-        <a href="tel:+918593821553" class="text-primary-dark font-bold hover:text-accent-gold transition-colors">+91 85938 21553</a>
-        <span class="text-text-muted">Trivandrum | Kollam | Alappuzha</span>
-      </div>
 
       <!-- Book Now (desktop / tablet only) -->
       <a href="/appointment" class="hidden sm:flex flex-col items-center btn-primary scale-90 leading-tight !py-1.5">
@@ -76,6 +95,7 @@ const navLinks = [
       </a>
     </div>
   </nav>
+  </div>
 
   <!-- ── Premium Mobile Menu Sidebar ── -->
   <div id="mobile-menu" class="fixed inset-0 z-[60] lg:hidden pointer-events-none">
@@ -149,7 +169,13 @@ const navLinks = [
             <div class="flex flex-col">
               <span class="lang-en font-sans font-bold text-[9px] uppercase tracking-wider text-primary-dark">Location</span>
               <span class="lang-ml font-malayalam font-bold text-xs text-primary-dark">സ്ഥലം</span>
-              <span class="lang-en font-sans mt-0.5 text-text-muted">Trivandrum, Kollam, Alappuzha</span>
+              <div class="font-sans text-text-muted mt-0.5 leading-relaxed font-bold flex flex-wrap gap-1">
+                <a href="https://maps.app.goo.gl/NynzVNVwV4XEYYpJ7" target="_blank" rel="noopener noreferrer" class="hover:text-primary-dark transition-colors">Trivandrum</a>
+                <span class="text-text-muted/50">|</span>
+                <a href="https://maps.app.goo.gl/A3vvy8Xnpr1P6w3J7" target="_blank" rel="noopener noreferrer" class="hover:text-primary-dark transition-colors">Kollam</a>
+                <span class="text-text-muted/50">|</span>
+                <a href="https://maps.google.com/?q=Alappuzha,+Kerala,+India" target="_blank" rel="noopener noreferrer" class="hover:text-primary-dark transition-colors">Alappuzha</a>
+              </div>
               <span class="lang-ml font-malayalam mt-0.5 text-text-muted">തിരുവനന്തപുരം, കൊല്ലം, ആലപ്പുഴ</span>
             </div>
           </div>
@@ -158,7 +184,11 @@ const navLinks = [
             <div class="flex flex-col">
               <span class="lang-en font-sans font-bold text-[9px] uppercase tracking-wider text-primary-dark">Phone</span>
               <span class="lang-ml font-malayalam font-bold text-xs text-primary-dark">ഫോൺ</span>
-              <a href="tel:+918593821553" class="font-sans text-text-muted hover:underline mt-0.5 font-bold">+91 85938 21553</a>
+              <div class="flex items-center gap-2 mt-0.5">
+                <a href="tel:+918593821553" class="font-sans text-text-muted hover:underline font-bold">+91 85938 21553</a>
+                <span class="text-text-muted/50">,</span>
+                <a href="tel:+919495556497" class="font-sans text-text-muted hover:underline font-bold">+91 94955 56497</a>
+              </div>
             </div>
           </div>
         </div>

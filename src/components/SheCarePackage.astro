@@ -1,275 +1,439 @@
 ---
-import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, ArrowRight, CalendarHeart, PhoneCall, Baby, PersonStanding, UserPlus } from 'lucide-react';
+import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall, Baby, PersonStanding, CheckCircle2 } from 'lucide-react';
 ---
 
-<div class="relative bg-[#F9F6F0] py-16 md:py-24 overflow-x-hidden border-y border-[#2D4A3E]/10 font-sans">
-  <!-- Subtle Background Accents -->
-  <div class="absolute inset-0 opacity-[0.02] mix-blend-multiply pointer-events-none bg-parchment-texture bg-repeat z-0"></div>
-  <div class="absolute -top-40 -right-40 w-96 h-96 bg-[#E8F0EA] rounded-full blur-[120px] pointer-events-none z-0"></div>
-  <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-[#E8F0EA] rounded-full blur-[120px] pointer-events-none z-0"></div>
-
-  <div class="container mx-auto px-4 md:px-6 max-w-7xl relative z-10">
+<section class="bg-gray-50 py-16 md:py-24 border-y border-primary/10" id="shecare-section">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
     
-    <!-- 1. Hero Section -->
-    <div class="text-center max-w-3xl mx-auto mb-12 md:mb-20 animate-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out">
-      <div class="inline-flex items-center justify-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-[#2D4A3E]/5 border border-[#2D4A3E]/10 mb-4 md:mb-6">
-        <Heart class="text-[#2D4A3E] w-3 h-3 md:w-4 md:h-4" />
-        <span class="text-[#2D4A3E] text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">Complete Women's Wellness Program</span>
+    <!-- Premium Logo Header -->
+    <div class="text-center mb-16 relative flex flex-col items-center">
+      <img 
+        src="/images/shecarelogo.jpg" 
+        alt="She Care Ayurveda Logo" 
+        class="h-28 md:h-36 object-contain mix-blend-multiply mb-8 opacity-90" 
+      />
+      
+      <div class="inline-flex items-center justify-center gap-4 mb-4">
+        <div class="w-16 h-[2px] bg-gradient-to-r from-transparent to-accent-gold"></div>
+        <span class="text-accent-gold uppercase tracking-[0.2em] text-sm font-bold">Exclusive For Women</span>
+        <div class="w-16 h-[2px] bg-gradient-to-l from-transparent to-accent-gold"></div>
       </div>
       
-      <h2 class="text-3xl md:text-5xl lg:text-6xl text-[#2D4A3E] font-serif mb-4 md:mb-6 leading-tight">
-        She Care Package
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif text-primary font-bold mb-6 tracking-tight">
+        The She Care Journey
       </h2>
-      
-      <p class="text-[#2D4A3E]/80 text-base md:text-xl leading-relaxed max-w-2xl mx-auto">
-        A holistic wellness package designed to support women through every stage of life including menarche, pregnancy, postnatal recovery, and menopause care using Ayurveda, Siddha, Yoga, and natural therapies.
+      <p class="text-text-muted text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+        A sanctuary of healing tailored exclusively for women. We blend ancient Ayurvedic wisdom with compassionate care to support you through every stage of womanhood.
       </p>
     </div>
 
-    <!-- 2. Minimal Icon-Based Care Cards -->
-    <div class="shecare-carousel flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 mb-16 md:mb-24 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar" style="scroll-behavior: smooth;">
-      {
-        [
-          {
-            title: "Menarche Care",
-            desc: "Guiding young women through their first transition with natural hormonal balance.",
-            delay: "0",
-            icon: Sparkles,
-            color: "bg-[#2D4A3E]"
-          },
-          {
-            title: "Prenatal Care",
-            desc: "Nurturing mother and baby with specialized Ayurvedic diets and gentle therapies.",
-            delay: "150",
-            icon: Heart,
-            color: "bg-[#2D4A3E]"
-          },
-          {
-            title: "Postnatal Care",
-            desc: "Aiding recovery with traditional strengthening treatments and restorative care.",
-            delay: "300",
-            icon: Baby,
-            color: "bg-[#2D4A3E]"
-          },
-          {
-            title: "Menopause Care",
-            desc: "Easing the transition with cooling therapies and natural emotional balance.",
-            delay: "450",
-            icon: PersonStanding,
-            color: "bg-[#2D4A3E]"
-          }
-        ].concat([
-          {
-            title: "Menarche Care",
-            desc: "Guiding young women through their first transition with natural hormonal balance.",
-            delay: "0",
-            icon: Sparkles,
-            color: "bg-[#2D4A3E]"
-          },
-          {
-            title: "Prenatal Care",
-            desc: "Nurturing mother and baby with specialized Ayurvedic diets and gentle therapies.",
-            delay: "150",
-            icon: Heart,
-            color: "bg-[#2D4A3E]"
-          },
-          {
-            title: "Postnatal Care",
-            desc: "Aiding recovery with traditional strengthening treatments and restorative care.",
-            delay: "300",
-            icon: Baby,
-            color: "bg-[#2D4A3E]"
-          },
-          {
-            title: "Menopause Care",
-            desc: "Easing the transition with cooling therapies and natural emotional balance.",
-            delay: "450",
-            icon: PersonStanding,
-            color: "bg-[#2D4A3E]"
-          }
-        ]).map((card, idx) => {
-          const Icon = card.icon;
-          return (
+    <!-- Bootstrap-Style Cards Carousel -->
+    <div class="relative w-full overflow-hidden py-4 max-w-7xl mx-auto mb-24 group">
+      
+      <!-- Navigation Arrows (Desktop) -->
+      <button 
+        id="shecare-prev-btn" 
+        class="absolute left-2 top-1/2 -translate-y-1/2 z-30 hidden md:flex w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors border border-gray-100 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 duration-300"
+        aria-label="Previous"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      
+      <button 
+        id="shecare-next-btn" 
+        class="absolute right-2 top-1/2 -translate-y-1/2 z-30 hidden md:flex w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors border border-gray-100 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 duration-300"
+        aria-label="Next"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      <div 
+        id="shecare-carousel"
+        class="shecare-carousel-container flex overflow-x-auto pb-8 hide-scrollbar scroll-smooth"
+      >
+        {
+          (() => {
+            const cards = [
+              { title: "Menarche Care", desc: "Guiding young women through their first transition with natural hormonal balance and nurturing dietary guidance.", img: "/images/menarche_care.png" },
+              { title: "Prenatal Care", desc: "Nurturing mother and baby with specialized Ayurvedic diets, gentle therapies, and emotional wellness support.", img: "/images/prenatal_care.png" },
+              { title: "Postnatal Care", desc: "Aiding recovery with traditional strengthening treatments, restorative care, and postpartum mental health focus.", img: "/images/postnatal_care.png" },
+              { title: "Menopause Care", desc: "Easing the transition with cooling therapies, bone health support, and natural emotional balance treatments.", img: "/images/menopause_care.png" }
+            ];
+            return [...cards, ...cards, ...cards].map((card, idx) => (
             <div 
-              class={`group relative rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-8 overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgb(45,74,62,0.08)] transition-all duration-500 hover:-translate-y-2 animate-on-scroll opacity-0 translate-y-8 ${card.color} border border-white flex flex-col shrink-0 w-[85vw] sm:w-auto snap-center`}
-              style={`transition-delay: ${card.delay}ms`}
+              class="shecare-card shrink-0 bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.12)] border border-accent-gold/10 transition-all duration-500 flex flex-col overflow-hidden select-none group/card"
             >
-              <div class="absolute -top-10 -right-10 w-24 h-24 md:w-32 md:h-32 bg-white/10 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-700 ease-out z-0"></div>
-              
-              <div class="relative z-10 flex flex-col h-full">
-                <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white shadow-sm flex items-center justify-center mb-4 md:mb-6 text-[#2D4A3E] group-hover:scale-110 group-hover:bg-[#E8F0EA] transition-all duration-500">
-                  <Icon class="w-6 h-6 md:w-7 md:h-7" strokeWidth={1.5} />
-                </div>
+              <!-- Card Image (Top) -->
+              <div class="w-full aspect-[4/3] overflow-hidden bg-gray-50 relative">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                <img src={card.img} alt={card.title} class="w-full h-full object-cover transform group-hover/card:scale-110 transition-transform duration-700 pointer-events-none" draggable="false" />
+              </div>
+
+              <!-- Card Body (Bottom) -->
+              <div class="p-8 flex flex-col flex-grow bg-white z-20 relative -mt-4 rounded-t-2xl">
+                <div class="w-12 h-1 bg-accent-gold mb-6 rounded-full"></div>
+                <h3 class="text-2xl text-primary font-serif font-bold mb-4">{card.title}</h3>
+                <p class="text-text-muted text-base leading-relaxed mb-8 flex-grow">{card.desc}</p>
                 
-                <h3 class="text-xl md:text-2xl text-white font-serif font-bold mb-2 md:mb-3">{card.title}</h3>
-                
-                <p class="text-white/80 text-sm leading-relaxed mb-4 md:mb-6 flex-grow">{card.desc}</p>
-                
-                <div class="flex items-center text-[10px] md:text-xs font-bold uppercase tracking-wider text-white group-hover:text-accent-gold transition-colors mt-auto">
-                  Explore Therapy
-                  <ArrowRight class="w-3 h-3 md:w-4 md:h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" />
-                </div>
+                <a href="/treatments" class="mt-auto inline-flex items-center justify-between w-full py-4 px-6 bg-primary/5 text-primary rounded-xl font-bold text-sm hover:bg-primary hover:text-white transition-all duration-300 group/btn">
+                  <span>View Details</span>
+                  <span class="transform group-hover/btn:translate-x-2 transition-transform">→</span>
+                </a>
               </div>
             </div>
-          )
-        })
-      }
-    </div>
-
-    <!-- 3. Benefits Section -->
-    <div class="mb-16 md:mb-24 animate-on-scroll opacity-0 translate-y-8">
-      <div class="text-center mb-8 md:mb-12">
-        <h3 class="text-2xl md:text-4xl text-[#2D4A3E] font-serif mb-3 md:mb-4">Holistic Care Pillars</h3>
-        <div class="w-12 md:w-16 h-1 bg-[#2D4A3E]/20 mx-auto rounded-full"></div>
-      </div>
-      
-      <div class="shecare-carousel flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar" style="scroll-behavior: smooth;">
-        {
-          [
-            { icon: Leaf, title: "Authentic Treatments", text: "Traditional Ayurvedic & Siddha Treatments" },
-            { icon: Apple, title: "Nutrition", text: "Personalized Diet & Lifestyle Guidance" },
-            { icon: Flower2, title: "Wellness", text: "Yoga & Wellness Support" },
-            { icon: Sparkles, title: "Natural Care", text: "Natural Therapies for Women’s Health" },
-            { icon: Smile, title: "Mental Health", text: "Postpartum Emotional Wellness Support" }
-          ].map(benefit => {
-            const Icon = benefit.icon;
-            return (
-              <div class="bg-white/60 backdrop-blur-md rounded-2xl p-4 md:p-6 flex items-start gap-4 md:gap-5 border border-white hover:border-[#2D4A3E]/20 hover:shadow-lg transition-all duration-300 group shrink-0 w-[85vw] md:w-auto snap-center">
-                <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#E8F0EA] text-[#2D4A3E] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
-                  <Icon strokeWidth={1.5} size={20} class="md:w-6 md:h-6" />
-                </div>
-                <div>
-                  <h4 class="text-[#2D4A3E] font-bold font-serif text-base md:text-lg mb-1">{benefit.title}</h4>
-                  <p class="text-[#2D4A3E]/70 text-xs md:text-sm leading-snug">{benefit.text}</p>
-                </div>
-              </div>
-            )
-          })
+          ))
+          })()
         }
       </div>
     </div>
 
-    <!-- 4. CTA Section -->
-    <div class="bg-[#2D4A3E] rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-10 lg:p-16 text-center relative overflow-hidden shadow-2xl shadow-[#2D4A3E]/20 animate-on-scroll opacity-0 translate-y-8">
-      <!-- Deco elements -->
-      <div class="absolute top-0 right-0 w-32 h-32 md:w-64 md:h-64 bg-white/5 rounded-full blur-[50px] mix-blend-overlay"></div>
-      <div class="absolute bottom-0 left-0 w-32 h-32 md:w-64 md:h-64 bg-[#E8F0EA]/10 rounded-full blur-[50px] mix-blend-overlay"></div>
+    <!-- Features/Benefits List -->
+    <div class="bg-primary rounded-2xl p-8 md:p-12 shadow-sm border border-primary/20 mb-20">
+      <h3 class="text-2xl text-white font-serif text-center mb-8">Why Choose She Care?</h3>
       
-      <div class="relative z-10 max-w-2xl mx-auto">
-        <h4 class="text-2xl md:text-3xl lg:text-5xl text-white font-serif mb-4 md:mb-6 leading-tight">Book Your Consultation Today</h4>
-        <p class="text-white/80 text-sm md:text-lg mb-8 md:mb-10">
-          Take the first step towards holistic feminine health and balance. Our female specialists are here to guide you.
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {
+          [
+            { title: "Authentic Ayurveda", desc: "Traditional Siddha & Ayurvedic therapies" },
+            { title: "Personalized Diet", desc: "Nutrition plans tailored to your dosha" },
+            { title: "Yoga & Wellness", desc: "Guided exercises for physical balance" },
+            { title: "Mental Health", desc: "Counseling and emotional support" }
+          ].map(benefit => (
+            <div class="flex items-start gap-4">
+              <CheckCircle2 class="text-accent-gold w-6 h-6 shrink-0 mt-0.5" />
+              <div>
+                <h4 class="text-white font-bold mb-1">{benefit.title}</h4>
+                <p class="text-white/80 text-sm">{benefit.desc}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Elegant CTA Box -->
+    <div class="bg-primary rounded-3xl p-10 md:p-16 text-center shadow-lg relative overflow-hidden mb-8">
+      <!-- Abstract leaf motif -->
+      <div class="absolute -top-12 -left-12 opacity-[0.03]">
+        <Flower2 class="w-48 h-48 text-white" />
+      </div>
+      
+      <div class="relative z-10">
+        <h4 class="text-3xl md:text-4xl font-serif text-accent-gold font-bold mb-6">Embrace Your Natural Balance</h4>
+        <p class="text-white/80 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+          Take the first step towards profound wellness. Consult with our specialized female practitioners to create a care plan that perfectly matches your body's needs.
         </p>
         
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6">
-          <a href="/appointment" class="w-full sm:w-auto inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-[#E8F0EA] text-[#2D4A3E] rounded-full font-bold uppercase tracking-wider text-[11px] md:text-sm hover:bg-white hover:-translate-y-1 transition-all duration-300 shadow-lg">
-            <CalendarHeart class="w-4 h-4 md:w-5 md:h-5 mr-2" />
-            Book Appointment
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <a href="/appointment" class="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 bg-accent-gold text-white rounded-xl font-bold text-base hover:bg-yellow-600 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+            <CalendarHeart class="w-5 h-5 mr-3" />
+            Book a Consultation
           </a>
-          
-          <a href="tel:+918593821553" class="w-full sm:w-auto inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-transparent border-2 border-white/30 text-white rounded-full font-bold uppercase tracking-wider text-[11px] md:text-sm hover:border-white hover:bg-white/10 hover:-translate-y-1 transition-all duration-300">
-            <PhoneCall class="w-4 h-4 md:w-5 md:h-5 mr-2" />
-            Call Now
+          <a href="tel:+918593821553" class="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 bg-transparent border-2 border-accent-gold text-accent-gold rounded-xl font-bold text-base hover:bg-accent-gold/10 transition-colors">
+            <PhoneCall class="w-5 h-5 mr-3" />
+            Call Our Specialists
           </a>
         </div>
       </div>
     </div>
 
   </div>
-</div>
+</section>
 
 <style>
-  /* Fix for smooth height transition on hover */
-  .grid-rows-\[0fr\] {
-    grid-template-rows: 0fr;
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  .grid-rows-\[1fr\] {
-    grid-template-rows: 1fr;
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
   }
+  
   .hide-scrollbar::-webkit-scrollbar {
-    display: none;
+    display: none !important;
   }
   .hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  /* Carousel layout: CSS-scroll-snapping handles everything */
+  .shecare-carousel-container {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Each card occupies the full carousel width on mobile */
+  .shecare-card {
+    /* Mobile: full width, 16px side padding from the container */
+    width: calc(100% - 2rem);
+    margin: 0 0.5rem;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  /* Tablet: fixed width */
+  @media (min-width: 640px) {
+    .shecare-card {
+      width: 350px;
+      margin: 0 0.75rem;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .shecare-card {
+      width: 400px;
+      margin: 0 0.75rem;
+    }
+  }
+
+  /* Add leading/trailing phantom padding so first/last card snaps flush */
+  .shecare-carousel-container::before,
+  .shecare-carousel-container::after {
+    content: '';
+    display: block;
+    flex-shrink: 0;
+    width: 0.5rem;
   }
 </style>
 
 <script>
-  function initSheCareAnimations() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove('opacity-0', 'translate-y-6', 'translate-y-8');
-          entry.target.classList.add('opacity-100', 'translate-y-0');
-          observer.unobserve(entry.target);
+  function initSheCareCarousel() {
+    const carousel = document.getElementById('shecare-carousel');
+    if (!carousel) return;
+
+    const items = Array.from(carousel.querySelectorAll('.shecare-card'));
+    if (items.length === 0) return;
+
+    // We duplicated the array 3 times: [1,2,3,4, 1,2,3,4, 1,2,3,4]
+    // So originalCount is items.length / 3
+    const originalCount = items.length / 3;
+
+    let currentIndex = originalCount; // start in the middle set
+    let autoScrollInterval;
+    let isUserInteracting = false;
+    let isProgrammaticScroll = false;
+    let interactionTimeout;
+
+    // Helper: scroll to a specific item index (left-edge snap)
+    const scrollToItem = (index, instant = false) => {
+      const item = items[index];
+      if (!item) return;
+      const target = item.offsetLeft - carousel.offsetLeft;
+      isProgrammaticScroll = true;
+      if (instant) {
+        carousel.style.scrollBehavior = 'auto';
+        carousel.scrollLeft = target;
+        // small delay to restore smooth + reset flag
+        setTimeout(() => {
+          carousel.style.scrollBehavior = '';
+          isProgrammaticScroll = false;
+        }, 50);
+      } else {
+        carousel.style.scrollBehavior = 'smooth';
+        carousel.scrollLeft = target;
+        setTimeout(() => {
+          carousel.style.scrollBehavior = '';
+          isProgrammaticScroll = false;
+        }, 700);
+      }
+    };
+
+    // Snap silently back to middle set if at extremes
+    const resetIfNeeded = () => {
+      if (currentIndex < Math.floor(originalCount / 2) || currentIndex >= originalCount * 2 + Math.ceil(originalCount / 2)) {
+        const relativeIndex = ((currentIndex % originalCount) + originalCount) % originalCount;
+        currentIndex = originalCount + relativeIndex;
+        scrollToItem(currentIndex, true);
+      }
+    };
+
+    // Determine which card is currently visible (leftmost snapped card)
+    const updateCurrentIndex = () => {
+      const scrollLeft = carousel.scrollLeft + carousel.offsetLeft;
+      let closestIndex = 0;
+      let minDist = Infinity;
+      items.forEach((item, idx) => {
+        const dist = Math.abs(item.offsetLeft - carousel.offsetLeft - carousel.scrollLeft);
+        if (dist < minDist) {
+          minDist = dist;
+          closestIndex = idx;
         }
       });
-    }, { threshold: 0.1 });
+      currentIndex = closestIndex;
+    };
 
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-      observer.observe(el);
+    // Auto-advance one card
+    const slideToNext = () => {
+      if (isUserInteracting) return;
+      currentIndex++;
+      // Silently reset if entering the 3rd copy
+      if (currentIndex >= originalCount * 2) {
+        // Jump back to the 2nd copy equivalent
+        const target = currentIndex - originalCount;
+        scrollToItem(target, true);
+        currentIndex = target + 1;
+        setTimeout(() => {
+          scrollToItem(currentIndex, false);
+        }, 80);
+        return;
+      }
+      scrollToItem(currentIndex, false);
+    };
+
+    const startAutoScroll = () => {
+      stopAutoScroll();
+      const delay = window.innerWidth < 768 ? 6000 : 4500;
+      autoScrollInterval = setInterval(slideToNext, delay);
+    };
+
+    const stopAutoScroll = () => {
+      if (autoScrollInterval) clearInterval(autoScrollInterval);
+    };
+
+    // Scroll to middle set on init
+    scrollToItem(currentIndex, true);
+
+    // Track scroll position for index updates and boundary reset
+    let scrollEndTimeout;
+    carousel.addEventListener('scroll', () => {
+      if (isProgrammaticScroll) return;
+      clearTimeout(scrollEndTimeout);
+      scrollEndTimeout = setTimeout(() => {
+        updateCurrentIndex();
+        // NEVER reset the loop boundary while the user is actively holding/dragging!
+        if (!isDown) {
+          resetIfNeeded();
+        }
+      }, 200);
+    }, { passive: true });
+
+    // Pause auto-scroll on user interaction, resume after
+    const onInteractionStart = () => {
+      isUserInteracting = true;
+      stopAutoScroll();
+      clearTimeout(interactionTimeout);
+    };
+
+    const onInteractionEnd = () => {
+      clearTimeout(interactionTimeout);
+      interactionTimeout = setTimeout(() => {
+        isUserInteracting = false;
+        startAutoScroll();
+      }, 2000);
+    };
+
+    carousel.addEventListener('mouseenter', onInteractionStart);
+    carousel.addEventListener('mouseleave', onInteractionEnd);
+    carousel.addEventListener('touchstart', () => {
+      onInteractionStart();
+      carousel.classList.remove('scroll-smooth');
+      carousel.style.scrollBehavior = 'auto';
+    }, { passive: true });
+    carousel.addEventListener('touchend', () => {
+      onInteractionEnd();
+      carousel.classList.add('scroll-smooth');
+      carousel.style.scrollBehavior = 'smooth';
+      setTimeout(() => {
+         updateCurrentIndex();
+         resetIfNeeded();
+      }, 500);
+    }, { passive: true });
+
+    // Also support mouse dragging exactly like requested
+    let isDown = false;
+    let startX;
+    let scrollLeftState;
+
+    carousel.addEventListener('mousedown', (e) => {
+      isDown = true;
+      carousel.style.cursor = 'grabbing';
+      
+      // Ensure smooth behavior is completely disabled for raw drag speed
+      carousel.classList.remove('scroll-smooth');
+      carousel.style.scrollBehavior = 'auto'; 
+      
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeftState = carousel.scrollLeft;
+      onInteractionStart();
     });
-  }
-
-  function initMobileAutoScroll() {
-    if (window.shecareIntervals) {
-      window.shecareIntervals.forEach(clearInterval);
-    }
-    window.shecareIntervals = [];
-
-    const carousels = document.querySelectorAll('.shecare-carousel');
     
-    carousels.forEach((carousel) => {
-      let isPaused = false;
+    window.addEventListener('mouseup', () => {
+      if (!isDown) return;
+      isDown = false;
+      carousel.style.cursor = 'grab';
       
-      // Pause on touch
-      carousel.addEventListener('touchstart', () => isPaused = true, {passive: true});
-      carousel.addEventListener('touchend', () => {
-        setTimeout(() => isPaused = false, 3000);
-      });
+      // Re-enable smooth behavior so it organically snaps to the nearest card
+      carousel.classList.add('scroll-smooth');
+      carousel.style.scrollBehavior = 'smooth';
       
-      const interval = setInterval(() => {
-        // Only run on mobile where flex layout is active
-        if (isPaused || window.innerWidth >= 640) return;
-        
-        const firstChild = carousel.firstElementChild;
-        if (!firstChild) return;
-        
-        const itemWidth = firstChild.clientWidth + 16; // width + approx gap
-        const totalScrollWidth = carousel.scrollWidth;
-        const visibleWidth = carousel.clientWidth;
-        
-        // If we are at or past the middle (end of the first set of duplicated cards)
-        if (carousel.scrollLeft >= totalScrollWidth / 2) {
-          // Instantly reset to the identical position in the first set without smooth scroll
-          carousel.style.scrollBehavior = 'auto';
-          carousel.scrollLeft = carousel.scrollLeft - (totalScrollWidth / 2);
-          
-          // Wait a frame, then smooth scroll to the next item
-          requestAnimationFrame(() => {
-            carousel.style.scrollBehavior = 'smooth';
-            carousel.scrollBy({ left: itemWidth, behavior: 'smooth' });
-          });
-        } else {
-          // Smoothly scroll to the next item
-          carousel.scrollBy({ left: itemWidth, behavior: 'smooth' });
-        }
-      }, 3000);
-
-      window.shecareIntervals.push(interval);
+      onInteractionEnd();
+      
+      // After letting go, give the CSS time to snap, then fix boundaries if needed
+      setTimeout(() => {
+        updateCurrentIndex();
+        resetIfNeeded();
+      }, 500);
     });
+    
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      // 1.5x multiplier feels more natural and less jerky than 2x
+      const walk = (x - startX) * 1.5;
+      carousel.scrollLeft = scrollLeftState - walk;
+    });
+
+    const slideToPrev = () => {
+      currentIndex--;
+      if (currentIndex < originalCount) {
+        const target = currentIndex + originalCount;
+        scrollToItem(target, true);
+        currentIndex = target - 1;
+        setTimeout(() => {
+          scrollToItem(currentIndex, false);
+        }, 80);
+        return;
+      }
+      scrollToItem(currentIndex, false);
+    };
+
+    const prevBtn = document.getElementById('shecare-prev-btn');
+    const nextBtn = document.getElementById('shecare-next-btn');
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        onInteractionStart();
+        slideToPrev();
+        onInteractionEnd();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        onInteractionStart();
+        slideToNext();
+        onInteractionEnd();
+      });
+    }
+
+    startAutoScroll();
   }
 
-  initSheCareAnimations();
-  initMobileAutoScroll();
-  
-  document.addEventListener('astro:page-load', () => {
-    initSheCareAnimations();
-    // Auto-scroll initialization will be duplicated if not careful, 
-    // but setInterval without clearing might cause double loops.
-    // Astro page transitions might preserve DOM or recreate.
-    // For safety, the script tag is re-executed on swap.
-    initMobileAutoScroll();
-  });
+  initSheCareCarousel();
+  document.addEventListener('astro:page-load', initSheCareCarousel);
 </script>

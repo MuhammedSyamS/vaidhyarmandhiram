@@ -2,6 +2,7 @@ import { defineAction } from 'astro:actions';
 import { z } from 'astro:schema';
 import dbConnect from '../lib/mongodb';
 import mongoose from 'mongoose';
+import nodemailer from 'nodemailer';
 
 // Define Mongoose Schemas if they don't exist
 const AppointmentSchema = new mongoose.Schema({
@@ -47,6 +48,41 @@ export const server = {
       await dbConnect();
       const appointment = new Appointment(input);
       await appointment.save();
+
+      try {
+        const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: process.env.EMAIL_ADDRESS,
+            pass: process.env.APP_PASSWORD,
+          },
+        });
+
+        const mailOptions = {
+          from: process.env.EMAIL_ADDRESS,
+          to: process.env.EMAIL_ADDRESS,
+          subject: `New Appointment Booking: ${input.name}`,
+          text: `
+A new appointment has been booked!
+
+Details:
+Name: ${input.name}
+Email: ${input.email}
+Phone: ${input.phone}
+Doctor: ${input.doctor}
+Treatment: ${input.treatment}
+Date: ${input.date}
+Time Slot: ${input.timeSlot}
+Symptoms: ${input.symptoms || 'None provided'}
+          `,
+        };
+
+        await transporter.sendMail(mailOptions);
+        console.log('Notification email sent successfully');
+      } catch (error) {
+        console.error('Error sending notification email:', error);
+      }
+
       return { success: true };
     },
   }),
