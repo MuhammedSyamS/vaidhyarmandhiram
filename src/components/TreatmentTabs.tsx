@@ -13,11 +13,11 @@ function useLang() {
 }
 
 const categories = [
+  { id: 'special-treatments', label: 'Special Treatments', ml: 'പ്രത്യേക ചികിത്സകൾ' },
   { id: 'panchakarma', label: 'Panchakarma (Detox)', ml: 'പഞ്ചകർമ്മം (ശുദ്ധീകരണം)' },
   { id: 'localized-basti', label: 'Localized Basti', ml: 'ലോക്കലൈസ്ഡ് ബസ്തി' },
   { id: 'sudation-scrub', label: 'Sudation & Scrubbing', ml: 'സ്വേദനവും സ്ക്രബ്ബിംഗും' },
   { id: 'eye-ear-care', label: 'Eye & Ear Care', ml: 'കണ്ണ് & ചെവി പരിചരണം' },
-  { id: 'special-treatments', label: 'Special Treatments', ml: 'പ്രത്യേക ചികിത്സകൾ' },
 ];
 
 const treatments: Record<string, any[]> = {
@@ -455,7 +455,7 @@ const specialTreatmentGroups = [
 export default function TreatmentTabs() {
   const lang = useLang();
   const ml = lang === 'ml';
-  const [activeTab, setActiveTab] = useState('panchakarma');
+  const [activeTab, setActiveTab] = useState('special-treatments');
   const [selectedTreatment, setSelectedTreatment] = useState<any | null>(null);
   const [activeGroup, setActiveGroup] = useState('Anorectal & Digestive');
 
@@ -469,9 +469,6 @@ export default function TreatmentTabs() {
 
   return (
     <div className="space-y-10">
-      {/* Debug UI */}
-      <div className="hidden md:block text-sm text-muted mb-2">Active Tab: {activeTab} | Active Group: {activeGroup}</div>
-
       {/* Main Category Tabs */}
       <div className="relative z-10 flex overflow-x-auto no-scrollbar md:flex-wrap md:justify-center gap-2 md:gap-4 border-b border-accent-gold/20 pb-4 snap-x">
         {categories.map(cat => (
