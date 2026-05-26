@@ -662,18 +662,30 @@ export default function TreatmentTabs() {
   const [selectedTreatment, setSelectedTreatment] = useState<any | null>(null);
   const [activeGroup, setActiveGroup] = useState('Anorectal & Digestive');
 
-  // Handle URL query parameters and hash for deep linking
+  // Handle URL syncing after hydration to prevent SSR mismatch
   useEffect(() => {
-    const handleUrlChange = () => {
+    // 1. Initial sync from URL on mount
+    const params = new URLSearchParams(window.location.search);
+    const tabParam = params.get('tab');
+    const groupParam = params.get('group');
+    const hash = window.location.hash.replace('#', '');
+    const id = tabParam || hash;
+
+    if (id && categories.some(cat => cat.id === id)) {
+      setActiveTab(id);
+    }
+    if (groupParam && specialTreatmentGroups.some(g => g.groupName === groupParam)) {
+      setActiveGroup(groupParam);
+    }
+    const handlePopState = () => {
       const params = new URLSearchParams(window.location.search);
       const tabParam = params.get('tab');
       const groupParam = params.get('group');
       const hash = window.location.hash.replace('#', '');
-      
-      const activeTabId = tabParam || hash;
+      const id = tabParam || hash;
 
-      if (activeTabId && categories.some(cat => cat.id === activeTabId)) {
-        setActiveTab(activeTabId);
+      if (id && categories.some(cat => cat.id === id)) {
+        setActiveTab(id);
       } else {
         setActiveTab('special-treatments');
       }
@@ -685,18 +697,16 @@ export default function TreatmentTabs() {
       }
     };
 
-    // Run on initial mount
-    handleUrlChange();
-
-    window.addEventListener('popstate', handleUrlChange);
-
-    return () => {
-      window.removeEventListener('popstate', handleUrlChange);
-    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   const handleTabClick = (id: string) => {
+    // Update state immediately — do NOT rely on URL round-trip
     setActiveTab(id);
+    if (id !== 'special-treatments') {
+      // Don't reset group when switching tabs back to special
+    }
     const params = new URLSearchParams(window.location.search);
     params.set('tab', id);
     if (id !== 'special-treatments') {
@@ -724,13 +734,13 @@ export default function TreatmentTabs() {
   return (
     <div className="space-y-10">
       {/* Main Category Tabs */}
-      <div className="relative z-50 flex overflow-x-auto no-scrollbar md:flex-wrap md:justify-center gap-2 md:gap-4 border-b border-accent-gold/20 pb-4 snap-x pointer-events-auto">
+      <div className="relative z-50 flex overflow-x-auto no-scrollbar md:flex-wrap md:justify-center gap-2 md:gap-4 border-b border-accent-gold/20 pb-4 snap-x">
         {categories.map(cat => (
           <button
             type="button"
             key={cat.id}
             onClick={() => handleTabClick(cat.id)}
-            className={`px-5 py-3 text-base transition-all duration-300 relative whitespace-nowrap snap-center flex items-center gap-2 rounded-t-lg ${
+            className={`px-5 py-3 text-base transition-all duration-300 relative whitespace-nowrap snap-center flex items-center gap-2 rounded-t-lg cursor-pointer ${
               activeTab === cat.id
                 ? 'text-primary-dark font-bold bg-accent-gold/10 border-b-2 border-accent-gold'
                 : 'text-text-muted hover:text-primary hover:bg-primary-dark/5'
@@ -743,13 +753,13 @@ export default function TreatmentTabs() {
 
       {/* Sub-category tabs for Special Treatments */}
       {isSpecial && (
-        <div className="relative z-10 flex overflow-x-auto no-scrollbar gap-2 justify-center pointer-events-auto snap-x">
+        <div className="relative z-10 flex overflow-x-auto no-scrollbar gap-2 justify-center snap-x">
           {specialTreatmentGroups.map(group => (
             <button
               type="button"
               key={group.groupName}
               onClick={() => handleGroupClick(group.groupName)}
-              className={`flex items-center justify-center px-4 py-2 md:px-6 md:py-2.5 text-sm md:text-base rounded-full border transition-all duration-300 flex-shrink-0 snap-center whitespace-nowrap ${
+              className={`flex items-center justify-center px-4 py-2 md:px-6 md:py-2.5 text-sm md:text-base rounded-full border transition-all duration-300 flex-shrink-0 snap-center whitespace-nowrap cursor-pointer ${
                 activeGroup === group.groupName
                   ? 'bg-primary-dark text-background-parchment border-primary-dark font-bold shadow-lg'
                   : 'bg-white text-text-muted border-accent-gold/20 hover:border-accent-gold hover:text-primary-dark hover:bg-accent-gold/5'
@@ -767,19 +777,14 @@ export default function TreatmentTabs() {
           {(isSpecial ? filteredSpecialTreatments : treatments[activeTab as keyof typeof treatments]).map((item, index) => (
             <div
               key={index}
-              className="bg-white p-0 shadow-md border-t-2 border-primary-dark/10 hover:border-accent-gold transition-all duration-300 group flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 rounded-lg overflow-hidden"
+              className="bg-white p-6 shadow-md border-t-2 border-primary-dark/10 hover:border-accent-gold transition-all duration-300 group flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 rounded-lg"
             >
-              <div className="aspect-[16/10] w-full overflow-hidden relative">
-                <TreatmentIllustration name={item.name} fallback={item.image} />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
-                <div className="absolute bottom-3 left-4">
-                  <span className="text-[10px] font-sans uppercase tracking-widest bg-accent-gold text-primary-dark font-bold px-2.5 py-1 rounded-full shadow-md">
+              <div className="space-y-3 flex-1 flex flex-col">
+                <div className="mb-2">
+                  <span className="text-[10px] font-sans uppercase tracking-widest bg-accent-gold/10 text-accent-gold font-bold px-2.5 py-1 rounded-full border border-accent-gold/20">
                     {item.dosha}
                   </span>
                 </div>
-              </div>
-              
-              <div className="p-6 space-y-3 flex-1 flex flex-col">
                 <h3 className="text-xl text-primary-dark group-hover:text-accent-gold transition-colors duration-300 font-bold">{item.name}</h3>
                 <p className="text-xs font-sans text-text-muted italic">{item.subtitle}</p>
                 <p className="text-text-muted font-sans text-sm leading-relaxed line-clamp-3 mb-2">{item.desc}</p>
