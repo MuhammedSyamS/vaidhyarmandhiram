@@ -10,17 +10,15 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
     <div class="text-center mb-16 relative flex flex-col items-center">
       <div class="relative mb-10 group inline-block">
         <!-- Decorative subtle glow -->
-        <div class="absolute -inset-4 bg-accent-gold/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        <div class="absolute -inset-2 bg-accent-gold/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
         
-        <!-- White container for the logo to stand out cleanly -->
-        <div class="relative bg-white rounded-[2.5rem] p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-accent-gold/20 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-500">
-          <!-- Inner decorative dashed border -->
-          <div class="absolute inset-2 rounded-[2rem] border border-dashed border-accent-gold/30"></div>
+        <!-- White container for the logo, fitted closely on top and bottom -->
+        <div class="relative bg-white rounded-[2rem] px-8 py-2 shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-accent-gold/20 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-500 overflow-hidden">
           
           <img 
             src="/images/shecarelogo.jpg" 
             alt="She Care Ayurveda Logo" 
-            class="h-24 md:h-32 object-contain relative z-10 mix-blend-darken" 
+            class="h-24 md:h-32 object-contain relative z-10 mix-blend-darken scale-110" 
           />
         </div>
       </div>
