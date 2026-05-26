@@ -470,7 +470,7 @@ export default function TreatmentTabs() {
   return (
     <div className="space-y-10">
       {/* Main Category Tabs */}
-      <div className="relative z-10 flex overflow-x-auto no-scrollbar md:flex-wrap md:justify-center gap-2 md:gap-4 border-b border-accent-gold/20 pb-4 snap-x">
+      <div className="relative z-50 flex overflow-x-auto no-scrollbar md:flex-wrap md:justify-center gap-2 md:gap-4 border-b border-accent-gold/20 pb-4 snap-x pointer-events-auto">
         {categories.map(cat => (
           <button
             type="button"
