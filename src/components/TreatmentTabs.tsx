@@ -753,7 +753,7 @@ export default function TreatmentTabs() {
 
       {/* Sub-category tabs for Special Treatments */}
       {isSpecial && (
-        <div className="relative z-10 flex overflow-x-auto no-scrollbar gap-2 justify-center snap-x">
+        <div className="relative z-10 flex overflow-x-auto no-scrollbar gap-2 justify-start md:justify-center px-4 md:px-0 snap-x">
           {specialTreatmentGroups.map(group => (
             <button
               type="button"
