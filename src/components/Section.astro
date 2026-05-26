@@ -16,14 +16,21 @@ const {
 const bgClasses = {
   parchment: 'bg-background-parchment',
   cream: 'bg-background-cream',
-  white: 'bg-white',
+  white: 'bg-cover bg-center',
   dark: 'bg-primary-dark text-background-parchment',
 };
+
+const isWhite = background === 'white';
 ---
 
-<section id={id} class:list={["py-16 md:py-24 relative", bgClasses[background], className]}>
-  <div class="container mx-auto px-4">
+<section 
+  id={id} 
+  class:list={["py-16 md:py-24 relative overflow-hidden", bgClasses[background], className]}
+  style={isWhite ? "background-image: url('/images/herbal-garden-2.jpg');" : ""}
+>
+  {isWhite && <div class="absolute inset-0 bg-white/90 backdrop-blur-[2px] z-0"></div>}
+  <div class="container mx-auto px-4 relative z-10">
     <slot />
   </div>
-  {withDivider && <div class="section-divider"></div>}
+  {withDivider && <div class="section-divider relative z-10"></div>}
 </section>
