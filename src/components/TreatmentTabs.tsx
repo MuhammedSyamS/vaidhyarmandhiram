@@ -664,22 +664,39 @@ export default function TreatmentTabs() {
 
   // Handle URL query parameters and hash for deep linking
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const tabParam = params.get('tab');
-    const groupParam = params.get('group');
-    const hash = window.location.hash.replace('#', '');
-    
-    const activeTabId = tabParam || hash;
+    const handleUrlChange = () => {
+      const params = new URLSearchParams(window.location.search);
+      const tabParam = params.get('tab');
+      const groupParam = params.get('group');
+      const hash = window.location.hash.replace('#', '');
+      
+      const activeTabId = tabParam || hash;
 
-    if (activeTabId && categories.some(cat => cat.id === activeTabId)) {
-      setActiveTab(activeTabId);
-    } else if (hash && specialTreatmentGroups.some(g => g.ids.some(id => id.toLowerCase().replace(/\s+/g, '-') === hash))) {
-      setActiveTab('special-treatments');
-    }
+      if (activeTabId && categories.some(cat => cat.id === activeTabId)) {
+        setActiveTab(activeTabId);
+      } else {
+        setActiveTab('special-treatments');
+      }
 
-    if (groupParam && specialTreatmentGroups.some(g => g.groupName === groupParam)) {
-      setActiveGroup(groupParam);
-    }
+      if (groupParam && specialTreatmentGroups.some(g => g.groupName === groupParam)) {
+        setActiveGroup(groupParam);
+      } else {
+        setActiveGroup('Anorectal & Digestive');
+      }
+    };
+
+    // Run on initial mount
+    handleUrlChange();
+
+    window.addEventListener('popstate', handleUrlChange);
+    document.addEventListener('astro:page-load', handleUrlChange);
+    document.addEventListener('astro:after-swap', handleUrlChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleUrlChange);
+      document.removeEventListener('astro:page-load', handleUrlChange);
+      document.removeEventListener('astro:after-swap', handleUrlChange);
+    };
   }, []);
 
   const handleTabClick = (id: string) => {
