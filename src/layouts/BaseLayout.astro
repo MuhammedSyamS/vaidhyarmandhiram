@@ -85,9 +85,9 @@ const fullTitle = `${title} | ${siteName}`;
     <!-- Structured Data -->
     <slot name="json-ld" />
   </head>
-  <body class="bg-fixed bg-center bg-cover" style="background-image: url('/images/herbal-garden-2.jpg');">
+  <body>
     <SplashIntro />
-    <div class="min-h-screen flex flex-col bg-white/40">
+    <div class="min-h-screen flex flex-col">
       <slot name="header" />
       <main class="flex-grow">
         <slot />
