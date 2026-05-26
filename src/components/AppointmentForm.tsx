@@ -136,6 +136,37 @@ export default function AppointmentForm() {
         </div>
 
         <div className="space-y-2">
+          <label htmlFor="treatment" className="text-sm font-sans font-bold uppercase tracking-widest text-earth">Treatment Type</label>
+          <select 
+            id="treatment" 
+            name="treatment"
+            value={selectedTreatment}
+            onChange={(e) => setSelectedTreatment(e.target.value)}
+            className="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none transition-colors font-sans bg-white"
+          >
+            {customTreatment && ![
+              'consultation', 'panchakarma', 'spine-joint', 'skin-care', 'rejuvenation',
+              'Special Treatments', 'Panchakarma (Detox)', 'Localized Basti', 'Sudation & Scrubbing', 'Eye & Ear Care',
+              'Anorectal & Digestive', 'Spine, Joint & Ortho', 'Lifestyle & Metabolic', 'Women\'s Health', 'Skin, Hair & Beauty', 'Specialized & Children'
+            ].includes(customTreatment) && (
+              <option value={customTreatment}>{customTreatment}</option>
+            )}
+            <option value="consultation">General Consultation</option>
+            <option value="Special Treatments">Special Treatments</option>
+            <option value="Panchakarma (Detox)">Panchakarma (Detox)</option>
+            <option value="Localized Basti">Localized Basti</option>
+            <option value="Sudation & Scrubbing">Sudation & Scrubbing</option>
+            <option value="Eye & Ear Care">Eye & Ear Care</option>
+            <option value="Anorectal & Digestive">Anorectal & Digestive</option>
+            <option value="Spine, Joint & Ortho">Spine, Joint & Ortho</option>
+            <option value="Lifestyle & Metabolic">Lifestyle & Metabolic</option>
+            <option value="Women's Health">Women's Health</option>
+            <option value="Skin, Hair & Beauty">Skin, Hair & Beauty</option>
+            <option value="Specialized & Children">Specialized & Children</option>
+          </select>
+        </div>
+
+        <div className="space-y-2">
           <label className="text-sm font-sans font-bold uppercase tracking-widest text-earth">Preferred Time Slot</label>
           <div className="flex flex-wrap gap-4">
             {['Morning', 'Afternoon', 'Evening'].map(slot => (
