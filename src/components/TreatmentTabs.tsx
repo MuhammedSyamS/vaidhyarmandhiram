@@ -563,32 +563,26 @@ export default function TreatmentTabs() {
           {(isSpecial ? filteredSpecialTreatments : treatments[activeTab as keyof typeof treatments]).map((item, index) => (
             <div
               key={index}
-              className="bg-white p-0 shadow-md border-t-2 border-primary-dark/10 hover:border-accent-gold transition-all duration-300 group flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 rounded-lg overflow-hidden"
+              className="bg-white p-8 shadow-md border-t-2 border-primary-dark/10 hover:border-accent-gold transition-all duration-300 space-y-4 group flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 rounded-lg"
             >
-              <div className="aspect-[16/10] w-full overflow-hidden relative">
-                <img src={item.image || '/images/treatment-room-1.jpg'} alt={item.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
-                <div className="absolute bottom-3 left-4">
-                  <span className="text-[10px] font-sans uppercase tracking-widest bg-accent-gold text-primary-dark font-bold px-2.5 py-1 rounded-full shadow-md">
+              <div className="space-y-3">
+                <div className="flex justify-between items-start gap-2">
+                  <span className="text-[10px] font-sans uppercase tracking-widest bg-accent-gold/10 text-accent-gold font-bold px-2.5 py-1 rounded-full">
                     {item.dosha}
                   </span>
                 </div>
-              </div>
-              
-              <div className="p-6 space-y-3 flex-1 flex flex-col">
                 <h3 className="text-xl text-primary-dark group-hover:text-accent-gold transition-colors duration-300 font-bold">{item.name}</h3>
                 <p className="text-xs font-sans text-text-muted italic">{item.subtitle}</p>
-                <p className="text-text-muted font-sans text-sm leading-relaxed line-clamp-3 mb-2">{item.desc}</p>
-                
-                <div className="mt-auto pt-4 border-t border-accent-gold/10 flex justify-between items-center">
-                  <span className="text-[10px] font-sans uppercase tracking-widest text-earth">{ml ? 'ഹോസ്പിറ്റൽ തെറാപ്പി' : 'Hospital Therapy'}</span>
-                  <button
-                    onClick={() => setSelectedTreatment(item)}
-                    className="text-primary font-bold text-sm hover:text-accent-gold transition-colors duration-300 flex items-center gap-1"
-                  >
-                    {ml ? 'വിശദാംശങ്ങൾ ➔' : 'Details ➔'}
-                  </button>
-                </div>
+                <p className="text-text-muted font-sans text-sm leading-relaxed line-clamp-3">{item.desc}</p>
+              </div>
+              <div className="flex justify-between items-center pt-4 border-t border-accent-gold/10 mt-4">
+                <span className="text-xs font-sans uppercase tracking-widest text-earth">{ml ? 'ഹോസ്പിറ്റൽ തെറാപ്പി' : 'Hospital Therapy'}</span>
+                <button
+                  onClick={() => setSelectedTreatment(item)}
+                  className="text-primary font-bold text-sm hover:text-accent-gold transition-colors duration-300 flex items-center gap-1"
+                >
+                  {ml ? 'വിശദാംശങ്ങൾ ➔' : 'Details & Benefits ➔'}
+                </button>
               </div>
             </div>
           ))}
