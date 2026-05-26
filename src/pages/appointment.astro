@@ -83,29 +83,20 @@ export const prerender = true;
         </div>
 
         <div class="p-8 border-2 border-accent-gold/20 rounded-lg space-y-4">
-          <h4 class="text-lg font-bold text-primary">Our Locations</h4>
-          <div class="space-y-4 text-sm text-text-muted font-sans">
-            <div class="flex gap-3 items-start">
-              <MapPin size={18} className="text-accent-gold shrink-0 mt-0.5" />
-              <div>
-                <strong class="text-primary-dark block">Trivandrum Branch</strong>
-                <a href="https://maps.app.goo.gl/NynzVNVwV4XEYYpJ7" target="_blank" rel="noopener noreferrer" class="hover:text-accent-gold underline transition-colors">Pazhavangadi, Trivandrum</a>
-              </div>
-            </div>
-            <div class="flex gap-3 items-start">
-              <MapPin size={18} className="text-accent-gold shrink-0 mt-0.5" />
-              <div>
-                <strong class="text-primary-dark block">Kollam Branch</strong>
-                <a href="https://maps.app.goo.gl/A3vvy8Xnpr1P6w3J7" target="_blank" rel="noopener noreferrer" class="hover:text-accent-gold underline transition-colors">Kadappakada, Kollam</a>
-              </div>
-            </div>
-            <div class="flex gap-3 items-start">
-              <MapPin size={18} className="text-accent-gold shrink-0 mt-0.5" />
-              <div>
-                <strong class="text-primary-dark block">Alappuzha Branch</strong>
-                <a href="https://maps.google.com/?q=Alappuzha,+Kerala,+India" target="_blank" rel="noopener noreferrer" class="hover:text-accent-gold underline transition-colors">Alappuzha, Kerala</a>
-              </div>
-            </div>
+          <h4 class="text-lg font-bold text-primary">Locations</h4>
+          <div class="flex flex-col gap-3 text-sm font-sans">
+            <a href="https://maps.app.goo.gl/NynzVNVwV4XEYYpJ7" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-text-muted hover:text-accent-gold transition-colors">
+              <MapPin size={18} className="text-accent-gold shrink-0" />
+              <span>Trivandrum</span>
+            </a>
+            <a href="https://maps.app.goo.gl/A3vvy8Xnpr1P6w3J7" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-text-muted hover:text-accent-gold transition-colors">
+              <MapPin size={18} className="text-accent-gold shrink-0" />
+              <span>Kollam</span>
+            </a>
+            <a href="https://maps.google.com/?q=Alappuzha,+Kerala,+India" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-text-muted hover:text-accent-gold transition-colors">
+              <MapPin size={18} className="text-accent-gold shrink-0" />
+              <span>Alappuzha</span>
+            </a>
           </div>
         </div>
       </div>

@@ -45,6 +45,26 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
             <span class="lang-ml font-malayalam block text-3xl sm:text-4xl md:text-5xl leading-tight font-bold">ശുദ്ധമായ <br/><span class="text-accent-gold">ചികിത്സാ പാരമ്പര്യം</span></span>
           </h1>
 
+          <!-- Mobile Only Portrait Centerpiece -->
+          <div class="block lg:hidden my-6">
+            <div class="w-full max-w-[280px] mx-auto aspect-[9/13.5] rounded-[2rem] border-2 border-primary/20 shadow-[0_15px_35px_rgba(0,0,0,0.15)] bg-white relative overflow-hidden">
+              <div class="w-full h-full relative">
+                <img 
+                  src="/images/vmfounder.jpg" 
+                  alt="Dr. P. Abdul Sathar Gurukkal" 
+                  class="w-full h-full object-cover object-top" 
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent"></div>
+              </div>
+              <div class="absolute bottom-0 left-0 w-full bg-primary-dark/95 border-t border-accent-gold/25 py-2 px-2 text-center">
+                <h3 class="lang-en text-xs font-serif text-white font-bold tracking-wide">Dr. P. Abdul Sathar Gurukkal</h3>
+                <h3 class="lang-ml font-malayalam text-[10px] text-white font-bold leading-tight">ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</h3>
+                <p class="lang-en text-[8px] uppercase tracking-widest text-accent-gold/85 mt-0.5 font-sans font-bold">Founder</p>
+                <p class="lang-ml font-malayalam text-[8px] text-accent-gold/85 leading-none">സ്ഥാപകൻ</p>
+              </div>
+            </div>
+          </div>
+
           <!-- Copy -->
           <p class="lang-en text-sm sm:text-base text-text/90 font-sans leading-relaxed max-w-xl animate-fade-in-up delay-100 mt-4">
             Rooted in the ancient wisdom of Kerala, Vaidyarmandiram Hospital offers personalized care that heals from within, preserving the rich lineage of our beloved founder Dr. P. Abdul Sathar Gurukkal.
@@ -52,29 +72,29 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
           <p class="lang-ml font-malayalam text-sm sm:text-base text-text/90 leading-relaxed max-w-xl animate-fade-in-up delay-100 mt-4">
             കേരളീയ ആയുർവേദത്തിന്റെ തനിമയാർന്ന പാരമ്പര്യത്തിൽ ഊന്നി, ഞങ്ങളുടെ പ്രിയ സ്ഥാപകൻ ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കളുടെ ആപ്തവാക്യങ്ങളെ നെഞ്ചേറ്റി, ശരീരവും മനസ്സും സുഖപ്പെടുത്തുന്ന ആധികാരിക ചികിത്സകൾ ഞങ്ങൾ നൽകുന്നു.
           </p>
-
-          <!-- Simple Stats Line -->
-          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 py-2 my-6 animate-fade-in-up delay-150 max-w-xl text-primary-dark font-sans text-base md:text-lg">
-            <div class="flex items-center gap-2">
-              <span class="font-bold text-accent-gold text-xl md:text-2xl">25K+</span>
-              <span class="lang-en text-text/80">Healed Patients</span>
-              <span class="lang-ml font-malayalam text-text/80">രോഗശാന്തി നേടിയവർ</span>
+ 
+          <!-- Simple Stats Line (Horizontal on mobile) -->
+          <div class="flex flex-row flex-wrap items-center gap-3 sm:gap-6 py-2 my-6 animate-fade-in-up delay-150 max-w-xl text-primary-dark font-sans text-xs sm:text-base md:text-lg">
+            <div class="flex items-center gap-1.5">
+              <span class="font-bold text-accent-gold text-base sm:text-xl md:text-2xl">25K+</span>
+              <span class="lang-en text-text/80">Healed</span>
+              <span class="lang-ml font-malayalam text-text/80">രോഗികൾ</span>
             </div>
-            <div class="hidden sm:block w-1.5 h-1.5 rounded-full bg-accent-gold/40"></div>
-            <div class="flex items-center gap-2">
-              <span class="font-bold text-accent-gold text-xl md:text-2xl">40+</span>
-              <span class="lang-en text-text/80">Years of Experience</span>
-              <span class="lang-ml font-malayalam text-text/80">വർഷത്തെ പാരമ്പര്യം</span>
+            <div class="w-1 h-1 rounded-full bg-accent-gold/40"></div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-bold text-accent-gold text-base sm:text-xl md:text-2xl">40+</span>
+              <span class="lang-en text-text/80">Years Exp</span>
+              <span class="lang-ml font-malayalam text-text/80">പാരമ്പര്യം</span>
             </div>
-            <div class="hidden sm:block w-1.5 h-1.5 rounded-full bg-accent-gold/40"></div>
-            <div class="flex items-center gap-2">
-              <span class="font-bold text-accent-gold text-xl md:text-2xl">3</span>
+            <div class="w-1 h-1 rounded-full bg-accent-gold/40"></div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-bold text-accent-gold text-base sm:text-xl md:text-2xl">3</span>
               <span class="lang-en text-text/80">Hospitals</span>
               <span class="lang-ml font-malayalam text-text/80">ആശുപത്രികൾ</span>
             </div>
           </div>
         </div>
-
+ 
         <!-- Buttons with Shimmer & Expand Effects -->
         <div class="flex flex-col sm:flex-row gap-3.5 pt-2 animate-fade-in-up delay-200">
           <a href="/appointment" class="btn-shimmer bg-primary hover:bg-primary-dark text-white flex items-center justify-center gap-2 group shadow-md hover:shadow-lg rounded-lg px-8 py-4 text-base font-serif font-bold transition-all duration-300">
@@ -88,9 +108,9 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
           </a>
         </div>
       </div>
-
-      <!-- Column 2: Single Visual Centerpiece (Right - 6/12 width) -->
-      <div class="lg:col-span-6 flex items-center justify-center relative mt-12 lg:mt-0 px-4 sm:px-0">
+ 
+      <!-- Column 2: Single Visual Centerpiece (Desktop Only) -->
+      <div class="hidden lg:flex lg:col-span-6 items-center justify-center relative mt-12 lg:mt-0 px-4 sm:px-0">
         
         <!-- Elegant Gold Mandala Halo behind the Portrait (Static & Premium) -->
         <div class="absolute w-[440px] h-[440px] sm:w-[480px] sm:h-[480px] opacity-[0.045] text-accent-gold pointer-events-none select-none z-0">

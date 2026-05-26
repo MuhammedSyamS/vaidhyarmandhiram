@@ -689,13 +689,9 @@ export default function TreatmentTabs() {
     handleUrlChange();
 
     window.addEventListener('popstate', handleUrlChange);
-    document.addEventListener('astro:page-load', handleUrlChange);
-    document.addEventListener('astro:after-swap', handleUrlChange);
 
     return () => {
       window.removeEventListener('popstate', handleUrlChange);
-      document.removeEventListener('astro:page-load', handleUrlChange);
-      document.removeEventListener('astro:after-swap', handleUrlChange);
     };
   }, []);
 

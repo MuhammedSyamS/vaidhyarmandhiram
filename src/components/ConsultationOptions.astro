@@ -9,10 +9,30 @@ import { Video, Mail, MessageCircle, UserCheck } from 'lucide-react';
   <div class="container mx-auto px-4 md:px-6 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
       
-      <!-- Left Column: Consultation Visual -->
-      <div class="lg:col-span-5 relative animate-on-scroll opacity-0 translate-y-8 lg:translate-y-0 lg:-translate-x-8 transition-all duration-1000 ease-out">
+      <!-- Top Column on Mobile / Right Top on Desktop: Headings & Writing -->
+      <div class="col-span-1 lg:col-span-7 lg:col-start-6 order-1 lg:order-2 space-y-2 md:space-y-3 text-center lg:text-left">
+        <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.25em] text-[11px] md:text-sm font-bold">Expert Guidance</span>
+        <span class="lang-ml font-malayalam text-accent-gold text-sm md:text-base font-semibold block">വിദഗ്ദ്ധ മാർഗ്ഗനിർദ്ദേശം</span>
+        
+        <h2 class="lang-en text-2xl sm:text-3xl md:text-5xl text-primary-dark font-serif leading-tight">
+          Flexible <span class="text-accent-gold italic">Consultations</span>
+        </h2>
+        <h2 class="lang-ml font-malayalam text-2xl sm:text-3xl md:text-5xl text-primary-dark font-bold leading-tight">
+          നിങ്ങൾക്കനുയോജ്യമായ <span class="text-accent-gold">കൺസൾട്ടേഷൻ</span>
+        </h2>
+        
+        <p class="lang-en text-primary-dark/80 font-sans text-sm sm:text-base md:text-lg mt-3 md:mt-4 max-w-xl mx-auto lg:mx-0">
+          Connecting with our experienced Ayurvedic physicians is easy. Choose from our various consultation modes designed for your convenience.
+        </p>
+        <p class="lang-ml font-malayalam text-primary-dark/80 text-sm sm:text-base md:text-lg mt-3 md:mt-4 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          ഞങ്ങളുടെ വിദഗ്ദ്ധ ഡോക്ടർമാരുമായി ബന്ധപ്പെടാൻ ഇപ്പോൾ എളുപ്പമാണ്. നിങ്ങൾക്ക് ഏറ്റവും സൗകര്യപ്രദമായ കൺസൾട്ടേഷൻ രീതി തിരഞ്ഞെടുക്കുക.
+        </p>
+      </div>
+
+      <!-- Middle Column on Mobile / Left Column on Desktop: Consultation Visual -->
+      <div class="col-span-1 lg:col-span-5 order-2 lg:order-1 lg:row-span-2 relative animate-on-scroll opacity-0 translate-y-8 lg:translate-y-0 lg:-translate-x-8 transition-all duration-1000 ease-out">
         <!-- Decorative background glow -->
-        <div class="absolute inset-0 bg-accent-gold/10 rounded-[2rem] transform translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4 -z-10"></div>
+        <div class="absolute inset-0 bg-accent-gold/10 rounded-[1.5rem] md:rounded-[2rem] transform translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4 -z-10"></div>
         <div class="absolute -top-10 -left-10 w-32 h-32 md:w-40 md:h-40 bg-accent-gold/15 rounded-full blur-3xl z-0 pointer-events-none"></div>
         
         <div class="relative z-10 rounded-[1.5rem] md:rounded-[2rem] overflow-hidden border-2 border-accent-gold/30 shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-white aspect-[4/3] sm:aspect-[1.2] md:aspect-square lg:aspect-[4/5] group">
@@ -96,28 +116,9 @@ import { Video, Mail, MessageCircle, UserCheck } from 'lucide-react';
         </div>
       </div>
  
-      <!-- Right Column: Consultation Options (7/12 width) -->
-      <div class="lg:col-span-7 space-y-6 md:space-y-8 animate-on-scroll opacity-0 translate-y-8 lg:translate-y-0 lg:translate-x-8 transition-all duration-1000 ease-out lg:delay-200">
-        <div class="space-y-2 md:space-y-3 text-center lg:text-left">
-          <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.25em] text-[11px] md:text-sm font-bold">Expert Guidance</span>
-          <span class="lang-ml font-malayalam text-accent-gold text-sm md:text-base font-semibold block">വിദഗ്ദ്ധ മാർഗ്ഗനിർദ്ദേശം</span>
-          
-          <h2 class="lang-en text-2xl sm:text-3xl md:text-5xl text-primary-dark font-serif leading-tight">
-            Flexible <span class="text-accent-gold italic">Consultations</span>
-          </h2>
-          <h2 class="lang-ml font-malayalam text-2xl sm:text-3xl md:text-5xl text-primary-dark font-bold leading-tight">
-            നിങ്ങൾക്കനുയോജ്യമായ <span class="text-accent-gold">കൺസൾട്ടേഷൻ</span>
-          </h2>
-          
-          <p class="lang-en text-primary-dark/80 font-sans text-sm sm:text-base md:text-lg mt-3 md:mt-4 max-w-xl mx-auto lg:mx-0">
-            Connecting with our experienced Ayurvedic physicians is easy. Choose from our various consultation modes designed for your convenience.
-          </p>
-          <p class="lang-ml font-malayalam text-primary-dark/80 text-sm sm:text-base md:text-lg mt-3 md:mt-4 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-            ഞങ്ങളുടെ വിദഗ്ദ്ധ ഡോക്ടർമാരുമായി ബന്ധപ്പെടാൻ ഇപ്പോൾ എളുപ്പമാണ്. നിങ്ങൾക്ക് ഏറ്റവും സൗകര്യപ്രദമായ കൺസൾട്ടേഷൻ രീതി തിരഞ്ഞെടുക്കുക.
-          </p>
-        </div>
- 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <!-- Bottom Column on Mobile / Right Bottom on Desktop: Consultation Options -->
+      <div class="col-span-1 lg:col-span-7 lg:col-start-6 order-3 lg:order-3 animate-on-scroll opacity-0 translate-y-8 lg:translate-y-0 lg:translate-x-8 transition-all duration-1000 ease-out lg:delay-200">
+        <div class="grid grid-cols-2 gap-3 sm:gap-4">
           <!-- Option 1: Personal -->
           <a href="/appointment" class="block bg-white border border-accent-gold/20 p-4 sm:p-5 rounded-xl hover:shadow-[0_8px_20px_rgba(184,134,11,0.12)] hover:border-accent-gold/50 transition-all duration-300 group">
             <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/5 flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-300 text-accent-gold">
