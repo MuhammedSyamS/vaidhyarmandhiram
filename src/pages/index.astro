@@ -32,7 +32,38 @@ const testimonials = [
 ];
 ---
 
-<BaseLayout title="Home">
+<BaseLayout title="Traditional Ayurvedic Hospital Kerala">
+  <Fragment slot="json-ld">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Hospital",
+        "name": "Gurukkal's Vaidhyarmandhiram Hospital LLP",
+        "alternateName": "Vaidhyarmandhiram",
+        "image": "https://www.vaidhyarmandhiram.com/images/og-image.jpg",
+        "@id": "https://www.vaidhyarmandhiram.com/",
+        "url": "https://www.vaidhyarmandhiram.com/",
+        "telephone": "+918593821553",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Pangode, Kallara",
+          "addressLocality": "Thiruvananthapuram",
+          "addressRegion": "Kerala",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 8.7833,
+          "longitude": 76.9667
+        },
+        "medicalSpecialty": [
+          "Ayurvedic",
+          "Traditional Healthcare"
+        ]
+      }
+    </script>
+  </Fragment>
+
   <Header slot="header" />
 
   <Hero />
@@ -43,7 +74,7 @@ const testimonials = [
       <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold">Our Expertise</span>
       <span class="lang-ml font-malayalam text-accent-gold text-base font-semibold block">ഞങ്ങളുടെ വൈദഗ്ദ്ധ്യം</span>
       <h2 class="lang-en text-4xl md:text-5xl text-primary-dark mt-3 mb-6 font-serif">Healing Through Tradition</h2>
-      <h2 class="lang-ml font-malayalam text-4xl md:text-5xl text-primary-dark mt-3 mb-6 font-bold">പൈതൃകത്തിലൂടെ സൗഖ്യം</h2>
+      <div class="lang-ml font-malayalam block text-4xl md:text-5xl text-primary-dark mt-3 mb-6 font-bold">പൈതൃകത്തിലൂടെ സൗഖ്യം</div>
       <p class="lang-en text-primary-dark font-sans text-lg">
         We offer a comprehensive range of traditional Ayurvedic treatments, each personalized to your unique body constitution (Prakriti).
       </p>
@@ -259,9 +290,9 @@ const testimonials = [
       <h2 class="lang-en text-3xl md:text-6xl text-background-parchment mb-6 font-serif leading-tight">
         Ready to Begin Your <br/><span class="text-accent-gold">Path to Wellness?</span>
       </h2>
-      <h2 class="lang-ml font-malayalam text-3xl md:text-5xl text-background-parchment mb-6 font-bold">
+      <div class="lang-ml font-malayalam block text-3xl md:text-5xl text-background-parchment mb-6 font-bold">
         <span class="text-accent-gold">ആരോഗ്യ</span>ത്തിലേക്കുള്ള യാത്ര ആരംഭിക്കാൻ തയ്യാറാണോ?
-      </h2>
+      </div>
       <p class="lang-en text-background-parchment/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-sans">
         Schedule your consultation with our experienced physicians and experience authentic traditional healing.
       </p>
