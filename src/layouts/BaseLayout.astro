@@ -83,6 +83,35 @@ const fullTitle = `${title} | ${siteName}`;
     <ViewTransitions />
 
     <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Hospital",
+        "name": "Gurukkal's Vaidhyarmandhiram Hospital LLP",
+        "alternateName": "Vaidhyarmandhiram",
+        "image": "https://www.vaidhyarmandhiram.com/images/og-image.jpg",
+        "@id": "https://www.vaidhyarmandhiram.com/",
+        "url": "https://www.vaidhyarmandhiram.com/",
+        "telephone": "+918593821553",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Pangode, Kallara",
+          "addressLocality": "Thiruvananthapuram",
+          "addressRegion": "Kerala",
+          "postalCode": "695609",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 8.7833,
+          "longitude": 76.9667
+        },
+        "medicalSpecialty": [
+          "Ayurvedic",
+          "Traditional Healthcare"
+        ]
+      }
+    </script>
     <slot name="json-ld" />
   </head>
   <body>
