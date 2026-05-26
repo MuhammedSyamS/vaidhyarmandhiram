@@ -8,19 +8,16 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
     
     <!-- Premium Logo Header -->
     <div class="text-center mb-16 relative flex flex-col items-center">
-      <div class="relative mb-10 group inline-block">
-        <!-- Decorative subtle glow -->
-        <div class="absolute -inset-2 bg-accent-gold/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+      <div class="relative mb-10 inline-block">
+        <!-- Soft, seamless white radial glow behind the logo -->
+        <div class="absolute inset-0 bg-white rounded-full blur-2xl scale-[1.5] opacity-90 z-0 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-white rounded-full blur-xl scale-125 opacity-100 z-0 pointer-events-none"></div>
         
-        <!-- White container for the logo, fitted closely on top and bottom -->
-        <div class="relative bg-white rounded-[2rem] px-8 py-2 shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-accent-gold/20 flex items-center justify-center transform group-hover:-translate-y-1 transition-transform duration-500 overflow-hidden">
-          
-          <img 
-            src="/images/shecarelogo.jpg" 
-            alt="She Care Ayurveda Logo" 
-            class="h-24 md:h-32 object-contain relative z-10 mix-blend-darken scale-110" 
-          />
-        </div>
+        <img 
+          src="/images/shecarelogo.jpg" 
+          alt="She Care Ayurveda Logo" 
+          class="h-28 md:h-36 object-contain relative z-10 mix-blend-multiply" 
+        />
       </div>
       
       <div class="inline-flex items-center justify-center gap-4 mb-4">
