@@ -4,37 +4,43 @@ const treatments = [
     name: 'Anorectal & Digestive', 
     description: 'Comprehensive care for Piles, Fissure, Fistula, and IBS using classical Ayurvedic methods.', 
     image: '/images/digestive_care.png', 
-    slug: 'special-treatments' 
+    slug: 'special-treatments',
+    group: 'Anorectal & Digestive'
   },
   { 
     name: 'Spine, Joint & Ortho', 
     description: 'Traditional therapies for Sciatica, Cervical Spondylosis, Bone Alignment, and Frozen Shoulder.', 
     image: '/images/spine-joint.jpg', 
-    slug: 'special-treatments' 
+    slug: 'special-treatments',
+    group: 'Spine, Joint & Ortho'
   },
   { 
     name: 'Skin, Hair & Beauty', 
     description: 'Deep-acting protocols for Psoriasis, Allergies, Dandruff, and overall Cosmetology.', 
     image: '/images/skin-treatment.jpg', 
-    slug: 'special-treatments' 
+    slug: 'special-treatments',
+    group: 'Skin, Hair & Beauty'
   },
   { 
     name: "Women's Health & Fertility", 
     description: 'Hormonal balancing for PCOD/PCOS, Endometriosis, and reproductive wellness.', 
     image: '/images/womens_health.png', 
-    slug: 'special-treatments' 
+    slug: 'special-treatments',
+    group: "Women's Health"
   },
   { 
     name: 'Lifestyle & Metabolic', 
     description: 'Management of Diabetes, Cholesterol, Fatty Liver, BP, and Weight.', 
     image: '/images/metabolic_care.png', 
-    slug: 'special-treatments' 
+    slug: 'special-treatments',
+    group: 'Lifestyle & Metabolic'
   },
   { 
     name: 'Specialized Care', 
     description: 'Expert treatment for Kidney Stones, Migraine, Eye/Ear care, and Paediatrics.', 
     image: '/images/treatment-room-1.jpg', 
-    slug: 'special-treatments' 
+    slug: 'special-treatments',
+    group: 'Specialized & Children'
   }
 ];
 ---
@@ -68,7 +74,7 @@ const treatments = [
     {/* Duplicate 3x for infinite-loop illusion */}
     {[...treatments, ...treatments, ...treatments].map(t => (
       <a
-        href={`/treatments#${t.slug}`}
+        href={`/treatments?tab=${t.slug}&group=${encodeURIComponent(t.group || '')}`}
         class="treatment-card group relative overflow-hidden bg-white shadow-md hover:shadow-lg border border-accent-gold/10 rounded-xl shrink-0 transition-all duration-300 transform hover:-translate-y-1 select-none"
         draggable="false"
       >

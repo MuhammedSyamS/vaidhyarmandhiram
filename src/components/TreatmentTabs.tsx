@@ -502,12 +502,203 @@ const specialTreatmentGroups = [
   },
 ];
 
+function TreatmentIllustration({ name, fallback }: { name: string; fallback: string }) {
+  const baseClass = "w-full h-full object-cover transition-transform duration-700 group-hover:scale-105";
+  
+  if (name === 'Piles (Arsha)') {
+    return (
+      <div className="w-full h-full bg-gradient-to-br from-red-50 to-primary-dark/10 flex items-center justify-center relative overflow-hidden transition-all duration-700 group-hover:scale-105">
+        <svg viewBox="0 0 100 100" className="w-24 h-24 text-accent-gold drop-shadow-md">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+          <path d="M50,15 C58,35 68,45 68,60 C68,75 58,80 50,80 C42,80 32,75 32,60 C32,45 42,35 50,15 Z" fill="none" stroke="currentColor" strokeWidth="2" />
+          <path d="M50,30 C54,42 60,50 60,60 C60,70 54,72 50,72 C46,72 40,70 40,60 C40,50 46,42 50,30 Z" fill="currentColor" className="text-primary-dark opacity-20" />
+          <circle cx="50" cy="65" r="4" fill="currentColor" className="text-accent-gold animate-pulse" />
+          <circle cx="45" cy="55" r="2" fill="currentColor" className="text-primary-dark" />
+          <circle cx="55" cy="55" r="2" fill="currentColor" className="text-primary-dark" />
+          <path d="M50,80 C50,80 55,75 58,78 C60,80 57,83 50,80" fill="currentColor" className="text-earth" />
+          <path d="M50,80 C50,80 45,75 42,78 C40,80 43,83 50,80" fill="currentColor" className="text-earth" />
+        </svg>
+      </div>
+    );
+  }
+  
+  if (name === 'Fissure') {
+    return (
+      <div className="w-full h-full bg-gradient-to-br from-amber-50 to-primary-dark/10 flex items-center justify-center relative overflow-hidden transition-all duration-700 group-hover:scale-105">
+        <svg viewBox="0 0 100 100" className="w-24 h-24 text-accent-gold drop-shadow-md">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+          <path d="M35,30 Q45,50 35,70" fill="none" stroke="currentColor" strokeWidth="2" />
+          <path d="M65,30 Q55,50 65,70" fill="none" stroke="currentColor" strokeWidth="2" />
+          <line x1="40" y1="38" x2="60" y2="42" stroke="currentColor" strokeWidth="1.5" strokeDasharray="1 1" />
+          <line x1="38" y1="50" x2="62" y2="50" stroke="currentColor" strokeWidth="2" />
+          <line x1="40" y1="62" x2="60" y2="58" stroke="currentColor" strokeWidth="1.5" strokeDasharray="1 1" />
+          <circle cx="50" cy="50" r="6" fill="currentColor" className="text-primary-dark opacity-10 animate-ping" />
+          <circle cx="50" cy="50" r="3" fill="currentColor" className="text-earth" />
+        </svg>
+      </div>
+    );
+  }
+
+  if (name === 'Fistula (Bhagandara)') {
+    return (
+      <div className="w-full h-full bg-gradient-to-br from-orange-50 to-primary-dark/10 flex items-center justify-center relative overflow-hidden transition-all duration-700 group-hover:scale-105">
+        <svg viewBox="0 0 100 100" className="w-24 h-24 text-accent-gold drop-shadow-md">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+          <path d="M30,50 C40,30 60,30 70,50 C60,70 40,70 30,50 Z" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="2 2" className="opacity-60" />
+          <path d="M50,20 C65,20 65,80 50,80 C35,80 35,20 50,20" fill="none" stroke="currentColor" strokeWidth="2" />
+          <circle cx="50" cy="20" r="3" fill="currentColor" className="text-earth" />
+          <circle cx="50" cy="50" r="4" fill="currentColor" className="text-primary-dark animate-pulse" />
+          <path d="M50,80 L52,85 L48,85 Z" fill="currentColor" className="text-earth" />
+        </svg>
+      </div>
+    );
+  }
+
+  if (name === 'IBS (Irritable Bowel Syndrome)') {
+    return (
+      <div className="w-full h-full bg-gradient-to-br from-emerald-50 to-primary-dark/10 flex items-center justify-center relative overflow-hidden transition-all duration-700 group-hover:scale-105">
+        <svg viewBox="0 0 100 100" className="w-24 h-24 text-accent-gold drop-shadow-md">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+          <path d="M30,35 C30,30 45,28 50,33 C55,28 70,30 70,35 C70,42 60,45 50,42 C40,45 30,42 30,35 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <path d="M30,35 C20,35 22,55 35,55 C40,55 45,50 50,55 C55,50 60,55 65,55 C78,55 80,35 70,35" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <path d="M35,55 C35,65 45,68 50,62 C55,68 65,65 65,55" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <path d="M50,62 L50,75" fill="none" stroke="currentColor" strokeWidth="2" />
+          <circle cx="50" cy="45" r="8" fill="currentColor" className="text-primary-dark opacity-10 animate-pulse" />
+          <circle cx="50" cy="45" r="4" fill="currentColor" className="text-earth" />
+        </svg>
+      </div>
+    );
+  }
+
+  if (name === 'PCOD & PCOS') {
+    return (
+      <div className="w-full h-full bg-gradient-to-br from-pink-50 to-primary-dark/10 flex items-center justify-center relative overflow-hidden transition-all duration-700 group-hover:scale-105">
+        <svg viewBox="0 0 100 100" className="w-24 h-24 text-accent-gold drop-shadow-md">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+          <path d="M50,25 C30,25 25,45 25,50 C25,65 40,75 50,75 C60,75 75,65 75,50 C75,45 70,25 50,25 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <path d="M50,38 C46,48 40,52 50,62 C60,52 54,48 50,38 Z" fill="currentColor" className="text-primary-dark opacity-20" />
+          <circle cx="50" cy="52" r="3" fill="currentColor" className="text-earth" />
+          <circle cx="28" cy="45" r="5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <circle cx="72" cy="45" r="5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <circle cx="28" cy="45" r="2" fill="currentColor" className="text-accent-gold animate-ping" />
+          <circle cx="72" cy="45" r="2" fill="currentColor" className="text-accent-gold animate-ping" />
+        </svg>
+      </div>
+    );
+  }
+
+  if (name === 'Endometriosis') {
+    return (
+      <div className="w-full h-full bg-gradient-to-br from-rose-50 to-primary-dark/10 flex items-center justify-center relative overflow-hidden transition-all duration-700 group-hover:scale-105">
+        <svg viewBox="0 0 100 100" className="w-24 h-24 text-accent-gold drop-shadow-md">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+          <path d="M50,30 Q30,40 30,55 Q30,70 50,75 Q70,70 70,55 Q70,40 50,30" fill="none" stroke="currentColor" strokeWidth="2" />
+          <path d="M45,45 C45,45 50,42 55,45 C55,45 52,55 45,45" fill="currentColor" className="text-primary-dark opacity-30" />
+          <path d="M55,55 C55,55 50,58 45,55 C45,55 48,45 55,55" fill="currentColor" className="text-earth opacity-80" />
+          <circle cx="50" cy="50" r="4" fill="currentColor" className="text-accent-gold animate-pulse" />
+        </svg>
+      </div>
+    );
+  }
+
+  if (name === 'White Discharge (Leucorrhoea)') {
+    return (
+      <div className="w-full h-full bg-gradient-to-br from-teal-50 to-primary-dark/10 flex items-center justify-center relative overflow-hidden transition-all duration-700 group-hover:scale-105">
+        <svg viewBox="0 0 100 100" className="w-24 h-24 text-accent-gold drop-shadow-md">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+          <path d="M50,25 Q65,45 50,75 Q35,45 50,25 Z" fill="none" stroke="currentColor" strokeWidth="2" />
+          <circle cx="50" cy="50" r="5" fill="currentColor" className="text-primary-dark opacity-20" />
+          <circle cx="50" cy="50" r="2" fill="currentColor" className="text-earth" />
+          <path d="M40,75 Q50,70 60,75" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <path d="M45,80 Q50,77 55,80" fill="none" stroke="currentColor" strokeWidth="1" />
+        </svg>
+      </div>
+    );
+  }
+
+  if (name === 'Paediatric Section') {
+    return (
+      <div className="w-full h-full bg-gradient-to-br from-emerald-50 to-primary-dark/10 flex items-center justify-center relative overflow-hidden transition-all duration-700 group-hover:scale-105">
+        <svg viewBox="0 0 100 100" className="w-24 h-24 text-accent-gold drop-shadow-md">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+          <path d="M50,75 L50,40" fill="none" stroke="currentColor" strokeWidth="2" />
+          <path d="M50,55 Q35,45 35,35 Q50,42 50,55" fill="currentColor" className="text-primary-dark opacity-35" />
+          <path d="M50,48 Q65,38 65,28 Q50,35 50,48" fill="currentColor" className="text-earth" />
+          <circle cx="50" cy="75" r="4" fill="currentColor" className="text-accent-gold" />
+          <circle cx="30" cy="30" r="8" fill="currentColor" className="text-accent-gold opacity-10 animate-pulse" />
+        </svg>
+      </div>
+    );
+  }
+
+  if (name === 'De-Tan Treatment') {
+    return (
+      <div className="w-full h-full bg-gradient-to-br from-yellow-50 to-primary-dark/10 flex items-center justify-center relative overflow-hidden transition-all duration-700 group-hover:scale-105">
+        <svg viewBox="0 0 100 100" className="w-24 h-24 text-accent-gold drop-shadow-md">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+          <path d="M50,30 L50,20 M50,70 L50,80 M30,50 L20,50 M70,50 L80,50 M36,36 L28,28 M64,64 L72,72 M36,64 L28,72 M64,36 L72,28" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="opacity-60" />
+          <path d="M50,35 C42,35 35,42 35,50 C35,58 42,65 50,65" fill="none" stroke="currentColor" strokeWidth="2" />
+          <path d="M50,35 C58,35 65,42 65,50 C65,58 58,65 50,65" fill="currentColor" className="text-primary-dark opacity-20" />
+          <circle cx="50" cy="50" r="4" fill="currentColor" className="text-accent-gold animate-ping" />
+          <circle cx="50" cy="50" r="2" fill="currentColor" className="text-earth" />
+        </svg>
+      </div>
+    );
+  }
+
+  return (
+    <img 
+      src={fallback || '/images/treatment-room-1.jpg'} 
+      alt={name} 
+      className={baseClass} 
+    />
+  );
+}
+
 export default function TreatmentTabs() {
   const lang = useLang();
   const ml = lang === 'ml';
   const [activeTab, setActiveTab] = useState('special-treatments');
   const [selectedTreatment, setSelectedTreatment] = useState<any | null>(null);
   const [activeGroup, setActiveGroup] = useState('Anorectal & Digestive');
+
+  // Handle URL query parameters and hash for deep linking
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tabParam = params.get('tab');
+    const groupParam = params.get('group');
+    const hash = window.location.hash.replace('#', '');
+    
+    const activeTabId = tabParam || hash;
+
+    if (activeTabId && categories.some(cat => cat.id === activeTabId)) {
+      setActiveTab(activeTabId);
+    } else if (hash && specialTreatmentGroups.some(g => g.ids.some(id => id.toLowerCase().replace(/\s+/g, '-') === hash))) {
+      setActiveTab('special-treatments');
+    }
+
+    if (groupParam && specialTreatmentGroups.some(g => g.groupName === groupParam)) {
+      setActiveGroup(groupParam);
+    }
+  }, []);
+
+  const handleTabClick = (id: string) => {
+    setActiveTab(id);
+    const params = new URLSearchParams(window.location.search);
+    params.set('tab', id);
+    if (id !== 'special-treatments') {
+      params.delete('group');
+    }
+    window.history.replaceState(null, '', `?${params.toString()}`);
+  };
+
+  const handleGroupClick = (groupName: string) => {
+    setActiveGroup(groupName);
+    const params = new URLSearchParams(window.location.search);
+    params.set('tab', 'special-treatments');
+    params.set('group', groupName);
+    window.history.replaceState(null, '', `?${params.toString()}`);
+  };
 
   const isSpecial = activeTab === 'special-treatments';
 
@@ -525,7 +716,7 @@ export default function TreatmentTabs() {
           <button
             type="button"
             key={cat.id}
-            onClick={() => { console.log('Tab clicked:', cat.id); setActiveTab(cat.id); }}
+            onClick={() => handleTabClick(cat.id)}
             className={`px-5 py-3 text-base transition-all duration-300 relative whitespace-nowrap snap-center flex items-center gap-2 rounded-t-lg ${
               activeTab === cat.id
                 ? 'text-primary-dark font-bold bg-accent-gold/10 border-b-2 border-accent-gold'
@@ -544,7 +735,7 @@ export default function TreatmentTabs() {
             <button
               type="button"
               key={group.groupName}
-              onClick={() => { console.log('Group clicked:', group.groupName); setActiveGroup(group.groupName); }}
+              onClick={() => handleGroupClick(group.groupName)}
               className={`flex items-center justify-center px-4 py-2 md:px-6 md:py-2.5 text-sm md:text-base rounded-full border transition-all duration-300 flex-shrink-0 snap-center whitespace-nowrap ${
                 activeGroup === group.groupName
                   ? 'bg-primary-dark text-background-parchment border-primary-dark font-bold shadow-lg'
@@ -566,7 +757,7 @@ export default function TreatmentTabs() {
               className="bg-white p-0 shadow-md border-t-2 border-primary-dark/10 hover:border-accent-gold transition-all duration-300 group flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 rounded-lg overflow-hidden"
             >
               <div className="aspect-[16/10] w-full overflow-hidden relative">
-                <img src={item.image || '/images/treatment-room-1.jpg'} alt={item.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <TreatmentIllustration name={item.name} fallback={item.image} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
                 <div className="absolute bottom-3 left-4">
                   <span className="text-[10px] font-sans uppercase tracking-widest bg-accent-gold text-primary-dark font-bold px-2.5 py-1 rounded-full shadow-md">
@@ -696,7 +887,7 @@ export default function TreatmentTabs() {
                   {ml ? 'അടയ്ക്കുക' : 'Close Window'}
                 </button>
                 <a
-                  href="/appointment"
+                  href={`/appointment?treatment=${encodeURIComponent(selectedTreatment.name)}`}
                   className="flex-1 px-4 py-2 bg-primary-dark text-background-parchment text-center font-sans text-sm rounded-lg hover:bg-primary-dark-hover transition-colors font-bold flex items-center justify-center"
                 >
                   {ml ? 'ചികിത്സ ബുക്ക് ചെയ്യൂ' : 'Book Treatment'}

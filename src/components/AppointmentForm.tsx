@@ -6,6 +6,39 @@ import { CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 export default function AppointmentForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [selectedTreatment, setSelectedTreatment] = useState('consultation');
+  const [customTreatment, setCustomTreatment] = useState('');
+
+  React.useEffect(() => {
+    // Only run on client
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const treatmentParam = params.get('treatment');
+      if (treatmentParam) {
+        const mapping: Record<string, string> = {
+          'panchakarma': 'Panchakarma (Detox)',
+          'localized-basti': 'Localized Basti',
+          'sudation-scrub': 'Sudation & Scrubbing',
+          'eye-ear-care': 'Eye & Ear Care',
+          'special-treatments': 'Special Treatments',
+          'anorectal-digestive': 'Anorectal & Digestive',
+          'spine-joint-ortho': 'Spine, Joint & Ortho',
+          'spine-joint': 'Spine, Joint & Ortho',
+          'lifestyle-metabolic': 'Lifestyle & Metabolic',
+          'womens-health': "Women's Health",
+          'skin-hair-beauty': 'Skin, Hair & Beauty',
+          'skin-care': 'Skin, Hair & Beauty',
+          'specialized-children': 'Specialized & Children',
+          'rejuvenation': 'Specialized & Children'
+        };
+        const key = treatmentParam.toLowerCase().trim();
+        const mappedValue = mapping[key] || treatmentParam;
+        
+        setCustomTreatment(mappedValue);
+        setSelectedTreatment(mappedValue);
+      }
+    }
+  }, []);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -88,35 +121,6 @@ export default function AppointmentForm() {
               className="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none transition-colors font-sans"
               placeholder="yourname@example.com"
             />
-          </div>
-          <div className="space-y-2">
-            <label htmlFor="doctor" className="text-sm font-sans font-bold uppercase tracking-widest text-earth">Select Doctor</label>
-            <select 
-              id="doctor" 
-              name="doctor" 
-              className="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none transition-colors font-sans bg-white"
-            >
-              <option value="dr-sathar">Dr. P. Abdul Sathar Gurukkal</option>
-              <option value="dr-physician-1">Dr. Senior Physician</option>
-              <option value="dr-physician-2">Dr. Ayurvedic Consultant</option>
-            </select>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <label htmlFor="treatment" className="text-sm font-sans font-bold uppercase tracking-widest text-earth">Treatment Type</label>
-            <select 
-              id="treatment" 
-              name="treatment" 
-              className="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none transition-colors font-sans bg-white"
-            >
-              <option value="consultation">General Consultation</option>
-              <option value="panchakarma">Panchakarma Detox</option>
-              <option value="spine-joint">Spine & Joint Care</option>
-              <option value="skin-care">Skin Care</option>
-              <option value="rejuvenation">Rejuvenation Therapy</option>
-            </select>
           </div>
           <div className="space-y-2">
             <label htmlFor="date" className="text-sm font-sans font-bold uppercase tracking-widest text-earth">Preferred Date</label>
