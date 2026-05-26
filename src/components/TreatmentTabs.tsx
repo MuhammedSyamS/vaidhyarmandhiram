@@ -495,7 +495,7 @@ export default function TreatmentTabs() {
               type="button"
               key={group.groupName}
               onClick={() => { console.log('Group clicked:', group.groupName); setActiveGroup(group.groupName); }}
-              className={`flex items-center justify-center w-12 h-12 text-sm md:text-base rounded-full border transition-all duration-300 flex-shrink-0 snap-center ${
+              className={`flex items-center justify-center px-4 py-2 md:px-6 md:py-2.5 text-sm md:text-base rounded-full border transition-all duration-300 flex-shrink-0 snap-center whitespace-nowrap ${
                 activeGroup === group.groupName
                   ? 'bg-primary-dark text-background-parchment border-primary-dark font-bold shadow-lg'
                   : 'bg-white text-text-muted border-accent-gold/20 hover:border-accent-gold hover:text-primary-dark hover:bg-accent-gold/5'
