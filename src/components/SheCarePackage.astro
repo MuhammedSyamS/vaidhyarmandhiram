@@ -7,29 +7,30 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
     
     <!-- Premium Logo Header -->
-    <div class="text-center mb-16 relative flex flex-col items-center">
-      <div class="relative mb-10 inline-block">
-        <!-- Soft, seamless white radial glow behind the logo -->
-        <div class="absolute inset-0 bg-white rounded-full blur-2xl scale-[1.5] opacity-90 z-0 pointer-events-none"></div>
-        <div class="absolute inset-0 bg-white rounded-full blur-xl scale-125 opacity-100 z-0 pointer-events-none"></div>
-        
-        <img 
-          src="/images/shecarelogo.jpg" 
-          alt="She Care Ayurveda Logo" 
-          class="h-28 md:h-36 object-contain relative z-10 mix-blend-multiply" 
-        />
+    <div class="text-center mb-20 relative flex flex-col items-center">
+      
+      <!-- Luxurious Logo Frame -->
+      <div class="relative mb-8 inline-flex items-center justify-center p-2 rounded-full border border-accent-gold/30 bg-white shadow-2xl shadow-accent-gold/10">
+        <div class="absolute inset-0 rounded-full border-2 border-dashed border-accent-gold/20 animate-[spin_20s_linear_infinite]"></div>
+        <div class="w-32 h-32 md:w-40 md:h-40 bg-white rounded-full flex items-center justify-center overflow-hidden z-10 p-3 shadow-inner">
+          <img 
+            src="/images/shecarelogo.jpg" 
+            alt="She Care Ayurveda Logo" 
+            class="w-full h-full object-contain mix-blend-multiply scale-110" 
+          />
+        </div>
       </div>
       
-      <div class="inline-flex items-center justify-center gap-4 mb-4">
-        <div class="w-16 h-[2px] bg-gradient-to-r from-transparent to-accent-gold"></div>
-        <span class="text-accent-gold uppercase tracking-[0.2em] text-sm font-bold">Exclusive For Women</span>
-        <div class="w-16 h-[2px] bg-gradient-to-l from-transparent to-accent-gold"></div>
+      <div class="inline-flex items-center justify-center gap-4 mb-5">
+        <div class="w-12 h-px bg-gradient-to-r from-transparent to-accent-gold"></div>
+        <span class="text-accent-gold uppercase tracking-[0.3em] text-[10px] md:text-xs font-bold font-sans">Exclusive For Women</span>
+        <div class="w-12 h-px bg-gradient-to-l from-transparent to-accent-gold"></div>
       </div>
       
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif text-primary font-bold mb-6 tracking-tight">
-        The She Care Journey
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif text-primary-dark font-bold mb-6 tracking-tight leading-tight">
+        The She Care <span class="italic text-accent-gold">Journey</span>
       </h2>
-      <p class="text-text-muted text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+      <p class="text-text-muted text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed font-sans">
         A sanctuary of healing tailored exclusively for women. We blend ancient Ayurvedic wisdom with compassionate care to support you through every stage of womanhood.
       </p>
     </div>
@@ -98,50 +99,58 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
       </div>
     </div>
 
-    <!-- Features/Benefits List -->
-    <div class="bg-primary rounded-2xl p-8 md:p-12 shadow-sm border border-primary/20 mb-20">
-      <h3 class="text-2xl text-white font-serif text-center mb-8">Why Choose She Care?</h3>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {
-          [
-            { title: "Authentic Ayurveda", desc: "Traditional Siddha & Ayurvedic therapies" },
-            { title: "Personalized Diet", desc: "Nutrition plans tailored to your dosha" },
-            { title: "Yoga & Wellness", desc: "Guided exercises for physical balance" },
-            { title: "Mental Health", desc: "Counseling and emotional support" }
-          ].map(benefit => (
-            <div class="flex items-start gap-4">
-              <CheckCircle2 class="text-accent-gold w-6 h-6 shrink-0 mt-0.5" />
-              <div>
-                <h4 class="text-white font-bold mb-1">{benefit.title}</h4>
-                <p class="text-white/80 text-sm">{benefit.desc}</p>
-              </div>
+    <!-- Premium Features Grid -->
+    <div class="text-center mb-12">
+      <h3 class="text-3xl md:text-4xl text-primary-dark font-serif font-bold mb-4">Why Choose She Care?</h3>
+      <div class="w-24 h-1 bg-accent-gold mx-auto rounded-full"></div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+      {
+        [
+          { title: "Authentic Ayurveda", desc: "Traditional Siddha & Ayurvedic therapies", icon: Sparkles },
+          { title: "Personalized Diet", desc: "Nutrition plans tailored to your dosha", icon: Apple },
+          { title: "Yoga & Wellness", desc: "Guided exercises for physical balance", icon: PersonStanding },
+          { title: "Mental Health", desc: "Counseling and emotional support", icon: Smile }
+        ].map(benefit => (
+          <div class="bg-white/80 backdrop-blur-sm p-8 rounded-[1.5rem] border border-accent-gold/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center text-center">
+            <div class="w-14 h-14 rounded-full bg-primary-dark/5 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-accent-gold/10 transition-all duration-300 border border-accent-gold/10">
+              <benefit.icon class="text-accent-gold w-6 h-6" />
             </div>
-          ))
-        }
-      </div>
+            <h4 class="text-primary-dark font-serif font-bold text-lg mb-2">{benefit.title}</h4>
+            <p class="text-text-muted font-sans text-sm leading-relaxed">{benefit.desc}</p>
+          </div>
+        ))
+      }
     </div>
 
     <!-- Elegant CTA Box -->
-    <div class="bg-primary rounded-3xl p-10 md:p-16 text-center shadow-lg relative overflow-hidden mb-8">
-      <!-- Abstract leaf motif -->
-      <div class="absolute -top-12 -left-12 opacity-[0.03]">
-        <Flower2 class="w-48 h-48 text-white" />
+    <div class="relative rounded-[2.5rem] bg-gradient-to-br from-primary to-primary-dark p-10 md:p-16 text-center shadow-2xl overflow-hidden mb-8 border border-accent-gold/20">
+      <!-- Decorative Elements -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-accent-gold/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+      <div class="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+      
+      <div class="absolute top-1/2 left-10 opacity-[0.03] -translate-y-1/2 hidden lg:block pointer-events-none">
+        <Flower2 class="w-48 h-48 text-accent-gold" />
+      </div>
+      <div class="absolute top-1/2 right-10 opacity-[0.03] -translate-y-1/2 hidden lg:block pointer-events-none">
+        <Leaf class="w-48 h-48 text-accent-gold" />
       </div>
       
-      <div class="relative z-10">
-        <h4 class="text-3xl md:text-4xl font-serif text-accent-gold font-bold mb-6">Embrace Your Natural Balance</h4>
-        <p class="text-white/80 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+      <div class="relative z-10 max-w-3xl mx-auto">
+        <span class="inline-block py-1.5 px-4 rounded-full border border-accent-gold/30 bg-accent-gold/10 text-accent-gold text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mb-6">Begin Your Journey</span>
+        <h4 class="text-3xl md:text-5xl font-serif text-white font-bold mb-6 leading-tight">Embrace Your <span class="italic text-accent-gold">Natural Balance</span></h4>
+        <p class="text-white/70 text-base md:text-lg mb-10 font-sans leading-relaxed max-w-2xl mx-auto">
           Take the first step towards profound wellness. Consult with our specialized female practitioners to create a care plan that perfectly matches your body's needs.
         </p>
         
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <a href="/appointment" class="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 bg-accent-gold text-white rounded-xl font-bold text-base hover:bg-yellow-600 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
-            <CalendarHeart class="w-5 h-5 mr-3" />
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+          <a href="/appointment" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-accent-gold text-primary-dark rounded-xl font-bold text-base hover:bg-yellow-500 shadow-[0_10px_25px_rgba(212,175,55,0.3)] transition-all transform hover:-translate-y-0.5 group">
+            <CalendarHeart class="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
             Book a Consultation
           </a>
-          <a href="tel:+918593821553" class="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 bg-transparent border-2 border-accent-gold text-accent-gold rounded-xl font-bold text-base hover:bg-accent-gold/10 transition-colors">
-            <PhoneCall class="w-5 h-5 mr-3" />
+          <a href="tel:+918593821553" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/20 text-white rounded-xl font-bold text-base hover:bg-white/10 hover:border-white/40 transition-all group">
+            <PhoneCall class="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
             Call Our Specialists
           </a>
         </div>
