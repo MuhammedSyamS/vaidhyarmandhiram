@@ -354,15 +354,19 @@ const testimonials = [
         let scrollTimeout: ReturnType<typeof setTimeout>;
         let interactionTimeout: ReturnType<typeof setTimeout>;
 
-        // Lazy load and play videos only when visible
+        // Lazy pause videos when they leave viewport (no autoplay)
         const videoObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             const vid = entry.target as HTMLVideoElement;
-            if (entry.isIntersecting) {
-              vid.muted = true;
-              vid.play().catch(() => {});
-            } else {
+            if (!entry.isIntersecting) {
               vid.pause();
+              const wrapper = vid.closest('.video-wrapper');
+              if (wrapper && wrapper.classList.contains('playing')) {
+                const btn = wrapper.querySelector('.video-toggle-btn');
+                btn?.querySelector('.play-icon')?.classList.remove('hidden');
+                btn?.querySelector('.pause-icon')?.classList.add('hidden');
+                wrapper.classList.remove('playing');
+              }
             }
           });
         }, {
