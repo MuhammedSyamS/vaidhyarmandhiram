@@ -282,7 +282,7 @@ const testimonials = [
                 <video 
                   src={t.videoSrc} 
                   poster={t.image}
-                  autoplay loop muted playsinline
+                  loop muted playsinline preload="none"
                   class="absolute inset-0 w-full h-full object-cover opacity-95 testimonial-video"
                 ></video>
                 <div class="absolute inset-0 bg-black/20 opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -354,12 +354,26 @@ const testimonials = [
         let scrollTimeout: ReturnType<typeof setTimeout>;
         let interactionTimeout: ReturnType<typeof setTimeout>;
 
-        // Replay videos for cloned nodes
+        // Lazy load and play videos only when visible
+        const videoObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const vid = entry.target as HTMLVideoElement;
+            if (entry.isIntersecting) {
+              vid.muted = true;
+              vid.play().catch(() => {});
+            } else {
+              vid.pause();
+            }
+          });
+        }, {
+          root: container,
+          threshold: 0.1
+        });
+
         allItems.forEach(item => {
           const vid = item.querySelector('video');
           if (vid) {
-            vid.muted = true;
-            vid.play().catch(() => {});
+            videoObserver.observe(vid);
           }
         });
 
