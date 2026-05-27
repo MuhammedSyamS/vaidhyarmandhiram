@@ -201,9 +201,8 @@ const testimonials = [
               <video 
                 src={t.videoSrc} 
                 poster={t.image}
-                controls 
-                preload="metadata"
-                class="absolute inset-0 w-full h-full object-contain"
+                autoplay loop muted playsinline
+                class="absolute inset-0 w-full h-full object-cover opacity-95"
               ></video>
             </div>
           ) : t.type === 'image' && t.image ? (
@@ -220,6 +219,16 @@ const testimonials = [
       ))}
     </div>
 
+    <!-- Navigation Arrows -->
+    <div class="flex justify-center gap-4 mt-8 pb-4">
+      <button id="testimonial-prev" aria-label="Previous Testimonial" class="w-12 h-12 rounded-full border-2 border-accent-gold/40 flex items-center justify-center text-accent-gold hover:bg-accent-gold hover:text-white hover:scale-105 transition-all duration-300 group">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-0.5 transition-transform"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <button id="testimonial-next" aria-label="Next Testimonial" class="w-12 h-12 rounded-full border-2 border-accent-gold/40 flex items-center justify-center text-accent-gold hover:bg-accent-gold hover:text-white hover:scale-105 transition-all duration-300 group">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+
     <style>
       .scrollbar-none::-webkit-scrollbar {
         display: none;
@@ -231,88 +240,141 @@ const testimonials = [
     </style>
 
     <script>
-      function setupAutoScroll() {
+      function setupTestimonialScroll() {
         const container = document.getElementById('testimonials-scroll-container') as HTMLElement;
+        const prevBtn = document.getElementById('testimonial-prev');
+        const nextBtn = document.getElementById('testimonial-next');
         if (!container) return;
 
-        let autoScrollInterval: ReturnType<typeof setInterval>;
-        const items = Array.from(container.querySelectorAll('.testimonial-card')) as HTMLElement[];
-        let currentIndex = 0;
-        let isProgrammaticScroll = false;
+        // Clone nodes for infinite scroll effect
+        const originalItems = Array.from(container.querySelectorAll('.testimonial-card')) as HTMLElement[];
+        if (originalItems.length === 0) return;
 
-        const updateIndex = () => {
-          if (items.length === 0) return;
-          const scrollLeft = container.scrollLeft;
-          const centerOffset = container.offsetWidth / 2;
-          const scrollCenter = scrollLeft + centerOffset;
+        const originalCount = originalItems.length;
+        
+        originalItems.forEach(item => {
+          container.appendChild(item.cloneNode(true));
+        });
+        
+        [...originalItems].reverse().forEach(item => {
+          container.insertBefore(item.cloneNode(true), container.firstChild);
+        });
+
+        const allItems = Array.from(container.querySelectorAll('.testimonial-card')) as HTMLElement[];
+        let currentIndex = originalCount;
+        let autoScrollInterval: ReturnType<typeof setInterval>;
+        let isUserInteracting = false;
+        let isProgrammaticScroll = false;
+        let scrollTimeout: ReturnType<typeof setTimeout>;
+        let interactionTimeout: ReturnType<typeof setTimeout>;
+
+        // Replay videos for cloned nodes
+        allItems.forEach(item => {
+          const vid = item.querySelector('video');
+          if (vid) {
+            vid.muted = true;
+            vid.play().catch(() => {});
+          }
+        });
+
+        const scrollToItem = (index: number, instant = false) => {
+          const item = allItems[index];
+          if (!item) return;
+          const target = item.offsetLeft - container.offsetLeft - (container.offsetWidth / 2) + (item.offsetWidth / 2);
           
-          let closestIndex = 0;
-          let minDistance = Infinity;
+          isProgrammaticScroll = true;
+          clearTimeout(scrollTimeout);
           
-          items.forEach((item, idx) => {
-            const itemCenter = item.offsetLeft + item.offsetWidth / 2;
-            const distance = Math.abs(scrollCenter - itemCenter);
-            if (distance < minDistance) {
-              minDistance = distance;
-              closestIndex = idx;
-            }
-          });
-          
-          currentIndex = closestIndex;
+          if (instant) {
+            container.style.scrollBehavior = 'auto';
+            container.scrollLeft = target;
+            scrollTimeout = setTimeout(() => {
+              container.style.scrollBehavior = '';
+              isProgrammaticScroll = false;
+            }, 50);
+          } else {
+            container.style.scrollBehavior = 'smooth';
+            container.scrollLeft = target;
+            scrollTimeout = setTimeout(() => {
+              container.style.scrollBehavior = '';
+              isProgrammaticScroll = false;
+            }, 700);
+          }
         };
 
-        container.addEventListener('scroll', () => {
-          if (!isProgrammaticScroll) {
-            updateIndex();
+        const resetIfNeeded = () => {
+          if (currentIndex < Math.floor(originalCount / 2) || currentIndex >= originalCount * 2 + Math.ceil(originalCount / 2)) {
+            const relativeIndex = ((currentIndex % originalCount) + originalCount) % originalCount;
+            currentIndex = originalCount + relativeIndex;
+            scrollToItem(currentIndex, true);
           }
-        }, { passive: true });
+        };
+
+        const slideToNext = (force = false) => {
+          if (isUserInteracting && !force) return;
+          currentIndex++;
+          scrollToItem(currentIndex, false);
+          setTimeout(resetIfNeeded, 750);
+        };
+
+        const slideToPrev = (force = false) => {
+          if (isUserInteracting && !force) return;
+          currentIndex--;
+          scrollToItem(currentIndex, false);
+          setTimeout(resetIfNeeded, 750);
+        };
 
         const startAutoScroll = () => {
           stopAutoScroll();
-
-          // Only auto-scroll on mobile/tablet (below 768px screen width)
-          if (window.innerWidth >= 768) return;
-
-          autoScrollInterval = setInterval(() => {
-            if (items.length === 0) return;
-
-            currentIndex++;
-            if (currentIndex >= items.length) {
-              currentIndex = 0;
-            }
-
-            isProgrammaticScroll = true;
-
-            const targetItem = items[currentIndex];
-            const scrollTarget = targetItem.offsetLeft - (container.offsetWidth / 2) + (targetItem.offsetWidth / 2);
-
-            container.scrollTo({
-              left: scrollTarget,
-              behavior: 'smooth'
-            });
-
-            setTimeout(() => {
-              isProgrammaticScroll = false;
-            }, 1000);
-          }, 4500);
+          autoScrollInterval = setInterval(slideToNext, 4500);
         };
 
         const stopAutoScroll = () => {
           if (autoScrollInterval) clearInterval(autoScrollInterval);
         };
 
-        container.addEventListener('touchstart', stopAutoScroll, { passive: true });
-        container.addEventListener('touchend', startAutoScroll);
+        // Event Listeners for arrows
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+            onInteractionStart();
+            slideToPrev(true);
+            onInteractionEnd();
+          });
+        }
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            onInteractionStart();
+            slideToNext(true);
+            onInteractionEnd();
+          });
+        }
 
+        const onInteractionStart = () => {
+          isUserInteracting = true;
+          stopAutoScroll();
+          clearTimeout(interactionTimeout);
+        };
+
+        const onInteractionEnd = () => {
+          clearTimeout(interactionTimeout);
+          interactionTimeout = setTimeout(() => {
+            isUserInteracting = false;
+            startAutoScroll();
+          }, 4000);
+        };
+
+        container.addEventListener('mouseenter', onInteractionStart);
+        container.addEventListener('mouseleave', onInteractionEnd);
+        container.addEventListener('touchstart', onInteractionStart, { passive: true });
+        container.addEventListener('touchend', onInteractionEnd, { passive: true });
+
+        // Initial setup
+        scrollToItem(currentIndex, true);
         startAutoScroll();
-        window.addEventListener('resize', startAutoScroll);
       }
 
-      // Initialize auto-scroll
-      setupAutoScroll();
-
-      // Re-run safely on Astro page transitions
-      document.addEventListener('astro:page-load', setupAutoScroll);
+      setupTestimonialScroll();
+      document.addEventListener('astro:page-load', setupTestimonialScroll);
     </script>
   </Section>
 
