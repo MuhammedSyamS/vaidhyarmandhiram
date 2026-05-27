@@ -278,17 +278,17 @@ const testimonials = [
             </div>
             
             {t.type === 'video' ? (
-              <div class="relative w-full aspect-[9/16] rounded-xl overflow-hidden bg-black flex-grow shadow-inner group/video cursor-pointer video-wrapper">
+              <div class="relative w-full aspect-[9/16] rounded-xl overflow-hidden bg-black flex-grow shadow-inner cursor-pointer video-wrapper group">
                 <video 
                   src={t.videoSrc} 
                   poster={t.image}
                   loop muted playsinline preload="none"
                   class="absolute inset-0 w-full h-full object-cover opacity-95 testimonial-video"
                 ></video>
-                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <button aria-label="Play Video with Sound" class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 text-white flex items-center justify-center hover:bg-accent-gold hover:border-accent-gold transition-colors duration-300 video-toggle-btn shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="play-icon ml-1"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="pause-icon hidden"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                <div class="absolute inset-0 bg-black/30 flex items-center justify-center transition-opacity duration-300 video-overlay group-hover:bg-black/40">
+                  <button aria-label="Toggle Video" class="w-16 h-16 rounded-full bg-white/25 backdrop-blur-sm border border-white/50 text-white flex items-center justify-center transition-all duration-300 video-toggle-btn shadow-xl scale-95 group-hover:scale-105 group-hover:bg-accent-gold group-hover:border-accent-gold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="play-icon ml-1.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="pause-icon hidden"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
                   </button>
                 </div>
               </div>
@@ -477,50 +477,54 @@ const testimonials = [
         container.addEventListener('touchend', onInteractionEnd, { passive: true });
 
         // Video Play/Pause Logic
-        const allVids = Array.from(container.querySelectorAll('.testimonial-video')) as HTMLVideoElement[];
-        const allBtns = Array.from(container.querySelectorAll('.video-toggle-btn')) as HTMLButtonElement[];
+        const allWrappers = Array.from(container.querySelectorAll('.video-wrapper')) as HTMLElement[];
 
-        allBtns.forEach((btn, idx) => {
-          btn.addEventListener('click', (e) => {
+        allWrappers.forEach((wrapper) => {
+          wrapper.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             
-            const vid = allVids[idx];
-            const playIcon = btn.querySelector('.play-icon');
-            const pauseIcon = btn.querySelector('.pause-icon');
-            const wrapper = btn.closest('.video-wrapper');
+            const vid = wrapper.querySelector('.testimonial-video') as HTMLVideoElement;
+            const playIcon = wrapper.querySelector('.play-icon');
+            const pauseIcon = wrapper.querySelector('.pause-icon');
+            const overlay = wrapper.querySelector('.video-overlay');
 
-            if (vid.muted) {
-              // Mute any currently playing videos
-              allVids.forEach((v, vIdx) => {
-                if (!v.muted) {
+            if (vid.paused) {
+              // Pause any other currently playing videos
+              container.querySelectorAll('.testimonial-video').forEach((v: any) => {
+                if (v !== vid && !v.paused) {
+                  v.pause();
                   v.muted = true;
-                  v.play().catch(()=>{});
-                  const otherBtn = allBtns[vIdx];
-                  if (otherBtn) {
-                    otherBtn.querySelector('.play-icon')?.classList.remove('hidden');
-                    otherBtn.querySelector('.pause-icon')?.classList.add('hidden');
-                    otherBtn.closest('.video-wrapper')?.classList.remove('playing');
+                  const otherWrapper = v.closest('.video-wrapper');
+                  if (otherWrapper) {
+                    otherWrapper.querySelector('.play-icon')?.classList.remove('hidden');
+                    otherWrapper.querySelector('.pause-icon')?.classList.add('hidden');
+                    otherWrapper.querySelector('.video-overlay')?.classList.remove('opacity-0');
+                    otherWrapper.classList.remove('playing');
                   }
                 }
               });
 
               vid.muted = false;
-              vid.currentTime = 0; // Restart so they can hear from beginning
               vid.play().catch(()=>{});
+              
               playIcon?.classList.add('hidden');
               pauseIcon?.classList.remove('hidden');
-              wrapper?.classList.add('playing');
+              overlay?.classList.add('opacity-0'); // Hide overlay to watch video clearly
+              wrapper.classList.add('playing');
               
               // Permanent pause of carousel while watching
               isUserInteracting = true;
               stopAutoScroll();
               clearTimeout(interactionTimeout);
             } else {
+              vid.pause();
               vid.muted = true;
+              
               playIcon?.classList.remove('hidden');
               pauseIcon?.classList.add('hidden');
-              wrapper?.classList.remove('playing');
+              overlay?.classList.remove('opacity-0'); // Show play button again
+              wrapper.classList.remove('playing');
               
               // Resume carousel
               isUserInteracting = false;
