@@ -16,13 +16,13 @@ interface Props {
 const {
   title,
   description = "Experience authentic Kerala Ayurveda at Vaidyarmandiram Ayurveda Hospital. Founded by Dr. P. Abdul Sathar Gurukkal.",
-  image = "/images/og-image.jpg",
+  image = "/images/hero-bg.jpg",
   canonicalURL = new URL(Astro.url.pathname, Astro.site),
   type = "website",
 } = Astro.props;
 
-const siteName = "Vaidyarmandiram Ayurveda Hospital";
-const fullTitle = `${title} | ${siteName}`;
+const siteName = "Vaidhyarmandhiram";
+const fullTitle = `${siteName} | ${title}`;
 ---
 
 <!doctype html>
@@ -58,6 +58,7 @@ const fullTitle = `${title} | ${siteName}`;
     <meta name="title" content={fullTitle} />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="google-site-verification" content="PASTE_YOUR_GOOGLE_CODE_HERE" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={type} />
@@ -89,7 +90,7 @@ const fullTitle = `${title} | ${siteName}`;
         "@type": "Hospital",
         "name": "Gurukkal's Vaidhyarmandhiram Hospital LLP",
         "alternateName": "Vaidhyarmandhiram",
-        "image": "https://www.vaidhyarmandhiram.com/images/og-image.jpg",
+        "image": "https://www.vaidhyarmandhiram.com/images/hero-bg.jpg",
         "@id": "https://www.vaidhyarmandhiram.com/",
         "url": "https://www.vaidhyarmandhiram.com/",
         "telephone": "+918593821553",
