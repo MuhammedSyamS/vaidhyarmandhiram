@@ -255,13 +255,6 @@ const testimonials = [
         {testimonials.map(t => (
           <div class="bg-white p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-gray-100 rounded-2xl relative hover:shadow-xl transition-all duration-300 w-[85vw] sm:w-[320px] snap-center shrink-0 testimonial-card flex flex-col group">
             
-            {t.isSheCare && (
-              <div class="absolute -top-3 -right-3 z-10 bg-accent-gold text-white text-[9px] font-sans font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-md border-2 border-white flex items-center gap-1">
-                <span>She Care</span>
-                <span class="text-xs leading-none">✨</span>
-              </div>
-            )}
-
             <div class="flex justify-between items-start mb-4 relative z-0">
               <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100 border border-gray-200 shrink-0 shadow-sm">
@@ -285,13 +278,19 @@ const testimonials = [
             </div>
             
             {t.type === 'video' ? (
-              <div class="relative w-full aspect-[9/16] rounded-xl overflow-hidden bg-black flex-grow shadow-inner">
+              <div class="relative w-full aspect-[9/16] rounded-xl overflow-hidden bg-black flex-grow shadow-inner group/video cursor-pointer video-wrapper">
                 <video 
                   src={t.videoSrc} 
                   poster={t.image}
                   autoplay loop muted playsinline
-                  class="absolute inset-0 w-full h-full object-cover opacity-95"
+                  class="absolute inset-0 w-full h-full object-cover opacity-95 testimonial-video"
                 ></video>
+                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <button aria-label="Play Video with Sound" class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 text-white flex items-center justify-center hover:bg-accent-gold hover:border-accent-gold transition-colors duration-300 video-toggle-btn shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="play-icon ml-1"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="pause-icon hidden"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                  </button>
+                </div>
               </div>
             ) : t.type === 'image' && t.image ? (
               <>
@@ -454,6 +453,59 @@ const testimonials = [
         container.addEventListener('mouseleave', onInteractionEnd);
         container.addEventListener('touchstart', onInteractionStart, { passive: true });
         container.addEventListener('touchend', onInteractionEnd, { passive: true });
+
+        // Video Play/Pause Logic
+        const allVids = Array.from(container.querySelectorAll('.testimonial-video')) as HTMLVideoElement[];
+        const allBtns = Array.from(container.querySelectorAll('.video-toggle-btn')) as HTMLButtonElement[];
+
+        allBtns.forEach((btn, idx) => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const vid = allVids[idx];
+            const playIcon = btn.querySelector('.play-icon');
+            const pauseIcon = btn.querySelector('.pause-icon');
+            const wrapper = btn.closest('.video-wrapper');
+
+            if (vid.muted) {
+              // Mute any currently playing videos
+              allVids.forEach((v, vIdx) => {
+                if (!v.muted) {
+                  v.muted = true;
+                  v.play().catch(()=>{});
+                  const otherBtn = allBtns[vIdx];
+                  if (otherBtn) {
+                    otherBtn.querySelector('.play-icon')?.classList.remove('hidden');
+                    otherBtn.querySelector('.pause-icon')?.classList.add('hidden');
+                    otherBtn.closest('.video-wrapper')?.classList.remove('playing');
+                  }
+                }
+              });
+
+              vid.muted = false;
+              vid.currentTime = 0; // Restart so they can hear from beginning
+              vid.play().catch(()=>{});
+              playIcon?.classList.add('hidden');
+              pauseIcon?.classList.remove('hidden');
+              wrapper?.classList.add('playing');
+              
+              // Permanent pause of carousel while watching
+              isUserInteracting = true;
+              stopAutoScroll();
+              clearTimeout(interactionTimeout);
+            } else {
+              vid.muted = true;
+              playIcon?.classList.remove('hidden');
+              pauseIcon?.classList.add('hidden');
+              wrapper?.classList.remove('playing');
+              
+              // Resume carousel
+              isUserInteracting = false;
+              startAutoScroll();
+            }
+          });
+        });
 
         // Initial setup
         scrollToItem(currentIndex, true);
