@@ -17,7 +17,8 @@ const testimonials = [
     city: "Postpartum Care",
     videoSrc: "/videos/husna_safeer_testimonial.mp4",
     image: "/images/husna_safeer.jpeg",
-    rating: 5
+    rating: 5,
+    isSheCare: true
   },
   {
     type: "video",
@@ -28,27 +29,106 @@ const testimonials = [
     rating: 5
   },
   {
+    type: "video",
+    name: "Miss Athira",
+    city: "Kerala",
+    videoSrc: "/videos/miss_athira.mp4",
+    image: null,
+    rating: 5
+  },
+  {
+    type: "video",
+    name: "Mrs. Ummu Kulusu",
+    city: "Ayurveda Therapy",
+    videoSrc: "/videos/mrs_ummu_kulusu.mp4",
+    image: null,
+    rating: 5
+  },
+  {
+    type: "video",
+    name: "PCOD Care",
+    city: "Kerala",
+    videoSrc: "/videos/pcod_patient_testimonial.mp4",
+    image: null,
+    rating: 5,
+    isSheCare: true
+  },
+  {
+    type: "video",
+    name: "Happy Patient",
+    city: "Rejuvenation Treatment",
+    videoSrc: "/videos/rejuvenation_treatment.mp4",
+    image: null,
+    rating: 5
+  },
+  {
+    type: "video",
+    name: "Happy Patient",
+    city: "She Care Program",
+    videoSrc: "/videos/shecare_detan.mp4",
+    image: null,
+    rating: 5,
+    isSheCare: true
+  },
+  {
+    type: "video",
+    name: "Happy Patient",
+    city: "She Care Program",
+    videoSrc: "/videos/shecare_happy.mp4",
+    image: null,
+    rating: 5,
+    isSheCare: true
+  },
+  {
+    type: "video",
+    name: "Happy Patient",
+    city: "Menarche Care",
+    videoSrc: "/videos/shecare_menarche.mp4",
+    image: null,
+    rating: 5,
+    isSheCare: true
+  },
+  {
+    type: "video",
+    name: "Happy Patient",
+    city: "Postpartum Care",
+    videoSrc: "/videos/shecare_postpartum_2.mp4",
+    image: null,
+    rating: 5,
+    isSheCare: true
+  },
+  {
+    type: "video",
+    name: "Valuable Customer",
+    city: "Kerala",
+    videoSrc: "/videos/valuable_customer.mp4",
+    image: null,
+    rating: 5
+  },
+  {
+    type: "video",
+    name: "Happy Patient",
+    city: "Positive Review",
+    videoSrc: "/videos/positive_review.mp4",
+    image: null,
+    rating: 5
+  },
+  {
+    type: "video",
+    name: "Happy Patient",
+    city: "Discover Love",
+    videoSrc: "/videos/discover_love.mp4",
+    image: null,
+    rating: 5
+  },
+  {
     type: "image",
     name: "Mrs. Abhinu Sreejith",
     city: "Postpartum Care",
     text: "Thank you for choosing us! Experience the best postpartum care with Vaidyarmandiram.",
     image: "/images/abhinu_sreejith.jpeg",
-    rating: 5
-  },
-  {
-    type: "video",
-    name: "PCOD Patient",
-    city: "Kerala",
-    videoSrc: "/videos/pcod_patient_testimonial.mp4",
-    image: null,
-    rating: 5
-  },
-  {
-    type: "text",
-    name: "Rajesh Kumar",
-    city: "Kochi",
-    text: "The Panchakarma treatment here was life-changing. I feel like a new person. The staff is professional and the environment is so peaceful.",
-    rating: 5
+    rating: 5,
+    isSheCare: true
   }
 ];
 ---
@@ -167,64 +247,71 @@ const testimonials = [
       </a>
     </div>
 
-    <div 
-      id="testimonials-scroll-container"
-      class="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 pb-6 md:pb-0 scrollbar-none items-stretch"
-    >
-      {testimonials.map(t => (
-        <div class="bg-white p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-gray-100 rounded-2xl relative hover:shadow-xl transition-all duration-300 w-[85vw] sm:w-[320px] snap-center shrink-0 testimonial-card flex flex-col group">
-          
-          <div class="flex justify-between items-start mb-4">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100 border border-gray-200 shrink-0 shadow-sm">
-                <img src={t.type !== 'video' && t.image ? t.image : `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=1c3e35&color=fff&font-size=0.4`} alt={t.name} class="w-full h-full object-cover" />
+    <div class="relative max-w-[1400px] mx-auto px-6 md:px-12 group/carousel">
+      <div 
+        id="testimonials-scroll-container"
+        class="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 pb-6 md:pb-0 scrollbar-none items-stretch"
+      >
+        {testimonials.map(t => (
+          <div class="bg-white p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-gray-100 rounded-2xl relative hover:shadow-xl transition-all duration-300 w-[85vw] sm:w-[320px] snap-center shrink-0 testimonial-card flex flex-col group">
+            
+            {t.isSheCare && (
+              <div class="absolute -top-3 -right-3 z-10 bg-accent-gold text-white text-[9px] font-sans font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-md border-2 border-white flex items-center gap-1">
+                <span>She Care</span>
+                <span class="text-xs leading-none">✨</span>
               </div>
-              <div class="flex flex-col justify-center">
-                <p class="font-bold text-primary-dark font-sans text-sm leading-tight">{t.name}</p>
-                <p class="text-[10px] text-text-muted font-sans mt-0.5">{t.city}</p>
-              </div>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-5 h-5 shrink-0 opacity-90">
-              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
-              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
-              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
-              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
-            </svg>
-          </div>
-          
-          <div class="flex gap-0.5 mb-3">
-            {[...Array(t.rating)].map(() => <Star class="text-[#fbbc05] fill-[#fbbc05]" size={13} />)}
-          </div>
-          
-          {t.type === 'video' ? (
-            <div class="relative w-full aspect-[9/16] rounded-xl overflow-hidden bg-black flex-grow shadow-inner">
-              <video 
-                src={t.videoSrc} 
-                poster={t.image}
-                autoplay loop muted playsinline
-                class="absolute inset-0 w-full h-full object-cover opacity-95"
-              ></video>
-            </div>
-          ) : t.type === 'image' && t.image ? (
-            <>
-              <p class="text-gray-600 leading-relaxed font-sans text-sm italic mb-4">"{t.text}"</p>
-              <div class="relative w-full rounded-xl overflow-hidden bg-gray-100 flex-grow shadow-inner border border-gray-100">
-                <img src={t.image} alt="Patient photo" class="w-full h-full object-cover" />
-              </div>
-            </>
-          ) : (
-            <p class="text-gray-600 leading-relaxed font-sans text-sm flex-grow italic">"{t.text}"</p>
-          )}
-        </div>
-      ))}
-    </div>
+            )}
 
-    <!-- Navigation Arrows -->
-    <div class="flex justify-center gap-4 mt-8 pb-4">
-      <button id="testimonial-prev" aria-label="Previous Testimonial" class="w-12 h-12 rounded-full border-2 border-accent-gold/40 flex items-center justify-center text-accent-gold hover:bg-accent-gold hover:text-white hover:scale-105 transition-all duration-300 group">
+            <div class="flex justify-between items-start mb-4 relative z-0">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100 border border-gray-200 shrink-0 shadow-sm">
+                  <img src={t.type !== 'video' && t.image ? t.image : `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=1c3e35&color=fff&font-size=0.4`} alt={t.name} class="w-full h-full object-cover" />
+                </div>
+                <div class="flex flex-col justify-center">
+                  <p class="font-bold text-primary-dark font-sans text-sm leading-tight">{t.name}</p>
+                  <p class="text-[10px] text-text-muted font-sans mt-0.5">{t.city}</p>
+                </div>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-5 h-5 shrink-0 opacity-90">
+                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+              </svg>
+            </div>
+            
+            <div class="flex gap-0.5 mb-3">
+              {[...Array(t.rating)].map(() => <Star class="text-[#fbbc05] fill-[#fbbc05]" size={13} />)}
+            </div>
+            
+            {t.type === 'video' ? (
+              <div class="relative w-full aspect-[9/16] rounded-xl overflow-hidden bg-black flex-grow shadow-inner">
+                <video 
+                  src={t.videoSrc} 
+                  poster={t.image}
+                  autoplay loop muted playsinline
+                  class="absolute inset-0 w-full h-full object-cover opacity-95"
+                ></video>
+              </div>
+            ) : t.type === 'image' && t.image ? (
+              <>
+                <p class="text-gray-600 leading-relaxed font-sans text-sm italic mb-4">"{t.text}"</p>
+                <div class="relative w-full rounded-xl overflow-hidden bg-gray-100 flex-grow shadow-inner border border-gray-100">
+                  <img src={t.image} alt="Patient photo" class="w-full h-full object-cover" />
+                </div>
+              </>
+            ) : (
+              <p class="text-gray-600 leading-relaxed font-sans text-sm flex-grow italic">"{t.text}"</p>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <!-- Navigation Arrows (Absolute positioning on sides) -->
+      <button id="testimonial-prev" aria-label="Previous Testimonial" class="absolute top-1/2 -left-2 md:-left-4 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur shadow-[0_4px_20px_rgba(0,0,0,0.12)] rounded-full border border-accent-gold/20 flex items-center justify-center text-accent-gold hover:bg-accent-gold hover:text-white hover:scale-105 transition-all duration-300 z-10 hidden sm:flex group">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-0.5 transition-transform"><path d="m15 18-6-6 6-6"/></svg>
       </button>
-      <button id="testimonial-next" aria-label="Next Testimonial" class="w-12 h-12 rounded-full border-2 border-accent-gold/40 flex items-center justify-center text-accent-gold hover:bg-accent-gold hover:text-white hover:scale-105 transition-all duration-300 group">
+      <button id="testimonial-next" aria-label="Next Testimonial" class="absolute top-1/2 -right-2 md:-right-4 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur shadow-[0_4px_20px_rgba(0,0,0,0.12)] rounded-full border border-accent-gold/20 flex items-center justify-center text-accent-gold hover:bg-accent-gold hover:text-white hover:scale-105 transition-all duration-300 z-10 hidden sm:flex group">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
       </button>
     </div>
