@@ -389,11 +389,14 @@ const testimonials = [
           isProgrammaticScroll = true;
           clearTimeout(scrollTimeout);
           
+          container.style.scrollSnapType = 'none';
+          
           if (instant) {
             container.style.scrollBehavior = 'auto';
             container.scrollLeft = target;
             scrollTimeout = setTimeout(() => {
               container.style.scrollBehavior = '';
+              container.style.scrollSnapType = '';
               isProgrammaticScroll = false;
             }, 50);
           } else {
@@ -401,6 +404,7 @@ const testimonials = [
             container.scrollLeft = target;
             scrollTimeout = setTimeout(() => {
               container.style.scrollBehavior = '';
+              container.style.scrollSnapType = '';
               isProgrammaticScroll = false;
             }, 700);
           }
