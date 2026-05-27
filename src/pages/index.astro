@@ -12,21 +12,42 @@ import { CheckCircle2, Star, Quote, Award, Shield, FileCheck } from 'lucide-reac
 
 const testimonials = [
   {
+    type: "video",
+    name: "Mrs. Husna Safeer",
+    city: "Postpartum Care",
+    videoSrc: "/videos/husna_safeer_testimonial.mp4",
+    image: "/images/husna_safeer.jpeg",
+    rating: 5
+  },
+  {
+    type: "video",
+    name: "Mrs. Lateesha",
+    city: "Ayurveda Therapy",
+    videoSrc: "/videos/lateesha_maam_testimonial.mp4",
+    image: null,
+    rating: 5
+  },
+  {
+    type: "image",
+    name: "Mrs. Abhinu Sreejith",
+    city: "Postpartum Care",
+    text: "Thank you for choosing us! Experience the best postpartum care with Vaidyarmandiram.",
+    image: "/images/abhinu_sreejith.jpeg",
+    rating: 5
+  },
+  {
+    type: "video",
+    name: "PCOD Patient",
+    city: "Kerala",
+    videoSrc: "/videos/pcod_patient_testimonial.mp4",
+    image: null,
+    rating: 5
+  },
+  {
+    type: "text",
     name: "Rajesh Kumar",
     city: "Kochi",
     text: "The Panchakarma treatment here was life-changing. I feel like a new person. The staff is professional and the environment is so peaceful.",
-    rating: 5
-  },
-  {
-    name: "Anjali Menon",
-    city: "Trivandrum",
-    text: "I had chronic back pain for years. After 14 days of Kativasti and Pizhichil, I am finally pain-free. Dr. Sathar is a true healer.",
-    rating: 5
-  },
-  {
-    name: "Sarah Johnson",
-    city: "London",
-    text: "Authentic Ayurveda at its best. No commercial gimmicks, just pure tradition and effective healing. Highly recommended.",
     rating: 5
   }
 ];
@@ -120,27 +141,81 @@ const testimonials = [
 
   <!-- Testimonials -->
   <Section background="white" withDivider={true}>
-    <div class="text-center max-w-3xl mx-auto mb-16">
+    <div class="text-center max-w-3xl mx-auto mb-12">
       <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold">Patient Stories</span>
       <span class="lang-ml font-malayalam text-accent-gold text-base font-semibold block">രോഗി അനുഭവങ്ങൾ</span>
       <h2 class="lang-en text-3xl md:text-5xl text-primary-dark mt-3 font-serif">Healing Journeys</h2>
       <h2 class="lang-ml font-malayalam text-3xl md:text-5xl text-primary-dark mt-3 font-bold">സൗഖ്യ യാത്രകൾ</h2>
+      
+      <!-- Google Reviews Badge -->
+      <a href="https://maps.app.goo.gl/NynzVNVwV4XEYYpJ7" target="_blank" rel="noopener noreferrer" class="mt-8 inline-flex items-center gap-4 bg-white px-6 py-3 rounded-full border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all cursor-pointer group">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-6 h-6 group-hover:scale-110 transition-transform shrink-0">
+          <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+          <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+          <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+          <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+        </svg>
+        <div class="flex flex-col items-start">
+          <div class="flex items-center gap-1.5">
+            <span class="font-bold text-gray-900 text-sm">4.9</span>
+            <div class="flex gap-0.5">
+              {[...Array(5)].map(() => <Star class="text-[#fbbc05] fill-[#fbbc05]" size={14} />)}
+            </div>
+          </div>
+          <span class="text-[10px] text-gray-500 font-sans tracking-wide">Based on 350+ reviews</span>
+        </div>
+      </a>
     </div>
+
     <div 
       id="testimonials-scroll-container"
-      class="flex md:grid overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:grid-cols-3 gap-6 md:gap-8 pb-6 md:pb-0 scrollbar-none"
+      class="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 pb-6 md:pb-0 scrollbar-none items-stretch"
     >
       {testimonials.map(t => (
-        <div class="bg-white p-6 sm:p-8 shadow-md border border-accent-gold/15 rounded-2xl relative hover:shadow-lg transition-shadow duration-300 w-[75vw] sm:w-[350px] md:w-auto snap-center shrink-0 testimonial-card">
-          <Quote class="absolute top-4 right-4 text-accent-gold/10" size={48} />
-          <div class="flex gap-1 mb-4">
-            {[...Array(t.rating)].map(() => <Star class="text-accent-gold fill-accent-gold" size={16} />)}
+        <div class="bg-white p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-gray-100 rounded-2xl relative hover:shadow-xl transition-all duration-300 w-[85vw] sm:w-[320px] snap-center shrink-0 testimonial-card flex flex-col group">
+          
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100 border border-gray-200 shrink-0 shadow-sm">
+                <img src={t.type !== 'video' && t.image ? t.image : `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=1c3e35&color=fff&font-size=0.4`} alt={t.name} class="w-full h-full object-cover" />
+              </div>
+              <div class="flex flex-col justify-center">
+                <p class="font-bold text-primary-dark font-sans text-sm leading-tight">{t.name}</p>
+                <p class="text-[10px] text-text-muted font-sans mt-0.5">{t.city}</p>
+              </div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-5 h-5 shrink-0 opacity-90">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
           </div>
-          <p class="text-primary-dark mb-6 leading-relaxed font-sans">"{t.text}"</p>
-          <div class="border-t border-accent-gold/10 pt-4">
-            <p class="font-bold text-primary-dark font-serif text-lg">{t.name}</p>
-            <p class="text-xs text-text-muted uppercase tracking-widest font-bold font-sans mt-0.5">{t.city}</p>
+          
+          <div class="flex gap-0.5 mb-3">
+            {[...Array(t.rating)].map(() => <Star class="text-[#fbbc05] fill-[#fbbc05]" size={13} />)}
           </div>
+          
+          {t.type === 'video' ? (
+            <div class="relative w-full aspect-[9/16] rounded-xl overflow-hidden bg-black flex-grow shadow-inner">
+              <video 
+                src={t.videoSrc} 
+                poster={t.image}
+                controls 
+                preload="metadata"
+                class="absolute inset-0 w-full h-full object-contain"
+              ></video>
+            </div>
+          ) : t.type === 'image' && t.image ? (
+            <>
+              <p class="text-gray-600 leading-relaxed font-sans text-sm italic mb-4">"{t.text}"</p>
+              <div class="relative w-full rounded-xl overflow-hidden bg-gray-100 flex-grow shadow-inner border border-gray-100">
+                <img src={t.image} alt="Patient photo" class="w-full h-full object-cover" />
+              </div>
+            </>
+          ) : (
+            <p class="text-gray-600 leading-relaxed font-sans text-sm flex-grow italic">"{t.text}"</p>
+          )}
         </div>
       ))}
     </div>

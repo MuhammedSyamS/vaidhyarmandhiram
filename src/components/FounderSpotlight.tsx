@@ -60,7 +60,7 @@ export default function FounderSpotlight() {
             More than a clinic, it became a sanctuary where ancient Siddhis and holistic healing practices were brought together to restore peace to both body and soul.
           </p>
           <p>
-            Before attaining eternal peace in 2024, Dr. P. Abdul Sathar Gurukkal entrusted the complete knowledge of their ancestral Siddhis and healing traditions to the third generation, ensuring the purity of this sacred lineage would continue for years to come.
+            Today, Dr. P. Abdul Sathar Gurukkal continues to guide the institution, entrusting the complete knowledge of their ancestral Siddhis and healing traditions to the next generations, ensuring the purity of this sacred lineage will continue for years to come.
           </p>
         </div>
 

@@ -3,42 +3,42 @@ const treatments = [
   { 
     name: 'Special Treatments', 
     description: 'Advanced Ayurvedic protocols for specific conditions, blending tradition with specialized clinical care.', 
-    image: '/images/treatment-room-1.jpg', 
+    image: '/images/special_treatments_new.png', 
     slug: 'special-treatments',
     group: 'Specialized & Children'
   },
   { 
     name: 'Panchakarma Therapy', 
     description: 'Complete detox through Vamana, Virechana, Basti, Nasya, and Raktamokshana.', 
-    image: '/images/vamana_virechana_detox.png', 
+    image: '/images/panchakarma_treatment.png', 
     slug: 'panchakarma',
     group: ''
   },
   { 
     name: 'Stress Management', 
     description: 'Rejuvenating therapies to relieve stress, anxiety, and restore mental peace.', 
-    image: '/images/yoga-meditation.jpg', 
+    image: '/images/stress_management_treatment.png', 
     slug: 'panchakarma',
     group: ''
   },
   { 
     name: 'Spine & Joint Care', 
     description: 'Traditional therapies for Sciatica, Cervical Spondylosis, Bone Alignment, and Frozen Shoulder.', 
-    image: '/images/spine-joint.jpg', 
+    image: '/images/spine_joint_treatment.png', 
     slug: 'special-treatments',
     group: 'Spine, Joint & Ortho'
   },
   { 
     name: 'Skin Rejuvenation', 
     description: 'Deep-acting protocols for Psoriasis, Allergies, Dandruff, and overall Cosmetology.', 
-    image: '/images/skin-treatment.jpg', 
+    image: '/images/skin_rejuvenation_new.png', 
     slug: 'special-treatments',
     group: 'Skin, Hair & Beauty'
   },
   { 
     name: 'Weight Management', 
     description: 'Effective Ayurvedic management of obesity, cholesterol, and metabolic disorders.', 
-    image: '/images/metabolic_care.png', 
+    image: '/images/weight_management_new.png', 
     slug: 'special-treatments',
     group: 'Lifestyle & Metabolic'
   }
@@ -71,11 +71,13 @@ const treatments = [
     id="treatments-scroll-container"
     class="treatments-carousel flex overflow-x-auto no-scrollbar pb-4"
   >
-    {/* Duplicate 3x for infinite-loop illusion */}
-    {[...treatments, ...treatments, ...treatments].map(t => (
+    {/* Render only once in HTML. JS will clone these for the infinite loop to prevent layout bugs if JS fails */}
+    {treatments.map(t => {
+      const isGreen = t.name === 'Special Treatments';
+      return (
       <a
         href={`/treatments?tab=${t.slug}&group=${encodeURIComponent(t.group || '')}`}
-        class="treatment-card group relative overflow-hidden bg-white shadow-md hover:shadow-lg border border-accent-gold/10 rounded-xl shrink-0 transition-all duration-300 transform hover:-translate-y-1 select-none"
+        class={`treatment-card group relative overflow-hidden shadow-md hover:shadow-lg rounded-xl shrink-0 transition-all duration-300 transform hover:-translate-y-1 select-none ${isGreen ? 'bg-primary border-primary-dark/20' : 'bg-white border-accent-gold/10'}`}
         draggable="false"
       >
         <div class="aspect-[4/3] overflow-hidden">
@@ -87,18 +89,18 @@ const treatments = [
           />
         </div>
         <div class="p-5 sm:p-6">
-          <h3 class="text-lg sm:text-xl font-bold mb-2 group-hover:text-accent-gold transition-colors leading-tight">
+          <h3 class={`text-lg sm:text-xl font-bold mb-2 transition-colors leading-tight ${isGreen ? 'text-background-parchment group-hover:text-accent-gold' : 'group-hover:text-accent-gold'}`}>
             {t.name}
           </h3>
-          <p class="text-sm text-text-muted font-sans leading-relaxed line-clamp-3 sm:line-clamp-none">
+          <p class={`text-sm font-sans leading-relaxed line-clamp-3 sm:line-clamp-none ${isGreen ? 'text-background-parchment/85' : 'text-text-muted'}`}>
             {t.description}
           </p>
-          <div class="mt-4 flex items-center text-primary font-bold text-sm uppercase tracking-widest">
+          <div class={`mt-4 flex items-center font-bold text-sm uppercase tracking-widest ${isGreen ? 'text-accent-gold' : 'text-primary'}`}>
             View Details <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
           </div>
         </div>
       </a>
-    ))}
+    )})}
   </div>
 </div>
 
@@ -164,10 +166,21 @@ const treatments = [
     const carousel = document.getElementById('treatments-scroll-container');
     if (!carousel) return;
 
-    const items = Array.from(carousel.querySelectorAll('.treatment-card'));
-    if (items.length === 0) return;
+    const originalItems = Array.from(carousel.querySelectorAll('.treatment-card'));
+    if (originalItems.length === 0) return;
 
-    const originalCount = items.length / 3;
+    // Dynamically clone nodes for infinite loop so HTML source is clean
+    const originalCount = originalItems.length;
+    
+    originalItems.forEach(item => {
+      carousel.appendChild(item.cloneNode(true));
+    });
+    
+    [...originalItems].reverse().forEach(item => {
+      carousel.insertBefore(item.cloneNode(true), carousel.firstChild);
+    });
+
+    const items = Array.from(carousel.querySelectorAll('.treatment-card'));
     let currentIndex = originalCount;
     let autoScrollInterval;
     let isUserInteracting = false;
@@ -234,7 +247,8 @@ const treatments = [
 
     const startAutoScroll = () => {
       stopAutoScroll();
-      const delay = window.innerWidth < 768 ? 6000 : 4500;
+      // Increased delay to allow comfortable reading (10s mobile, 8s desktop)
+      const delay = window.innerWidth < 768 ? 10000 : 8000;
       autoScrollInterval = setInterval(slideToNext, delay);
     };
 

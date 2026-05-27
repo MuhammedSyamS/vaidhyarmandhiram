@@ -29,15 +29,26 @@ const navLinks = [
           <a href="https://maps.google.com/?q=Alappuzha,+Kerala,+India" target="_blank" rel="noopener noreferrer" class="hover:text-accent-gold transition-colors">Alappuzha</a>
         </span>
       </div>
-      <div class="flex items-center gap-3">
-        <a href="tel:+918593821553" class="flex items-center gap-1.5 hover:text-accent-gold transition-colors">
-          <Phone size={12} class="text-accent-gold shrink-0" />
-          <span class="font-bold tracking-wider">+91 85938 21553</span>
-        </a>
-        <span class="text-accent-gold/40">|</span>
-        <a href="tel:+919495556497" class="flex items-center gap-1.5 hover:text-accent-gold transition-colors">
-          <span class="font-bold tracking-wider">+91 94955 56497</span>
-        </a>
+      <div class="flex items-center gap-4">
+        <div class="flex items-center gap-3">
+          <a href="tel:+918593821553" class="flex items-center gap-1.5 hover:text-accent-gold transition-colors">
+            <Phone size={12} class="text-accent-gold shrink-0" />
+            <span class="font-bold tracking-wider">+91 85938 21553</span>
+          </a>
+          <span class="text-accent-gold/40">|</span>
+          <a href="tel:+919495556497" class="flex items-center gap-1.5 hover:text-accent-gold transition-colors">
+            <span class="font-bold tracking-wider">+91 94955 56497</span>
+          </a>
+        </div>
+        <div class="w-px h-3 bg-accent-gold/40"></div>
+        <button
+          id="lang-switch-desktop"
+          class="inline-flex items-center gap-1.5 px-2 py-0.5 text-[10px] font-bold border border-background-parchment/30 hover:border-accent-gold rounded-full text-background-parchment hover:text-accent-gold transition-all duration-200"
+          aria-label="Switch language"
+        >
+          <Globe size={11} class="shrink-0" />
+          <span class="lang-label font-malayalam tracking-wider uppercase">മലയാളം</span>
+        </button>
       </div>
     </div>
 
@@ -103,8 +114,8 @@ const navLinks = [
     <a href="/" class="flex items-center gap-3.5 md:gap-4 shrink-0 group">
       <div class="h-14 w-14 md:h-18 md:w-18 rounded-full bg-transparent transition-all duration-500 ease-out group-hover:scale-115 group-hover:rotate-[5deg] overflow-hidden flex items-center justify-center shrink-0">
         <img
-          src="/images/vmlaunchingpage.jpeg"
-          alt="Vaidyarmandiram Icon"
+          src="/images/vmlaunchingpage.png"
+          alt="Vaidyarmandiram Logo"
           class="w-full h-full object-contain mix-blend-multiply rounded-full"
         />
       </div>
@@ -167,7 +178,7 @@ const navLinks = [
           <!-- Logo & Brand Info -->
           <div class="flex items-center gap-3">
              <div class="w-12 h-12 rounded-lg bg-white border border-accent-gold/30 flex items-center justify-center p-0.5 shadow-sm shrink-0 overflow-hidden">
-               <img src="/images/vmlaunchingpage.jpeg" class="w-full h-full object-contain mix-blend-multiply rounded-md" alt="Vaidyarmandiram Logo" />
+               <img src="/images/vmlaunchingpage.png" class="w-full h-full object-contain mix-blend-multiply rounded-md" alt="Vaidyarmandiram Logo" />
              </div>
              <div class="flex flex-col">
                <span class="lang-en text-sm font-serif font-bold text-primary-dark tracking-wide uppercase">Vaidyarmandiram</span>
@@ -194,7 +205,7 @@ const navLinks = [
             aria-label="Switch language"
           >
             <Globe size={11} />
-            <span class="lang-label font-malayalam">മ</span>
+            <span class="lang-label font-malayalam uppercase tracking-wider">മലയാളം</span>
           </button>
         </div>
       </div>
@@ -267,7 +278,7 @@ const navLinks = [
     document.documentElement.setAttribute('data-lang', lang);
     localStorage.setItem('vm-lang', lang);
 
-    const oppositeLabel = lang === 'en' ? 'മ' : 'E';
+    const oppositeLabel = lang === 'en' ? 'മലയാളം' : 'ENGLISH';
     const oppositeTarget = lang === 'en' ? 'ml' : 'en';
 
     document.querySelectorAll<HTMLButtonElement>('[id^="lang-switch"]').forEach(btn => {

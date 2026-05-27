@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Section from '../components/Section.astro';
+
+export const prerender = true;
+---
+
+<BaseLayout title="Terms of Service">
+  <Header slot="header" />
+
+  <!-- Page Header -->
+  <div class="bg-primary-dark py-24 text-center relative overflow-hidden">
+    <div class="container mx-auto px-4 relative z-10">
+      <h1 class="lang-en text-4xl md:text-6xl text-background-parchment leading-tight">Terms of <span class="text-accent-gold ">Service</span></h1>
+      <h1 class="lang-ml font-malayalam text-4xl md:text-5xl text-background-parchment leading-tight mt-2">സേവന നിബന്ധനകൾ</h1>
+    </div>
+  </div>
+
+  <Section background="parchment" withDivider={true}>
+    <div class="max-w-4xl mx-auto space-y-8 font-sans text-primary-dark leading-relaxed">
+      <h2 class="text-3xl font-serif font-bold text-accent-gold">1. Acceptance of Terms</h2>
+      <p>By accessing or using the Vaidyarmandiram Ayurveda Hospital website, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you may not use our services or access the website.</p>
+      
+      <h2 class="text-3xl font-serif font-bold text-accent-gold mt-8">2. Medical Disclaimer</h2>
+      <p>The information provided on this website is for educational and informational purposes only and is not intended as a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of our qualified Ayurvedic physicians or other qualified health providers with any questions you may have regarding a medical condition.</p>
+
+      <h2 class="text-3xl font-serif font-bold text-accent-gold mt-8">3. Consultations and Appointments</h2>
+      <p>All consultations, whether in-person, via video, WhatsApp, or email, are subject to availability. The advice given during online consultations is based on the information and reports provided by the patient. For a comprehensive diagnosis, an in-person physical examination (including pulse diagnosis) is strongly recommended.</p>
+
+      <h2 class="text-3xl font-serif font-bold text-accent-gold mt-8">4. Intellectual Property</h2>
+      <p>The content, organization, graphics, design, compilation, magnetic translation, digital conversion and other matters related to the Site are protected under applicable copyrights, trademarks and other proprietary rights. The copying, redistribution, use or publication by you of any such matters or any part of the Site is strictly prohibited.</p>
+
+      <h2 class="text-3xl font-serif font-bold text-accent-gold mt-8">5. Governing Law</h2>
+      <p>These terms and conditions are governed by and construed in accordance with the laws of India, specifically the jurisdiction of the courts in Kerala, and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.</p>
+
+      <h2 class="text-3xl font-serif font-bold text-accent-gold mt-8">6. Changes to Terms</h2>
+      <p>We reserve the right to modify these terms at any time. It is your responsibility to check these Terms of Service periodically for changes. Your continued use of the website following the posting of changes will mean that you accept and agree to the changes.</p>
+    </div>
+  </Section>
+
+  <Footer slot="footer" />
+</BaseLayout>

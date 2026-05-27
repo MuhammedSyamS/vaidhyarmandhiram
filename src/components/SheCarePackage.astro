@@ -69,7 +69,7 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
               { title: "Postnatal Care", desc: "Aiding recovery with traditional strengthening treatments, restorative care, and postpartum mental health focus.", img: "/images/postnatal_care.png" },
               { title: "Menopause Care", desc: "Easing the transition with cooling therapies, bone health support, and natural emotional balance treatments.", img: "/images/menopause_care.png" }
             ];
-            return [...cards, ...cards, ...cards].map((card, idx) => (
+            return cards.map((card, idx) => (
             <div 
               class="shecare-card shrink-0 bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.12)] border border-accent-gold/10 transition-all duration-500 flex flex-col overflow-hidden select-none group"
             >
@@ -237,12 +237,21 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
     const carousel = document.getElementById('shecare-carousel');
     if (!carousel) return;
 
-    const items = Array.from(carousel.querySelectorAll('.shecare-card'));
-    if (items.length === 0) return;
+    const originalItems = Array.from(carousel.querySelectorAll('.shecare-card'));
+    if (originalItems.length === 0) return;
 
-    // We duplicated the array 3 times: [1,2,3,4, 1,2,3,4, 1,2,3,4]
-    // So originalCount is items.length / 3
-    const originalCount = items.length / 3;
+    const originalCount = originalItems.length;
+
+    // Clone nodes dynamically for infinite loop
+    originalItems.forEach(item => {
+      carousel.appendChild(item.cloneNode(true));
+    });
+    
+    [...originalItems].reverse().forEach(item => {
+      carousel.insertBefore(item.cloneNode(true), carousel.firstChild);
+    });
+
+    const items = Array.from(carousel.querySelectorAll('.shecare-card'));
 
     let currentIndex = originalCount; // start in the middle set
     let autoScrollInterval;

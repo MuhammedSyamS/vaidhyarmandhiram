@@ -85,19 +85,19 @@ const legacyPoints = [
     <!-- Floating stat pill — bottom right of card -->
     <div class="absolute -bottom-5 -right-4 z-40 bg-primary-dark border border-accent-gold/30 rounded-2xl px-4 py-2.5 shadow-xl flex items-center gap-3">
       <div class="text-center">
-        <p class="text-accent-gold font-serif font-bold text-lg leading-none">25K+</p>
+        <p class="text-accent-gold font-serif font-bold text-lg leading-none"><span class="founder-stat-number" data-value="25">0</span>K+</p>
         <p class="lang-en text-white/60 text-[8px] font-sans uppercase tracking-wider mt-0.5">Patients</p>
         <p class="lang-ml font-malayalam text-white/60 text-[8px] mt-0.5">രോഗികൾ</p>
       </div>
       <div class="w-px h-8 bg-accent-gold/20"></div>
       <div class="text-center">
-        <p class="text-accent-gold font-serif font-bold text-lg leading-none">40+</p>
+        <p class="text-accent-gold font-serif font-bold text-lg leading-none"><span class="founder-stat-number" data-value="40">0</span>+</p>
         <p class="lang-en text-white/60 text-[8px] font-sans uppercase tracking-wider mt-0.5">Years</p>
         <p class="lang-ml font-malayalam text-white/60 text-[8px] mt-0.5">വർഷം</p>
       </div>
       <div class="w-px h-8 bg-accent-gold/20"></div>
       <div class="text-center">
-        <p class="text-accent-gold font-serif font-bold text-lg leading-none">3</p>
+        <p class="text-accent-gold font-serif font-bold text-lg leading-none"><span class="founder-stat-number" data-value="3">0</span></p>
         <p class="lang-en text-white/60 text-[8px] font-sans uppercase tracking-wider mt-0.5">Centres</p>
         <p class="lang-ml font-malayalam text-white/60 text-[8px] mt-0.5">കേന്ദ്രം</p>
       </div>
@@ -204,6 +204,28 @@ const legacyPoints = [
     document.querySelectorAll('.animate-on-scroll').forEach(el => {
       observer.observe(el);
     });
+
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement;
+          const endValue = parseInt(target.getAttribute('data-value') || '0');
+          const duration = 2000;
+          const startTime = performance.now();
+          const updateCount = (currentTime: number) => {
+            const progress = Math.min((currentTime - startTime) / duration, 1);
+            const easeOut = progress * (2 - progress);
+            target.innerText = Math.floor(easeOut * endValue).toLocaleString();
+            if (progress < 1) requestAnimationFrame(updateCount);
+            else target.innerText = endValue.toLocaleString();
+          };
+          requestAnimationFrame(updateCount);
+          statObserver.unobserve(target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.founder-stat-number').forEach(stat => statObserver.observe(stat));
   }
 
   initFounderSpotlightAnimation();
