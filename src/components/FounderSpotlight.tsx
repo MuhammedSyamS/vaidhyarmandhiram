@@ -14,7 +14,7 @@ export default function FounderSpotlight() {
       >
         <div className="relative z-10 shadow-2xl rotate-[-2deg] border border-accent-gold/20 rounded-2xl overflow-hidden">
           <img 
-            src="/images/vmfounder.jpg" 
+            src="https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/vmfounder.jpg" 
             alt="Dr. P. Abdul Sathar Gurukkal - Founder, Vaidyarmandiram Ayurveda Hospital Kerala" 
             className="w-full aspect-[4/5] object-cover"
           />

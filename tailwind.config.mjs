@@ -27,7 +27,7 @@ export default {
         malayalam: ['"Noto Serif Malayalam"', 'serif'],
       },
       backgroundImage: {
-        'parchment-texture': "url('/images/parchment-texture.svg')",
+        'parchment-texture': "url('https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/parchment-texture.svg')",
       },
     },
   },

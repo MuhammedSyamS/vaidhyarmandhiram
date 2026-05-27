@@ -25,7 +25,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Vamana',
       subtitle: 'Therapeutic vomiting',
-      image: '/images/vamana_virechana_detox.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/vamana_virechana_detox.png',
       dosha: 'Kapha Balancing',
       desc: 'Therapeutic vomiting process carefully administered to eliminate excess Kapha dosha, clearing toxins from the respiratory and gastrointestinal tracts.',
       benefits: ['Clears respiratory congestion', 'Improves digestive capacity', 'Detoxifies stomach tissue']
@@ -33,7 +33,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Virechana',
       subtitle: 'Purgation therapy',
-      image: '/images/vamana_virechana_detox.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/vamana_virechana_detox.png',
       dosha: 'Pitta Balancing',
       desc: 'Therapeutic purgation targeting the liver and small intestine to cleanse deep-seated Pitta toxins, purifying blood and skin tissue.',
       benefits: ['Purifies blood of heat toxins', 'Improves complex skin conditions', 'Reduces excess body heat']
@@ -41,7 +41,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Basti',
       subtitle: 'Medicated enemas',
-      image: '/images/basti_enema.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/basti_enema.png',
       dosha: 'Vata Balancing',
       desc: 'The mother of all treatments, utilizing medicated oils and herbal decoctions via enema to balance Vata, lubricate the colon, and relieve joint issues.',
       benefits: ['Relieves lower back stiffness', 'Balances nervous system', 'Lubricates joints & colon']
@@ -49,7 +49,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Nasya',
       subtitle: 'Nasal administration of herbs/oils',
-      image: '/images/nasya_therapy.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/nasya_therapy.png',
       dosha: 'Head & Neck Wellness',
       desc: 'Nasal administration of medicated oils or herbal drops. Highly effective for cleansing sinus passages, improving memory, and soothing mental tension.',
       benefits: ['Clears nasal & sinus passages', 'Relieves headaches & migraines', 'Enhances mental clarity & memory']
@@ -57,7 +57,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Raktamokshana',
       subtitle: 'Traditional bloodletting',
-      image: '/images/raktamokshana.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/raktamokshana.png',
       dosha: 'Pitta Balancing (Rarely Used)',
       desc: 'Classical and controlled bloodletting therapy used under highly specific conditions to remove blood-borne toxins and relieve severe Pitta disorders.',
       benefits: ['Purifies localized blood', 'Relieves chronic skin issues', 'Reduces severe heat build-up']
@@ -65,7 +65,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Abhyanga',
       subtitle: 'Full-body massage',
-      image: '/images/abhyanga_massage.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/abhyanga_massage.png',
       dosha: 'Dosha-Specific Wellness',
       desc: 'Rhythmic, gentle full-body massage using Dosha-specific warm medicated oils. Formulated to improve blood circulation, lubricate joints, and build immunity.',
       benefits: ['Improves blood circulation', 'Deeply relaxes muscles', 'Strengthens nervous system']
@@ -73,7 +73,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Shirodhara',
       subtitle: 'Forehead oil flow',
-      image: '/images/shirodhara_oil.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/shirodhara_oil.png',
       dosha: 'Stress & Mental Clarity',
       desc: 'A continuous, soothing stream of warm medicated oil, buttermilk, or herbal decoction poured gently over the forehead. Excellent for stress and mental clarity.',
       benefits: ['Deeply calms nervous system', 'Improves sleep quality & insomnia', 'Relieves mental anxiety & fatigue']
@@ -81,7 +81,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Pizhichil',
       subtitle: 'Royal Treatment',
-      image: '/images/pizhichil_therapy.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/pizhichil_therapy.png',
       dosha: 'Oleation & Sudation Combined',
       desc: 'A "Royal Treatment" where warm medicated oil is squeezed from a cloth over the entire body (combines Snehana and Swedana).',
       benefits: ['Rejuvenates body tissues', 'Relieves joint stiffness & arthritis', 'Prevents muscular aging & pain']
@@ -89,7 +89,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Takradhara',
       subtitle: 'Medicated buttermilk flow',
-      image: '/images/shirodhara_oil.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/shirodhara_oil.png',
       dosha: 'Cooling & Skin Care',
       desc: 'Similar to Shirodhara, but uses medicated buttermilk; specifically used for cooling and skin conditions like psoriasis.',
       benefits: ['Cools body and mind', 'Relieves psoriasis and eczema', 'Reduces hair fall & graying']
@@ -99,7 +99,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Kati Basti',
       subtitle: 'Pooling for the lower back',
-      image: '/images/basti_enema.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/basti_enema.png',
       dosha: 'Lumbar Region Support',
       desc: 'A customized reservoir of warm medicated oil is pooled on the lower back (lumbar region) using a ring of herbal dough. Nourishes spinal tissues and relieves compression.',
       benefits: ['Relieves sciatica & back pain', 'Nourishes lumbar spine', 'Lubricates spinal discs']
@@ -107,7 +107,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Greeva Basti',
       subtitle: 'Pooling for the neck',
-      image: '/images/basti_enema.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/basti_enema.png',
       dosha: 'Cervical Spine Support',
       desc: 'Warm medicated oil is retained over the back of the neck and cervical spine. Deeply relieves cervical stiffness, muscle spasms, and compression.',
       benefits: ['Relieves neck pain and stiffness', 'Treats cervical spondylosis', 'Nourishes upper spine']
@@ -115,7 +115,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Janu Basti',
       subtitle: 'Pooling for the knees',
-      image: '/images/basti_enema.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/basti_enema.png',
       dosha: 'Knee & Joint Support',
       desc: 'Pooling warm medicated oil over the knee joints. Highly effective for joint pain, knee arthritis, and nourishing cartilage.',
       benefits: ['Lubricates knee joint', 'Improves joint flexibility', 'Prevents joint degeneration']
@@ -123,7 +123,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Uro Basti',
       subtitle: 'Pooling for the chest/heart',
-      image: '/images/basti_enema.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/basti_enema.png',
       dosha: 'Chest & Heart Support',
       desc: 'Retaining warm medicated oil over the chest and heart region. Highly supportive for physical chest muscles, lungs, and emotional healing.',
       benefits: ['Strengthens cardiac muscles', 'Supports lung capacity', 'Provides emotional healing']
@@ -133,7 +133,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Kizhi (Pinda Sweda)',
       subtitle: 'Warm herbal bolus massage',
-      image: '/images/kizhi_poultice.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/kizhi_poultice.png',
       dosha: 'Pain Relief & Sweat Therapy',
       desc: 'Use of warm herbal boluses (poultices) filled with leaves, powders, or medicated rice to massage the body. Combines heat, oil, and herbal pressure.',
       benefits: ['Relieves chronic joint pain', 'Reduces muscle spasms', 'Improves muscle tone']
@@ -141,7 +141,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Udvartana',
       subtitle: 'Herbal powder scrub',
-      image: '/images/udvartana_scrub.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/udvartana_scrub.png',
       dosha: 'Weight & Skin Texture',
       desc: 'A dry massage using herbal powders. It is primarily used for weight management and improving skin texture.',
       benefits: ['Promotes weight loss', 'Exfoliates & tones skin', 'Reduces cellulite buildup']
@@ -149,7 +149,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Upanaha',
       subtitle: 'Medicinal poultice bandaging',
-      image: '/images/kizhi_poultice.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/kizhi_poultice.png',
       dosha: 'Swelling & Inflammation',
       desc: 'Application of a medicinal paste covered with leaves and bandaged securely to reduce localized swelling or pain.',
       benefits: ['Reduces localized swelling', 'Alleviates chronic joint pain', 'Improves blood flow']
@@ -159,7 +159,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Netra Tarpana',
       subtitle: 'Pooling of ghee over eyes',
-      image: '/images/netra_tarpana_eye.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/netra_tarpana_eye.png',
       dosha: 'Eye Care & Strain Relief',
       desc: 'Pooling of medicated ghee over the eyes to improve vision, reduce computer eye strain, and relieve dryness.',
       benefits: ['Relieves computer eye strain', 'Improves dry eye syndrome', 'Strengthens optic nerves']
@@ -167,7 +167,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Karna Purana',
       subtitle: 'Medicated ear bath',
-      image: '/images/karna_purana_ear.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/karna_purana_ear.png',
       dosha: 'Ear Care & Vata Relief',
       desc: 'Dropping warm medicated oil into the ears to treat earaches or Vata-related issues like tinnitus.',
       benefits: ['Reduces tinnitus & earache', 'Cleanses ear canal', 'Calms jaws and neck tension']
@@ -177,7 +177,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Piles (Arsha)',
       subtitle: 'Anorectal disorder',
-      image: '/images/anorectal_care.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/anorectal_care.png',
       dosha: 'Digestive & Rectal Care',
       desc: 'Ayurvedic management of hemorrhoids using herbal formulations, Kshara application, and dietary protocols to shrink piles and relieve pain.',
       benefits: ['Reduces bleeding & pain', 'Shrinks hemorrhoidal tissue', 'Prevents recurrence with diet']
@@ -185,7 +185,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Fissure',
       subtitle: 'Anal fissure healing',
-      image: '/images/anorectal_care.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/anorectal_care.png',
       dosha: 'Anorectal Care',
       desc: 'Treatment of anal fissures using soothing medicated oils, Kshara Sutra, and internal Ayurvedic medications to heal the tear and relieve spasm.',
       benefits: ['Heals anal fissures', 'Relieves pain during bowel movement', 'Reduces anal sphincter spasm']
@@ -193,7 +193,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Fistula (Bhagandara)',
       subtitle: 'Fistula-in-ano treatment',
-      image: '/images/anorectal_care.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/anorectal_care.png',
       dosha: 'Surgical & Herbal Care',
       desc: 'Classical Kshara Sutra therapy — a proven para-surgical Ayurvedic procedure for fistula-in-ano with minimal recurrence rate.',
       benefits: ['Treats fistula without major surgery', 'Minimal recurrence rate', 'Faster healing with herbal protocol']
@@ -201,7 +201,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'IBS (Irritable Bowel Syndrome)',
       subtitle: 'Gut health management',
-      image: '/images/anorectal_care.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/anorectal_care.png',
       dosha: 'Digestive Balancing',
       desc: 'Comprehensive treatment of IBS using Panchakarma, herbal formulations, and gut-healing dietary changes to restore digestive balance.',
       benefits: ['Reduces bloating & cramps', 'Regulates bowel movements', 'Heals intestinal lining']
@@ -209,7 +209,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Psoriasis',
       subtitle: 'Chronic skin disorder',
-      image: '/images/shirodhara_oil.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/shirodhara_oil.png',
       dosha: 'Skin & Blood Purification',
       desc: 'Deep-acting Ayurvedic protocol for psoriasis including Panchakarma, blood purifying herbs, and Takradhara to reduce plaques and inflammation.',
       benefits: ['Reduces skin plaques', 'Decreases itching & inflammation', 'Long-term remission achievable']
@@ -217,7 +217,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Allergy',
       subtitle: 'Allergic conditions',
-      image: '/images/nasya_therapy.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/nasya_therapy.png',
       dosha: 'Immune Balancing',
       desc: 'Treatment of respiratory, skin, and food allergies using Rasayana herbs, Nasya therapy, and immune modulating Ayurvedic protocols.',
       benefits: ['Strengthens immune response', 'Reduces allergic reaction severity', 'Long-term desensitization']
@@ -225,7 +225,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Kidney Stone',
       subtitle: 'Renal calculi management',
-      image: '/images/kidney_stone_care.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/kidney_stone_care.png',
       dosha: 'Urinary & Renal Care',
       desc: 'Herbal diuretic formulations to dissolve and flush small kidney stones combined with dietary protocol to prevent new stone formation.',
       benefits: ['Dissolves small kidney stones', 'Reduces urinary tract inflammation', 'Prevents stone recurrence']
@@ -233,7 +233,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Sciatica',
       subtitle: 'Sciatic nerve pain',
-      image: '/images/basti_enema.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/basti_enema.png',
       dosha: 'Vata & Nerve Balancing',
       desc: 'Treatment of sciatic nerve pain using Kati Basti, Basti enema therapy, and Kizhi. Highly effective for radiating pain from the lower back to the leg.',
       benefits: ['Relieves radiating nerve pain', 'Reduces lumbar disc pressure', 'Restores walking comfort']
@@ -241,7 +241,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Cervical Spondylitis',
       subtitle: 'Cervical spine inflammation',
-      image: '/images/basti_enema.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/basti_enema.png',
       dosha: 'Cervical Spine Support',
       desc: 'Anti-inflammatory herbal therapies and Greeva Basti to reduce inflammation of the cervical vertebrae and restore neck mobility.',
       benefits: ['Reduces cervical inflammation', 'Restores neck mobility', 'Relieves radiating arm pain']
@@ -249,7 +249,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Cervical Spondylosis',
       subtitle: 'Cervical spine degeneration',
-      image: '/images/basti_enema.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/basti_enema.png',
       dosha: 'Cervical Spine Support',
       desc: 'Greeva Basti combined with internal medicated oils to nourish and regenerate degenerated cervical spinal discs and relieve compression.',
       benefits: ['Nourishes spinal discs', 'Slows disc degeneration', 'Relieves neck & arm numbness']
@@ -257,7 +257,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Bone Alignment',
       subtitle: 'Skeletal alignment therapy',
-      image: '/images/spine-joint.jpg',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/spine-joint.jpg',
       dosha: 'Musculoskeletal Care',
       desc: 'Specialized Marma therapy and manual bone alignment techniques combined with strengthening herbal oils to correct postural imbalances.',
       benefits: ['Corrects postural deviations', 'Relieves joint misalignment pain', 'Strengthens supporting muscles']
@@ -265,7 +265,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Fracture Management',
       subtitle: 'Post-fracture healing',
-      image: '/images/spine-joint.jpg',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/spine-joint.jpg',
       dosha: 'Bone Strengthening',
       desc: 'Accelerated bone healing using Asthi-vriddhikar (bone-strengthening) herbs, medicated casts, and calcium-rich Ayurvedic preparations.',
       benefits: ['Accelerates bone healing', 'Strengthens bone density', 'Reduces post-fracture stiffness']
@@ -273,7 +273,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Scoliosis',
       subtitle: 'Spinal curvature correction',
-      image: '/images/basti_enema.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/basti_enema.png',
       dosha: 'Spinal & Postural Care',
       desc: 'Therapeutic Yoga, specialized spinal therapies, Kati Basti, and herbal oils to manage and improve spinal curvature in scoliosis.',
       benefits: ['Improves spinal curvature', 'Relieves associated back pain', 'Strengthens paraspinal muscles']
@@ -281,7 +281,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Frozen Shoulder',
       subtitle: 'Adhesive capsulitis',
-      image: '/images/basti_enema.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/basti_enema.png',
       dosha: 'Shoulder Joint Care',
       desc: 'Amsana Basti, deep-penetrating medicated oils, and targeted physiotherapy-combined Ayurvedic treatment to restore shoulder mobility.',
       benefits: ['Restores shoulder range of motion', 'Reduces shoulder joint stiffness', 'Relieves chronic shoulder pain']
@@ -289,7 +289,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Diabetic Care',
       subtitle: 'Diabetes management',
-      image: '/images/metabolic_care.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/metabolic_care.png',
       dosha: 'Metabolic Balancing',
       desc: 'Comprehensive Ayurvedic management of Type 2 diabetes using Meha-hara herbs, Panchakarma detox, and strict dietary counseling.',
       benefits: ['Regulates blood sugar levels', 'Improves insulin sensitivity', 'Prevents diabetic complications']
@@ -297,7 +297,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Diabetic Neuropathy',
       subtitle: 'Nerve damage from diabetes',
-      image: '/images/basti_enema.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/basti_enema.png',
       dosha: 'Nerve & Metabolic Care',
       desc: 'Specialized nerve-rejuvenating treatments using Basti therapy and Medhya Rasayana herbs to repair and protect nerve endings damaged by diabetes.',
       benefits: ['Reduces tingling & burning sensation', 'Improves nerve conduction', 'Protects remaining nerve tissue']
@@ -305,7 +305,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Cholesterol Care',
       subtitle: 'Lipid management',
-      image: '/images/vamana_virechana_detox.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/vamana_virechana_detox.png',
       dosha: 'Cardiovascular & Lipid Care',
       desc: 'Medohar (fat-reducing) herbs, Virechana therapy, and dietary protocol to reduce bad cholesterol (LDL) and improve cardiovascular health.',
       benefits: ['Reduces LDL cholesterol', 'Improves HDL levels', 'Prevents arterial plaque buildup']
@@ -313,7 +313,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Fatty Liver',
       subtitle: 'Hepatic fat management',
-      image: '/images/vamana_virechana_detox.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/vamana_virechana_detox.png',
       dosha: 'Liver & Digestive Care',
       desc: 'Liver-cleansing herbal formulations and Virechana to detoxify the liver, reduce fat accumulation, and restore healthy hepatic function.',
       benefits: ['Reduces liver fat accumulation', 'Restores healthy liver enzymes', 'Improves digestion & metabolism']
@@ -321,7 +321,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'BP Care',
       subtitle: 'Blood pressure management',
-      image: '/images/shirodhara_oil.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/shirodhara_oil.png',
       dosha: 'Cardiovascular Care',
       desc: 'Shirodhara, stress-reduction protocols, heart-balancing herbs (Sarpagandha, Arjuna) and dietary counseling for managing hypertension naturally.',
       benefits: ['Reduces systolic & diastolic BP', 'Calms the nervous system', 'Reduces stress-induced hypertension']
@@ -336,7 +336,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Chicken Pox Care',
       subtitle: 'Post-viral recovery',
-      image: '/images/psoriasis_dermatology.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/psoriasis_dermatology.png',
       dosha: 'Skin & Immune Recovery',
       desc: 'Ayurvedic management of chicken pox and post-viral recovery using blood-purifying herbs, cooling treatments, and scar-preventing skin protocols.',
       benefits: ['Reduces viral spread & severity', 'Prevents post-pox scarring', 'Accelerates full recovery']
@@ -344,7 +344,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Infertility (Men & Women)',
       subtitle: 'Fertility enhancement',
-      image: '/images/womens_health.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/womens_health.png',
       dosha: 'Reproductive Wellness',
       desc: 'Deep Shukra and Artava Dhatu nourishing protocol using Vajikarana Rasayana herbs, Panchakarma, and targeted fertility treatments for both partners.',
       benefits: ['Improves sperm quality & count', 'Regulates ovulation in women', 'Enhances overall reproductive health']
@@ -352,7 +352,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Sexual Related Issues',
       subtitle: 'Sexual health & wellness',
-      image: '/images/womens_health.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/womens_health.png',
       dosha: 'Vajikarana (Reproductive)',
       desc: 'Confidential Vajikarana (aphrodisiac) therapy using classical herbs and treatments to restore sexual vitality, stamina, and hormonal balance.',
       benefits: ['Restores sexual vitality', 'Balances reproductive hormones', 'Improves stamina & confidence']
@@ -360,7 +360,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Libido Enhancement',
       subtitle: 'Desire & vitality restoration',
-      image: '/images/basti_enema.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/basti_enema.png',
       dosha: 'Vajikarana (Reproductive)',
       desc: 'Tailored herbal Rasayana and Basti therapy to restore natural libido, address hormonal imbalances, and rejuvenate reproductive tissue.',
       benefits: ['Naturally restores libido', 'Balances sex hormones', 'Rejuvenates reproductive tissues']
@@ -368,7 +368,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Migraine',
       subtitle: 'Chronic headache management',
-      image: '/images/nasya_therapy.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/nasya_therapy.png',
       dosha: 'Pitta & Vata Balancing',
       desc: 'Nasya therapy, Shirodhara, and Pitta-pacifying internal medications to reduce migraine frequency, intensity, and associated sensitivity.',
       benefits: ['Reduces migraine frequency', 'Relieves throbbing head pain', 'Reduces light & sound sensitivity']
@@ -397,7 +397,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Cosmetology',
       subtitle: 'Beauty & skin enhancement',
-      image: '/images/psoriasis_dermatology.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/psoriasis_dermatology.png',
       dosha: 'Skin Radiance & Beauty',
       desc: 'Natural Ayurvedic cosmetology treatments using herbal face packs, Mukhaabhyanga, and Varnya (complexion-enhancing) herbs for glowing skin.',
       benefits: ['Improves skin radiance & glow', 'Reduces dark spots & blemishes', 'Anti-aging & skin firming']
@@ -405,7 +405,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Dermatology',
       subtitle: 'Skin disease treatment',
-      image: '/images/psoriasis_dermatology.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/psoriasis_dermatology.png',
       dosha: 'Skin & Blood Purification',
       desc: 'Treatment of chronic skin diseases like eczema, urticaria, and contact dermatitis using Panchakarma blood purification and herbal protocols.',
       benefits: ['Treats chronic skin diseases', 'Purifies blood of skin toxins', 'Prevents skin disease recurrence']
@@ -413,7 +413,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Nethra Chikithsa',
       subtitle: 'Classical eye care',
-      image: '/images/netra_tarpana_eye.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/netra_tarpana_eye.png',
       dosha: 'Eye Care (Netra)',
       desc: 'Specialized Ayurvedic eye therapies including Netra Tarpana, Anjana, and Pindi to strengthen vision, treat eye diseases, and reduce strain.',
       benefits: ['Strengthens eyesight', 'Treats dry eyes & strain', 'Manages early-stage eye conditions']
@@ -421,7 +421,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Karna Chikithsa',
       subtitle: 'Classical ear care',
-      image: '/images/karna_purana_ear.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/karna_purana_ear.png',
       dosha: 'Ear Care (Karna)',
       desc: 'Ayurvedic ear care using Karna Purana (medicated oil ear drops), Dhoopana, and herbal fumigation to treat earaches, tinnitus, and hearing issues.',
       benefits: ['Relieves ear pain & tinnitus', 'Improves hearing function', 'Clears ear canal blockages']
@@ -429,7 +429,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Dandruff Treatment',
       subtitle: 'Scalp & hair care',
-      image: '/images/shirodhara_oil.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/shirodhara_oil.png',
       dosha: 'Hair & Scalp Care',
       desc: 'Medicated Shirobhyanga, Takradhara, and anti-fungal herbal hair packs to eliminate dandruff, nourish the scalp, and strengthen hair roots.',
       benefits: ['Eliminates dandruff completely', 'Nourishes scalp & hair follicles', 'Prevents hair loss from dandruff']
@@ -444,7 +444,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Rejuvenation Therapy',
       subtitle: 'Rasayana anti-aging',
-      image: '/images/abhyanga_massage.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/abhyanga_massage.png',
       dosha: 'Anti-Aging & Vitality',
       desc: 'Comprehensive Rasayana (rejuvenation) programme using classical anti-aging herbs, Panchakarma, Abhyanga, and Rasayana dietary protocols.',
       benefits: ['Slows cellular aging process', 'Rejuvenates body & mind completely', 'Boosts vitality, immunity & longevity']
@@ -452,7 +452,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Weight Loss Treatment',
       subtitle: 'Medohar (fat reduction)',
-      image: '/images/udvartana_scrub.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/udvartana_scrub.png',
       dosha: 'Weight & Metabolism',
       desc: 'Kapha-balancing Panchakarma with Udvartana, Medohar herbs, and strict dietary counseling for sustainable, healthy weight loss.',
       benefits: ['Reduces excess body fat', 'Boosts metabolism naturally', 'Prevents weight regain with lifestyle changes']
@@ -460,7 +460,7 @@ const treatments: Record<string, any[]> = {
     {
       name: 'Weight Gain Treatment',
       subtitle: 'Brimhana (nourishing) therapy',
-      image: '/images/udvartana_scrub.png',
+      image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/udvartana_scrub.png',
       dosha: 'Nourishing & Strengthening',
       desc: 'Brimhana (nourishing) protocol using Ashwagandha, Shatavari, medicated ghee, and muscle-building herbal preparations for healthy weight gain.',
       benefits: ['Promotes healthy muscle mass gain', 'Improves nutrient absorption', 'Strengthens body tissues (Dhatus)']
@@ -648,7 +648,7 @@ function TreatmentIllustration({ name, fallback }: { name: string; fallback: str
 
   return (
     <img 
-      src={fallback || '/images/treatment-room-1.jpg'} 
+      src={fallback || 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/treatment-room-1.jpg'} 
       alt={name} 
       className={baseClass} 
     />
