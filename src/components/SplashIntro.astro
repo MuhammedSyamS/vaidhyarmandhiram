@@ -26,18 +26,18 @@
     if (!splash) return;
 
     // Ensure it only runs once per actual full page load/view transition sequence
-    if (window.__SPLASH_SHOWN__) {
+    if ((window as any).__SPLASH_SHOWN__) {
       splash.style.display = 'none';
       splash.remove();
       return;
     }
-    window.__SPLASH_SHOWN__ = true;
+    (window as any).__SPLASH_SHOWN__ = true;
 
     // Detect reload using modern navigation entries API and legacy fallback
     const navigationEntries = performance.getEntriesByType('navigation');
     let isReload = false;
     if (navigationEntries.length > 0) {
-      isReload = navigationEntries[0].type === 'reload';
+      isReload = (navigationEntries[0] as any).type === 'reload';
     } else if (window.performance && window.performance.navigation) {
       isReload = window.performance.navigation.type === 1;
     }
@@ -52,7 +52,7 @@
     // }
 
     let isDismissing = false;
-    let autoDismissTimeout;
+    let autoDismissTimeout: any;
 
     const dismissSplash = () => {
       if (isDismissing) return;

@@ -10,122 +10,82 @@ import ConsultationOptions from '../components/ConsultationOptions.astro';
 import SheCarePackage from '../components/SheCarePackage.astro';
 import { CheckCircle2, Star, Quote, Award, Shield, FileCheck } from 'lucide-react';
 
-const testimonials = [
+interface Testimonial {
+  type: "youtube" | "video" | "image";
+  name: string;
+  city: string;
+  rating: number;
+  videoId?: string;
+  videoSrc?: string;
+  image?: string | null;
+  text?: string;
+  isSheCare?: boolean;
+}
+
+const testimonials: Testimonial[] = [
   {
-    type: "video",
-    name: "Mrs. Husna Safeer",
-    city: "Postpartum Care",
-    videoSrc: "https://res.cloudinary.com/dhqtquwxc/video/upload/f_auto,q_auto/v1/vaidhyarmandhiram/videos/husna_safeer_testimonial.mp4",
-    image: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/husna_safeer.jpeg",
-    rating: 5,
-    isSheCare: true
-  },
-  {
-    type: "video",
-    name: "Mrs. Lateesha",
-    city: "Ayurveda Therapy",
-    videoSrc: "https://res.cloudinary.com/dhqtquwxc/video/upload/f_auto,q_auto/v1/vaidhyarmandhiram/videos/lateesha_maam_testimonial.mp4",
-    image: null,
-    rating: 5
-  },
-  {
-    type: "video",
-    name: "Miss Athira",
-    city: "Kerala",
-    videoSrc: "https://res.cloudinary.com/dhqtquwxc/video/upload/f_auto,q_auto/v1/vaidhyarmandhiram/videos/miss_athira.mp4",
-    image: null,
-    rating: 5
-  },
-  {
-    type: "video",
-    name: "Mrs. Ummu Kulusu",
-    city: "Ayurveda Therapy",
-    videoSrc: "https://res.cloudinary.com/dhqtquwxc/video/upload/f_auto,q_auto/v1/vaidhyarmandhiram/videos/mrs_ummu_kulusu.mp4",
-    image: null,
-    rating: 5
-  },
-  {
-    type: "video",
-    name: "PCOD Care",
-    city: "Kerala",
-    videoSrc: "https://res.cloudinary.com/dhqtquwxc/video/upload/f_auto,q_auto/v1/vaidhyarmandhiram/videos/pcod_patient_testimonial.mp4",
+    type: "youtube",
+    name: "Happy Patient",
+    city: "Patient Testimonial",
+    videoId: "OKdHB708p6I",
     image: null,
     rating: 5,
-    isSheCare: true
   },
   {
-    type: "video",
+    type: "youtube",
     name: "Happy Patient",
-    city: "Rejuvenation Treatment",
-    videoSrc: "https://res.cloudinary.com/dhqtquwxc/video/upload/f_auto,q_auto/v1/vaidhyarmandhiram/videos/rejuvenation_treatment.mp4",
-    image: null,
-    rating: 5
-  },
-  {
-    type: "video",
-    name: "Happy Patient",
-    city: "She Care Program",
-    videoSrc: "https://res.cloudinary.com/dhqtquwxc/video/upload/f_auto,q_auto/v1/vaidhyarmandhiram/videos/shecare_detan.mp4",
+    city: "Patient Testimonial",
+    videoId: "s-ehW3aamw0",
     image: null,
     rating: 5,
-    isSheCare: true
   },
   {
-    type: "video",
+    type: "youtube",
     name: "Happy Patient",
-    city: "She Care Program",
-    videoSrc: "https://res.cloudinary.com/dhqtquwxc/video/upload/f_auto,q_auto/v1/vaidhyarmandhiram/videos/shecare_happy.mp4",
+    city: "Patient Testimonial",
+    videoId: "tpC90rfXm4I",
     image: null,
     rating: 5,
-    isSheCare: true
   },
   {
-    type: "video",
+    type: "youtube",
     name: "Happy Patient",
-    city: "Menarche Care",
-    videoSrc: "https://res.cloudinary.com/dhqtquwxc/video/upload/f_auto,q_auto/v1/vaidhyarmandhiram/videos/shecare_menarche.mp4",
+    city: "Patient Testimonial",
+    videoId: "AJtjtI7SkQA",
     image: null,
     rating: 5,
-    isSheCare: true
   },
   {
-    type: "video",
+    type: "youtube",
     name: "Happy Patient",
-    city: "Postpartum Care",
-    videoSrc: "https://res.cloudinary.com/dhqtquwxc/video/upload/f_auto,q_auto/v1/vaidhyarmandhiram/videos/shecare_postpartum_2.mp4",
+    city: "Patient Testimonial",
+    videoId: "s0l83M4YfiU",
     image: null,
     rating: 5,
-    isSheCare: true
   },
   {
-    type: "video",
-    name: "Valuable Customer",
-    city: "Kerala",
-    videoSrc: "https://res.cloudinary.com/dhqtquwxc/video/upload/f_auto,q_auto/v1/vaidhyarmandhiram/videos/valuable_customer.mp4",
-    image: null,
-    rating: 5
-  },
-  {
-    type: "video",
+    type: "youtube",
     name: "Happy Patient",
-    city: "Positive Review",
-    videoSrc: "https://res.cloudinary.com/dhqtquwxc/video/upload/f_auto,q_auto/v1/vaidhyarmandhiram/videos/positive_review.mp4",
+    city: "Patient Testimonial",
+    videoId: "obJ0o76Clm0",
     image: null,
-    rating: 5
+    rating: 5,
   },
+
+
   {
-    type: "video",
+    type: "youtube",
     name: "Happy Patient",
-    city: "Discover Love",
-    videoSrc: "https://res.cloudinary.com/dhqtquwxc/video/upload/f_auto,q_auto/v1/vaidhyarmandhiram/videos/discover_love.mp4",
+    city: "Patient Testimonial",
+    videoId: "hFZLc__xZRM",
     image: null,
-    rating: 5
+    rating: 5,
   },
+
   {
     type: "image",
     name: "Mrs. Abhinu Sreejith",
     city: "Postpartum Care",
-    text: "Thank you for choosing us! Experience the best postpartum care with Vaidyarmandiram.",
     image: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/abhinu_sreejith.jpeg",
     rating: 5,
     isSheCare: true
@@ -193,7 +153,7 @@ const testimonials = [
           return (
             <div class="flex flex-col md:flex-row items-center gap-1.5 sm:gap-3 md:gap-4 bg-white p-2.5 sm:p-4 md:p-5 rounded-lg md:rounded-xl border border-accent-gold/15 shadow-sm hover:shadow-md md:hover:-translate-y-0.5 transition-all duration-300 group text-center md:text-left">
               <div class="w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary/5 flex items-center justify-center border border-accent-gold/10 group-hover:bg-accent-gold/10 transition-colors duration-300 shrink-0">
-                <IconComponent class="text-accent-gold w-4 h-4 md:w-6 md:h-6" />
+                <IconComponent className="text-accent-gold w-4 h-4 md:w-6 md:h-6" />
               </div>
               <div class="flex flex-col">
                 <span class="lang-en text-[7px] sm:text-[9px] md:text-[10px] font-sans tracking-wider md:tracking-[0.15em] text-text-muted uppercase font-bold">{item.en}</span>
@@ -239,7 +199,7 @@ const testimonials = [
           <div class="flex items-center gap-1.5">
             <span class="font-bold text-gray-900 text-sm">4.9</span>
             <div class="flex gap-0.5">
-              {[...Array(5)].map(() => <Star class="text-[#fbbc05] fill-[#fbbc05]" size={14} />)}
+              {[...Array(5)].map(() => <Star className="text-[#fbbc05] fill-[#fbbc05]" size={14} />)}
             </div>
           </div>
           <span class="text-[10px] text-gray-500 font-sans tracking-wide">Based on 350+ reviews</span>
@@ -253,36 +213,14 @@ const testimonials = [
         class="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 pb-6 md:pb-0 scrollbar-none items-stretch"
       >
         {testimonials.map(t => (
-          <div class="bg-white p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-gray-100 rounded-2xl relative hover:shadow-xl transition-all duration-300 w-[85vw] sm:w-[320px] snap-center shrink-0 testimonial-card flex flex-col group">
-            
-            <div class="flex justify-between items-start mb-4 relative z-0">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100 border border-gray-200 shrink-0 shadow-sm">
-                  <img src={t.type !== 'video' && t.image ? t.image : `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=1c3e35&color=fff&font-size=0.4`} alt={t.name} class="w-full h-full object-cover" />
-                </div>
-                <div class="flex flex-col justify-center">
-                  <p class="font-bold text-primary-dark font-sans text-sm leading-tight">{t.name}</p>
-                  <p class="text-[10px] text-text-muted font-sans mt-0.5">{t.city}</p>
-                </div>
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-5 h-5 shrink-0 opacity-90">
-                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
-                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
-                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
-                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
-              </svg>
-            </div>
-            
-            <div class="flex gap-0.5 mb-3">
-              {[...Array(t.rating)].map(() => <Star class="text-[#fbbc05] fill-[#fbbc05]" size={13} />)}
-            </div>
+          <div class="bg-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-gray-100 rounded-2xl relative hover:shadow-xl transition-all duration-300 w-[75vw] sm:w-[260px] md:w-[280px] snap-center shrink-0 testimonial-card flex flex-col group overflow-hidden">
             
             {t.type === 'video' ? (
-              <div class="relative w-full aspect-[9/16] rounded-xl overflow-hidden bg-black flex-grow shadow-inner cursor-pointer video-wrapper group">
+              <div class="relative w-full aspect-[9/16] overflow-hidden bg-black flex-grow cursor-pointer video-wrapper group">
                 <video 
-                  src={t.videoSrc} 
-                  poster={t.image}
-                  loop muted playsinline preload="metadata"
+                  data-src={t.videoSrc} 
+                  poster={t.image || undefined}
+                  loop muted playsinline preload="none"
                   class="absolute inset-0 w-full h-full object-cover opacity-95 testimonial-video"
                 ></video>
                 <div class="absolute inset-0 bg-black/30 flex items-center justify-center transition-opacity duration-300 video-overlay group-hover:bg-black/40">
@@ -292,25 +230,40 @@ const testimonials = [
                   </button>
                 </div>
               </div>
+            ) : t.type === 'youtube' ? (
+              <div class="relative w-full aspect-[9/16] overflow-hidden bg-black flex-grow">
+                <iframe 
+                  src={`https://www.youtube.com/embed/${t.videoId}?rel=0&modestbranding=1&controls=1&playsinline=1`} 
+                  class="absolute inset-0 w-full h-full border-0"
+                  title={t.name}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen
+                ></iframe>
+              </div>
             ) : t.type === 'image' && t.image ? (
-              <>
-                <p class="text-gray-600 leading-relaxed font-sans text-sm italic mb-4">"{t.text}"</p>
-                <div class="relative w-full rounded-xl overflow-hidden bg-gray-100 flex-grow shadow-inner border border-gray-100">
-                  <img src={t.image} alt="Patient photo" class="w-full h-full object-cover" />
-                </div>
-              </>
+              <div class="relative w-full aspect-[9/16] overflow-hidden bg-gray-100 flex-grow border-b border-gray-50">
+                <img src={t.image} alt="Patient photo" class="w-full h-full object-cover" />
+              </div>
             ) : (
-              <p class="text-gray-600 leading-relaxed font-sans text-sm flex-grow italic">"{t.text}"</p>
+              <div class="p-6 flex-grow flex items-center justify-center text-center">
+                <p class="text-gray-600 leading-relaxed font-sans text-sm italic">"{t.text}"</p>
+              </div>
             )}
+
+            <div class="p-4 sm:p-5 flex flex-col items-center justify-center text-center bg-white border-t border-gray-50 z-10 relative">
+              <p class="font-bold text-primary-dark font-sans text-base leading-tight">{t.name}</p>
+              <p class="text-[11px] text-accent-gold font-sans mt-1 uppercase tracking-[0.1em] font-semibold">{t.city}</p>
+            </div>
+
           </div>
         ))}
       </div>
 
       <!-- Navigation Arrows (Absolute positioning on sides) -->
-      <button id="testimonial-prev" aria-label="Previous Testimonial" class="absolute top-1/2 -left-2 md:-left-4 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur shadow-[0_4px_20px_rgba(0,0,0,0.12)] rounded-full border border-accent-gold/20 flex items-center justify-center text-accent-gold hover:bg-accent-gold hover:text-white hover:scale-105 transition-all duration-300 z-10 hidden sm:flex group">
+      <button id="testimonial-prev" aria-label="Previous Testimonial" class="absolute top-1/2 -left-2 md:-left-4 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur shadow-[0_4px_20px_rgba(0,0,0,0.12)] rounded-full border border-accent-gold/20 items-center justify-center text-accent-gold hover:bg-accent-gold hover:text-white hover:scale-105 transition-all duration-300 z-10 hidden sm:flex group">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-0.5 transition-transform"><path d="m15 18-6-6 6-6"/></svg>
       </button>
-      <button id="testimonial-next" aria-label="Next Testimonial" class="absolute top-1/2 -right-2 md:-right-4 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur shadow-[0_4px_20px_rgba(0,0,0,0.12)] rounded-full border border-accent-gold/20 flex items-center justify-center text-accent-gold hover:bg-accent-gold hover:text-white hover:scale-105 transition-all duration-300 z-10 hidden sm:flex group">
+      <button id="testimonial-next" aria-label="Next Testimonial" class="absolute top-1/2 -right-2 md:-right-4 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur shadow-[0_4px_20px_rgba(0,0,0,0.12)] rounded-full border border-accent-gold/20 items-center justify-center text-accent-gold hover:bg-accent-gold hover:text-white hover:scale-105 transition-all duration-300 z-10 hidden sm:flex group">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
       </button>
     </div>
@@ -328,9 +281,11 @@ const testimonials = [
     <script>
       function setupTestimonialScroll() {
         const container = document.getElementById('testimonials-scroll-container') as HTMLElement;
+        if (!container || container.dataset.initialized) return;
+        container.dataset.initialized = 'true';
+
         const prevBtn = document.getElementById('testimonial-prev');
         const nextBtn = document.getElementById('testimonial-next');
-        if (!container) return;
 
         // Clone nodes for infinite scroll effect
         const originalItems = Array.from(container.querySelectorAll('.testimonial-card')) as HTMLElement[];
@@ -505,14 +460,31 @@ const testimonials = [
                 }
               });
 
-              vid.play().then(() => {
+              if (!vid.getAttribute('src')) {
+                const dataSrc = vid.getAttribute('data-src');
+                if (dataSrc) {
+                  vid.setAttribute('src', dataSrc);
+                }
+              }
+
+              const playPromise = vid.play();
+              if (playPromise !== undefined) {
+                playPromise.then(() => {
+                  vid.muted = false;
+                  playIcon?.classList.add('hidden');
+                  pauseIcon?.classList.remove('hidden');
+                  overlay?.classList.add('opacity-0'); // Hide overlay to watch video clearly
+                  wrapper.classList.add('playing');
+                }).catch((err) => {
+                  console.error('Video playback failed:', err);
+                });
+              } else {
                 vid.muted = false;
-              }).catch(()=>{});
-              
-              playIcon?.classList.add('hidden');
-              pauseIcon?.classList.remove('hidden');
-              overlay?.classList.add('opacity-0'); // Hide overlay to watch video clearly
-              wrapper.classList.add('playing');
+                playIcon?.classList.add('hidden');
+                pauseIcon?.classList.remove('hidden');
+                overlay?.classList.add('opacity-0');
+                wrapper.classList.add('playing');
+              }
               
               // Permanent pause of carousel while watching
               isUserInteracting = true;

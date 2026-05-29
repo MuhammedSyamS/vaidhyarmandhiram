@@ -1,201 +1,107 @@
 ---
-import { ArrowRight, Quote, MapPin, Users, Clock, Sparkles } from 'lucide-react';
-
-const legacyPoints = [
-  { en: 'Founded in Pangode, Trivandrum with a vision to revive authentic Ayurveda.', ml: 'ആധികാരിക ആയുർവേദം പുനരുജ്ജീവിപ്പിക്കാൻ തിരുവനന്തപുരം പാങ്ങോട് സ്ഥാപിതം.' },
-  { en: 'Passed down through three generations, preserving the purest healing traditions.', ml: 'ഏറ്റവും ശുദ്ധമായ ചികിത്സാ പാരമ്പര്യം സംരക്ഷിച്ച്, മൂന്ന് തലമുറകൾക്ക് കൈമാറി.' },
-  { en: 'Certified by NABH, ISO 9001:2015 and Ministry of AYUSH, Government of India.', ml: 'NABH, ISO 9001:2015, ആയുഷ് മന്ത്രാലയം എന്നിവ സർട്ടിഫൈ ചെയ്ത സ്ഥാപനം.' },
-];
+import { ArrowRight } from 'lucide-react';
 ---
 
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-
-  <!-- ══════════════════════════════════════════
-       Left Column: Portrait (5/12)
-  ══════════════════════════════════════════ -->
-  <div class="lg:col-span-5 relative animate-on-scroll opacity-0 translate-x-[-30px] transition-all duration-1000 ease-out group/founder-card">
-
-    <!-- Glowing halo behind card -->
-    <div class="absolute inset-0 -z-10 rounded-3xl blur-3xl opacity-20 bg-accent-gold translate-x-4 translate-y-4 pointer-events-none transition-all duration-700 group-hover/founder-card:opacity-35 group-hover/founder-card:translate-x-2 group-hover/founder-card:translate-y-2"></div>
-
-    <!-- Offset border shadow -->
-    <div class="absolute inset-0 border border-accent-gold/25 group-hover/founder-card:border-accent-gold/70 rounded-2xl pointer-events-none translate-x-4 translate-y-4 group-hover/founder-card:translate-x-1 group-hover/founder-card:translate-y-1 transition-all duration-700 ease-out -z-10"></div>
-
-    <!-- Main Card -->
-    <div class="relative z-10 rounded-2xl border-2 border-accent-gold/35 p-3 bg-white shadow-[0_30px_65px_rgba(0,0,0,0.2)] group-hover/founder-card:scale-[1.01] transition-transform duration-500 ease-out">
-
-      <!-- All 4 corner ornaments -->
-      <div class="absolute -top-3 -left-3 w-7 h-7 z-30 border-t-2 border-l-2 border-accent-gold/60 rounded-tl-md"></div>
-      <div class="absolute -top-3 -right-3 w-7 h-7 z-30 border-t-2 border-r-2 border-accent-gold/60 rounded-tr-md"></div>
-      <div class="absolute -bottom-3 -left-3 w-7 h-7 z-30 border-b-2 border-l-2 border-accent-gold/60 rounded-bl-md"></div>
-      <div class="absolute -bottom-3 -right-3 w-7 h-7 z-30 border-b-2 border-r-2 border-accent-gold/60 rounded-br-md"></div>
-
-      <!-- Photo -->
-      <div class="relative rounded-xl overflow-hidden aspect-[3/4] border border-accent-gold/20 bg-primary-dark">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto py-8">
+  
+  <!-- Left Column: Portrait -->
+  <div class="relative animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 flex justify-center lg:justify-end pr-0 lg:pr-8">
+    <div class="relative w-[85%] sm:w-[70%] lg:w-[85%] aspect-[3/4] rounded-2xl overflow-hidden shadow-xl" id="spotlight-carousel">
+      
+      <!-- Slide 1: Founder -->
+      <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100 spotlight-slide">
         <img
           src="https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/vmfounder.jpg"
-          alt="Dr. P. Abdul Sathar Gurukkal - Founder, Vaidyarmandiram Ayurveda Hospital Kerala"
-          class="w-full h-full object-cover object-[center_15%] scale-[1.05] group-hover/founder-card:scale-[1.1] transition-transform duration-[7000ms] ease-out filter brightness-[0.97] contrast-[1.03]"
+          alt="Dr. P. Abdul Sathar Gurukkal - Founder"
+          class="w-full h-full object-cover object-[center_10%] scale-125"
         />
-
-        <!-- Gradient overlay -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent"></div>
-
-        <!-- Photo inner corner ticks -->
-        <div class="absolute top-3 left-3 w-5 h-5 border-t border-l border-accent-gold/55"></div>
-        <div class="absolute top-3 right-3 w-5 h-5 border-t border-r border-accent-gold/55"></div>
-        <div class="absolute bottom-14 left-3 w-5 h-5 border-b border-l border-accent-gold/55"></div>
-        <div class="absolute bottom-14 right-3 w-5 h-5 border-b border-r border-accent-gold/55"></div>
-
-        <!-- Floating badge chips on photo -->
-        <div class="absolute top-4 left-4 flex flex-col gap-2 z-20">
-          <div class="flex items-center gap-1.5 bg-black/60 backdrop-blur-sm border border-accent-gold/30 rounded-full px-2.5 py-1">
-            <div class="w-1.5 h-1.5 rounded-full bg-accent-gold"></div>
-            <span class="text-[9px] font-sans font-bold uppercase tracking-wider text-white">NABH Accredited</span>
-          </div>
-          <div class="flex items-center gap-1.5 bg-black/60 backdrop-blur-sm border border-accent-gold/30 rounded-full px-2.5 py-1">
-            <div class="w-1.5 h-1.5 rounded-full bg-accent-gold"></div>
-            <span class="text-[9px] font-sans font-bold uppercase tracking-wider text-white">ISO 9001:2015</span>
-          </div>
-        </div>
-
-        <!-- Estd badge top-right -->
-        <div class="absolute top-4 right-4 z-20">
-          <div class="w-12 h-12 rounded-full bg-accent-gold/95 border-2 border-white/20 flex flex-col items-center justify-center shadow-lg">
-            <span class="text-[7px] font-sans uppercase tracking-wider text-primary-dark font-bold leading-none">Estd.</span>
-            <span class="text-sm font-serif font-bold text-primary-dark leading-none mt-0.5">1983</span>
-          </div>
-        </div>
-
-        <!-- Name plaque inside photo bottom -->
-        <div class="absolute bottom-0 left-0 right-0 px-4 py-4 text-center bg-gradient-to-t from-black/95 to-transparent pt-10">
-          <h3 class="lang-en text-white font-serif font-bold text-sm tracking-wide drop-shadow-lg">Dr. P. Abdul Sathar Gurukkal</h3>
-          <h3 class="lang-ml font-malayalam text-white font-bold text-xs leading-snug">ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</h3>
-          <div class="flex items-center justify-center gap-2 mt-1.5">
-            <div class="h-px w-8 bg-accent-gold/60"></div>
-            <p class="lang-en text-[8px] uppercase tracking-widest text-accent-gold font-sans font-bold">Founder</p>
-            <div class="h-px w-8 bg-accent-gold/60"></div>
-          </div>
-          <p class="lang-ml font-malayalam text-[8px] text-accent-gold/90 mt-0.5 leading-none">സ്ഥാപകൻ</p>
+        <!-- Subtle gradient at bottom for name -->
+        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-5 sm:p-6 pt-20">
+          <h3 class="lang-en text-white font-serif font-bold text-lg sm:text-xl tracking-wide leading-tight">Dr. P. Abdul Sathar Gurukkal</h3>
+          <h3 class="lang-ml font-malayalam text-white font-bold text-base sm:text-lg leading-tight">ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</h3>
+          <p class="lang-en text-accent-gold text-xs sm:text-sm font-sans uppercase tracking-[0.2em] mt-1.5 font-semibold">Founder</p>
+          <p class="lang-ml font-malayalam text-accent-gold text-xs sm:text-sm mt-1">സ്ഥാപകൻ</p>
         </div>
       </div>
 
-    </div><!-- /Main Card -->
+      <!-- Slide 2: Co-founder -->
+      <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 spotlight-slide">
+        <img
+          src="/images/Jafarkhan.jpg"
+          alt="P. Jafar Khan Gurukkal - Co-founder & Managing Director"
+          class="w-full h-full object-cover object-[35%_10%]"
+        />
+        <!-- Subtle gradient at bottom for name -->
+        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-5 sm:p-6 pt-20">
+          <h3 class="lang-en text-white font-serif font-bold text-lg sm:text-xl tracking-wide leading-tight">P. Jafar Khan Gurukkal</h3>
+          <h3 class="lang-ml font-malayalam text-white font-bold text-base sm:text-lg leading-tight">പി. ജാഫർ ഖാൻ ഗുരുക്കൾ</h3>
+          <p class="lang-en text-accent-gold text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.2em] mt-1.5 font-semibold">Co-founder & Managing Director</p>
+          <p class="lang-ml font-malayalam text-accent-gold text-[10px] sm:text-[11px] mt-1">സഹസ്ഥാപകൻ & മാനേജിംഗ് ഡയറക്ടർ</p>
+        </div>
+      </div>
 
-    <!-- Floating stat pill — bottom right of card -->
-    <div class="absolute -bottom-5 -right-4 z-40 bg-primary-dark border border-accent-gold/30 rounded-2xl px-4 py-2.5 shadow-xl flex items-center gap-3">
-      <div class="text-center">
-        <p class="text-accent-gold font-serif font-bold text-lg leading-none"><span class="founder-stat-number" data-value="25">0</span>K+</p>
-        <p class="lang-en text-white/60 text-[8px] font-sans uppercase tracking-wider mt-0.5">Patients</p>
-        <p class="lang-ml font-malayalam text-white/60 text-[8px] mt-0.5">രോഗികൾ</p>
-      </div>
-      <div class="w-px h-8 bg-accent-gold/20"></div>
-      <div class="text-center">
-        <p class="text-accent-gold font-serif font-bold text-lg leading-none"><span class="founder-stat-number" data-value="40">0</span>+</p>
-        <p class="lang-en text-white/60 text-[8px] font-sans uppercase tracking-wider mt-0.5">Years</p>
-        <p class="lang-ml font-malayalam text-white/60 text-[8px] mt-0.5">വർഷം</p>
-      </div>
-      <div class="w-px h-8 bg-accent-gold/20"></div>
-      <div class="text-center">
-        <p class="text-accent-gold font-serif font-bold text-lg leading-none"><span class="founder-stat-number" data-value="3">0</span></p>
-        <p class="lang-en text-white/60 text-[8px] font-sans uppercase tracking-wider mt-0.5">Centres</p>
-        <p class="lang-ml font-malayalam text-white/60 text-[8px] mt-0.5">കേന്ദ്രം</p>
-      </div>
     </div>
+  </div>
 
-  </div><!-- /Left Column -->
-
-
-  <!-- ══════════════════════════════════════════
-       Right Column: Bio Content (7/12)
-  ══════════════════════════════════════════ -->
-  <div class="lg:col-span-7 space-y-7 animate-on-scroll opacity-0 translate-x-[30px] transition-all duration-1000 ease-out delay-200 lg:pl-4">
-
-    <!-- Section label + heading -->
-    <div class="space-y-4">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-px bg-accent-gold/50"></div>
-        <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.3em] text-xs font-bold">Our Founder</span>
-        <span class="lang-ml font-malayalam text-accent-gold text-sm font-semibold">ഞങ്ങളുടെ സ്ഥാപകൻ</span>
-      </div>
-
-      <h2 class="lang-en text-4xl md:text-5xl text-primary-dark leading-tight font-serif">
-        Decades of Healing, <br/>
-        <span class="text-accent-gold italic">Rooted in Tradition</span>
+  <!-- Right Column: Content -->
+  <div class="space-y-8 animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 delay-200 lg:pl-6">
+    
+    <div>
+      <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.2em] text-sm font-bold block mb-3">Our Legacy</span>
+      <span class="lang-ml font-malayalam text-accent-gold text-sm font-bold block mb-3">ഞങ്ങളുടെ പാരമ്പര്യം</span>
+      
+      <h2 class="lang-en text-4xl md:text-5xl text-primary-dark font-serif leading-tight">
+        Preserving the pure essence of <span class="italic text-accent-gold">Ayurveda.</span>
       </h2>
-      <h2 class="lang-ml font-malayalam text-3xl md:text-4xl text-primary-dark leading-tight font-bold">
-        പാരമ്പര്യത്തിൽ അധിഷ്ഠിതമായ<br/>
-        <span class="text-accent-gold">പതിറ്റാണ്ടുകളുടെ സൗഖ്യം</span>
+      <h2 class="lang-ml font-malayalam text-3xl md:text-4xl text-primary-dark font-bold leading-tight">
+        ആയുർവേദത്തിന്റെ ശുദ്ധമായ <span class="text-accent-gold">സത്ത സംരക്ഷിക്കുന്നു.</span>
       </h2>
-
-      <!-- Gold divider -->
-      <div class="flex items-center gap-3 pt-1">
-        <div class="h-[1px] w-20 bg-gradient-to-r from-accent-gold/70 to-transparent"></div>
-        <div class="w-1.5 h-1.5 rotate-45 bg-accent-gold shrink-0"></div>
-        <div class="h-[1px] w-8 bg-accent-gold/20"></div>
-      </div>
     </div>
 
-    <!-- Biography -->
-    <p class="lang-en first-letter:text-5xl first-letter:font-serif first-letter:font-bold first-letter:text-accent-gold first-letter:mr-3 first-letter:float-left first-letter:leading-[0.8] first-letter:mt-1 text-primary-dark/80 font-serif text-base sm:text-lg leading-relaxed">
-      Founded in 1983 in Pangode, Trivandrum, by Dr. P. Abdul Sathar Gurukkal, our institution was created with a single vision — to preserve and share the sacred wisdom of traditional healing with every soul who seeks it.
-    </p>
-    <p class="lang-ml font-malayalam text-primary-dark/85 font-semibold text-base sm:text-lg leading-relaxed text-justify">
-      1983-ൽ തിരുവനന്തപുരം പാങ്ങോട്, ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ സ്ഥാപിച്ച ഈ സ്ഥാപനം, പരമ്പരാഗത ചികിത്സയുടെ പാവനമായ അറിവുകൾ സംരക്ഷിക്കുകയും പ്രചരിപ്പിക്കുകയും ചെയ്യുക എന്ന ഏക ലക്ഷ്യത്തോടെ രൂപീകൃതമായത്.
-    </p>
-
-    <!-- Legacy bullet points -->
-    <div class="space-y-3">
-      {legacyPoints.map(point => (
-        <div class="flex items-start gap-3 group/point">
-          <div class="w-5 h-5 rounded-full bg-accent-gold/10 border border-accent-gold/30 flex items-center justify-center shrink-0 mt-0.5 group-hover/point:bg-accent-gold group-hover/point:border-accent-gold transition-all duration-300">
-            <div class="w-1.5 h-1.5 rounded-full bg-accent-gold group-hover/point:bg-white transition-colors duration-300"></div>
-          </div>
-          <div>
-            <p class="lang-en text-sm font-sans text-primary-dark/80 leading-relaxed">{point.en}</p>
-            <p class="lang-ml font-malayalam text-sm text-primary-dark/80 leading-relaxed">{point.ml}</p>
-          </div>
-        </div>
-      ))}
+    <div class="space-y-6 text-gray-600 font-sans text-lg leading-relaxed">
+      <p class="lang-en">
+        Founded in 1983 in Pangode, Trivandrum, by <strong>Dr. P. Abdul Sathar Gurukkal</strong>, our institution was established with a singular vision — to preserve and share the sacred wisdom of traditional healing with every soul who seeks it.
+      </p>
+      <p class="lang-ml font-malayalam text-justify font-medium">
+        1983-ൽ തിരുവനന്തപുരം പാങ്ങോട്, ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ സ്ഥാപിച്ച ഈ സ്ഥാപനം, പരമ്പരാഗത ചികിത്സയുടെ പാവനമായ അറിവുകൾ സംരക്ഷിക്കുകയും പ്രചരിപ്പിക്കുകയും ചെയ്യുക എന്ന ഏക ലക്ഷ്യത്തോടെ രൂപീകൃതമായത്.
+      </p>
+      
+      <p class="lang-en">
+        Passed down through three generations, we continue to uphold the purest practices of Ayurveda. Today, we are proud to be accredited by <strong>NABH</strong> and the <strong>Ministry of AYUSH</strong>, ensuring world-class care rooted in ancient wisdom.
+      </p>
+      <p class="lang-ml font-malayalam text-justify font-medium">
+        മൂന്ന് തലമുറകളായി കൈമാറി വന്ന ഞങ്ങൾ ആയുർവേദത്തിന്റെ ഏറ്റവും ശുദ്ധമായ രീതികൾ തുടരുന്നു. ഇന്ന്, NABH, ആയുഷ് മന്ത്രാലയം എന്നിവയുടെ അംഗീകാരത്തോടെ മികച്ച ചികിത്സ ഉറപ്പാക്കുന്നതിൽ ഞങ്ങൾ അഭിമാനിക്കുന്നു.
+      </p>
     </div>
 
-    <!-- Quote block — redesigned as a left-border accent -->
-    <div class="relative pl-6 border-l-4 border-accent-gold py-2">
-      <div class="absolute top-0 left-[-2px] w-1 h-4 bg-primary-dark"></div>
-      <div class="absolute bottom-0 left-[-2px] w-1 h-4 bg-primary-dark"></div>
-      <p class="lang-en font-serif italic text-lg text-primary-dark/90 leading-relaxed">
+    <blockquote class="pl-6 border-l-2 border-accent-gold py-2">
+      <p class="lang-en font-serif italic text-xl text-primary-dark/90 leading-relaxed">
         "Healing is not merely the absence of disease, but the harmonious alignment of body, mind, and spirit with the laws of nature."
       </p>
-      <p class="lang-ml font-malayalam font-semibold text-base text-primary-dark/85 leading-relaxed mt-2">
+      <p class="lang-ml font-malayalam font-semibold text-lg text-primary-dark/90 leading-relaxed">
         "രോഗമില്ലാത്ത അവസ്ഥ മാത്രമല്ല ആരോഗ്യം, ശരീരവും മനസ്സും ആത്മാവും പ്രകൃതിനിയമങ്ങളുമായി പൊരുത്തപ്പെടുന്ന സന്തുലിതാവസ്ഥയാണ്."
       </p>
-      <p class="lang-en mt-3 text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-accent-gold">— Dr. P. Abdul Sathar Gurukkal</p>
-      <p class="lang-ml font-malayalam mt-1 text-[9px] text-accent-gold font-bold">— ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</p>
-    </div>
+    </blockquote>
 
-    <!-- CTA row -->
-    <div class="flex flex-wrap items-center gap-4 pt-1">
-      <a
-        href="/about"
-        class="inline-flex items-center gap-2.5 bg-primary-dark text-background-parchment hover:bg-accent-gold hover:text-primary-dark transition-all duration-300 font-serif font-bold text-sm px-7 py-3.5 rounded-lg group shadow-lg hover:shadow-accent-gold/25 hover:-translate-y-0.5"
-      >
-        <span class="lang-en">Our Full Story</span>
-        <span class="lang-ml font-malayalam normal-case tracking-normal">ഞങ്ങളെ കുറിച്ച്</span>
-        <ArrowRight size={15} class="transition-transform group-hover:translate-x-1 shrink-0" />
+    <div class="pt-4">
+      <a href="/about" class="inline-flex items-center gap-3 text-primary-dark font-sans font-bold text-base hover:text-accent-gold transition-colors group pb-1 border-b-2 border-primary-dark hover:border-accent-gold">
+        <span class="lang-en">Discover Our Full Story</span>
+        <span class="lang-ml font-malayalam">കൂടുതൽ അറിയുക</span>
+        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
       </a>
     </div>
 
-  </div><!-- /Right Column -->
+  </div>
 
-</div><!-- /Grid -->
+</div>
 
 <script>
   function initFounderSpotlightAnimation() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.remove('opacity-0', 'translate-x-[-30px]', 'translate-x-[30px]');
-          entry.target.classList.add('opacity-100', 'translate-x-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-8');
+          entry.target.classList.add('opacity-100', 'translate-y-0');
           observer.unobserve(entry.target);
         }
       });
@@ -213,21 +119,46 @@ const legacyPoints = [
           const duration = 2000;
           const startTime = performance.now();
           const updateCount = (currentTime: number) => {
-            const progress = Math.min((currentTime - startTime) / duration, 1);
-            const easeOut = progress * (2 - progress);
-            target.innerText = Math.floor(easeOut * endValue).toLocaleString();
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const current = Math.floor(progress * endValue);
+            target.innerText = current.toString();
             if (progress < 1) requestAnimationFrame(updateCount);
-            else target.innerText = endValue.toLocaleString();
           };
           requestAnimationFrame(updateCount);
           statObserver.unobserve(target);
         }
       });
-    }, { threshold: 0.1 });
+    });
+
+    document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
+  }
+
+  function initSpotlightCarousel() {
+    const slides = document.querySelectorAll('.spotlight-slide');
+    if (slides.length < 2) return;
     
-    document.querySelectorAll('.founder-stat-number').forEach(stat => statObserver.observe(stat));
+    let activeIdx = 0;
+    
+    if ((window as any).spotlightCarouselTimer) {
+      clearInterval((window as any).spotlightCarouselTimer);
+    }
+    
+    (window as any).spotlightCarouselTimer = setInterval(() => {
+      slides[activeIdx].classList.remove('opacity-100');
+      slides[activeIdx].classList.add('opacity-0');
+      
+      activeIdx = (activeIdx + 1) % slides.length;
+      
+      slides[activeIdx].classList.remove('opacity-0');
+      slides[activeIdx].classList.add('opacity-100');
+    }, 5000);
   }
 
   initFounderSpotlightAnimation();
-  document.addEventListener('astro:page-load', initFounderSpotlightAnimation);
+  initSpotlightCarousel();
+  document.addEventListener('astro:page-load', () => {
+    initFounderSpotlightAnimation();
+    initSpotlightCarousel();
+  });
 </script>

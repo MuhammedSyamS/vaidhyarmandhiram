@@ -1,0 +1,22 @@
+<div id="testimonials-scroll-container" data-test="true"></div>
+<button id="testimonial-prev"></button>
+<button id="testimonial-next"></button>
+
+<script>
+      function setupTestimonialScroll() {
+        const container = document.getElementById('testimonials-scroll-container');
+        if (!container || container.dataset.initialized) return;
+        container.dataset.initialized = 'true';
+
+        const prevBtn = document.getElementById('testimonial-prev');
+        const nextBtn = document.getElementById('testimonial-next');
+
+        // Clone nodes for infinite scroll effect
+        const originalItems = Array.from(container.querySelectorAll('.testimonial-card'));
+        if (originalItems.length === 0) return;
+
+        const originalCount = originalItems.length;
+        console.log("Success");
+      }
+      setupTestimonialScroll();
+</script>

@@ -823,7 +823,9 @@ export default function TreatmentTabs() {
               <h4 className="text-2xl text-primary-dark">{ml ? 'പൂർവ്വകർമ്മ' : 'Purvakarma'}</h4>
               <span className="text-xs font-sans uppercase tracking-widest text-earth font-bold">{ml ? 'തയ്യാറെടുപ്പ് ഘട്ടം' : 'Preparatory Stage'}</span>
               <p className="text-text-muted font-sans text-sm leading-relaxed">
-                Preparing the body via <strong>Snehana</strong> (oleation) and <strong>Swedana</strong> (fomentation/sweating) to loosen deep-seated toxins and guide them to primary channels.
+                {ml 
+                 ? <span>ശരീരത്തിലെ വിഷാംശങ്ങളെ പുറംതള്ളാൻ <strong>സ്നേഹനം</strong> (ഓയിൽ മസാജ്), <strong>സ്വേദനം</strong> (വിയർപ്പിക്കൽ) എന്നീ പ്രക്രിയകളിലൂടെ ശരീരത്തെ തയ്യാറാക്കുന്നു.</span>
+                 : <span>Preparing the body via <strong>Snehana</strong> (oleation) and <strong>Swedana</strong> (fomentation/sweating) to loosen deep-seated toxins and guide them to primary channels.</span>}
               </p>
             </div>
 
@@ -832,7 +834,9 @@ export default function TreatmentTabs() {
               <h4 className="text-2xl text-primary-dark">{ml ? 'പ്രധാന കർമ്മ' : 'Pradhana Karma'}</h4>
               <span className="text-xs font-sans uppercase tracking-widest text-earth font-bold">{ml ? 'ശുദ്ധീകരണ ഘട്ടം' : 'Elimination Stage'}</span>
               <p className="text-text-muted font-sans text-sm leading-relaxed">
-                The actual elimination of toxins (<strong>Panchakarma</strong>) using the five specialized cleansing actions to flush out deep cellular wastes based on your primary dosha imbalance.
+                {ml
+                 ? <span>നിങ്ങളുടെ പ്രധാന ദോഷ അസന്തുലിതാവസ്ഥ അടിസ്ഥാനമാക്കി അഞ്ച് പ്രത്യേക ശുദ്ധീകരണ പ്രവർത്തനങ്ങൾ (<strong>പഞ്ചകർമ്മം</strong>) ഉപയോഗിച്ച് ശരീരത്തിലെ കോശങ്ങളിലെ മാലിന്യങ്ങളെ നീക്കം ചെയ്യുന്നു.</span>
+                 : <span>The actual elimination of toxins (<strong>Panchakarma</strong>) using the five specialized cleansing actions to flush out deep cellular wastes based on your primary dosha imbalance.</span>}
               </p>
             </div>
 
@@ -841,7 +845,9 @@ export default function TreatmentTabs() {
               <h4 className="text-2xl text-primary-dark">{ml ? 'പശ്ചാത് കർമ്മ' : 'Paschat Karma'}</h4>
               <span className="text-xs font-sans uppercase tracking-widest text-earth font-bold">{ml ? 'ചികിത്സാനന്തര പരിചരണം' : 'Post-Treatment Care'}</span>
               <p className="text-text-muted font-sans text-sm leading-relaxed">
-                Post-treatment rehabilitation, including <strong>Samsarjana Krama</strong> (gradual reintroduction of diet) to rekindle the digestive fire (<strong>Agni</strong>) and build vitality.
+                {ml
+                 ? <span>ദഹനശേഷി (<strong>അഗ്നി</strong>) വീണ്ടെടുക്കുന്നതിനും ഊർജ്ജം വർദ്ധിപ്പിക്കുന്നതിനുമായി <strong>സംസർജ്ജന ക്രമം</strong> (ഭക്ഷണക്രമം പടിപടിയായി പുനരാരംഭിക്കൽ) ഉൾപ്പെടെയുള്ള ചികിത്സാനന്തര പരിചരണം.</span>
+                 : <span>Post-treatment rehabilitation, including <strong>Samsarjana Krama</strong> (gradual reintroduction of diet) to rekindle the digestive fire (<strong>Agni</strong>) and build vitality.</span>}
               </p>
             </div>
           </div>

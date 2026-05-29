@@ -21,15 +21,23 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
       
       <div class="inline-flex items-center justify-center gap-4 mb-5">
         <div class="w-12 h-px bg-gradient-to-r from-transparent to-accent-gold"></div>
-        <span class="text-accent-gold uppercase tracking-[0.3em] text-[10px] md:text-xs font-bold font-sans">Exclusive For Women</span>
+        <span class="lang-en text-accent-gold uppercase tracking-[0.3em] text-[10px] md:text-xs font-bold font-sans">Exclusive For Women</span>
+        <span class="lang-ml font-malayalam text-accent-gold text-sm font-semibold">സ്ത്രീകൾക്ക് മാത്രം</span>
         <div class="w-12 h-px bg-gradient-to-l from-transparent to-accent-gold"></div>
       </div>
       
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif text-primary-dark font-bold mb-6 tracking-tight leading-tight">
+      <h2 class="lang-en text-3xl md:text-4xl lg:text-5xl font-serif text-primary-dark font-bold mb-6 tracking-tight leading-tight">
         The She Care <span class="italic text-accent-gold">Journey</span>
       </h2>
-      <p class="text-text-muted text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed font-sans">
+      <h2 class="lang-ml font-malayalam text-3xl md:text-4xl lg:text-5xl text-primary-dark font-bold mb-6 tracking-tight leading-tight">
+        ഷീ കെയർ <span class="text-accent-gold">യാത്ര</span>
+      </h2>
+
+      <p class="lang-en text-text-muted text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed font-sans">
         A sanctuary of healing tailored exclusively for women. We blend ancient Ayurvedic wisdom with compassionate care to support you through every stage of womanhood.
+      </p>
+      <p class="lang-ml font-malayalam text-text-muted text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
+        സ്ത്രീകൾക്ക് മാത്രമായി തയ്യാറാക്കിയ ഒരു ചികിത്സാ കേന്ദ്രം. പുരാതന ആയുർവേദ അറിവുകളും സ്നേഹപൂർവ്വമായ പരിചരണവും സമന്വയിപ്പിച്ച് സ്ത്രീത്വത്തിന്റെ ഓരോ ഘട്ടത്തിലും ഞങ്ങൾ നിങ്ങളെ പിന്തുണയ്ക്കുന്നു.
       </p>
     </div>
 
@@ -64,10 +72,10 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
         {
           (() => {
             const cards = [
-              { title: "Menarche Care", desc: "Guiding young women through their first transition with natural hormonal balance and nurturing dietary guidance.", img: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/menarche_care.png" },
-              { title: "Prenatal Care", desc: "Nurturing mother and baby with specialized Ayurvedic diets, gentle therapies, and emotional wellness support.", img: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/prenatal_care.png" },
-              { title: "Postnatal Care", desc: "Aiding recovery with traditional strengthening treatments, restorative care, and postpartum mental health focus.", img: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/postnatal_care.png" },
-              { title: "Menopause Care", desc: "Easing the transition with cooling therapies, bone health support, and natural emotional balance treatments.", img: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/menopause_care.png" }
+              { titleEn: "Menarche Care", titleMl: "ആർത്തവാരംഭ പരിചരണം", descEn: "Guiding young women through their first transition with natural hormonal balance and nurturing dietary guidance.", descMl: "സ്വാഭാവിക ഹോർമോൺ സന്തുലിതാവസ്ഥയിലൂടെയും പോഷകാഹാര നിർദ്ദേശങ്ങളിലൂടെയും യുവതികളെ അവരുടെ ആദ്യ മാറ്റത്തിലൂടെ നയിക്കുന്നു.", img: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/menarche_care.png" },
+              { titleEn: "Prenatal Care", titleMl: "ഗർഭകാല പരിചരണം", descEn: "Nurturing mother and baby with specialized Ayurvedic diets, gentle therapies, and emotional wellness support.", descMl: "പ്രത്യേക ആയുർവേദ ഭക്ഷണക്രമം, മൃദുവായ ചികിത്സകൾ, വൈകാരിക ക്ഷേമ പിന്തുണ എന്നിവ ഉപയോഗിച്ച് അമ്മയെയും കുഞ്ഞിനെയും പോറ്റുന്നു.", img: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/prenatal_care.png" },
+              { titleEn: "Postnatal Care", titleMl: "പ്രസവാനന്തര പരിചരണം", descEn: "Aiding recovery with traditional strengthening treatments, restorative care, and postpartum mental health focus.", descMl: "പരമ്പരാഗത ശാക്തീകരണ ചികിത്സകളും, പുനരുജ്ജീവന പരിചരണവും, പ്രസവാനന്തര മാനസികാരോഗ്യ ശ്രദ്ധയും നൽകി വീണ്ടെടുക്കലിനെ സഹായിക്കുന്നു.", img: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/postnatal_care.png" },
+              { titleEn: "Menopause Care", titleMl: "ആർത്തവവിരാമ പരിചരണം", descEn: "Easing the transition with cooling therapies, bone health support, and natural emotional balance treatments.", descMl: "ശരീരം തണുപ്പിക്കുന്ന ചികിത്സകൾ, അസ്ഥികളുടെ ആരോഗ്യ പിന്തുണ, സ്വാഭാവിക വൈകാരിക സന്തുലിതാവസ്ഥകൾ എന്നിവ ഉപയോഗിച്ച് ഈ മാറ്റം എളുപ്പമാക്കുന്നു.", img: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/menopause_care.png" }
             ];
             return cards.map((card, idx) => (
             <div 
@@ -76,17 +84,22 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
               <!-- Card Image (Top) -->
               <div class="w-full aspect-[4/3] overflow-hidden bg-gray-50 relative">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                <img src={card.img} alt={card.title} class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 pointer-events-none" draggable="false" />
+                <img src={card.img} alt={card.titleEn} class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 pointer-events-none" draggable="false" />
               </div>
 
               <!-- Card Body (Bottom) -->
               <div class="p-8 flex flex-col flex-grow bg-white z-20 relative -mt-4 rounded-t-2xl">
                 <div class="w-12 h-1 bg-accent-gold mb-6 rounded-full"></div>
-                <h3 class="text-xl text-primary font-serif font-bold mb-4">{card.title}</h3>
-                <p class="text-text-muted text-base leading-relaxed mb-8 flex-grow">{card.desc}</p>
+                
+                <h3 class="lang-en text-xl text-primary font-serif font-bold mb-4">{card.titleEn}</h3>
+                <h3 class="lang-ml font-malayalam text-xl text-primary font-bold mb-4">{card.titleMl}</h3>
+                
+                <p class="lang-en text-text-muted text-base leading-relaxed mb-8 flex-grow">{card.descEn}</p>
+                <p class="lang-ml font-malayalam text-text-muted text-base leading-relaxed mb-8 flex-grow">{card.descMl}</p>
                 
                 <a href="/treatments" class="mt-auto inline-flex items-center justify-between w-full py-4 px-6 bg-primary/5 text-primary rounded-xl font-bold text-sm hover:bg-primary hover:text-white transition-all duration-300 group/btn">
-                  <span>View Details</span>
+                  <span class="lang-en">View Details</span>
+                  <span class="lang-ml font-malayalam">കൂടുതൽ വിവരങ്ങൾ</span>
                   <span class="transform group-hover/btn:translate-x-2 transition-transform">→</span>
                 </a>
               </div>
@@ -99,24 +112,28 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
 
     <!-- Premium Features Grid -->
     <div class="text-center mb-10">
-      <h3 class="text-2xl md:text-3xl text-primary-dark font-serif font-bold mb-4">Why Choose She Care?</h3>
+      <h3 class="lang-en text-2xl md:text-3xl text-primary-dark font-serif font-bold mb-4">Why Choose She Care?</h3>
+      <h3 class="lang-ml font-malayalam text-2xl md:text-3xl text-primary-dark font-bold mb-4">എന്തുകൊണ്ട് ഷീ കെയർ?</h3>
       <div class="w-24 h-1 bg-accent-gold mx-auto rounded-full"></div>
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
       {
         [
-          { title: "Authentic Ayurveda", desc: "Traditional Siddha & Ayurvedic therapies", icon: Sparkles },
-          { title: "Personalized Diet", desc: "Nutrition plans tailored to your dosha", icon: Apple },
-          { title: "Yoga & Wellness", desc: "Guided exercises for physical balance", icon: PersonStanding },
-          { title: "Mental Health", desc: "Counseling and emotional support", icon: Smile }
+          { titleEn: "Authentic Ayurveda", titleMl: "ആധികാരിക ആയുർവേദം", descEn: "Traditional Siddha & Ayurvedic therapies", descMl: "പരമ്പരാഗത സിദ്ധ, ആയുർവേദ ചികിത്സകൾ", icon: Sparkles },
+          { titleEn: "Personalized Diet", titleMl: "വ്യക്തിഗത ഭക്ഷണക്രമം", descEn: "Nutrition plans tailored to your dosha", descMl: "നിങ്ങളുടെ പ്രകൃതത്തിന് അനുയോജ്യമായ പോഷകാഹാരം", icon: Apple },
+          { titleEn: "Yoga & Wellness", titleMl: "യോഗ & വെൽനസ്", descEn: "Guided exercises for physical balance", descMl: "ശാരീരിക സന്തുലിതാവസ്ഥയ്ക്കുള്ള വ്യായാമങ്ങൾ", icon: PersonStanding },
+          { titleEn: "Mental Health", titleMl: "മാനസികാരോഗ്യം", descEn: "Counseling and emotional support", descMl: "കൗൺസിലിംഗും വൈകാരിക പിന്തുണയും", icon: Smile }
         ].map(benefit => (
           <div class="bg-white/80 backdrop-blur-sm p-8 rounded-[1.5rem] border border-accent-gold/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center text-center">
             <div class="w-14 h-14 rounded-full bg-primary-dark/5 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-accent-gold/10 transition-all duration-300 border border-accent-gold/10">
-              <benefit.icon class="text-accent-gold w-6 h-6" />
+              <benefit.icon className="text-accent-gold w-6 h-6" />
             </div>
-            <h4 class="text-primary-dark font-serif font-bold text-lg mb-2">{benefit.title}</h4>
-            <p class="text-text-muted font-sans text-sm leading-relaxed">{benefit.desc}</p>
+            <h4 class="lang-en text-primary-dark font-serif font-bold text-lg mb-2">{benefit.titleEn}</h4>
+            <h4 class="lang-ml font-malayalam text-primary-dark font-bold text-lg mb-2">{benefit.titleMl}</h4>
+            
+            <p class="lang-en text-text-muted font-sans text-sm leading-relaxed">{benefit.descEn}</p>
+            <p class="lang-ml font-malayalam text-text-muted text-sm leading-relaxed">{benefit.descMl}</p>
           </div>
         ))
       }
@@ -129,27 +146,36 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
       <div class="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
       
       <div class="absolute top-1/2 left-10 opacity-[0.03] -translate-y-1/2 hidden lg:block pointer-events-none">
-        <Flower2 class="w-48 h-48 text-accent-gold" />
+        <Flower2 className="w-48 h-48 text-accent-gold" />
       </div>
       <div class="absolute top-1/2 right-10 opacity-[0.03] -translate-y-1/2 hidden lg:block pointer-events-none">
-        <Leaf class="w-48 h-48 text-accent-gold" />
+        <Leaf className="w-48 h-48 text-accent-gold" />
       </div>
       
       <div class="relative z-10 max-w-3xl mx-auto">
-        <span class="inline-block py-1.5 px-4 rounded-full border border-accent-gold/30 bg-accent-gold/10 text-accent-gold text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mb-6">Begin Your Journey</span>
-        <h4 class="text-2xl md:text-4xl font-serif text-white font-bold mb-6 leading-tight">Embrace Your <span class="italic text-accent-gold">Natural Balance</span></h4>
-        <p class="text-white/70 text-sm md:text-base mb-10 font-sans leading-relaxed max-w-2xl mx-auto">
+        <span class="lang-en inline-block py-1.5 px-4 rounded-full border border-accent-gold/30 bg-accent-gold/10 text-accent-gold text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mb-6">Begin Your Journey</span>
+        <span class="lang-ml font-malayalam inline-block py-1.5 px-4 rounded-full border border-accent-gold/30 bg-accent-gold/10 text-accent-gold text-[10px] font-bold tracking-widest mb-6">നിങ്ങളുടെ യാത്ര ആരംഭിക്കുക</span>
+        
+        <h4 class="lang-en text-2xl md:text-4xl font-serif text-white font-bold mb-6 leading-tight">Embrace Your <span class="italic text-accent-gold">Natural Balance</span></h4>
+        <h4 class="lang-ml font-malayalam text-2xl md:text-4xl text-white font-bold mb-6 leading-tight">നിങ്ങളുടെ <span class="text-accent-gold">സ്വാഭാവിക സന്തുലിതാവസ്ഥ</span> വീണ്ടെടുക്കുക</h4>
+        
+        <p class="lang-en text-white/70 text-sm md:text-base mb-10 font-sans leading-relaxed max-w-2xl mx-auto">
           Take the first step towards profound wellness. Consult with our specialized female practitioners to create a care plan that perfectly matches your body's needs.
+        </p>
+        <p class="lang-ml font-malayalam text-white/70 text-sm md:text-base mb-10 font-medium leading-relaxed max-w-2xl mx-auto">
+          സമ്പൂർണ്ണ ആരോഗ്യത്തിലേക്കുള്ള ആദ്യ ചുവടുവെക്കാം. നിങ്ങളുടെ ശരീരത്തിന്റെ ആവശ്യങ്ങൾക്കനുസരിച്ചുള്ള ഒരു ചികിത്സാ പദ്ധതി തയ്യാറാക്കാൻ ഞങ്ങളുടെ വിദഗ്ദ്ധ വനിതാ ഡോക്ടർമാരുമായി ബന്ധപ്പെടുക.
         </p>
         
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
           <a href="/appointment" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-accent-gold text-primary-dark rounded-xl font-bold text-base hover:bg-yellow-500 shadow-[0_10px_25px_rgba(212,175,55,0.3)] transition-all transform hover:-translate-y-0.5 group">
-            <CalendarHeart class="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-            Book a Consultation
+            <CalendarHeart className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+            <span class="lang-en">Book a Consultation</span>
+            <span class="lang-ml font-malayalam">കൺസൾട്ടേഷൻ ബുക്ക് ചെയ്യുക</span>
           </a>
           <a href="tel:+918593821553" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/20 text-white rounded-xl font-bold text-base hover:bg-white/10 hover:border-white/40 transition-all group">
-            <PhoneCall class="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-            Call Our Specialists
+            <PhoneCall className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+            <span class="lang-en">Call Our Specialists</span>
+            <span class="lang-ml font-malayalam">ഞങ്ങളെ വിളിക്കുക</span>
           </a>
         </div>
       </div>
@@ -234,8 +260,9 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
 
 <script>
   function initSheCareCarousel() {
-    const carousel = document.getElementById('shecare-carousel');
-    if (!carousel) return;
+    const carousel = document.getElementById('shecare-carousel') as HTMLElement;
+    if (!carousel || carousel.dataset.initialized) return;
+    carousel.dataset.initialized = 'true';
 
     const originalItems = Array.from(carousel.querySelectorAll('.shecare-card'));
     if (originalItems.length === 0) return;
@@ -251,16 +278,16 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
       carousel.insertBefore(item.cloneNode(true), carousel.firstChild);
     });
 
-    const items = Array.from(carousel.querySelectorAll('.shecare-card'));
+    const items = Array.from(carousel.querySelectorAll('.shecare-card')) as HTMLElement[];
 
     let currentIndex = originalCount; // start in the middle set
-    let autoScrollInterval;
+    let autoScrollInterval: any;
     let isUserInteracting = false;
     let isProgrammaticScroll = false;
-    let interactionTimeout;
+    let interactionTimeout: any;
 
-    let scrollTimeout;
-    const scrollToItem = (index, instant = false) => {
+    let scrollTimeout: any;
+    const scrollToItem = (index: number, instant = false) => {
       const item = items[index];
       if (!item) return;
       const target = item.offsetLeft - carousel.offsetLeft;
@@ -330,7 +357,7 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
 
     scrollToItem(currentIndex, true);
 
-    let scrollEndTimeout;
+    let scrollEndTimeout: any;
     carousel.addEventListener('scroll', () => {
       if (isProgrammaticScroll) return;
       clearTimeout(scrollEndTimeout);
@@ -374,8 +401,8 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
     }, { passive: true });
 
     let isDown = false;
-    let startX;
-    let scrollLeftState;
+    let startX: number;
+    let scrollLeftState: number;
 
     carousel.addEventListener('mousedown', (e) => {
       isDown = true;

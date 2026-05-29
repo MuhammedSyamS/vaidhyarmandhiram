@@ -43,18 +43,39 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
           <div class="block lg:hidden my-6">
             <div class="w-full max-w-[240px] mx-auto aspect-[9/13] rounded-[1.75rem] border-2 border-primary/20 shadow-[0_12px_30px_rgba(0,0,0,0.13)] bg-white relative overflow-hidden">
               <div class="w-full h-full relative">
-                <img 
-                  src="https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/vmfounder.jpg" 
-                  alt="Dr. P. Abdul Sathar Gurukkal" 
-                  class="w-full h-full object-cover object-top" 
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent"></div>
-              </div>
-              <div class="absolute bottom-0 left-0 w-full bg-primary-dark/95 border-t border-accent-gold/25 py-2 px-2 text-center">
-                <h3 class="lang-en text-[11px] font-serif text-white font-bold tracking-wide">Dr. P. Abdul Sathar Gurukkal</h3>
-                <h3 class="lang-ml font-malayalam text-[10px] text-white font-bold leading-tight">ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</h3>
-                <p class="lang-en text-[8px] uppercase tracking-widest text-accent-gold/85 mt-0.5 font-sans font-bold">Founder</p>
-                <p class="lang-ml font-malayalam text-[8px] text-accent-gold/85 leading-none">സ്ഥാപകൻ</p>
+                
+                <!-- Slide 1: Founder -->
+                <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100 mobile-hero-slide">
+                  <img 
+                    src="https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/vmfounder.jpg" 
+                    alt="Dr. P. Abdul Sathar Gurukkal" 
+                    class="w-full h-full object-cover object-top" 
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent"></div>
+                  <div class="absolute bottom-0 left-0 w-full bg-primary-dark/95 border-t border-accent-gold/25 py-2 px-2 text-center z-20">
+                    <h3 class="lang-en text-[11px] font-serif text-white font-bold tracking-wide">Dr. P. Abdul Sathar Gurukkal</h3>
+                    <h3 class="lang-ml font-malayalam text-[10px] text-white font-bold leading-tight">ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</h3>
+                    <p class="lang-en text-[8px] uppercase tracking-widest text-accent-gold/85 mt-0.5 font-sans font-bold">Founder</p>
+                    <p class="lang-ml font-malayalam text-[8px] text-accent-gold/85 leading-none">സ്ഥാപകൻ</p>
+                  </div>
+                </div>
+
+                <!-- Slide 2: Co-Founder -->
+                <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 mobile-hero-slide">
+                  <img 
+                    src="/images/Jafarkhan.jpg" 
+                    alt="P. Jafar Khan Gurukkal" 
+                    class="w-full h-full object-cover object-[35%_10%]" 
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent"></div>
+                  <div class="absolute bottom-0 left-0 w-full bg-primary-dark/95 border-t border-accent-gold/25 py-2 px-2 text-center z-20">
+                    <h3 class="lang-en text-[11px] font-serif text-white font-bold tracking-wide">P. Jafar Khan Gurukkal</h3>
+                    <h3 class="lang-ml font-malayalam text-[10px] text-white font-bold leading-tight">പി. ജാഫർ ഖാൻ ഗുരുക്കൾ</h3>
+                    <p class="lang-en text-[7px] uppercase tracking-widest text-accent-gold/85 mt-0.5 font-sans font-bold">Co-founder & Managing Director</p>
+                    <p class="lang-ml font-malayalam text-[7px] text-accent-gold/85 leading-none">സഹസ്ഥാപകൻ & മാനേജിംഗ് ഡയറക്ടർ</p>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -102,7 +123,7 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
           <a href="/appointment" class="btn-shimmer bg-primary hover:bg-primary-dark text-white flex items-center justify-center gap-2 group shadow-md hover:shadow-lg rounded-lg px-7 py-3.5 text-base font-serif font-bold transition-all duration-300 flex-1 sm:flex-initial">
             <span class="lang-en">Book Consultation</span>
             <span class="lang-ml font-malayalam normal-case tracking-normal">കൺസൾട്ടേഷൻ ബുക്ക് ചെയ്യൂ</span>
-            <ArrowRight size={18} class="transition-transform group-hover:translate-x-1 shrink-0" />
+            <ArrowRight size={18} className="transition-transform group-hover:translate-x-1 shrink-0" />
           </a>
           <a href="/treatments" class="btn-expand-border border-2 border-accent-gold/60 text-accent-gold hover:text-white flex items-center justify-center rounded-lg px-7 py-3.5 text-base font-serif font-bold transition-all duration-300 flex-1 sm:flex-initial">
             <span class="lang-en">Explore Treatments</span>
@@ -128,25 +149,38 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
         <!-- Grand Single Portrait Frame (Elegant Edge-to-Edge Shape) -->
         <div class="w-full max-w-[365px] aspect-[9/13.5] rounded-[2rem] border-2 border-primary/20 shadow-[0_20px_50px_rgba(0,0,0,0.18)] bg-white relative group/founder animate-fade-in-up delay-100 flex flex-col overflow-hidden z-10">
           
-          <!-- Image & Overlay Container -->
           <div class="w-full h-full relative flex-grow">
-            <img 
-              src="https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/vmfounder.jpg" 
-              alt="Dr. P. Abdul Sathar Gurukkal" 
-              class="w-full h-full object-cover object-top transition-transform duration-[6000ms] ease-out scale-100 group-hover/founder:scale-[1.04]" 
-            />
-            
-            <!-- Dark Vignette Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent"></div>
-            
-          </div>
+            <!-- Slide 1: Founder -->
+            <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100 desktop-hero-slide">
+              <img 
+                src="https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/vmfounder.jpg" 
+                alt="Dr. P. Abdul Sathar Gurukkal" 
+                class="w-full h-full object-cover object-top transition-transform duration-[6000ms] ease-out scale-100 group-hover/founder:scale-[1.04]" 
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 w-full bg-primary-dark/95 border-t border-accent-gold/25 py-3 px-3 text-center z-20">
+                <h3 class="lang-en text-sm sm:text-base font-serif text-white font-bold tracking-wide">Dr. P. Abdul Sathar Gurukkal</h3>
+                <h3 class="lang-ml font-malayalam text-xs sm:text-sm text-white font-bold leading-tight">ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</h3>
+                <p class="lang-en text-[8.5px] sm:text-[9px] uppercase tracking-widest text-accent-gold/85 mt-1 font-sans font-bold">Founder</p>
+                <p class="lang-ml font-malayalam text-[8px] sm:text-[9px] text-accent-gold/85 mt-0.5 leading-none">സ്ഥാപകൻ</p>
+              </div>
+            </div>
 
-          <!-- Bottom Gold Nameplate Overlay -->
-          <div class="absolute bottom-0 left-0 w-full bg-primary-dark/95 border-t border-accent-gold/25 py-3 px-3 text-center z-20">
-            <h3 class="lang-en text-sm sm:text-base font-serif text-white font-bold tracking-wide">Dr. P. Abdul Sathar Gurukkal</h3>
-            <h3 class="lang-ml font-malayalam text-xs sm:text-sm text-white font-bold leading-tight">ഡോ. പി. അബ്ദുൽ സത്താർ ഗുരുക്കൾ</h3>
-            <p class="lang-en text-[8.5px] sm:text-[9px] uppercase tracking-widest text-accent-gold/85 mt-1 font-sans font-bold">Founder</p>
-            <p class="lang-ml font-malayalam text-[8px] sm:text-[9px] text-accent-gold/85 mt-0.5 leading-none">സ്ഥാപകൻ</p>
+            <!-- Slide 2: Co-Founder -->
+            <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 desktop-hero-slide">
+              <img 
+                src="/images/Jafarkhan.jpg" 
+                alt="P. Jafar Khan Gurukkal" 
+                class="w-full h-full object-cover object-[35%_10%] transition-transform duration-[6000ms] ease-out scale-100 group-hover/founder:scale-[1.04]" 
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 w-full bg-primary-dark/95 border-t border-accent-gold/25 py-3 px-3 text-center z-20">
+                <h3 class="lang-en text-sm sm:text-base font-serif text-white font-bold tracking-wide">P. Jafar Khan Gurukkal</h3>
+                <h3 class="lang-ml font-malayalam text-xs sm:text-sm text-white font-bold leading-tight">പി. ജാഫർ ഖാൻ ഗുരുക്കൾ</h3>
+                <p class="lang-en text-[7px] sm:text-[8px] uppercase tracking-widest text-accent-gold/85 mt-1 font-sans font-bold">Co-founder & Managing Director</p>
+                <p class="lang-ml font-malayalam text-[7px] sm:text-[8px] text-accent-gold/85 mt-0.5 leading-none">സഹസ്ഥാപകൻ & മാനേജിംഗ് ഡയറക്ടർ</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -247,6 +281,40 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
     border-color: transparent;
   }
 </style>
+
+<script>
+  function initHeroFounderCarousel() {
+    const carousels = [
+      { slideClass: 'mobile-hero-slide' },
+      { slideClass: 'desktop-hero-slide' }
+    ];
+
+    carousels.forEach(({ slideClass }) => {
+      const slides = document.querySelectorAll('.' + slideClass);
+      if (slides.length < 2) return;
+      
+      let activeIdx = 0;
+      
+      // Clear existing interval if any to prevent multiple intervals on re-runs
+      if ((window as any)['heroCarouselTimer_' + slideClass]) {
+        clearInterval((window as any)['heroCarouselTimer_' + slideClass]);
+      }
+      
+      (window as any)['heroCarouselTimer_' + slideClass] = setInterval(() => {
+        slides[activeIdx].classList.remove('opacity-100');
+        slides[activeIdx].classList.add('opacity-0');
+        
+        activeIdx = (activeIdx + 1) % slides.length;
+        
+        slides[activeIdx].classList.remove('opacity-0');
+        slides[activeIdx].classList.add('opacity-100');
+      }, 5000);
+    });
+  }
+
+  initHeroFounderCarousel();
+  document.addEventListener('astro:page-load', initHeroFounderCarousel);
+</script>
 
 <script>
   function initHeroStats() {

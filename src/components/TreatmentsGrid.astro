@@ -1,43 +1,49 @@
 ---
 const treatments = [
   { 
-    name: 'Special Treatments', 
-    description: 'Advanced Ayurvedic protocols for specific conditions, blending tradition with specialized clinical care.', 
+    nameEn: 'Special Treatments', nameMl: 'പ്രത്യേക ചികിത്സകൾ',
+    descriptionEn: 'Advanced Ayurvedic protocols for specific conditions, blending tradition with specialized clinical care.', 
+    descriptionMl: 'പ്രത്യേക ആരോഗ്യ പ്രശ്നങ്ങൾക്കുള്ള നൂതന ആയുർവേദ ചികിത്സകൾ. പാരമ്പര്യവും ആധുനിക ക്ലിനിക്കൽ പരിചരണവും സമന്വയിപ്പിക്കുന്നു.',
     image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/special_treatments_new.png', 
     slug: 'special-treatments',
     group: 'Specialized & Children'
   },
   { 
-    name: 'Panchakarma Therapy', 
-    description: 'Complete detox through Vamana, Virechana, Basti, Nasya, and Raktamokshana.', 
+    nameEn: 'Panchakarma Therapy', nameMl: 'പഞ്ചകർമ്മ ചികിത്സ',
+    descriptionEn: 'Complete detox through Vamana, Virechana, Basti, Nasya, and Raktamokshana.', 
+    descriptionMl: 'വമനം, വിരേചനം, വസ്തി, നസ്യം, രക്തമോക്ഷണം എന്നിവയിലൂടെയുള്ള സമ്പൂർണ്ണ ശുദ്ധീകരണം.',
     image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/panchakarma_treatment.png', 
     slug: 'panchakarma',
     group: ''
   },
   { 
-    name: 'Stress Management', 
-    description: 'Rejuvenating therapies to relieve stress, anxiety, and restore mental peace.', 
+    nameEn: 'Stress Management', nameMl: 'മാനസിക സമ്മർദ്ദ നിയന്ത്രണം',
+    descriptionEn: 'Rejuvenating therapies to relieve stress, anxiety, and restore mental peace.', 
+    descriptionMl: 'സമ്മർദ്ദവും ഉത്കണ്ഠയും അകറ്റി മാനസിക സമാധാനം വീണ്ടെടുക്കുന്നതിനുള്ള പുനരുജ്ജീവന ചികിത്സകൾ.',
     image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/stress_management_treatment.png', 
     slug: 'panchakarma',
     group: ''
   },
   { 
-    name: 'Spine & Joint Care', 
-    description: 'Traditional therapies for Sciatica, Cervical Spondylosis, Bone Alignment, and Frozen Shoulder.', 
+    nameEn: 'Spine & Joint Care', nameMl: 'നട്ടെല്ല് & സന്ധി പരിചരണം',
+    descriptionEn: 'Traditional therapies for Sciatica, Cervical Spondylosis, Bone Alignment, and Frozen Shoulder.', 
+    descriptionMl: 'സയാറ്റിക്ക, സെർവിക്കൽ സ്പോണ്ടിലോസിസ്, അസ്ഥികളുടെ അലൈൻമെൻ്റ് എന്നിവയ്ക്കുള്ള പാരമ്പര്യ ചികിത്സകൾ.',
     image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/spine_joint_treatment.png', 
     slug: 'special-treatments',
     group: 'Spine, Joint & Ortho'
   },
   { 
-    name: 'Skin Rejuvenation', 
-    description: 'Deep-acting protocols for Psoriasis, Allergies, Dandruff, and overall Cosmetology.', 
+    nameEn: 'Skin Rejuvenation', nameMl: 'ചർമ്മ സംരക്ഷണം',
+    descriptionEn: 'Deep-acting protocols for Psoriasis, Allergies, Dandruff, and overall Cosmetology.', 
+    descriptionMl: 'സോറിയാസിസ്, അലർജികൾ, താരൻ, മറ്റ് ചർമ്മപ്രശ്നങ്ങൾ എന്നിവയ്ക്കുള്ള ആഴത്തിലുള്ള ചികിത്സകൾ.',
     image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/skin_rejuvenation_new.png', 
     slug: 'special-treatments',
     group: 'Skin, Hair & Beauty'
   },
   { 
-    name: 'Weight Management', 
-    description: 'Effective Ayurvedic management of obesity, cholesterol, and metabolic disorders.', 
+    nameEn: 'Weight Management', nameMl: 'ഭാരനിയന്ത്രണം',
+    descriptionEn: 'Effective Ayurvedic management of obesity, cholesterol, and metabolic disorders.', 
+    descriptionMl: 'അമിതഭാരം, കൊളസ്ട്രോൾ, ഉപാപചയ വൈകല്യങ്ങൾ എന്നിവയ്ക്കുള്ള ഫലപ്രദമായ ആയുർവേദ ചികിത്സ.',
     image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/weight_management_new.png', 
     slug: 'special-treatments',
     group: 'Lifestyle & Metabolic'
@@ -73,7 +79,7 @@ const treatments = [
   >
     {/* Render only once in HTML. JS will clone these for the infinite loop to prevent layout bugs if JS fails */}
     {treatments.map(t => {
-      const isGreen = t.name === 'Special Treatments';
+      const isGreen = t.nameEn === 'Special Treatments';
       return (
       <a
         href={`/treatments?tab=${t.slug}&group=${encodeURIComponent(t.group || '')}`}
@@ -83,20 +89,30 @@ const treatments = [
         <div class="aspect-[4/3] overflow-hidden">
           <img
             src={t.image}
-            alt={t.name}
+            alt={t.nameEn}
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 pointer-events-none"
             draggable="false"
           />
         </div>
-        <div class="p-5 sm:p-6">
-          <h3 class={`text-lg sm:text-xl font-bold mb-2 transition-colors leading-tight ${isGreen ? 'text-background-parchment group-hover:text-accent-gold' : 'group-hover:text-accent-gold'}`}>
-            {t.name}
+        <div class="p-5 sm:p-6 flex flex-col h-[40%]">
+          <h3 class={`lang-en text-lg sm:text-xl font-bold mb-2 transition-colors leading-tight ${isGreen ? 'text-background-parchment group-hover:text-accent-gold' : 'group-hover:text-accent-gold'}`}>
+            {t.nameEn}
           </h3>
-          <p class={`text-sm font-sans leading-relaxed line-clamp-3 sm:line-clamp-none ${isGreen ? 'text-background-parchment/85' : 'text-text-muted'}`}>
-            {t.description}
+          <h3 class={`lang-ml font-malayalam text-lg sm:text-xl font-bold mb-2 transition-colors leading-tight ${isGreen ? 'text-background-parchment group-hover:text-accent-gold' : 'group-hover:text-accent-gold'}`}>
+            {t.nameMl}
+          </h3>
+          
+          <p class={`lang-en text-sm font-sans leading-relaxed line-clamp-3 sm:line-clamp-none ${isGreen ? 'text-background-parchment/85' : 'text-text-muted'}`}>
+            {t.descriptionEn}
           </p>
-          <div class={`mt-4 flex items-center font-bold text-sm uppercase tracking-widest ${isGreen ? 'text-accent-gold' : 'text-primary'}`}>
-            View Details <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+          <p class={`lang-ml font-malayalam text-sm leading-relaxed line-clamp-3 sm:line-clamp-none font-medium ${isGreen ? 'text-background-parchment/85' : 'text-text-muted'}`}>
+            {t.descriptionMl}
+          </p>
+          
+          <div class={`mt-auto flex items-center font-bold text-sm uppercase tracking-widest ${isGreen ? 'text-accent-gold' : 'text-primary'}`}>
+            <span class="lang-en">View Details</span>
+            <span class="lang-ml font-malayalam">കൂടുതൽ വിവരങ്ങൾ</span>
+            <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
           </div>
         </div>
       </a>
@@ -163,8 +179,9 @@ const treatments = [
 
 <script>
   function initTreatmentsCarousel() {
-    const carousel = document.getElementById('treatments-scroll-container');
-    if (!carousel) return;
+    const carousel = document.getElementById('treatments-scroll-container') as HTMLElement;
+    if (!carousel || carousel.dataset.initialized) return;
+    carousel.dataset.initialized = 'true';
 
     const originalItems = Array.from(carousel.querySelectorAll('.treatment-card'));
     if (originalItems.length === 0) return;
@@ -180,15 +197,15 @@ const treatments = [
       carousel.insertBefore(item.cloneNode(true), carousel.firstChild);
     });
 
-    const items = Array.from(carousel.querySelectorAll('.treatment-card'));
+    const items = Array.from(carousel.querySelectorAll('.treatment-card')) as HTMLElement[];
     let currentIndex = originalCount;
-    let autoScrollInterval;
+    let autoScrollInterval: any;
     let isUserInteracting = false;
     let isProgrammaticScroll = false;
-    let interactionTimeout;
-    let scrollTimeout;
+    let interactionTimeout: any;
+    let scrollTimeout: any;
 
-    const scrollToItem = (index, instant = false) => {
+    const scrollToItem = (index: number, instant = false) => {
       const item = items[index];
       if (!item) return;
       const target = item.offsetLeft - carousel.offsetLeft;
@@ -299,8 +316,8 @@ const treatments = [
     }, { passive: true });
 
     let isDown = false;
-    let startX;
-    let scrollLeftState;
+    let startX: number;
+    let scrollLeftState: number;
 
     carousel.addEventListener('mousedown', (e) => {
       isDown = true;
