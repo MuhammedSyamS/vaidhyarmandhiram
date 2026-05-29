@@ -4,7 +4,10 @@ const blog = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
+    titleMl: z.string(),
     description: z.string(),
+    descriptionMl: z.string(),
+    category: z.enum(['Panchakarma', 'Women\'s Health', 'Spine Care', 'Lifestyle', 'General']).default('General'),
     date: z.coerce.date(),
     image: z.string().optional(),
   }),

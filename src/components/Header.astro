@@ -111,7 +111,7 @@ const navLinks = [
     <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
 
     <!-- Brand -->
-    <a href="/" class="flex items-center gap-3.5 md:gap-4 shrink-0 group">
+    <a href="/" class="flex items-center gap-3.5 md:gap-4 shrink-0 group min-w-0">
       <div class="h-14 w-14 md:h-18 md:w-18 rounded-full bg-transparent transition-all duration-500 ease-out group-hover:scale-115 group-hover:rotate-[5deg] overflow-hidden flex items-center justify-center shrink-0">
         <img
           src="https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/vmlaunchingpage.png"
@@ -119,11 +119,11 @@ const navLinks = [
           class="w-full h-full object-contain mix-blend-multiply rounded-full"
         />
       </div>
-      <div class="flex flex-col">
-        <span class="lang-en text-base md:text-2xl font-serif font-bold text-primary-dark tracking-widest uppercase whitespace-nowrap transition-colors duration-300 group-hover:text-accent-gold">Vaidyarmandiram</span>
-        <span class="lang-ml font-malayalam text-base md:text-2xl font-bold text-primary-dark whitespace-nowrap transition-colors duration-300 group-hover:text-accent-gold">വൈദ്യർമന്ദിരം</span>
-        <span class="lang-en text-[8px] md:text-xs font-sans text-accent-gold tracking-[0.2em] md:tracking-[0.3em] uppercase whitespace-nowrap">Ayurveda Hospital</span>
-        <span class="lang-ml font-malayalam text-[10px] md:text-xs text-accent-gold whitespace-nowrap">ആയുർവേദ ഹോസ്പിറ്റൽ</span>
+      <div class="flex flex-col min-w-0">
+        <span class="lang-en text-[13px] sm:text-base md:text-2xl font-serif font-bold text-primary-dark tracking-wider md:tracking-widest uppercase truncate transition-colors duration-300 group-hover:text-accent-gold">Vaidyarmandiram</span>
+        <span class="lang-ml font-malayalam text-[13px] sm:text-base md:text-2xl font-bold text-primary-dark truncate transition-colors duration-300 group-hover:text-accent-gold">വൈദ്യർമന്ദിരം</span>
+        <span class="lang-en text-[7px] md:text-xs font-sans text-accent-gold tracking-[0.15em] md:tracking-[0.3em] uppercase truncate">Ayurveda Hospital</span>
+        <span class="lang-ml font-malayalam text-[9px] md:text-xs text-accent-gold truncate">ആയുർവേദ ഹോസ്പിറ്റൽ</span>
       </div>
     </a>
 
@@ -143,7 +143,7 @@ const navLinks = [
     </div>
 
     <!-- Right: mobile hamburger / call button + desktop elements -->
-    <div class="flex items-center gap-2.5 sm:gap-3.5">
+    <div class="flex items-center gap-2.5 sm:gap-3.5 shrink-0">
 
 
       <!-- Circular Hamburger Button (mobile only) -->

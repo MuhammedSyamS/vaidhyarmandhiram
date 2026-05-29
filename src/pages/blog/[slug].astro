@@ -35,7 +35,8 @@ const { Content } = await post.render();
       <span class="text-accent-gold font-sans uppercase tracking-[0.2em] text-sm font-bold mb-4 block">
         {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
       </span>
-      <h1 class="text-3xl md:text-5xl lg:text-6xl text-background-parchment leading-tight font-bold">{post.data.title}</h1>
+      <h1 class="lang-en text-3xl md:text-5xl lg:text-6xl text-background-parchment leading-tight font-bold">{post.data.title}</h1>
+      <h1 class="lang-ml font-malayalam text-3xl md:text-5xl lg:text-6xl text-background-parchment leading-tight font-bold">{post.data.titleMl}</h1>
     </div>
   </div>
 

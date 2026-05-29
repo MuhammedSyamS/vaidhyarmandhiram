@@ -8,7 +8,33 @@ import { Phone, Mail, MapPin, Clock, MessageSquare } from 'lucide-react';
 export const prerender = true;
 ---
 
-<BaseLayout title="Contact Us">
+<BaseLayout title="Contact Us" description="Get in touch with Vaidyarmandiram Ayurveda Hospital. Find our locations in Trivandrum, Kollam, and Alappuzha, or book a consultation.">
+  <Fragment slot="json-ld">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How can I book an appointment?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can book an appointment online through our website, or by calling us at +918593821553."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is Vaidyarmandiram located?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our main branch is located in Pangode, Trivandrum. We also have branches in Kollam and Alappuzha."
+            }
+          }
+        ]
+      }
+    </script>
+  </Fragment>
   <Header slot="header" />
 
   <!-- Page Header -->
@@ -46,10 +72,23 @@ export const prerender = true;
           <MapPin size={24} />
         </div>
         <div>
-          <h3 class="lang-en text-lg lg:text-xl font-bold text-primary-dark uppercase tracking-widest">Our Locations</h3>
-          <h3 class="lang-ml font-malayalam text-lg lg:text-xl font-bold text-primary-dark">ഞങ്ങളുടെ ശാഖകൾ</h3>
-          <p class="text-primary-dark font-sans text-sm lg:text-base mt-1 lg:mt-0">Trivandrum, Kollam, Alappuzha</p>
-          <p class="font-malayalam text-accent-gold text-xs">തിരുവനന്തപുരം, കൊല്ലം, ആലപ്പുഴ</p>
+          <h3 class="lang-en text-lg lg:text-xl font-bold text-primary-dark uppercase tracking-widest mb-2">Our Locations</h3>
+          <h3 class="lang-ml font-malayalam text-lg lg:text-xl font-bold text-primary-dark mb-2">ഞങ്ങളുടെ ശാഖകൾ</h3>
+          
+          <div class="space-y-2 mt-2">
+            <div>
+              <p class="font-bold text-primary-dark text-sm">Trivandrum (HQ)</p>
+              <p class="text-text-muted font-sans text-xs lg:text-sm">Pangode, Kallara P.O, 695609</p>
+            </div>
+            <div>
+              <p class="font-bold text-primary-dark text-sm">Kollam</p>
+              <p class="text-text-muted font-sans text-xs lg:text-sm">Bus Stand Road, Kadakkal, 691536</p>
+            </div>
+            <div>
+              <p class="font-bold text-primary-dark text-sm">Alappuzha</p>
+              <p class="text-text-muted font-sans text-xs lg:text-sm">Alappuzha, Kerala</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -74,17 +113,31 @@ export const prerender = true;
           <p class="lang-en text-primary-dark font-sans mt-2">Have a question? Fill out the form below and we'll get back to you within 24 hours.</p>
           <p class="lang-ml font-malayalam text-primary-dark mt-2">ഒരു ചോദ്യമുണ്ടോ? താഴെയുള്ള ഫോർം പൂര്ണമാക്കുക, 24 മണിക്കൂരിനുള്ളിൽ ഞങ്ങൾ മറുപടി നൽകും.</p>
         </div>
-        
-        <form class="space-y-6">
+        <form class="space-y-6" action="#" method="POST" id="contact-form">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none font-sans" required />
-            <input type="email" placeholder="Email Address" class="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none font-sans" required />
+            <div>
+              <label for="name" class="sr-only">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Your Name" class="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none font-sans" required />
+            </div>
+            <div>
+              <label for="email" class="sr-only">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="Email Address" class="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none font-sans" required />
+            </div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <input type="tel" placeholder="Phone Number" class="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none font-sans" required />
-            <input type="text" placeholder="Subject" class="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none font-sans" required />
+            <div>
+              <label for="phone" class="sr-only">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="Phone Number" class="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none font-sans" required />
+            </div>
+            <div>
+              <label for="subject" class="sr-only">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Subject" class="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none font-sans" required />
+            </div>
           </div>
-          <textarea placeholder="How can we help you?" rows="5" class="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none font-sans resize-none" required></textarea>
+          <div>
+            <label for="message" class="sr-only">Message</label>
+            <textarea id="message" name="message" placeholder="How can we help you?" rows="5" class="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none font-sans resize-none" required></textarea>
+          </div>
           <button type="submit" class="btn-primary w-full">Send Inquiry</button>
         </form>
       </div>
@@ -140,7 +193,7 @@ export const prerender = true;
       <div class="flex flex-wrap justify-center gap-4 mb-8">
         <button
           class="map-tab-btn px-6 py-3 border-2 border-accent-gold text-primary-dark font-sans font-bold bg-accent-gold/15 hover:bg-accent-gold/10 transition-all rounded-lg"
-          data-map-url="https://maps.google.com/maps?q=VAIDHYARMANDHIRAM+HOSPITAL+LLP+Sidha-Ayurveda-Unani-Kalari+Marma+Thirummu-Yoga-Nattuvaidya+Chikithsalayam-Oushadhashala,+Pangodu,+Kerala+695609&output=embed"
+          data-map-url="https://maps.google.com/maps?q=VAIDHYARMANDHIRAM+HOSPITAL+Pangode+Kallara&t=m&z=14&output=embed&iwloc=Near"
           data-dir-url="https://maps.app.goo.gl/NynzVNVwV4XEYYpJ7"
         >
           <span class="lang-en">Trivandrum (Pangode)</span>
@@ -148,7 +201,7 @@ export const prerender = true;
         </button>
         <button
           class="map-tab-btn px-6 py-3 border-2 border-accent-gold/40 text-primary-dark/70 font-sans font-semibold hover:border-accent-gold hover:text-primary-dark hover:bg-accent-gold/5 transition-all rounded-lg"
-          data-map-url="https://maps.google.com/maps?q=VAIDHYARMANDHIRAM+HOSPITAL+LLP+Ayurveda-Siddha-Unani-kalari+marma+thirummu-Yoga-Nattuvaidhya+chikithsalayam-Oushadhashala,+Bus+stand+road,+Kadakkal,+Kerala+691536&output=embed"
+          data-map-url="https://maps.google.com/maps?q=VAIDHYARMANDHIRAM+HOSPITAL+Kadakkal+Kollam&t=m&z=14&output=embed&iwloc=Near"
           data-dir-url="https://maps.app.goo.gl/A3vvy8Xnpr1P6w3J7"
         >
           <span class="lang-en">Kollam (Kadakkal)</span>
@@ -156,7 +209,7 @@ export const prerender = true;
         </button>
         <button
           class="map-tab-btn px-6 py-3 border-2 border-accent-gold/40 text-primary-dark/70 font-sans font-semibold hover:border-accent-gold hover:text-primary-dark hover:bg-accent-gold/5 transition-all rounded-lg"
-          data-map-url="https://maps.google.com/maps?q=Alappuzha,+Kerala,+India&output=embed"
+          data-map-url="https://maps.google.com/maps?q=Alappuzha,+Kerala,+India&t=m&z=12&output=embed&iwloc=Near"
           data-dir-url="https://maps.google.com/?q=Alappuzha,+Kerala,+India"
         >
           <span class="lang-en">Alappuzha</span>
@@ -169,7 +222,7 @@ export const prerender = true;
         <div class="h-[450px] w-full relative">
           <iframe 
             id="branch-map-iframe"
-            src="https://maps.google.com/maps?q=VAIDHYARMANDHIRAM+HOSPITAL+LLP+Sidha-Ayurveda-Unani-Kalari+Marma+Thirummu-Yoga-Nattuvaidya+Chikithsalayam-Oushadhashala,+Pangodu,+Kerala+695609&output=embed" 
+            src="https://maps.google.com/maps?q=VAIDHYARMANDHIRAM+HOSPITAL+Pangode+Kallara&t=m&z=14&output=embed&iwloc=Near" 
             width="100%" 
             height="100%" 
             style="border:0;" 

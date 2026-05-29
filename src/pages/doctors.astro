@@ -29,7 +29,34 @@ const otherDoctors = [
 ];
 ---
 
-<BaseLayout title="Our Doctors">
+<BaseLayout title="Our Doctors" description="Meet our team of highly qualified Ayurvedic physicians led by Dr. P. Abdul Sathar Gurukkal. Expert care in Nadi Pariksha and holistic healing.">
+  <Fragment slot="json-ld">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Physician",
+            "name": "Dr. P. Abdul Sathar Gurukkal",
+            "medicalSpecialty": "Ayurvedic Medicine",
+            "image": "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/vmfounder.jpg"
+          },
+          {
+            "@type": "Physician",
+            "name": "Dr. Rabiya Jafarkhan",
+            "medicalSpecialty": "Siddha Medicine",
+            "image": "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/Dr.Rabiya Jafarkhan (BSMS).jpeg"
+          },
+          {
+            "@type": "Physician",
+            "name": "Dr. Hansha Parveen",
+            "medicalSpecialty": "Siddha Medicine",
+            "image": "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/Dr.Hansha Parveen(BSMS).jpeg"
+          }
+        ]
+      }
+    </script>
+  </Fragment>
   <Header slot="header" />
 
   <!-- Page Header -->
