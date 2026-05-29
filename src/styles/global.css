@@ -52,6 +52,47 @@
   .btn-outline {
     @apply px-8 py-3 border-2 border-primary text-primary font-serif text-lg transition-all duration-300 hover:bg-primary hover:text-white disabled:opacity-50;
   }
+
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    transform: skewX(-20deg);
+    animation: shimmer-swipe 3s infinite;
+  }
+  @keyframes shimmer-swipe {
+    0% { left: -100%; }
+    20% { left: 200%; }
+    100% { left: 200%; }
+  }
+
+  .btn-expand-border {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .btn-expand-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--accent-gold);
+    transition: width 0.4s ease;
+    z-index: -1;
+  }
+  .btn-expand-border:hover::before {
+    width: 100%;
+  }
 }
 
 /* Custom transitions */

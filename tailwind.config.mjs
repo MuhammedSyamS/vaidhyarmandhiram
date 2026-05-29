@@ -26,6 +26,26 @@ export default {
         sans: ['"Source Sans 3"', 'sans-serif'],
         malayalam: ['"Noto Serif Malayalam"', 'serif'],
       },
+      animation: {
+        'spin-slow': 'spin 15s linear infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'shimmer': 'shimmer 2.5s infinite linear',
+        'pulse-soft': 'pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+        'pulse-soft': {
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: .8 },
+        }
+      },
       backgroundImage: {
         'parchment-texture': "url('https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/parchment-texture.svg')",
       },
