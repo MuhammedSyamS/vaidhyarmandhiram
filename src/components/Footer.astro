@@ -25,7 +25,7 @@ const treatments = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
 
       <!-- Brand -->
-      <div class="space-y-4">
+      <div class="space-y-4 animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000">
         <div>
           <h2 class="lang-en text-xl md:text-2xl font-bold text-background-parchment tracking-widest uppercase">Vaidyarmandiram</h2>
           <h2 class="lang-ml font-malayalam text-xl md:text-2xl font-bold text-background-parchment">വൈദ്യർമന്ദിരം</h2>
@@ -58,7 +58,7 @@ const treatments = [
       </div>
 
       <!-- Quick Links -->
-      <div>
+      <div class="animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 delay-100">
         <h3 class="lang-en text-xl font-bold mb-5 text-accent-gold">Quick Links</h3>
         <h3 class="lang-ml font-malayalam text-xl font-bold mb-5 text-accent-gold">പ്രധാന ലിങ്കുകൾ</h3>
         <ul class="space-y-4 font-sans">
@@ -73,9 +73,9 @@ const treatments = [
         </ul>
       </div>
 
-      <!-- Treatments -->
-      <div>
-        <h3 class="lang-en text-xl font-bold mb-5 text-accent-gold">Treatments</h3>
+      <!-- Core Treatments -->
+      <div class="animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 delay-200">
+        <h3 class="lang-en text-xl font-bold mb-5 text-accent-gold">Core Treatments</h3>
         <h3 class="lang-ml font-malayalam text-xl font-bold mb-5 text-accent-gold">ചികിത്സകൾ</h3>
         <ul class="space-y-4">
           {treatments.map(t => (
@@ -88,7 +88,7 @@ const treatments = [
       </div>
 
       <!-- Contact -->
-      <div class="space-y-4">
+      <div class="space-y-4 animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 delay-300">
         <h3 class="lang-en text-xl font-bold mb-5 text-accent-gold">Contact Us</h3>
         <h3 class="lang-ml font-malayalam text-xl font-bold mb-5 text-accent-gold">ബന്ധപ്പെടുക</h3>
         <div class="space-y-5 font-sans">
