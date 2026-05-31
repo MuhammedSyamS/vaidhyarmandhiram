@@ -1,0 +1,48 @@
+---
+---
+<script>
+  function initMagnetic() {
+    // Only for non-touch devices
+    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
+
+    const magneticElements = document.querySelectorAll('.magnetic');
+
+    magneticElements.forEach((el) => {
+      const magnet = el as HTMLElement;
+      
+      // Check if we already added listeners to this element
+      if ((magnet as any)._magneticInitialized) return;
+      (magnet as any)._magneticInitialized = true;
+      
+      magnet.addEventListener('mousemove', (e: MouseEvent) => {
+        const rect = magnet.getBoundingClientRect();
+        
+        // Calculate center of button
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        // Distance from center
+        const distanceX = e.clientX - centerX;
+        const distanceY = e.clientY - centerY;
+        
+        // Intensity of the pull
+        const intensity = 0.35; 
+        
+        magnet.style.transform = `translate(${distanceX * intensity}px, ${distanceY * intensity}px)`;
+      });
+
+      magnet.addEventListener('mouseleave', () => {
+        magnet.style.transform = 'translate(0px, 0px)';
+        magnet.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)'; // Bouncy reset
+      });
+
+      magnet.addEventListener('mouseenter', () => {
+        magnet.style.transition = 'none'; // Remove transition for instant following
+      });
+    });
+  }
+
+  // Initialize
+  initMagnetic();
+  document.addEventListener('astro:page-load', initMagnetic);
+</script>

@@ -1,0 +1,85 @@
+---
+---
+<div id="custom-cursor" class="hidden md:block pointer-events-none fixed inset-0 z-[10000]">
+  <!-- We use CSS transforms instead of left/top for performance -->
+  <div class="cursor-dot absolute top-0 left-0 w-2 h-2 bg-accent-gold rounded-full transition-transform duration-75 ease-out will-change-transform shadow-[0_0_8px_rgba(212,175,55,0.8)]"></div>
+  <div class="cursor-ring absolute top-0 left-0 w-10 h-10 border border-accent-gold rounded-full transition-all duration-300 ease-out will-change-transform"></div>
+</div>
+
+<script>
+  function initCursor() {
+    // Only enable on non-touch devices (mice)
+    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+      const cursor = document.getElementById('custom-cursor');
+      if (cursor) cursor.style.display = 'none';
+      return;
+    }
+
+    const cursor = document.getElementById('custom-cursor');
+    if (!cursor) return;
+
+    const dot = cursor.querySelector('.cursor-dot') as HTMLElement;
+    const ring = cursor.querySelector('.cursor-ring') as HTMLElement;
+    if (!dot || !ring) return;
+
+    let mouseX = -100;
+    let mouseY = -100;
+    let ringX = -100;
+    let ringY = -100;
+
+    cursor.style.opacity = '0';
+    let isVisible = false;
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (!isVisible) {
+        cursor.style.opacity = '1';
+        isVisible = true;
+      }
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      // Dot follows immediately
+      dot.style.transform = `translate3d(${mouseX - 4}px, ${mouseY - 4}px, 0)`;
+    };
+
+    const render = () => {
+      // Smooth follow for the ring (lerp)
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
+      
+      // Center the ring (-20px since w-10 is 40px)
+      ring.style.transform = `translate3d(${ringX - 20}px, ${ringY - 20}px, 0)`;
+      requestAnimationFrame(render);
+    };
+
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    requestAnimationFrame(render);
+
+    const applyHoverListeners = () => {
+      document.querySelectorAll('a, button, input, select, textarea, .cursor-pointer, .magnetic').forEach(el => {
+        // Prevent adding multiple listeners
+        if ((el as any)._hasCursorHover) return;
+        (el as any)._hasCursorHover = true;
+
+        el.addEventListener('mouseenter', () => {
+          ring.classList.add('scale-[1.5]', 'bg-accent-gold/10', 'border-transparent');
+          dot.classList.add('scale-[2.5]', 'opacity-50');
+        });
+        el.addEventListener('mouseleave', () => {
+          ring.classList.remove('scale-[1.5]', 'bg-accent-gold/10', 'border-transparent');
+          dot.classList.remove('scale-[2.5]', 'opacity-50');
+        });
+      });
+    };
+
+    applyHoverListeners();
+    // Re-apply listeners when Astro swaps pages
+    document.addEventListener('astro:page-load', applyHoverListeners);
+  }
+
+  // Ensure it runs once
+  if (!(window as any)._cursorInitialized) {
+    (window as any)._cursorInitialized = true;
+    initCursor();
+  }
+</script>

@@ -81,11 +81,19 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
           </div>
 
           <!-- Heading (SEO Optimized) -->
-          <h1 class="lang-en text-4xl sm:text-5xl md:text-6xl font-serif text-primary-dark leading-tight mb-2" data-aos="fade-up" data-aos-delay="100">
-            A Legacy of <br/><span class="text-accent-gold italic">Pure Healing</span>
+          <h1 class="lang-en text-4xl sm:text-5xl md:text-6xl font-serif text-primary-dark leading-tight mb-2 flex flex-wrap gap-x-2">
+            <span class="inline-block" data-aos="fade-up" data-aos-delay="100">A</span>
+            <span class="inline-block" data-aos="fade-up" data-aos-delay="150">Legacy</span>
+            <span class="inline-block" data-aos="fade-up" data-aos-delay="200">of</span>
+            <div class="w-full h-0 m-0 p-0 border-0"></div>
+            <span class="inline-block text-accent-gold italic" data-aos="fade-up" data-aos-delay="250">Pure</span>
+            <span class="inline-block text-accent-gold italic" data-aos="fade-up" data-aos-delay="300">Healing</span>
           </h1>
-          <div class="lang-ml font-malayalam block text-3xl sm:text-4xl md:text-5xl text-primary-dark leading-tight font-bold mb-2" data-aos="fade-up" data-aos-delay="150">
-            ശുദ്ധമായ <br/><span class="text-accent-gold">ചികിത്സാ പാരമ്പര്യം</span>
+          <div class="lang-ml font-malayalam flex flex-wrap gap-x-2 text-3xl sm:text-4xl md:text-5xl text-primary-dark leading-tight font-bold mb-2">
+            <span class="inline-block" data-aos="fade-up" data-aos-delay="150">ശുദ്ധമായ</span>
+            <div class="w-full h-0 m-0 p-0 border-0"></div>
+            <span class="inline-block text-accent-gold" data-aos="fade-up" data-aos-delay="250">ചികിത്സാ</span>
+            <span class="inline-block text-accent-gold" data-aos="fade-up" data-aos-delay="300">പാരമ്പര്യം</span>
           </div>
 
           <!-- Copy -->
@@ -120,7 +128,7 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
  
         <!-- Buttons with Shimmer & Expand Effects -->
         <div class="flex flex-col sm:flex-row gap-3 pt-2" data-aos="fade-up" data-aos-delay="350">
-          <a href="/appointment" class="btn-shimmer bg-primary hover:bg-primary-dark text-white flex items-center justify-center gap-2 group shadow-md hover:shadow-lg rounded-lg px-7 py-3.5 text-base font-serif font-bold transition-all duration-300 flex-1 sm:flex-initial">
+          <a href="/appointment" class="magnetic btn-shimmer bg-primary hover:bg-primary-dark text-white flex items-center justify-center gap-2 group shadow-md hover:shadow-lg rounded-lg px-7 py-3.5 text-base font-serif font-bold transition-all duration-300 flex-1 sm:flex-initial">
             <span class="lang-en">Book Consultation</span>
             <span class="lang-ml font-malayalam normal-case tracking-normal">കൺസൾട്ടേഷൻ ബുക്ക് ചെയ്യൂ</span>
             <ArrowRight size={18} className="transition-transform group-hover:translate-x-1 shrink-0" />
