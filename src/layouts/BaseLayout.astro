@@ -8,6 +8,7 @@ import SplashIntro from '../components/SplashIntro.astro';
 interface Props {
   title: string;
   description?: string;
+  keywords?: string;
   image?: string;
   canonicalURL?: URL;
   type?: string;
@@ -16,6 +17,7 @@ interface Props {
 const {
   title,
   description = "Experience authentic Kerala Ayurveda at Vaidyarmandiram Ayurveda Hospital. Founded by Dr. P. Abdul Sathar Gurukkal.",
+  keywords = "Ayurveda hospital Kerala, authentic ayurveda, panchakarma treatment, Vaidyarmandiram, Dr. P. Abdul Sathar Gurukkal, traditional ayurvedic clinic",
   image = "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/hero-bg.jpg",
   canonicalURL = new URL(Astro.url.pathname, "https://www.vaidhyarmandhiram.com/"),
   type = "website",
@@ -57,6 +59,7 @@ const fullTitle = `${siteName} | ${title}`;
     <title>{fullTitle}</title>
     <meta name="title" content={fullTitle} />
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <!-- Open Graph / Facebook -->
@@ -78,6 +81,9 @@ const fullTitle = `${siteName} | ${title}`;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- View Transitions -->
     <ViewTransitions />
@@ -150,12 +156,40 @@ const fullTitle = `${siteName} | ${title}`;
       </span>
     </a>
 
-    <script>
-      import { initAnimations } from '../scripts/animations.js';
-      initAnimations();
-      document.addEventListener('astro:page-load', () => {
-        initAnimations();
-      });
+    <!-- Lenis & AOS Scripts -->
+    <script is:inline src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script is:inline>
+      function initAnimationsAndScroll() {
+        // Initialize AOS
+        if (typeof AOS !== 'undefined') {
+          AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+          });
+        }
+        
+        // Initialize Lenis for Smooth Scrolling
+        if (typeof Lenis !== 'undefined' && !window.lenis) {
+          window.lenis = new Lenis({
+            lerp: 0.1,
+            smoothWheel: true,
+          });
+          
+          function raf(time) {
+            window.lenis.raf(time);
+            requestAnimationFrame(raf);
+          }
+          requestAnimationFrame(raf);
+        }
+      }
+
+      // Run on initial load
+      document.addEventListener('DOMContentLoaded', initAnimationsAndScroll);
+      
+      // Re-run on Astro view transitions
+      document.addEventListener('astro:page-load', initAnimationsAndScroll);
     </script>
   </body>
 </html>

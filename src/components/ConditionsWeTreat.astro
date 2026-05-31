@@ -62,7 +62,7 @@ const categories = [
 <div class="relative bg-cover bg-center py-24 border-y border-accent-gold/10 overflow-hidden" style="background-image: url('https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/herbal-garden-2.jpg');">
   <div class="absolute inset-0 bg-white/60 backdrop-blur-[1px] z-0"></div>
   <div class="container mx-auto px-4 max-w-7xl relative z-10">
-    <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0 translate-y-4 transition-all duration-700">
+    <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up" data-aos-duration="1000">
       <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.25em] text-sm font-bold block mb-2">Comprehensive Healing</span>
       <span class="lang-ml font-malayalam text-accent-gold text-sm font-bold block mb-2">സമ്പൂർണ്ണ സൗഖ്യം</span>
       <h2 class="lang-en text-4xl md:text-5xl text-primary-dark font-serif mb-4">Conditions We <span class="text-accent-gold italic">Treat</span></h2>
@@ -194,30 +194,11 @@ const categories = [
     startAutoScroll();
   }
 
-  // Intersection Observer for scroll animation (header)
-  function initConditionsAnimation() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove('opacity-0', 'translate-y-4');
-          entry.target.classList.add('opacity-100', 'translate-y-0');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-      observer.observe(el);
-    });
-  }
-
   // Run on initial load
   initConditionsCarousel();
-  initConditionsAnimation();
 
   // Re-run safely on View Transitions
   document.addEventListener('astro:page-load', () => {
     initConditionsCarousel();
-    initConditionsAnimation();
   });
 </script>

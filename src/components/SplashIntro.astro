@@ -7,14 +7,20 @@
   <!-- Centered Content Wrapper with Fade-in Entry -->
   <div class="relative z-10 w-full h-full flex flex-col items-center justify-center text-center animate-page-reveal p-4">
     
+    <!-- Golden Rings -->
+    <div id="splash-rings" class="absolute w-[95vw] max-w-[460px] aspect-square rounded-full border-[1px] border-accent-gold/30 animate-rings pointer-events-none transition-all duration-1000 z-0"></div>
+    <div id="splash-rings-inner" class="absolute w-[90vw] max-w-[440px] aspect-square rounded-full border-[1px] border-dashed border-accent-gold/40 animate-rings-inner pointer-events-none transition-all duration-1000 z-0"></div>
+
     <!-- Main Image Display (Borderless, premium rounded corners) -->
-    <div class="relative animate-logo-reveal flex items-center justify-center cursor-pointer">
+    <div id="splash-logo-container" class="relative animate-logo-reveal flex items-center justify-center cursor-pointer z-10">
       <img 
         src="https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/vmlaunchingpage.jpeg" 
         alt="Vaidyarmandiram Launching" 
         class="w-[85vw] max-w-[420px] aspect-square object-cover rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.15)] hover:scale-[1.02] transition-transform duration-500"
       />
     </div>
+
+
 
   </div>
 </div>
@@ -59,15 +65,65 @@
       isDismissing = true;
       if (autoDismissTimeout) clearTimeout(autoDismissTimeout);
 
-      splash.style.opacity = '0';
-      splash.style.visibility = 'hidden';
-      splash.style.transform = 'translateY(-100%)'; // Elegantly slide up
+      const logoContainer = document.getElementById('splash-logo-container');
+      const navLogo = document.getElementById('nav-logo-img');
+
+      if (logoContainer && navLogo) {
+        // Stop breathing animation so transform works natively
+        logoContainer.style.animation = 'none';
+        
+        // Ensure image inside also adapts if needed, though container scaling is enough
+        const img = logoContainer.querySelector('img');
+        if (img) img.style.borderRadius = '50%';
+
+        const rings = document.getElementById('splash-rings');
+        const ringsInner = document.getElementById('splash-rings-inner');
+        
+        if (rings) {
+          rings.style.transform = 'scale(1.5)';
+          rings.style.opacity = '0';
+        }
+        if (ringsInner) {
+          ringsInner.style.transform = 'scale(1.3)';
+          ringsInner.style.opacity = '0';
+        }
+        
+        const rectSplash = logoContainer.getBoundingClientRect();
+        const rectNav = navLogo.getBoundingClientRect();
+        
+        // Calculate scale and translation based on centers
+        const scale = rectNav.width / rectSplash.width;
+        
+        const splashCenterX = rectSplash.left + rectSplash.width / 2;
+        const splashCenterY = rectSplash.top + rectSplash.height / 2;
+        const navCenterX = rectNav.left + rectNav.width / 2;
+        const navCenterY = rectNav.top + rectNav.height / 2;
+        
+        const deltaX = navCenterX - splashCenterX;
+        const deltaY = navCenterY - splashCenterY;
+
+        // Animate the logo to navbar
+        logoContainer.style.transition = 'all 1s cubic-bezier(0.85, 0, 0.15, 1)';
+        logoContainer.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
+        
+        // Fade out background texture seamlessly
+        splash.style.transition = 'background-color 1s ease, opacity 1s ease';
+        splash.style.backgroundColor = 'transparent';
+        splash.style.backgroundImage = 'none';
+        splash.style.pointerEvents = 'none';
+      } else {
+        // Fallback if nav is missing
+        splash.style.opacity = '0';
+        splash.style.visibility = 'hidden';
+        splash.style.transform = 'translateY(-100%)';
+      }
       
       sessionStorage.setItem('splash-shown', 'true');
       
       setTimeout(() => {
-        splash.remove();
-      }, 1000);
+        splash.style.opacity = '0';
+        setTimeout(() => splash.remove(), 300);
+      }, 800);
     };
 
     // Auto-dismiss after 3 seconds
@@ -159,6 +215,27 @@
     animation: 
       logo-reveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards,
       logo-breathe 4s ease-in-out infinite 1.6s;
+  }
+
+  @keyframes rings-reveal {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes text-reveal {
+    from { opacity: 0; transform: translateY(20px); filter: blur(10px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+
+  .animate-rings {
+    animation: rings-reveal 1.5s ease-out forwards, spin-slow 30s linear infinite;
+  }
+  .animate-rings-inner {
+    animation: rings-reveal 1.5s ease-out forwards, spin-reverse-slow 25s linear infinite;
+  }
+  .animate-text-reveal {
+    animation: text-reveal 1.2s ease-out forwards;
+    animation-delay: 0.8s;
+    opacity: 0;
   }
 
   .animate-spin-slow {

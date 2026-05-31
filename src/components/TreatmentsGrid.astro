@@ -75,7 +75,7 @@ const treatments = [
 
   <div
     id="treatments-scroll-container"
-    class="treatments-carousel flex overflow-x-auto no-scrollbar pb-4 animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000"
+    class="treatments-carousel flex overflow-x-auto no-scrollbar pb-4" data-aos="fade-up" data-aos-duration="1000"
   >
     {/* Render only once in HTML. JS will clone these for the infinite loop to prevent layout bugs if JS fails */}
     {treatments.map(t => {
