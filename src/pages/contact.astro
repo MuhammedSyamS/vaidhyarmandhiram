@@ -8,7 +8,11 @@ import { Phone, Mail, MapPin, Clock, MessageSquare } from 'lucide-react';
 export const prerender = true;
 ---
 
-<BaseLayout title="Contact Us" description="Get in touch with Vaidyarmandiram Ayurveda Hospital. Find our locations in Trivandrum, Kollam, and Alappuzha, or book a consultation.">
+<BaseLayout 
+  title="Contact Us" 
+  description="Get in touch with Vaidyarmandiram Ayurveda Hospital. Find our locations in Trivandrum, Kollam, and Alappuzha, or book a consultation."
+  canonicalURL={new URL('/contact', 'https://www.vaidhyarmandhiram.com/')}
+>
   <Fragment slot="json-ld">
     <script type="application/ld+json">
       {
