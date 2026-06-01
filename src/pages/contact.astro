@@ -284,11 +284,51 @@ export const prerender = true;
       });
     }
 
+    function initContactForm() {
+      const form = document.getElementById('contact-form') as HTMLFormElement;
+      const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
+      
+      if (form && submitBtn && !form.hasAttribute('data-initialized')) {
+        form.setAttribute('data-initialized', 'true');
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const originalText = submitBtn.innerText;
+          submitBtn.innerText = 'Sending...';
+          submitBtn.disabled = true;
+          
+          try {
+            // dynamic import to avoid blocking the main bundle
+            const { actions } = await import('astro:actions');
+            const formData = new FormData(form);
+            const { data, error } = await actions.submitInquiry(formData);
+            
+            if (error) {
+              alert(error.message || 'Validation failed. Please check your inputs.');
+            } else {
+              alert('Thank you! Your inquiry has been sent successfully.');
+              form.reset();
+            }
+          } catch (error) {
+            console.error(error);
+            alert('A network or server error occurred. Please try again.');
+          } finally {
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
+          }
+        });
+      }
+    }
+
     // Initialize
     initMapTabs();
+    initContactForm();
 
     // Re-run on View Transitions
-    document.addEventListener('astro:page-load', initMapTabs);
+    document.addEventListener('astro:page-load', () => {
+      initMapTabs();
+      initContactForm();
+    });
   </script>
 
   <Footer slot="footer" />

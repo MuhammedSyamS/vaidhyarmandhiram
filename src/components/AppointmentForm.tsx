@@ -44,14 +44,20 @@ export default function AppointmentForm() {
     event.preventDefault();
     setStatus('loading');
     
-    const formData = new FormData(event.currentTarget);
-    const { data, error } = await actions.bookAppointment(formData);
+    try {
+      const formData = new FormData(event.currentTarget);
+      const { data, error } = await actions.bookAppointment(formData);
 
-    if (error) {
+      if (error) {
+        setStatus('error');
+        setErrorMessage(error.message || 'Validation failed. Please check your inputs.');
+      } else {
+        setStatus('success');
+      }
+    } catch (err: any) {
+      console.error(err);
       setStatus('error');
-      setErrorMessage(error.message || 'Something went wrong. Please try again.');
-    } else {
-      setStatus('success');
+      setErrorMessage('A network or server error occurred. Please refresh the page or restart the server.');
     }
   }
 
@@ -103,9 +109,8 @@ export default function AppointmentForm() {
               type="tel" 
               id="phone" 
               name="phone" 
-              pattern="[0-9]{10}"
               className="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none transition-colors font-sans"
-              placeholder="10-digit mobile number"
+              placeholder="Your mobile number"
             />
           </div>
         </div>

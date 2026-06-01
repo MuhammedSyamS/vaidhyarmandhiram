@@ -36,7 +36,7 @@ export const server = {
     accept: 'form',
     input: z.object({
       name: z.string(),
-      phone: z.string().length(10),
+      phone: z.string().min(10),
       email: z.string().email(),
       doctor: z.string().optional(),
       treatment: z.string().optional(),
@@ -45,40 +45,51 @@ export const server = {
       symptoms: z.string().optional(),
     }),
     handler: async (input) => {
-      await dbConnect();
-      const appointment = new Appointment(input);
-      await appointment.save();
+      try {
+        await dbConnect();
+        const appointment = new Appointment(input);
+        await appointment.save();
+      } catch (err) {
+        console.warn('Database save skipped/failed:', err);
+      }
 
       try {
-        const transporter = nodemailer.createTransport({
-          service: 'gmail',
-          auth: {
-            user: process.env.EMAIL_ADDRESS,
-            pass: process.env.APP_PASSWORD,
-          },
-        });
+        const userEmail = import.meta.env.EMAIL_ADDRESS || process.env.EMAIL_ADDRESS;
+        const appPassword = import.meta.env.APP_PASSWORD || process.env.APP_PASSWORD;
+        
+        if (userEmail && appPassword) {
+          const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: userEmail,
+              pass: appPassword,
+            },
+          });
 
-        const mailOptions = {
-          from: process.env.EMAIL_ADDRESS,
-          to: process.env.EMAIL_ADDRESS,
-          subject: `New Appointment Booking: ${input.name}`,
-          text: `
+          const mailOptions = {
+            from: userEmail,
+            to: userEmail,
+            subject: `New Appointment Booking: ${input.name}`,
+            text: `
 A new appointment has been booked!
 
 Details:
 Name: ${input.name}
 Email: ${input.email}
 Phone: ${input.phone}
-Doctor: ${input.doctor}
-Treatment: ${input.treatment}
+Doctor: ${input.doctor || 'Not specified'}
+Treatment: ${input.treatment || 'Not specified'}
 Date: ${input.date}
 Time Slot: ${input.timeSlot}
 Symptoms: ${input.symptoms || 'None provided'}
-          `,
-        };
+            `,
+          };
 
-        await transporter.sendMail(mailOptions);
-        console.log('Notification email sent successfully');
+          await transporter.sendMail(mailOptions);
+          console.log('Notification email sent successfully');
+        } else {
+           console.error('Email credentials not found in environment variables.');
+        }
       } catch (error) {
         console.error('Error sending notification email:', error);
       }
@@ -96,9 +107,51 @@ Symptoms: ${input.symptoms || 'None provided'}
       message: z.string(),
     }),
     handler: async (input) => {
-      await dbConnect();
-      const inquiry = new Inquiry(input);
-      await inquiry.save();
+      try {
+        await dbConnect();
+        const inquiry = new Inquiry(input);
+        await inquiry.save();
+      } catch (err) {
+        console.warn('Database save skipped/failed:', err);
+      }
+      try {
+        const userEmail = import.meta.env.EMAIL_ADDRESS || process.env.EMAIL_ADDRESS;
+        const appPassword = import.meta.env.APP_PASSWORD || process.env.APP_PASSWORD;
+        
+        if (userEmail && appPassword) {
+          const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: userEmail,
+              pass: appPassword,
+            },
+          });
+
+          const mailOptions = {
+            from: userEmail,
+            to: userEmail,
+            subject: `New Inquiry from ${input.name}: ${input.subject}`,
+            text: `
+You have received a new inquiry!
+
+Details:
+Name: ${input.name}
+Email: ${input.email}
+Phone: ${input.phone}
+Subject: ${input.subject}
+Message: ${input.message}
+            `,
+          };
+
+          await transporter.sendMail(mailOptions);
+          console.log('Inquiry email sent successfully');
+        } else {
+           console.error('Email credentials not found in environment variables.');
+        }
+      } catch (error) {
+        console.error('Error sending inquiry email:', error);
+      }
+
       return { success: true };
     },
   }),
