@@ -3,17 +3,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Section from '../../components/Section.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
 export const prerender = true;
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog').catch(() => []);
-  return posts.map(post => ({
+  return posts.map((post: CollectionEntry<'blog'>) => ({
     params: { slug: post.slug },
     props: { post },
   }));
 }
+
+type Props = {
+  post: CollectionEntry<'blog'>;
+};
 
 const { post } = Astro.props;
 const { Content } = await post.render();
