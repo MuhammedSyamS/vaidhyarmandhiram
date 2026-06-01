@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { actions } from 'astro:actions';
-import { CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Loader2, MessageSquare } from 'lucide-react';
 
 export default function AppointmentForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [waLink, setWaLink] = useState('');
   const [selectedTreatment, setSelectedTreatment] = useState('consultation');
   const [customTreatment, setCustomTreatment] = useState('');
 
@@ -52,6 +53,21 @@ export default function AppointmentForm() {
         setStatus('error');
         setErrorMessage(error.message || 'Validation failed. Please check your inputs.');
       } else {
+        const name = formData.get('name') as string;
+        const phone = formData.get('phone') as string;
+        const treatment = formData.get('treatment') as string;
+        const date = formData.get('date') as string;
+        const timeSlot = formData.get('timeSlot') as string;
+
+        const text = `*New Appointment Request* 📅
+*Name:* ${name}
+*Phone:* ${phone}
+*Treatment:* ${treatment}
+*Date:* ${date}
+*Time Slot:* ${timeSlot}`;
+
+        const link = `https://wa.me/918593821553?text=${encodeURIComponent(text)}`;
+        setWaLink(link);
         setStatus('success');
       }
     } catch (err: any) {
@@ -75,14 +91,25 @@ export default function AppointmentForm() {
         </div>
         <h2 className="text-3xl font-bold text-primary-dark">Appointment Requested</h2>
         <p className="text-text-muted text-lg max-w-md mx-auto">
-          Thank you for choosing Vaidyarmandiram. Our team will contact you shortly to confirm your preferred time slot.
+          Your request has been recorded. To instantly confirm with our team, please send your details via WhatsApp.
         </p>
-        <button 
-          onClick={() => setStatus('idle')}
-          className="btn-primary"
-        >
-          Book Another
-        </button>
+        <div className="flex flex-col gap-4 items-center mt-6">
+          <a 
+            href={waLink} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-full max-w-xs flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white py-3 px-6 rounded font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+          >
+            <MessageSquare size={20} />
+            Send via WhatsApp
+          </a>
+          <button 
+            onClick={() => { setStatus('idle'); setWaLink(''); }}
+            className="text-text-muted text-sm hover:text-primary transition-colors mt-2"
+          >
+            Book Another Appointment
+          </button>
+        </div>
       </motion.div>
     );
   }
