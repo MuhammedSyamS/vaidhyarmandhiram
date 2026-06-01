@@ -7,7 +7,7 @@ export default function AppointmentForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [waLink, setWaLink] = useState('');
-  const [selectedTreatment, setSelectedTreatment] = useState('consultation');
+  const [selectedTreatment, setSelectedTreatment] = useState('General Consultation');
   const [customTreatment, setCustomTreatment] = useState('');
 
   React.useEffect(() => {
@@ -59,16 +59,24 @@ export default function AppointmentForm() {
         const date = formData.get('date') as string;
         const timeSlot = formData.get('timeSlot') as string;
 
+        const email = formData.get('email') as string;
+        const symptoms = formData.get('symptoms') as string;
+
         const text = `*New Appointment Request* 📅
 *Name:* ${name}
 *Phone:* ${phone}
+*Email:* ${email}
 *Treatment:* ${treatment}
 *Date:* ${date}
-*Time Slot:* ${timeSlot}`;
+*Time Slot:* ${timeSlot}
+${symptoms ? `*Symptoms/Notes:* ${symptoms}` : ''}`;
 
         const link = `https://wa.me/918593821553?text=${encodeURIComponent(text)}`;
         setWaLink(link);
         setStatus('success');
+        
+        // Auto-redirect to WhatsApp
+        window.location.href = link;
       }
     } catch (err: any) {
       console.error(err);
@@ -177,13 +185,13 @@ export default function AppointmentForm() {
             className="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none transition-colors font-sans bg-white"
           >
             {customTreatment && ![
-              'consultation', 'panchakarma', 'spine-joint', 'skin-care', 'rejuvenation',
+              'consultation', 'General Consultation', 'panchakarma', 'spine-joint', 'skin-care', 'rejuvenation',
               'Special Treatments', 'Panchakarma (Detox)', 'Localized Basti', 'Sudation & Scrubbing', 'Eye & Ear Care',
               'Anorectal & Digestive', 'Spine, Joint & Ortho', 'Lifestyle & Metabolic', 'Women\'s Health', 'Skin, Hair & Beauty', 'Specialized & Children'
             ].includes(customTreatment) && (
               <option value={customTreatment}>{customTreatment}</option>
             )}
-            <option value="consultation">General Consultation</option>
+            <option value="General Consultation">General Consultation</option>
             <option value="Special Treatments">Special Treatments</option>
             <option value="Panchakarma (Detox)">Panchakarma (Detox)</option>
             <option value="Localized Basti">Localized Basti</option>
@@ -203,7 +211,7 @@ export default function AppointmentForm() {
           <div className="flex flex-wrap gap-4">
             {['Morning', 'Afternoon', 'Evening'].map(slot => (
               <label key={slot} className="flex items-center gap-2 cursor-pointer group">
-                <input type="radio" name="timeSlot" value={slot.toLowerCase()} className="hidden peer" defaultChecked={slot === 'Morning'} />
+                <input type="radio" name="timeSlot" value={slot} className="hidden peer" defaultChecked={slot === 'Morning'} />
                 <div className="px-6 py-2 border border-accent-gold/20 peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary transition-all font-sans">
                   {slot}
                 </div>
