@@ -1,7 +1,7 @@
 import { defineAction, ActionError } from 'astro:actions';
 import { z } from 'astro:schema';
-import dbConnect from '../lib/mongodb';
-import mongoose from 'mongoose';
+// import dbConnect from '../lib/mongodb';
+// import mongoose from 'mongoose';
 import nodemailer from 'nodemailer';
 
 const withTimeout = (promise: Promise<any>, ms: number, message: string) => {
@@ -12,31 +12,10 @@ const withTimeout = (promise: Promise<any>, ms: number, message: string) => {
 };
 
 // Define Mongoose Schemas if they don't exist
-const AppointmentSchema = new mongoose.Schema({
-  name: String,
-  phone: String,
-  email: String,
-  doctor: String,
-  treatment: String,
-  date: Date,
-  timeSlot: String,
-  symptoms: String,
-  status: { type: String, default: 'Pending' },
-  createdAt: { type: Date, default: Date.now }
-});
-
-const Appointment = mongoose.models.Appointment || mongoose.model('Appointment', AppointmentSchema);
-
-const InquirySchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  phone: String,
-  subject: String,
-  message: String,
-  createdAt: { type: Date, default: Date.now }
-});
-
-const Inquiry = mongoose.models.Inquiry || mongoose.model('Inquiry', InquirySchema);
+// const AppointmentSchema = new mongoose.Schema({ ... });
+// const Appointment = mongoose.models.Appointment || mongoose.model('Appointment', AppointmentSchema);
+// const InquirySchema = new mongoose.Schema({ ... });
+// const Inquiry = mongoose.models.Inquiry || mongoose.model('Inquiry', InquirySchema);
 
 export const server = {
   bookAppointment: defineAction({
@@ -54,9 +33,9 @@ export const server = {
     handler: async (input) => {
       try {
         try {
-          await withTimeout(dbConnect(), 3000, 'Database connection timed out');
-          const appointment = new Appointment(input);
-          await withTimeout(appointment.save(), 3000, 'Database save timed out');
+          // await withTimeout(dbConnect(), 3000, 'Database connection timed out');
+          // const appointment = new Appointment(input);
+          // await withTimeout(appointment.save(), 3000, 'Database save timed out');
         } catch (err) {
           console.warn('Database save skipped/failed:', err);
         }
@@ -125,9 +104,9 @@ Symptoms: ${input.symptoms || 'None provided'}
     handler: async (input) => {
       try {
         try {
-          await withTimeout(dbConnect(), 3000, 'Database connection timed out');
-          const inquiry = new Inquiry(input);
-          await withTimeout(inquiry.save(), 3000, 'Database save timed out');
+          // await withTimeout(dbConnect(), 3000, 'Database connection timed out');
+          // const inquiry = new Inquiry(input);
+          // await withTimeout(inquiry.save(), 3000, 'Database save timed out');
         } catch (err) {
           console.warn('Database save skipped/failed:', err);
         }
