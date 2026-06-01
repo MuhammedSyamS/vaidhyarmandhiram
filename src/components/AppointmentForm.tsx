@@ -51,7 +51,7 @@ export default function AppointmentForm() {
 
       if (error) {
         setStatus('error');
-        setErrorMessage(error.message || 'Server error occurred. Please try again or check console.');
+        setErrorMessage(JSON.stringify(error) || 'Server error occurred.');
       } else {
         const name = formData.get('name') as string;
         const phone = formData.get('phone') as string;
