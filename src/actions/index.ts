@@ -64,6 +64,9 @@ export const server = {
               user: userEmail,
               pass: appPassword,
             },
+            connectionTimeout: 5000,
+            greetingTimeout: 5000,
+            socketTimeout: 5000,
           });
 
           const mailOptions = {
@@ -127,6 +130,9 @@ Symptoms: ${input.symptoms || 'None provided'}
               user: userEmail,
               pass: appPassword,
             },
+            connectionTimeout: 5000,
+            greetingTimeout: 5000,
+            socketTimeout: 5000,
           });
 
           const mailOptions = {

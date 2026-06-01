@@ -79,9 +79,8 @@ ${symptoms ? `*Symptoms/Notes:* ${symptoms}` : ''}`;
         window.location.href = link;
       }
     } catch (err: any) {
-      console.error(err);
       setStatus('error');
-      setErrorMessage('A network or server error occurred. Please refresh the page or restart the server.');
+      setErrorMessage('Network or server error: ' + (err.message || 'Unknown error'));
     }
   }
 
