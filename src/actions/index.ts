@@ -53,34 +53,35 @@ export const server = {
     }),
     handler: async (input) => {
       try {
-        await withTimeout(dbConnect(), 3000, 'Database connection timed out');
-        const appointment = new Appointment(input);
-        await withTimeout(appointment.save(), 3000, 'Database save timed out');
-      } catch (err) {
-        console.warn('Database save skipped/failed:', err);
-      }
+        try {
+          await withTimeout(dbConnect(), 3000, 'Database connection timed out');
+          const appointment = new Appointment(input);
+          await withTimeout(appointment.save(), 3000, 'Database save timed out');
+        } catch (err) {
+          console.warn('Database save skipped/failed:', err);
+        }
 
-      try {
-        const userEmail = import.meta.env.EMAIL_ADDRESS || process.env.EMAIL_ADDRESS;
-        const appPassword = import.meta.env.APP_PASSWORD || process.env.APP_PASSWORD;
-        
-        if (userEmail && appPassword) {
-          const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-              user: userEmail,
-              pass: appPassword,
-            },
-            connectionTimeout: 5000,
-            greetingTimeout: 5000,
-            socketTimeout: 5000,
-          });
+        try {
+          const userEmail = import.meta.env.EMAIL_ADDRESS || process.env.EMAIL_ADDRESS;
+          const appPassword = import.meta.env.APP_PASSWORD || process.env.APP_PASSWORD;
+          
+          if (userEmail && appPassword) {
+            const transporter = nodemailer.createTransport({
+              service: 'gmail',
+              auth: {
+                user: userEmail,
+                pass: appPassword,
+              },
+              connectionTimeout: 5000,
+              greetingTimeout: 5000,
+              socketTimeout: 5000,
+            });
 
-          const mailOptions = {
-            from: userEmail,
-            to: userEmail,
-            subject: `New Appointment Booking: ${input.name}`,
-            text: `
+            const mailOptions = {
+              from: userEmail,
+              to: userEmail,
+              subject: `New Appointment Booking: ${input.name}`,
+              text: `
 A new appointment has been booked!
 
 Details:
@@ -92,21 +93,24 @@ Treatment: ${input.treatment || 'Not specified'}
 Date: ${input.date}
 Time Slot: ${input.timeSlot}
 Symptoms: ${input.symptoms || 'None provided'}
-            `,
-          };
+              `,
+            };
 
-          await withTimeout(transporter.sendMail(mailOptions), 4000, 'Email sending timed out');
-          console.log('Notification email sent successfully');
-        } else {
-           console.error('Email credentials not found in environment variables.');
-           throw new ActionError({ code: 'BAD_REQUEST', message: 'Email credentials not found in Vercel environment variables.' });
+            await withTimeout(transporter.sendMail(mailOptions), 4000, 'Email sending timed out');
+            console.log('Notification email sent successfully');
+          } else {
+             console.error('Email credentials not found in environment variables.');
+             throw new ActionError({ code: 'BAD_REQUEST', message: 'Email credentials not found in Vercel environment variables.' });
+          }
+        } catch (error: any) {
+          console.error('Error sending notification email:', error);
+          throw new ActionError({ code: 'BAD_REQUEST', message: 'Email sending failed: ' + error.message });
         }
-      } catch (error: any) {
-        console.error('Error sending notification email:', error);
-        throw new ActionError({ code: 'BAD_REQUEST', message: 'Email sending failed: ' + error.message });
-      }
 
-      return { success: true };
+        return { success: true };
+      } catch (globalCrash: any) {
+        throw new ActionError({ code: 'BAD_REQUEST', message: 'GLOBAL CRASH: ' + globalCrash.stack });
+      }
     },
   }),
   submitInquiry: defineAction({
@@ -120,33 +124,34 @@ Symptoms: ${input.symptoms || 'None provided'}
     }),
     handler: async (input) => {
       try {
-        await withTimeout(dbConnect(), 3000, 'Database connection timed out');
-        const inquiry = new Inquiry(input);
-        await withTimeout(inquiry.save(), 3000, 'Database save timed out');
-      } catch (err) {
-        console.warn('Database save skipped/failed:', err);
-      }
-      try {
-        const userEmail = import.meta.env.EMAIL_ADDRESS || process.env.EMAIL_ADDRESS;
-        const appPassword = import.meta.env.APP_PASSWORD || process.env.APP_PASSWORD;
-        
-        if (userEmail && appPassword) {
-          const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-              user: userEmail,
-              pass: appPassword,
-            },
-            connectionTimeout: 5000,
-            greetingTimeout: 5000,
-            socketTimeout: 5000,
-          });
+        try {
+          await withTimeout(dbConnect(), 3000, 'Database connection timed out');
+          const inquiry = new Inquiry(input);
+          await withTimeout(inquiry.save(), 3000, 'Database save timed out');
+        } catch (err) {
+          console.warn('Database save skipped/failed:', err);
+        }
+        try {
+          const userEmail = import.meta.env.EMAIL_ADDRESS || process.env.EMAIL_ADDRESS;
+          const appPassword = import.meta.env.APP_PASSWORD || process.env.APP_PASSWORD;
+          
+          if (userEmail && appPassword) {
+            const transporter = nodemailer.createTransport({
+              service: 'gmail',
+              auth: {
+                user: userEmail,
+                pass: appPassword,
+              },
+              connectionTimeout: 5000,
+              greetingTimeout: 5000,
+              socketTimeout: 5000,
+            });
 
-          const mailOptions = {
-            from: userEmail,
-            to: userEmail,
-            subject: `New Inquiry from ${input.name}: ${input.subject}`,
-            text: `
+            const mailOptions = {
+              from: userEmail,
+              to: userEmail,
+              subject: `New Inquiry from ${input.name}: ${input.subject}`,
+              text: `
 You have received a new inquiry!
 
 Details:
@@ -155,21 +160,24 @@ Email: ${input.email}
 Phone: ${input.phone}
 Subject: ${input.subject}
 Message: ${input.message}
-            `,
-          };
+              `,
+            };
 
-          await withTimeout(transporter.sendMail(mailOptions), 4000, 'Email sending timed out');
-          console.log('Inquiry email sent successfully');
-        } else {
-           console.error('Email credentials not found in environment variables.');
-           throw new ActionError({ code: 'BAD_REQUEST', message: 'Email credentials not found in Vercel environment variables.' });
+            await withTimeout(transporter.sendMail(mailOptions), 4000, 'Email sending timed out');
+            console.log('Inquiry email sent successfully');
+          } else {
+             console.error('Email credentials not found in environment variables.');
+             throw new ActionError({ code: 'BAD_REQUEST', message: 'Email credentials not found in Vercel environment variables.' });
+          }
+        } catch (error: any) {
+          console.error('Error sending inquiry email:', error);
+          throw new ActionError({ code: 'BAD_REQUEST', message: 'Email sending failed: ' + error.message });
         }
-      } catch (error: any) {
-        console.error('Error sending inquiry email:', error);
-        throw new ActionError({ code: 'BAD_REQUEST', message: 'Email sending failed: ' + error.message });
-      }
 
-      return { success: true };
+        return { success: true };
+      } catch (globalCrash: any) {
+        throw new ActionError({ code: 'BAD_REQUEST', message: 'GLOBAL CRASH: ' + globalCrash.stack });
+      }
     },
   }),
 };
