@@ -35,13 +35,13 @@ export const server = {
   bookAppointment: defineAction({
     accept: 'form',
     input: z.object({
-      name: z.string(),
-      phone: z.string().min(10),
-      email: z.string().email(),
+      name: z.string().optional(),
+      phone: z.string().optional(),
+      email: z.string().optional(),
       doctor: z.string().optional(),
       treatment: z.string().optional(),
-      date: z.string(),
-      timeSlot: z.string(),
+      date: z.string().optional(),
+      timeSlot: z.string().optional(),
       symptoms: z.string().optional(),
     }),
     handler: async (input) => {
@@ -100,11 +100,11 @@ Symptoms: ${input.symptoms || 'None provided'}
   submitInquiry: defineAction({
     accept: 'form',
     input: z.object({
-      name: z.string(),
-      email: z.string().email(),
-      phone: z.string(),
-      subject: z.string(),
-      message: z.string(),
+      name: z.string().optional(),
+      email: z.string().optional(),
+      phone: z.string().optional(),
+      subject: z.string().optional(),
+      message: z.string().optional(),
     }),
     handler: async (input) => {
       try {
