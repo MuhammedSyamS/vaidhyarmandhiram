@@ -19,7 +19,7 @@ const withTimeout = (promise: Promise<any>, ms: number, message: string) => {
 
 export const server = {
   bookAppointment: defineAction({
-    accept: 'form',
+    accept: 'json',
     input: z.object({
       name: z.string().optional(),
       phone: z.string().optional(),

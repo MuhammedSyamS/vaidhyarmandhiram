@@ -47,7 +47,8 @@ export default function AppointmentForm() {
     
     try {
       const formData = new FormData(event.currentTarget);
-      const { data, error } = await actions.bookAppointment(formData);
+      const dataObj = Object.fromEntries(formData.entries()) as Record<string, string>;
+      const { data, error } = await actions.bookAppointment(dataObj);
 
       if (error) {
         setStatus('error');
