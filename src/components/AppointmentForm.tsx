@@ -51,7 +51,7 @@ export default function AppointmentForm() {
 
       if (error) {
         setStatus('error');
-        setErrorMessage(error.message || 'Validation failed. Please check your inputs.');
+        setErrorMessage(error.message || 'Server error occurred. Please try again or check console.');
       } else {
         const name = formData.get('name') as string;
         const phone = formData.get('phone') as string;
