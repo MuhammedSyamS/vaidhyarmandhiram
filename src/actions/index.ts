@@ -4,6 +4,13 @@ import dbConnect from '../lib/mongodb';
 import mongoose from 'mongoose';
 import nodemailer from 'nodemailer';
 
+const withTimeout = (promise: Promise<any>, ms: number, message: string) => {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error(message)), ms))
+  ]);
+};
+
 // Define Mongoose Schemas if they don't exist
 const AppointmentSchema = new mongoose.Schema({
   name: String,
@@ -46,9 +53,9 @@ export const server = {
     }),
     handler: async (input) => {
       try {
-        await dbConnect();
+        await withTimeout(dbConnect(), 3000, 'Database connection timed out');
         const appointment = new Appointment(input);
-        await appointment.save();
+        await withTimeout(appointment.save(), 3000, 'Database save timed out');
       } catch (err) {
         console.warn('Database save skipped/failed:', err);
       }
@@ -88,7 +95,7 @@ Symptoms: ${input.symptoms || 'None provided'}
             `,
           };
 
-          await transporter.sendMail(mailOptions);
+          await withTimeout(transporter.sendMail(mailOptions), 4000, 'Email sending timed out');
           console.log('Notification email sent successfully');
         } else {
            console.error('Email credentials not found in environment variables.');
@@ -113,9 +120,9 @@ Symptoms: ${input.symptoms || 'None provided'}
     }),
     handler: async (input) => {
       try {
-        await dbConnect();
+        await withTimeout(dbConnect(), 3000, 'Database connection timed out');
         const inquiry = new Inquiry(input);
-        await inquiry.save();
+        await withTimeout(inquiry.save(), 3000, 'Database save timed out');
       } catch (err) {
         console.warn('Database save skipped/failed:', err);
       }
@@ -151,7 +158,7 @@ Message: ${input.message}
             `,
           };
 
-          await transporter.sendMail(mailOptions);
+          await withTimeout(transporter.sendMail(mailOptions), 4000, 'Email sending timed out');
           console.log('Inquiry email sent successfully');
         } else {
            console.error('Email credentials not found in environment variables.');
