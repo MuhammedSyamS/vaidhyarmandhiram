@@ -92,11 +92,11 @@ Symptoms: ${input.symptoms || 'None provided'}
           console.log('Notification email sent successfully');
         } else {
            console.error('Email credentials not found in environment variables.');
-           throw new ActionError({ code: 'INTERNAL_SERVER_ERROR', message: 'Email credentials not found in Vercel environment variables.' });
+           throw new ActionError({ code: 'BAD_REQUEST', message: 'Email credentials not found in Vercel environment variables.' });
         }
       } catch (error: any) {
         console.error('Error sending notification email:', error);
-        throw new ActionError({ code: 'INTERNAL_SERVER_ERROR', message: 'Email sending failed: ' + error.message });
+        throw new ActionError({ code: 'BAD_REQUEST', message: 'Email sending failed: ' + error.message });
       }
 
       return { success: true };
@@ -155,11 +155,11 @@ Message: ${input.message}
           console.log('Inquiry email sent successfully');
         } else {
            console.error('Email credentials not found in environment variables.');
-           throw new ActionError({ code: 'INTERNAL_SERVER_ERROR', message: 'Email credentials not found in Vercel environment variables.' });
+           throw new ActionError({ code: 'BAD_REQUEST', message: 'Email credentials not found in Vercel environment variables.' });
         }
       } catch (error: any) {
         console.error('Error sending inquiry email:', error);
-        throw new ActionError({ code: 'INTERNAL_SERVER_ERROR', message: 'Email sending failed: ' + error.message });
+        throw new ActionError({ code: 'BAD_REQUEST', message: 'Email sending failed: ' + error.message });
       }
 
       return { success: true };
