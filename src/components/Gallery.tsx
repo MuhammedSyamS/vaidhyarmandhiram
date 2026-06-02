@@ -30,6 +30,16 @@ const mediaItems: MediaItem[] = [
   { id: 15, type: 'youtube', videoId: 'ZbXsrEDkbiQ', category: 'Patient Testimonials', alt: 'Joint Pain Relief' },
   { id: 16, type: 'youtube', videoId: 'IyyYZOcOkAM', category: 'Patient Testimonials', alt: 'Health Transformation' },
   { id: 17, type: 'youtube', videoId: 'DcuYFXvicm4', category: 'Patient Testimonials', alt: 'Vaidyarmandiram Testimonial' },
+  // Homepage Testimonials
+  { id: 18, type: 'youtube', videoId: 'UTZ7tBpqD9s', category: 'Patient Testimonials', alt: 'Mrs. Lateesha Testimonial' },
+  { id: 19, type: 'youtube', videoId: 'OKdHB708p6I', category: 'Patient Testimonials', alt: 'Nikhi Testimonial' },
+  { id: 20, type: 'youtube', videoId: 's-ehW3aamw0', category: 'Patient Testimonials', alt: 'Mrs. Bismi Testimonial' },
+  { id: 21, type: 'youtube', videoId: 'tpC90rfXm4I', category: 'Patient Testimonials', alt: 'Ms. Reshmi Testimonial' },
+  { id: 22, type: 'youtube', videoId: 'AJtjtI7SkQA', category: 'Patient Testimonials', alt: 'Mrs. Jyothi Testimonial' },
+  { id: 23, type: 'youtube', videoId: 's0l83M4YfiU', category: 'Patient Testimonials', alt: 'Al Sila Testimonial' },
+  { id: 24, type: 'youtube', videoId: 'obJ0o76Clm0', category: 'Patient Testimonials', alt: 'Simi Testimonial' },
+  { id: 25, type: 'youtube', videoId: 'hFZLc__xZRM', category: 'Patient Testimonials', alt: 'Miss Athira Testimonial' },
+  { id: 26, type: 'youtube', videoId: 'SkjO74mjr1A', category: 'Patient Testimonials', alt: 'Husna Safeer Testimonial' },
 ];
 
 const categories = ['All', 'Treatment Rooms', 'Herbal Garden', 'Facilities', 'Patient Wellness', 'Patient Testimonials'];
