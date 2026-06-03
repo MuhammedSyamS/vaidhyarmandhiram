@@ -131,7 +131,7 @@ export default function Chatbot() {
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-[85px] sm:right-[95px] z-[9998] bg-primary text-background-parchment p-3.5 rounded-full shadow-xl hover:bg-primary-dark hover:scale-110 transition-all duration-300 flex items-center justify-center group ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+        className={`fixed bottom-24 right-6 z-[9998] bg-primary text-background-parchment p-3.5 rounded-full shadow-xl hover:bg-primary-dark hover:scale-110 transition-all duration-300 flex items-center justify-center group ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
         aria-label="Open AI Assistant"
       >
         <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
@@ -148,7 +148,7 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-6 sm:right-24 z-[9999] w-[90vw] sm:w-[380px] h-[500px] max-h-[70vh] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-accent-gold/20"
+            className="fixed bottom-24 right-6 sm:right-6 z-[9999] w-[90vw] sm:w-[380px] h-[500px] max-h-[70vh] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-accent-gold/20"
           >
             {/* Header */}
             <div className="bg-primary-dark p-4 flex items-center justify-between text-background-parchment">
