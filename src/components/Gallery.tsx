@@ -12,9 +12,6 @@ type MediaItem = {
 };
 
 const mediaItems: MediaItem[] = [
-  { id: 1, type: 'image', src: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/treatment-room-1.jpg', category: 'Treatment Rooms', alt: 'Panchakarma Treatment Room' },
-  { id: 2, type: 'image', src: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/hero-bg.jpg', category: 'Treatment Rooms', alt: 'Abhyangam Session' },
-  { id: 3, type: 'image', src: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/yoga-meditation.jpg', category: 'Patient Wellness', alt: 'Yoga and Meditation' },
   { id: 4, type: 'image', src: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/skin-treatment.jpg', category: 'Facilities', alt: 'Hospital Entrance' },
   { id: 5, type: 'image', src: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/consultation-room.jpg', category: 'Facilities', alt: 'Consultation Room' },
   { id: 6, type: 'image', src: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/herbal-garden-1.jpg', category: 'Herbal Garden', alt: 'Ayurvedic Herbs' },
