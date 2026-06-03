@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Section from '../components/Section.astro';
-import { Award, BookOpen, Clock } from 'lucide-react';
+import { Award, BookOpen, Clock, MapPin } from 'lucide-react';
 
 export const prerender = true;
 
@@ -11,19 +11,21 @@ const otherDoctors = [
   {
     nameEn: 'Dr. Rabiya Jafarkhan', nameMl: 'ഡോ. റാബിയ ജാഫർഖാൻ',
     titleEn: 'Consultant Physician', titleMl: 'കൺസൾട്ടന്റ് ഫിസിഷ്യൻ',
-    qualifications: 'BSMS',
+    qualifications: 'BSMS (Bachelor of Siddha Medicine and Surgery)',
     experienceEn: '5+ Years', experienceMl: '5+ വർഷത്തെ പരിചയം',
-    specialisationsEn: ['Siddha Medicine', 'General Wellness'],
-    specialisationsMl: ['സിദ്ധ വൈദ്യം', 'പൊതുവായ ആരോഗ്യം'],
+    branchEn: 'Trivandrum Branch', branchMl: 'തിരുവനന്തപുരം ബ്രാഞ്ച്',
+    specialisationsEn: ['Siddha Medicine', 'Panchakarma', 'Chronic Disease Management', 'Women\'s Wellness'],
+    specialisationsMl: ['സിദ്ധ വൈദ്യം', 'പഞ്ചകർമ്മ', 'വിട്ടുമാറാത്ത രോഗചികിത്സ', 'സ്ത്രീകളുടെ ആരോഗ്യം'],
     image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto:best,e_upscale,e_improve,e_sharpen:150/v1/vaidhyarmandhiram/images/Dr.Rabiya Jafarkhan (BSMS).jpeg'
   },
   {
     nameEn: 'Dr. Hansha Parveen', nameMl: 'ഡോ. ഹൻഷ പർവീൻ',
     titleEn: 'Consultant Physician', titleMl: 'കൺസൾട്ടന്റ് ഫിസിഷ്യൻ',
-    qualifications: 'BSMS',
+    qualifications: 'BSMS (Bachelor of Siddha Medicine and Surgery)',
     experienceEn: '5+ Years', experienceMl: '5+ വർഷത്തെ പരിചയം',
-    specialisationsEn: ['Siddha Medicine', 'General Wellness'],
-    specialisationsMl: ['സിദ്ധ വൈദ്യം', 'പൊതുവായ ആരോഗ്യം'],
+    branchEn: 'Trivandrum Branch', branchMl: 'തിരുവനന്തപുരം ബ്രാഞ്ച്',
+    specialisationsEn: ['Siddha Medicine', 'Pain Management', 'Skin Care', 'General Wellness'],
+    specialisationsMl: ['സിദ്ധ വൈദ്യം', 'വേദന നിയന്ത്രണം', 'ചർമ്മ സംരക്ഷണം', 'പൊതുവായ ആരോഗ്യം'],
     image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto:best,e_upscale,e_improve,e_sharpen:150/v1/vaidhyarmandhiram/images/Dr.Hansha Parveen(BSMS).jpeg'
   }
 ];
@@ -200,6 +202,13 @@ const otherDoctors = [
               <span class="lang-en">{doctor.experienceEn} Experience</span>
               <span class="lang-ml font-malayalam tracking-normal">{doctor.experienceMl}</span>
             </div>
+            {doctor.branchEn && (
+              <div class="flex items-center gap-2 text-xs text-text-muted font-sans uppercase font-bold tracking-wider">
+                <MapPin size={14} className="text-accent-gold" />
+                <span class="lang-en">{doctor.branchEn}</span>
+                <span class="lang-ml font-malayalam tracking-normal">{doctor.branchMl}</span>
+              </div>
+            )}
             <div class="flex flex-wrap gap-2 pt-2">
               {doctor.specialisationsEn.map((spec, idx) => (
                 <span class="text-[10px] px-2 py-0.5 bg-background-parchment text-primary font-bold uppercase border border-primary/20 rounded">
