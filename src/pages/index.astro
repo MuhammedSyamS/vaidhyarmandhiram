@@ -8,6 +8,7 @@ import FounderSpotlight from '../components/FounderSpotlight.astro';
 import TreatmentsGrid from '../components/TreatmentsGrid.astro';
 import ConsultationOptions from '../components/ConsultationOptions.astro';
 import SheCarePackage from '../components/SheCarePackage.astro';
+import FAQ from '../components/FAQ.astro';
 import { CheckCircle2, Star, Quote, Award, Shield, FileCheck } from 'lucide-react';
 
 interface Testimonial {
@@ -23,6 +24,27 @@ interface Testimonial {
 }
 
 const testimonials: Testimonial[] = [
+  {
+    type: "text" as any,
+    name: "Sunil Kumar",
+    city: "Google Review",
+    text: "Excellent service and authentic Ayurvedic treatments. The doctors are highly experienced and the staff is very caring. The Panchakarma treatment helped me immensely with my back pain.",
+    rating: 5,
+  },
+  {
+    type: "text" as any,
+    name: "Anjali Menon",
+    city: "Google Review",
+    text: "Vaidyarmandiram provides a very calm and healing environment. I underwent stress management therapy here and the results were incredible. Truly the best Ayurveda hospital in Trivandrum.",
+    rating: 5,
+  },
+  {
+    type: "text" as any,
+    name: "Ramesh Nair",
+    city: "Google Review",
+    text: "I was suffering from severe joint pain for years. The personalized care and specific treatments prescribed by the doctors gave me great relief. Highly recommended.",
+    rating: 5,
+  },
   {
     type: "youtube",
     name: "Mrs. Lateesha",
@@ -528,6 +550,9 @@ const testimonials: Testimonial[] = [
       document.addEventListener('astro:page-load', setupTestimonialScroll);
     </script>
   </Section>
+
+  <!-- FAQ Section -->
+  <FAQ />
 
   <!-- CTA Banner -->
   <div class="bg-primary-dark py-24 relative overflow-hidden">

@@ -63,10 +63,12 @@ export default function AppointmentForm() {
         const email = formData.get('email') as string;
         const symptoms = formData.get('symptoms') as string;
 
+        const branch = formData.get('branch') as string;
         const text = `*New Appointment Request* 📅
 *Name:* ${name}
 *Phone:* ${phone}
 *Email:* ${email}
+*Branch:* ${branch}
 *Treatment:* ${treatment}
 *Date:* ${date}
 *Time Slot:* ${timeSlot}
@@ -173,6 +175,21 @@ ${symptoms ? `*Symptoms/Notes:* ${symptoms}` : ''}`;
               className="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none transition-colors font-sans"
             />
           </div>
+        </div>
+
+        <div className="space-y-2">
+          <label htmlFor="branch" className="text-sm font-sans font-bold uppercase tracking-widest text-earth">Preferred Branch</label>
+          <select 
+            required
+            id="branch" 
+            name="branch"
+            defaultValue="Trivandrum"
+            className="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none transition-colors font-sans bg-white"
+          >
+            <option value="Trivandrum">Trivandrum (Main Center)</option>
+            <option value="Kollam">Kollam</option>
+            <option value="Alappuzha">Alappuzha</option>
+          </select>
         </div>
 
         <div className="space-y-2">

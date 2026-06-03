@@ -82,7 +82,7 @@ const treatments = [
       const isGreen = t.nameEn === 'Special Treatments';
       return (
       <a
-        href={`/treatments?tab=${t.slug}&group=${encodeURIComponent(t.group || '')}`}
+        href={`/treatments/${t.slug}`}
         class={`treatment-card group relative overflow-hidden shadow-md hover:shadow-lg rounded-xl shrink-0 transition-all duration-300 transform hover:-translate-y-1 select-none ${isGreen ? 'bg-primary border-primary-dark/20' : 'bg-white border-accent-gold/10'}`}
         draggable="false"
       >

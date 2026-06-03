@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Section from '../../components/Section.astro';
+import { Phone, Mail, MapPin, Clock, ArrowLeft } from 'lucide-react';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { slug: 'trivandrum' },
+      props: {
+        nameEn: 'Trivandrum (HQ)',
+        nameMl: 'തിരുവനന്തപുരം',
+        addressEn: 'Pangode, Kallara P.O, Trivandrum, Kerala 695609',
+        addressMl: 'പാങ്ങോട്, കല്ലറ P.O, തിരുവനന്തപുരം, കേരളം 695609',
+        phone: '+91 85938 21553',
+        mapUrl: 'https://maps.google.com/maps?q=VAIDHYARMANDHIRAM+HOSPITAL+Pangode+Kallara&t=m&z=14&output=embed&iwloc=Near',
+        dirUrl: 'https://maps.app.goo.gl/NynzVNVwV4XEYYpJ7'
+      }
+    },
+    {
+      params: { slug: 'kollam' },
+      props: {
+        nameEn: 'Kollam',
+        nameMl: 'കൊല്ലം',
+        addressEn: 'Bus Stand Road, Kadakkal, Kollam, Kerala 691536',
+        addressMl: 'ബസ് സ്റ്റാൻഡ് റോഡ്, കടയ്ക്കൽ, കൊല്ലം, കേരളം 691536',
+        phone: '+91 94955 56497',
+        mapUrl: 'https://maps.google.com/maps?q=VAIDHYARMANDHIRAM+HOSPITAL+Kadakkal+Kollam&t=m&z=14&output=embed&iwloc=Near',
+        dirUrl: 'https://maps.app.goo.gl/A3vvy8Xnpr1P6w3J7'
+      }
+    },
+    {
+      params: { slug: 'alappuzha' },
+      props: {
+        nameEn: 'Alappuzha',
+        nameMl: 'ആലപ്പുഴ',
+        addressEn: 'Vaidyarmandiram Ayurveda, Alappuzha, Kerala',
+        addressMl: 'വൈദ്യർമന്ദിരം ആയുർവേദ, ആലപ്പുഴ, കേരളം',
+        phone: '+91 85938 21553',
+        mapUrl: 'https://maps.google.com/maps?q=Alappuzha,+Kerala,+India&t=m&z=12&output=embed&iwloc=Near',
+        dirUrl: 'https://maps.google.com/?q=Alappuzha,+Kerala,+India'
+      }
+    }
+  ];
+}
+
+const { nameEn, nameMl, addressEn, addressMl, phone, mapUrl, dirUrl } = Astro.props;
+---
+
+<BaseLayout 
+  title={`${nameEn} Branch - Vaidyarmandiram Ayurveda Hospital`}
+  description={`Visit Vaidyarmandiram Ayurveda Hospital at our ${nameEn} branch. Get directions, timings, and contact details.`}
+>
+  <Header slot="header" />
+
+  <div class="bg-primary-dark py-20 text-center relative overflow-hidden">
+    <div class="container mx-auto px-4 relative z-10">
+      <span class="text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold mb-2 block">Our Locations</span>
+      <h1 class="text-4xl md:text-6xl text-background-parchment leading-tight">{nameEn} Branch</h1>
+      <h1 class="lang-ml font-malayalam text-3xl md:text-5xl text-background-parchment leading-tight mt-2">{nameMl} ശാഖ</h1>
+    </div>
+  </div>
+
+  <Section background="parchment">
+    <div class="max-w-5xl mx-auto">
+      <a href="/contact" class="inline-flex items-center gap-2 text-primary hover:text-accent-gold transition-colors font-bold mb-8 font-sans">
+        <ArrowLeft size={16} /> Back to all locations
+      </a>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Details Column -->
+        <div class="md:col-span-1 space-y-6">
+          <div class="bg-white p-6 shadow-md rounded-xl border border-accent-gold/10">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+                <MapPin size={20} />
+              </div>
+              <div>
+                <h3 class="font-bold text-primary-dark mb-1 font-sans uppercase tracking-widest text-xs">Address</h3>
+                <p class="lang-en text-text-muted font-sans text-sm">{addressEn}</p>
+                <p class="lang-ml font-malayalam text-text-muted text-sm">{addressMl}</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+                <Phone size={20} />
+              </div>
+              <div>
+                <h3 class="font-bold text-primary-dark mb-1 font-sans uppercase tracking-widest text-xs">Phone</h3>
+                <a href={`tel:${phone.replace(/\s+/g, '')}`} class="text-text-muted font-sans text-sm hover:text-primary transition-colors">{phone}</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+                <Clock size={20} />
+              </div>
+              <div>
+                <h3 class="font-bold text-primary-dark mb-1 font-sans uppercase tracking-widest text-xs">Timings</h3>
+                <p class="text-text-muted font-sans text-sm">All Days: 8:00 AM - 8:00 PM</p>
+                <p class="lang-ml font-malayalam text-text-muted text-xs mt-1">എല്ലാ ദിവസവും: 8:00 AM - 8:00 PM</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="/appointment" class="btn-primary w-full block text-center">Book Appointment</a>
+        </div>
+
+        <!-- Map Column -->
+        <div class="md:col-span-2">
+          <div class="bg-white p-4 shadow-md rounded-xl border border-accent-gold/10 h-full min-h-[400px] flex flex-col">
+            <div class="w-full h-full min-h-[350px] relative rounded-lg overflow-hidden flex-grow">
+              <iframe 
+                src={mapUrl} 
+                width="100%" 
+                height="100%" 
+                style="border:0; position:absolute; top:0; left:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            <div class="mt-4 flex justify-between items-center">
+              <span class="text-xs text-text-muted font-sans italic">* Interactive Google Map</span>
+              <a href={dirUrl} target="_blank" rel="noopener noreferrer" class="text-primary hover:text-accent-gold font-bold font-sans text-sm flex items-center gap-1">
+                Open in Maps →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Footer slot="footer" />
+</BaseLayout>

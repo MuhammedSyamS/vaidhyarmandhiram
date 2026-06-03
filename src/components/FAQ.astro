@@ -1,0 +1,133 @@
+---
+import { HelpCircle, ChevronDown } from 'lucide-react';
+
+const faqs = [
+  {
+    qEn: "Is Ayurvedic treatment safe?",
+    qMl: "ആയുർവേദ ചികിത്സ സുരക്ഷിതമാണോ?",
+    aEn: "Yes, Ayurvedic treatments are highly safe when prescribed and administered by qualified practitioners. We use authentic, naturally sourced medicines and therapies tailored to your unique body constitution (Prakriti), minimizing side effects.",
+    aMl: "അതെ, യോഗ്യരായ ഡോക്ടർമാരുടെ നിർദ്ദേശപ്രകാരം നൽകുന്ന ആയുർവേദ ചികിത്സകൾ തികച്ചും സുരക്ഷിതമാണ്. പാർശ്വഫലങ്ങൾ ഒഴിവാക്കാൻ ഞങ്ങൾ പ്രകൃതിദത്ത മരുന്നുകളാണ് ഉപയോഗിക്കുന്നത്."
+  },
+  {
+    qEn: "How long is a typical Panchakarma course?",
+    qMl: "പഞ്ചകർമ്മ ചികിത്സയ്ക്ക് എത്ര സമയം വേണം?",
+    aEn: "A complete Panchakarma therapy usually takes 14 to 28 days depending on the individual's condition and the depth of detoxification required. Shorter programs (7 days) are also available for general rejuvenation.",
+    aMl: "രോഗിയുടെ അവസ്ഥയെ ആശ്രയിച്ച് ഒരു പൂർണ്ണ പഞ്ചകർമ്മ ചികിത്സയ്ക്ക് സാധാരണയായി 14 മുതൽ 28 ദിവസം വരെ എടുക്കും. 7 ദിവസത്തെ ഹ്രസ്വകാല ചികിത്സകളും ലഭ്യമാണ്."
+  },
+  {
+    qEn: "Do you accept health insurance?",
+    qMl: "നിങ്ങൾ ഹെൽത്ത് ഇൻഷുറൻസ് സ്വീകരിക്കാറുണ്ടോ?",
+    aEn: "Yes, we accept various health insurance plans for in-patient treatments. Please contact our reception with your policy details before admission to verify coverage and cashless facility options.",
+    aMl: "അതെ, കിടത്തിച്ചികിത്സകൾക്ക് ഞങ്ങൾ വിവിധ ഹെൽത്ത് ഇൻഷുറൻസുകൾ സ്വീകരിക്കുന്നു. കൂടുതൽ വിവരങ്ങൾക്ക് റിസപ്ഷനുമായി ബന്ധപ്പെടുക."
+  },
+  {
+    qEn: "Do I need to follow a strict diet during treatment?",
+    qMl: "ചികിത്സാ സമയത്ത് കർശനമായ ഭക്ഷണക്രമം പാലിക്കേണ്ടതുണ്ടോ?",
+    aEn: "Yes, diet plays a crucial role in Ayurvedic healing. Our doctors will prescribe a specific dietary regimen (Pathya) customized to your treatment plan to maximize the effectiveness of the therapies.",
+    aMl: "അതെ, ആയുർവേദ ചികിത്സയിൽ ഭക്ഷണത്തിന് വലിയ പ്രാധാന്യമുണ്ട്. ചികിത്സയുടെ ഫലം പൂർണ്ണമായി ലഭിക്കുന്നതിന് ഡോക്ടർമാർ പ്രത്യേക ഭക്ഷണക്രമം (പഥ്യം) നിർദ്ദേശിക്കും."
+  },
+  {
+    qEn: "Can I take Ayurvedic medicine with allopathic drugs?",
+    qMl: "അലോപ്പതി മരുന്നുകൾക്കൊപ്പം ആയുർവേദ മരുന്നുകൾ കഴിക്കാമോ?",
+    aEn: "In most cases, yes, but it must be done under strict medical supervision. Always inform our doctors about any ongoing medications so they can plan your Ayurvedic treatment without drug interactions.",
+    aMl: "മിക്കവാറും സാധിക്കും, പക്ഷേ ഡോക്ടറുടെ നിർദ്ദേശപ്രകാരം മാത്രമേ പാടുള്ളൂ. നിലവിൽ കഴിക്കുന്ന എല്ലാ മരുന്നുകളെക്കുറിച്ചും ഡോക്ടറെ അറിയിക്കേണ്ടത് അത്യാവശ്യമാണ്."
+  }
+];
+---
+
+<div class="py-16 md:py-24 bg-background-cream relative">
+  <div class="container mx-auto px-4 max-w-4xl relative z-10">
+    <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="1000">
+      <div class="w-16 h-16 bg-accent-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 text-accent-gold">
+        <HelpCircle size={32} />
+      </div>
+      <span class="lang-en text-accent-gold font-sans uppercase tracking-[0.2em] text-sm font-bold">Clear Your Doubts</span>
+      <span class="lang-ml font-malayalam text-accent-gold text-base font-semibold block">നിങ്ങളുടെ സംശയങ്ങൾ</span>
+      
+      <h2 class="lang-en text-3xl md:text-5xl text-primary-dark font-serif mt-2">Frequently Asked <span class="text-accent-gold italic">Questions</span></h2>
+      <h2 class="lang-ml font-malayalam text-3xl md:text-5xl text-primary-dark font-bold mt-2">സാധാരണയായി ചോദിക്കുന്ന <span class="text-accent-gold">ചോദ്യങ്ങൾ</span></h2>
+    </div>
+
+    <div class="space-y-4 font-sans" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+      {faqs.map((faq, idx) => (
+        <div class="faq-item bg-white border border-accent-gold/20 rounded-xl overflow-hidden transition-all duration-300">
+          <button class="faq-button w-full px-6 py-5 flex items-center justify-between text-left hover:bg-accent-gold/5 transition-colors focus:outline-none" aria-expanded="false" aria-controls={`faq-answer-${idx}`}>
+            <div class="pr-8">
+              <h3 class="lang-en text-lg font-bold text-primary-dark">{faq.qEn}</h3>
+              <h3 class="lang-ml font-malayalam text-lg font-bold text-primary-dark">{faq.qMl}</h3>
+            </div>
+            <div class="faq-icon text-accent-gold transition-transform duration-300 shrink-0">
+              <ChevronDown size={24} />
+            </div>
+          </button>
+          
+          <div id={`faq-answer-${idx}`} class="faq-answer grid grid-rows-[0fr] transition-all duration-300 opacity-0">
+            <div class="overflow-hidden">
+              <div class="px-6 pb-6 pt-0 border-t border-accent-gold/10 mt-4 mx-6">
+                <p class="lang-en text-text-muted leading-relaxed pt-4">{faq.aEn}</p>
+                <p class="lang-ml font-malayalam text-text-muted leading-relaxed pt-4">{faq.aMl}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  function initFAQs() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const button = item.querySelector('.faq-button');
+      const answer = item.querySelector('.faq-answer');
+      const icon = item.querySelector('.faq-icon');
+      
+      if (!button || !answer || !icon) return;
+      
+      // clone to remove existing event listeners before re-adding
+      const newButton = button.cloneNode(true) as HTMLElement;
+      button.parentNode?.replaceChild(newButton, button);
+      
+      newButton.addEventListener('click', () => {
+        const isExpanded = newButton.getAttribute('aria-expanded') === 'true';
+        
+        // Close all other FAQs
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            const otherBtn = otherItem.querySelector('.faq-button');
+            const otherAns = otherItem.querySelector('.faq-answer');
+            const otherIco = otherItem.querySelector('.faq-icon');
+            
+            if (otherBtn && otherAns && otherIco) {
+              otherBtn.setAttribute('aria-expanded', 'false');
+              otherAns.classList.remove('grid-rows-[1fr]', 'opacity-100');
+              otherAns.classList.add('grid-rows-[0fr]', 'opacity-0');
+              otherIco.classList.remove('rotate-180');
+            }
+          }
+        });
+        
+        // Toggle current FAQ
+        newButton.setAttribute('aria-expanded', (!isExpanded).toString());
+        
+        if (!isExpanded) {
+          answer.classList.remove('grid-rows-[0fr]', 'opacity-0');
+          answer.classList.add('grid-rows-[1fr]', 'opacity-100');
+          icon.classList.add('rotate-180');
+        } else {
+          answer.classList.remove('grid-rows-[1fr]', 'opacity-100');
+          answer.classList.add('grid-rows-[0fr]', 'opacity-0');
+          icon.classList.remove('rotate-180');
+        }
+      });
+    });
+  }
+
+  // Initial load
+  initFAQs();
+  
+  // Re-run on View Transitions
+  document.addEventListener('astro:page-load', initFAQs);
+</script>

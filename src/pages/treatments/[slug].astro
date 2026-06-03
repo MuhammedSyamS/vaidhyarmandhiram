@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Section from '../../components/Section.astro';
+import { Clock, CheckCircle2, ArrowLeft } from 'lucide-react';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { slug: 'special-treatments' },
+      props: {
+        nameEn: 'Special Treatments',
+        nameMl: 'പ്രത്യേക ചികിത്സകൾ',
+        descriptionEn: 'Advanced Ayurvedic protocols for specific conditions, blending tradition with specialized clinical care.',
+        benefits: ['Targeted relief from chronic conditions', 'Personalized treatment plans', 'Holistic approach to healing'],
+        duration: '14 to 28 Days',
+        image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/special_treatments_new.png'
+      }
+    },
+    {
+      params: { slug: 'panchakarma' },
+      props: {
+        nameEn: 'Panchakarma Therapy',
+        nameMl: 'പഞ്ചകർമ്മ ചികിത്സ',
+        descriptionEn: 'Complete detox through Vamana, Virechana, Basti, Nasya, and Raktamokshana.',
+        benefits: ['Deep cellular detoxification', 'Restores metabolic fire', 'Enhances immunity', 'Mental clarity'],
+        duration: '14 to 21 Days',
+        image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/panchakarma_treatment.png'
+      }
+    },
+    {
+      params: { slug: 'stress-management' },
+      props: {
+        nameEn: 'Stress Management',
+        nameMl: 'മാനസിക സമ്മർദ്ദ നിയന്ത്രണം',
+        descriptionEn: 'Rejuvenating therapies to relieve stress, anxiety, and restore mental peace.',
+        benefits: ['Reduces anxiety and depression', 'Improves sleep quality', 'Relaxes mind and body'],
+        duration: '7 to 14 Days',
+        image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/stress_management_treatment.png'
+      }
+    },
+    {
+      params: { slug: 'spine-joint-care' },
+      props: {
+        nameEn: 'Spine & Joint Care',
+        nameMl: 'നട്ടെല്ല് & സന്ധി പരിചരണം',
+        descriptionEn: 'Traditional therapies for Sciatica, Cervical Spondylosis, Bone Alignment, and Frozen Shoulder.',
+        benefits: ['Relieves joint and back pain', 'Improves mobility', 'Strengthens bone tissues'],
+        duration: '14 to 21 Days',
+        image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/spine_joint_treatment.png'
+      }
+    },
+    {
+      params: { slug: 'skin-rejuvenation' },
+      props: {
+        nameEn: 'Skin Rejuvenation',
+        nameMl: 'ചർമ്മ സംരക്ഷണം',
+        descriptionEn: 'Deep-acting protocols for Psoriasis, Allergies, Dandruff, and overall Cosmetology.',
+        benefits: ['Clears skin impurities', 'Treats chronic skin conditions', 'Enhances natural glow'],
+        duration: '7 to 21 Days',
+        image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/skin_rejuvenation_new.png'
+      }
+    },
+    {
+      params: { slug: 'weight-management' },
+      props: {
+        nameEn: 'Weight Management',
+        nameMl: 'ഭാരനിയന്ത്രണം',
+        descriptionEn: 'Effective Ayurvedic management of obesity, cholesterol, and metabolic disorders.',
+        benefits: ['Natural weight loss', 'Improves metabolism', 'Detoxifies the body'],
+        duration: '21 to 28 Days',
+        image: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/weight_management_new.png'
+      }
+    }
+  ];
+}
+
+const { nameEn, nameMl, descriptionEn, benefits, duration, image } = Astro.props;
+---
+
+<BaseLayout 
+  title={`${nameEn} - Vaidyarmandiram Ayurveda Hospital`}
+  description={descriptionEn}
+>
+  <Header slot="header" />
+
+  <div class="bg-primary-dark py-20 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <img src={image} alt="" class="w-full h-full object-cover" />
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+      <span class="text-accent-gold font-sans uppercase tracking-[0.3em] text-sm font-bold mb-2 block">Our Treatments</span>
+      <h1 class="text-4xl md:text-6xl text-background-parchment leading-tight">{nameEn}</h1>
+      <h1 class="lang-ml font-malayalam text-3xl md:text-5xl text-background-parchment leading-tight mt-2">{nameMl}</h1>
+    </div>
+  </div>
+
+  <Section background="parchment">
+    <div class="max-w-4xl mx-auto">
+      <a href="/treatments" class="inline-flex items-center gap-2 text-primary hover:text-accent-gold transition-colors font-bold mb-8 font-sans">
+        <ArrowLeft size={16} /> Back to all treatments
+      </a>
+
+      <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-accent-gold/10">
+        <div class="aspect-[16/9] w-full relative">
+          <img src={image} alt={nameEn} class="w-full h-full object-cover" />
+        </div>
+        
+        <div class="p-8 md:p-12 space-y-8">
+          <div>
+            <h2 class="text-2xl font-bold text-primary-dark mb-4">About the Treatment</h2>
+            <p class="text-text-muted leading-relaxed">{descriptionEn}</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-bold text-primary-dark mb-4">Key Benefits</h3>
+              <ul class="space-y-3">
+                {benefits.map(benefit => (
+                  <li class="flex items-start gap-3 text-text-muted">
+                    <CheckCircle2 size={20} className="text-accent-gold shrink-0 mt-0.5" />
+                    <span>{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div class="bg-background-cream p-6 rounded-xl border-l-4 border-accent-gold h-fit">
+              <h3 class="text-lg font-bold text-primary-dark mb-4 flex items-center gap-2">
+                <Clock size={20} className="text-accent-gold" />
+                Treatment Duration
+              </h3>
+              <p class="text-text-muted font-sans font-bold">{duration}</p>
+              <p class="text-xs text-text-muted mt-2">* Actual duration depends on individual consultation and severity of the condition.</p>
+            </div>
+          </div>
+
+          <div class="pt-8 border-t border-accent-gold/10 text-center">
+            <h3 class="text-xl font-bold text-primary-dark mb-4">Start Your Healing Journey</h3>
+            <a href={`/appointment?treatment=${encodeURIComponent(nameEn)}`} class="btn-primary inline-block">Book a Consultation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Footer slot="footer" />
+</BaseLayout>
