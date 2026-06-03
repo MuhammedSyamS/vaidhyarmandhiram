@@ -6,6 +6,7 @@ import '../styles/global.css';
 import SplashIntro from '../components/SplashIntro.astro';
 import CustomCursor from '../components/CustomCursor.astro';
 import MagneticEffect from '../components/MagneticEffect.astro';
+import Chatbot from '../components/Chatbot';
 
 interface Props {
   title: string;
@@ -172,6 +173,9 @@ const fullTitle = `${siteName} | ${title}`;
       </main>
       <slot name="footer" />
     </div>
+
+    <!-- AI Chatbot -->
+    <Chatbot client:load />
 
     <!-- Floating WhatsApp Button (Bottom Right) -->
     <a 
