@@ -54,13 +54,13 @@ export default function FounderSpotlight() {
 
         <div className="space-y-6 text-text-muted font-sans leading-relaxed text-lg">
           <p className="first-letter:text-5xl first-letter:font-bold first-letter:text-accent-gold first-letter:mr-1 first-letter:float-left">
-            Founded in 1983 in Pangode, Trivandrum, by Dr. P. Abdul Sathar Gurukkal, our institution was created with a single vision — to preserve and share the sacred wisdom of traditional healing.
+            Founded in 1983 in Pangode, Trivandrum, by the late Dr. P. Abdul Sathar Gurukkal, our institution was created with a single vision — to preserve and share the sacred wisdom of traditional healing.
           </p>
           <p>
             More than a clinic, it became a sanctuary where ancient Siddhis and holistic healing practices were brought together to restore peace to both body and soul.
           </p>
           <p>
-            Today, Dr. P. Abdul Sathar Gurukkal continues to guide the institution, entrusting the complete knowledge of their ancestral Siddhis and healing traditions to the next generations, ensuring the purity of this sacred lineage will continue for years to come.
+            Though our beloved founder, the late Dr. P. Abdul Sathar Gurukkal, has passed away, his spirit and vision continue to guide the institution. The complete knowledge of their ancestral Siddhis and healing traditions has been entrusted to the next generations, ensuring the purity of this sacred lineage will continue for years to come.
           </p>
         </div>
 
