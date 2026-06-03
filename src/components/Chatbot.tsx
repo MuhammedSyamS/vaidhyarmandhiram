@@ -157,8 +157,7 @@ export default function Chatbot() {
                   <Bot size={20} />
                 </div>
                 <div>
-                  <h3 className="font-bold font-serif text-lg leading-tight">VM Assistant</h3>
-                  <p className="text-xs font-sans text-accent-gold/80">AI Symptom Checker</p>
+                  <h3 className="font-bold font-serif text-lg leading-tight text-white">VM Assistant</h3>
                 </div>
               </div>
               <button 
