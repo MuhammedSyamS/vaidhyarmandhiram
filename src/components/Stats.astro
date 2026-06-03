@@ -1,8 +1,8 @@
 ---
 const stats = [
-  { en: 'Healed Patients',      ml: 'രോഗ നിവൃത്തി',       value: '25000', suffix: '+' },
-  { en: 'Years of Experience',  ml: 'വർഷത്തെ അനുഭവം',     value: '35',    suffix: '+' },
-  { en: 'Authentic Treatments', ml: 'ആധികാരിക ചികിത്സകൾ', value: '50',    suffix: '+' },
+  { en: 'Healed Patients',      ml: 'രോഗ നിവൃത്തി',       value: '25K', suffix: '+' },
+  { en: 'Years of Experience',  ml: 'വർഷത്തെ അനുഭവം',     value: '35',  suffix: '+' },
+  { en: 'Authentic Treatments', ml: 'ആധികാരിക ചികിത്സകൾ', value: '50',  suffix: '+' },
 ];
 ---
 
@@ -21,7 +21,7 @@ const stats = [
 
           <!-- Stat Number -->
           <div class="text-[15px] sm:text-3xl md:text-5xl font-serif font-bold text-primary-dark mb-1 relative z-10 leading-tight">
-            <span class="stat-number text-primary" data-value={stat.value}>0</span><span class="text-accent-gold">{stat.suffix}</span>
+            <span class="text-primary">{stat.value}</span><span class="text-accent-gold">{stat.suffix}</span>
           </div>
 
           <!-- English Title -->
@@ -38,55 +38,3 @@ const stats = [
     </div>
   </div>
 </div>
-
-<script>
-  function initStats() {
-    const elements = document.querySelectorAll('.stat-number');
-    if (elements.length === 0) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const target = entry.target as HTMLElement;
-          // Prevent running multiple times
-          if (target.dataset.animated === 'true') return;
-          target.dataset.animated = 'true';
-
-          const endValue = parseInt(target.getAttribute('data-value') || '0', 10);
-          const duration = 2000; // 2 seconds
-          const startTime = performance.now();
-
-          const updateCount = (currentTime: number) => {
-            const progress = Math.min((currentTime - startTime) / duration, 1);
-            // Ease out quad
-            const easeOutProgress = progress * (2 - progress);
-            
-            target.innerText = Math.floor(easeOutProgress * endValue).toLocaleString('en-US');
-            
-            if (progress < 1) {
-              requestAnimationFrame(updateCount);
-            } else {
-              target.innerText = endValue.toLocaleString('en-US');
-              if (endValue >= 1000) {
-                 // Format 25000 as 25K
-                 target.innerText = Math.floor(endValue / 1000) + 'K';
-              }
-            }
-          };
-          requestAnimationFrame(updateCount);
-          observer.unobserve(target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    elements.forEach(stat => {
-      stat.textContent = '0';
-      stat.dataset.animated = 'false';
-      observer.observe(stat);
-    });
-  }
-
-  // Run on initial load and view transitions
-  document.addEventListener('DOMContentLoaded', initStats);
-  document.addEventListener('astro:page-load', initStats);
-</script>
