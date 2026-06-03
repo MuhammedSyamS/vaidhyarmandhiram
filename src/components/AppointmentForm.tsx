@@ -186,7 +186,7 @@ ${symptoms ? `*Symptoms/Notes:* ${symptoms}` : ''}`;
             defaultValue="Trivandrum"
             className="w-full px-4 py-3 border border-accent-gold/20 focus:border-primary outline-none transition-colors font-sans bg-white"
           >
-            <option value="Trivandrum">Trivandrum (Main Center)</option>
+            <option value="Trivandrum">Trivandrum</option>
             <option value="Kollam">Kollam</option>
             <option value="Alappuzha">Alappuzha</option>
           </select>
