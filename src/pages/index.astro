@@ -357,14 +357,21 @@ const testimonials = [...dbReviews, ...staticTestimonials].sort((a, b) => {
                 </div>
               </div>
             ) : t.type === 'youtube' ? (
-              <div class="relative w-full aspect-[4/5] overflow-hidden bg-black flex-grow">
-                <iframe 
-                  src={`https://www.youtube.com/embed/${t.videoId}?rel=0&modestbranding=1&controls=1&playsinline=1`} 
-                  class="absolute inset-0 w-full h-full border-0"
-                  title={t.name}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen
-                ></iframe>
+              <div 
+                class="relative w-full aspect-[4/5] overflow-hidden bg-black flex-grow cursor-pointer youtube-wrapper group"
+                data-video-id={t.videoId}
+              >
+                <img 
+                  src={`https://img.youtube.com/vi/${t.videoId}/hqdefault.jpg`} 
+                  alt={t.name}
+                  loading="lazy"
+                  class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                />
+                <div class="absolute inset-0 bg-black/25 flex items-center justify-center transition-opacity duration-300 group-hover:bg-black/35">
+                  <button aria-label="Play Video" class="w-16 h-16 rounded-full bg-white/25 backdrop-blur-sm border border-white/50 text-white flex items-center justify-center transition-all duration-300 shadow-xl scale-95 group-hover:scale-105 group-hover:bg-accent-gold group-hover:border-accent-gold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="play-icon ml-1.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  </button>
+                </div>
               </div>
             ) : t.type === 'image' && t.image ? (
               <div class="relative w-full aspect-[4/5] overflow-hidden bg-gray-100 flex-grow border-b border-gray-50">
@@ -663,6 +670,47 @@ const testimonials = [...dbReviews, ...staticTestimonials].sort((a, b) => {
                 isUserInteracting = false;
                 startAutoScroll();
               }
+            });
+          });
+
+          // Wire click listeners for new YouTube wrapper nodes
+          const youtubeWrappers = Array.from(container.querySelectorAll('.youtube-wrapper')) as HTMLElement[];
+          youtubeWrappers.forEach((wrapper) => {
+            wrapper.addEventListener('click', (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+
+              const videoId = wrapper.getAttribute('data-video-id');
+              if (!videoId) return;
+
+              // Pause any other playing local videos
+              container.querySelectorAll('.testimonial-video').forEach((v: any) => {
+                if (!v.paused) {
+                  v.pause();
+                  v.muted = true;
+                  const otherWrapper = v.closest('.video-wrapper');
+                  if (otherWrapper) {
+                    otherWrapper.querySelector('.play-icon')?.classList.remove('hidden');
+                    otherWrapper.querySelector('.pause-icon')?.classList.add('hidden');
+                    otherWrapper.querySelector('.video-overlay')?.classList.remove('opacity-0');
+                    otherWrapper.classList.remove('playing');
+                  }
+                }
+              });
+
+              // Replace wrapper content with YouTube iframe
+              wrapper.innerHTML = `
+                <iframe 
+                  src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&controls=1&playsinline=1" 
+                  class="absolute inset-0 w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen
+                ></iframe>
+              `;
+
+              isUserInteracting = true;
+              stopAutoScroll();
+              clearTimeout(interactionTimeout);
             });
           });
 
