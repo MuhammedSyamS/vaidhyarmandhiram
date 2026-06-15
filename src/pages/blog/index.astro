@@ -9,7 +9,7 @@ export const prerender = true;
 
 const allPosts = await getCollection('blog').catch(() => []);
 const posts = allPosts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => b.data.date.valueOf() - a.data.date.valueOf());
-const categories = ['All', 'Panchakarma', 'Women\'s Health', 'Spine Care', 'Lifestyle', 'General'];
+const categories = ['All', ...Array.from(new Set(posts.map(post => post.data.customCategory || post.data.category).filter(Boolean)))];
 ---
 
 <BaseLayout title="Blog - Vaidyarmandiram" description="Read insightful articles on Ayurveda, wellness, Panchakarma, and holistic health from the experts at Vaidyarmandiram.">
@@ -52,19 +52,19 @@ const categories = ['All', 'Panchakarma', 'Women\'s Health', 'Spine Care', 'Life
           <!-- Blog Grid -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
             {posts.map((post: CollectionEntry<'blog'>) => (
-              <a href={`/blog/${post.slug}`} class="blog-card bg-white group rounded-xl shadow-md border border-accent-gold/10 overflow-hidden hover:shadow-xl transition-all" data-category={post.data.category}>
+              <a href={`/blog/${post.slug}`} class="blog-card bg-white group rounded-xl shadow-md border border-accent-gold/10 overflow-hidden hover:shadow-xl transition-all" data-category={post.data.customCategory || post.data.category}>
                 {post.data.image ? (
                   <div class="aspect-[16/10] overflow-hidden relative">
                     <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                     <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-accent-gold uppercase tracking-wider shadow-sm">
-                      {post.data.category}
+                      {post.data.customCategory || post.data.category}
                     </div>
                   </div>
                 ) : (
                   <div class="aspect-[16/10] bg-primary-dark/5 flex items-center justify-center relative">
                     <span class="text-accent-gold/50 font-serif text-3xl font-bold">Vaidyarmandiram</span>
                     <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-accent-gold uppercase tracking-wider shadow-sm">
-                      {post.data.category}
+                      {post.data.customCategory || post.data.category}
                     </div>
                   </div>
                 )}

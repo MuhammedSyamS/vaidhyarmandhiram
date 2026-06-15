@@ -7,7 +7,8 @@ const blog = defineCollection({
     titleMl: z.string(),
     description: z.string(),
     descriptionMl: z.string(),
-    category: z.enum(['Panchakarma', 'Women\'s Health', 'Spine Care', 'Lifestyle', 'General']).default('General'),
+    category: z.string().default('General'),
+    customCategory: z.string().optional(),
     date: z.coerce.date(),
     image: z.string().optional(),
   }),
@@ -17,7 +18,8 @@ const treatments = defineCollection({
   type: 'content',
   schema: z.object({
     name: z.string(),
-    category: z.enum(['panchakarma', 'rejuvenation', 'spine-joint', 'skin', 'specialised']),
+    category: z.string(),
+    customCategory: z.string().optional(),
     shortDescription: z.string(),
     benefits: z.array(z.string()),
     duration: z.string(),
@@ -41,8 +43,34 @@ const doctors = defineCollection({
   }),
 });
 
+const reviews = defineCollection({
+  type: 'content',
+  schema: z.object({
+    reviewerName: z.string().optional(),
+    type: z.enum(['text', 'youtube', 'video', 'image']).default('text'),
+    city: z.string().optional(),
+    rating: z.number().default(5),
+    date: z.coerce.date().optional(),
+    videoId: z.string().optional(),
+    videoSrc: z.string().optional(),
+    image: z.string().optional().nullable(),
+    isSheCare: z.boolean().default(false),
+  }),
+});
+
+const gallery = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    image: z.string().optional(),
+  }),
+});
+
 export const collections = {
   blog,
   treatments,
   doctors,
+  reviews,
+  gallery,
 };

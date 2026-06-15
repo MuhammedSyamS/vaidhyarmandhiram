@@ -350,12 +350,31 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
 
     const startAutoScroll = () => {
       stopAutoScroll();
-      const delay = window.innerWidth < 768 ? 6000 : 4500;
+      const delay = window.innerWidth < 768 ? 4000 : 3000;
       autoScrollInterval = setInterval(slideToNext, delay);
     };
 
     const stopAutoScroll = () => {
       if (autoScrollInterval) clearInterval(autoScrollInterval);
+    };
+
+    let hoverScrollTimeout: any;
+    let hoverScrollInterval: any;
+
+    const startHoverScroll = (direction: 'next' | 'prev') => {
+      stopHoverScroll();
+      hoverScrollTimeout = setTimeout(() => {
+        const slideAction = direction === 'next' ? slideToNext : slideToPrev;
+        slideAction(true);
+        hoverScrollInterval = setInterval(() => {
+          slideAction(true);
+        }, 2000);
+      }, 5000);
+    };
+
+    const stopHoverScroll = () => {
+      clearTimeout(hoverScrollTimeout);
+      if (hoverScrollInterval) clearInterval(hoverScrollInterval);
     };
 
     scrollToItem(currentIndex, true);
@@ -452,7 +471,16 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
         onInteractionStart();
+        stopHoverScroll();
         slideToPrev(true);
+        onInteractionEnd();
+      });
+      prevBtn.addEventListener('mouseenter', () => {
+        onInteractionStart();
+        startHoverScroll('prev');
+      });
+      prevBtn.addEventListener('mouseleave', () => {
+        stopHoverScroll();
         onInteractionEnd();
       });
     }
@@ -460,7 +488,16 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
         onInteractionStart();
+        stopHoverScroll();
         slideToNext(true);
+        onInteractionEnd();
+      });
+      nextBtn.addEventListener('mouseenter', () => {
+        onInteractionStart();
+        startHoverScroll('next');
+      });
+      nextBtn.addEventListener('mouseleave', () => {
+        stopHoverScroll();
         onInteractionEnd();
       });
     }

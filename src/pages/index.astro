@@ -10,6 +10,7 @@ import ConsultationOptions from '../components/ConsultationOptions.astro';
 import SheCarePackage from '../components/SheCarePackage.astro';
 import FAQ from '../components/FAQ.astro';
 import { CheckCircle2, Star, Quote, Award, Shield, FileCheck } from 'lucide-react';
+import { getCollection } from 'astro:content';
 
 interface Testimonial {
   type: "youtube" | "video" | "image";
@@ -23,7 +24,40 @@ interface Testimonial {
   isSheCare?: boolean;
 }
 
-const testimonials: Testimonial[] = [
+// Helper to extract YouTube Video ID from any YouTube URL/Shorts URL/Embed URL
+function getYoutubeId(urlOrId: string | undefined): string {
+  if (!urlOrId) return '';
+  if (/^[a-zA-Z0-9_-]{11}$/.test(urlOrId)) return urlOrId;
+  try {
+    const regExp = /^.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|shorts\/)([^#\&\?]*).*/;
+    const match = urlOrId.match(regExp);
+    if (match && match[1].length === 11) {
+      return match[1];
+    }
+  } catch (e) {}
+  return urlOrId;
+}
+
+// Fetch database reviews from CMS
+const dbReviewsRaw = await getCollection('reviews').catch(() => []);
+const dbReviews = dbReviewsRaw.map(review => {
+  const fallbackName = review.slug
+    ? review.slug.charAt(0).toUpperCase() + review.slug.slice(1)
+    : 'Patient Review';
+  return {
+    type: (review.data.type || 'text') as any,
+    name: review.data.reviewerName || fallbackName,
+    city: review.data.city || 'Patient Testimonial',
+    rating: review.data.rating || 5,
+    videoId: getYoutubeId(review.data.videoId),
+    videoSrc: review.data.videoSrc,
+    image: review.data.image,
+    text: review.body || '',
+    isSheCare: review.data.isSheCare || false,
+  };
+});
+
+const staticTestimonials: Testimonial[] = [
   {
     type: "text" as any,
     name: "Sunil Kumar",
@@ -124,8 +158,34 @@ const testimonials: Testimonial[] = [
     image: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/abhinu_sreejith.jpeg",
     rating: 5,
     isSheCare: true
+  },
+  {
+    type: "image",
+    name: "Mrs. Amina Rasi",
+    city: "Patient Testimonial",
+    image: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/mrs_amina_rasi.jpg",
+    rating: 5
+  },
+  {
+    type: "image",
+    name: "Mrs. Naseehath",
+    city: "Patient Testimonial",
+    image: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/mrs_naseehath.jpg",
+    rating: 5
   }
 ];
+
+const orderMap: Record<string, number> = {
+  'image': 1,
+  'text': 2,
+  'youtube': 3,
+  'video': 3,
+};
+const testimonials = [...dbReviews, ...staticTestimonials].sort((a, b) => {
+  const orderA = orderMap[a.type] || 2;
+  const orderB = orderMap[b.type] || 2;
+  return orderA - orderB;
+});
 ---
 
 <BaseLayout title="Best Ayurveda Clinic in Trivandrum | Traditional Ayurvedic Hospital" description="Recognized as the best Ayurveda clinic in Trivandrum, Vaidyarmandiram Hospital offers authentic Panchakarma treatments, spine care, and holistic healing.">
@@ -242,16 +302,47 @@ const testimonials: Testimonial[] = [
       </a>
     </div>
 
+    <!-- Testimonial Filter Tabs -->
+    <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 max-w-4xl mx-auto px-4" data-aos="fade-up">
+      <button 
+        data-filter="all" 
+        class="testimonial-filter-btn px-5 py-2 sm:px-6 sm:py-2.5 rounded-full border border-accent-gold/20 font-sans font-semibold text-xs sm:text-sm transition-all duration-300 bg-accent-gold text-white shadow-sm shadow-accent-gold/25 outline-none cursor-pointer"
+      >
+        All Reviews
+      </button>
+      <button 
+        data-filter="image" 
+        class="testimonial-filter-btn px-5 py-2 sm:px-6 sm:py-2.5 rounded-full border border-accent-gold/20 text-primary-dark font-sans font-semibold text-xs sm:text-sm transition-all duration-300 hover:bg-accent-gold/10 bg-transparent outline-none cursor-pointer"
+      >
+        Photo Reviews
+      </button>
+      <button 
+        data-filter="text" 
+        class="testimonial-filter-btn px-5 py-2 sm:px-6 sm:py-2.5 rounded-full border border-accent-gold/20 text-primary-dark font-sans font-semibold text-xs sm:text-sm transition-all duration-300 hover:bg-accent-gold/10 bg-transparent outline-none cursor-pointer"
+      >
+        Written Reviews
+      </button>
+      <button 
+        data-filter="video" 
+        class="testimonial-filter-btn px-5 py-2 sm:px-6 sm:py-2.5 rounded-full border border-accent-gold/20 text-primary-dark font-sans font-semibold text-xs sm:text-sm transition-all duration-300 hover:bg-accent-gold/10 bg-transparent outline-none cursor-pointer"
+      >
+        Video Reviews
+      </button>
+    </div>
+
     <div class="relative max-w-[1400px] mx-auto px-6 md:px-12 group/carousel">
       <div 
         id="testimonials-scroll-container"
         class="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 pb-6 md:pb-0 scrollbar-none items-stretch"
       >
         {testimonials.map(t => (
-          <div class="bg-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-gray-100 rounded-2xl relative hover:shadow-xl transition-all duration-300 w-[75vw] sm:w-[260px] md:w-[280px] snap-center shrink-0 testimonial-card flex flex-col group overflow-hidden">
+          <div 
+            class="bg-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-gray-100 rounded-2xl relative hover:shadow-xl transition-all duration-300 w-[75vw] sm:w-[260px] md:w-[280px] snap-center shrink-0 testimonial-card flex flex-col group overflow-hidden"
+            data-type={t.type === 'youtube' || t.type === 'video' ? 'video' : t.type}
+          >
             
             {t.type === 'video' ? (
-              <div class="relative w-full aspect-[9/16] overflow-hidden bg-black flex-grow cursor-pointer video-wrapper group">
+              <div class="relative w-full aspect-[4/5] overflow-hidden bg-black flex-grow cursor-pointer video-wrapper group">
                 <video 
                   data-src={t.videoSrc} 
                   poster={t.image || undefined}
@@ -266,7 +357,7 @@ const testimonials: Testimonial[] = [
                 </div>
               </div>
             ) : t.type === 'youtube' ? (
-              <div class="relative w-full aspect-[9/16] overflow-hidden bg-black flex-grow">
+              <div class="relative w-full aspect-[4/5] overflow-hidden bg-black flex-grow">
                 <iframe 
                   src={`https://www.youtube.com/embed/${t.videoId}?rel=0&modestbranding=1&controls=1&playsinline=1`} 
                   class="absolute inset-0 w-full h-full border-0"
@@ -276,7 +367,7 @@ const testimonials: Testimonial[] = [
                 ></iframe>
               </div>
             ) : t.type === 'image' && t.image ? (
-              <div class="relative w-full aspect-[9/16] overflow-hidden bg-gray-100 flex-grow border-b border-gray-50">
+              <div class="relative w-full aspect-[4/5] overflow-hidden bg-gray-100 flex-grow border-b border-gray-50">
                 <img src={t.image} alt="Patient photo" class="w-full h-full object-cover" />
               </div>
             ) : (
@@ -322,29 +413,21 @@ const testimonials: Testimonial[] = [
         const prevBtn = document.getElementById('testimonial-prev');
         const nextBtn = document.getElementById('testimonial-next');
 
-        // Clone nodes for infinite scroll effect
-        const originalItems = Array.from(container.querySelectorAll('.testimonial-card')) as HTMLElement[];
-        if (originalItems.length === 0) return;
+        // Keep a copy of the original nodes from the server-rendered HTML
+        const originalSourceItems = Array.from(container.querySelectorAll('.testimonial-card')) as HTMLElement[];
+        if (originalSourceItems.length === 0) return;
 
-        const originalCount = originalItems.length;
-        
-        originalItems.forEach(item => {
-          container.appendChild(item.cloneNode(true));
-        });
-        
-        [...originalItems].reverse().forEach(item => {
-          container.insertBefore(item.cloneNode(true), container.firstChild);
-        });
-
-        const allItems = Array.from(container.querySelectorAll('.testimonial-card')) as HTMLElement[];
-        let currentIndex = originalCount;
+        let allItems: HTMLElement[] = [];
+        let originalCount = 0;
+        let currentIndex = 0;
         let autoScrollInterval: ReturnType<typeof setInterval>;
         let isUserInteracting = false;
         let isProgrammaticScroll = false;
         let scrollTimeout: ReturnType<typeof setTimeout>;
         let interactionTimeout: ReturnType<typeof setTimeout>;
+        let needsLoop = false;
 
-        // Lazy pause videos when they leave viewport (no autoplay)
+        // Setup Intersection Observer for videos
         const videoObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             const vid = entry.target as HTMLVideoElement;
@@ -362,13 +445,6 @@ const testimonials: Testimonial[] = [
         }, {
           root: container,
           threshold: 0.1
-        });
-
-        allItems.forEach(item => {
-          const vid = item.querySelector('video');
-          if (vid) {
-            videoObserver.observe(vid);
-          }
         });
 
         const scrollToItem = (index: number, instant = false) => {
@@ -401,6 +477,7 @@ const testimonials: Testimonial[] = [
         };
 
         const resetIfNeeded = () => {
+          if (!needsLoop) return;
           if (currentIndex < Math.floor(originalCount / 2) || currentIndex >= originalCount * 2 + Math.ceil(originalCount / 2)) {
             const relativeIndex = ((currentIndex % originalCount) + originalCount) % originalCount;
             currentIndex = originalCount + relativeIndex;
@@ -409,6 +486,7 @@ const testimonials: Testimonial[] = [
         };
 
         const slideToNext = (force = false) => {
+          if (!needsLoop) return;
           if (isUserInteracting && !force) return;
           currentIndex++;
           scrollToItem(currentIndex, false);
@@ -416,6 +494,7 @@ const testimonials: Testimonial[] = [
         };
 
         const slideToPrev = (force = false) => {
+          if (!needsLoop) return;
           if (isUserInteracting && !force) return;
           currentIndex--;
           scrollToItem(currentIndex, false);
@@ -424,28 +503,33 @@ const testimonials: Testimonial[] = [
 
         const startAutoScroll = () => {
           stopAutoScroll();
-          autoScrollInterval = setInterval(slideToNext, 4500);
+          if (!needsLoop) return;
+          autoScrollInterval = setInterval(slideToNext, 3000);
         };
 
         const stopAutoScroll = () => {
           if (autoScrollInterval) clearInterval(autoScrollInterval);
         };
 
-        // Event Listeners for arrows
-        if (prevBtn) {
-          prevBtn.addEventListener('click', () => {
-            onInteractionStart();
-            slideToPrev(true);
-            onInteractionEnd();
-          });
-        }
-        if (nextBtn) {
-          nextBtn.addEventListener('click', () => {
-            onInteractionStart();
-            slideToNext(true);
-            onInteractionEnd();
-          });
-        }
+        let hoverScrollTimeout: any;
+        let hoverScrollInterval: any;
+
+        const startHoverScroll = (direction: 'next' | 'prev') => {
+          if (!needsLoop) return;
+          stopHoverScroll();
+          hoverScrollTimeout = setTimeout(() => {
+            const slideAction = direction === 'next' ? slideToNext : slideToPrev;
+            slideAction(true);
+            hoverScrollInterval = setInterval(() => {
+              slideAction(true);
+            }, 2000);
+          }, 5000);
+        };
+
+        const stopHoverScroll = () => {
+          clearTimeout(hoverScrollTimeout);
+          if (hoverScrollInterval) clearInterval(hoverScrollInterval);
+        };
 
         const onInteractionStart = () => {
           isUserInteracting = true;
@@ -458,91 +542,198 @@ const testimonials: Testimonial[] = [
           interactionTimeout = setTimeout(() => {
             isUserInteracting = false;
             startAutoScroll();
-          }, 4000);
+          }, 2000);
         };
+
+        // Render testimonials based on selected filter type
+        const renderTestimonials = (filterType: string) => {
+          // Pause any playing videos and clear observer
+          container.querySelectorAll('video').forEach(vid => {
+            vid.pause();
+            videoObserver.unobserve(vid);
+          });
+
+          container.innerHTML = '';
+
+          // Filter matching source items
+          const filtered = originalSourceItems.filter(item => {
+            const type = item.getAttribute('data-type');
+            if (filterType === 'all') return true;
+            if (filterType === 'video') return type === 'youtube' || type === 'video';
+            return type === filterType;
+          });
+
+          if (filtered.length === 0) return;
+
+          // Append source items
+          filtered.forEach(item => {
+            container.appendChild(item.cloneNode(true));
+          });
+
+          needsLoop = filtered.length > 3;
+
+          if (needsLoop) {
+            // Clone items for infinite scroll loop
+            const currentNodes = Array.from(container.querySelectorAll('.testimonial-card')) as HTMLElement[];
+            currentNodes.forEach(item => {
+              container.appendChild(item.cloneNode(true));
+            });
+            [...currentNodes].reverse().forEach(item => {
+              container.insertBefore(item.cloneNode(true), container.firstChild);
+            });
+
+            allItems = Array.from(container.querySelectorAll('.testimonial-card')) as HTMLElement[];
+            originalCount = currentNodes.length;
+            currentIndex = originalCount;
+
+            // Show arrows
+            if (prevBtn) prevBtn.style.display = '';
+            if (nextBtn) nextBtn.style.display = '';
+
+            container.classList.remove('justify-center');
+            container.classList.add('justify-start');
+
+            // Center scroll instantly
+            scrollToItem(currentIndex, true);
+          } else {
+            allItems = Array.from(container.querySelectorAll('.testimonial-card')) as HTMLElement[];
+            originalCount = filtered.length;
+            currentIndex = 0;
+
+            // Hide arrows
+            if (prevBtn) prevBtn.style.display = 'none';
+            if (nextBtn) nextBtn.style.display = 'none';
+
+            container.classList.remove('justify-start');
+            container.classList.add('justify-center');
+          }
+
+          // Wire play/pause listeners for new video nodes
+          const allWrappers = Array.from(container.querySelectorAll('.video-wrapper')) as HTMLElement[];
+          allWrappers.forEach((wrapper) => {
+            wrapper.addEventListener('click', (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              
+              const vid = wrapper.querySelector('.testimonial-video') as HTMLVideoElement;
+              const playIcon = wrapper.querySelector('.play-icon');
+              const pauseIcon = wrapper.querySelector('.pause-icon');
+              const overlay = wrapper.querySelector('.video-overlay');
+
+              if (vid.paused) {
+                // Pause other playing videos
+                container.querySelectorAll('.testimonial-video').forEach((v: any) => {
+                  if (v !== vid && !v.paused) {
+                    v.pause();
+                    v.muted = true;
+                    const otherWrapper = v.closest('.video-wrapper');
+                    if (otherWrapper) {
+                      otherWrapper.querySelector('.play-icon')?.classList.remove('hidden');
+                      otherWrapper.querySelector('.pause-icon')?.classList.add('hidden');
+                      otherWrapper.querySelector('.video-overlay')?.classList.remove('opacity-0');
+                      otherWrapper.classList.remove('playing');
+                    }
+                  }
+                });
+
+                if (!vid.getAttribute('src')) {
+                  const dataSrc = vid.getAttribute('data-src');
+                  if (dataSrc) vid.setAttribute('src', dataSrc);
+                }
+
+                vid.play().then(() => {
+                  vid.muted = false;
+                  playIcon?.classList.add('hidden');
+                  pauseIcon?.classList.remove('hidden');
+                  overlay?.classList.add('opacity-0');
+                  wrapper.classList.add('playing');
+                }).catch(err => console.error(err));
+
+                isUserInteracting = true;
+                stopAutoScroll();
+                clearTimeout(interactionTimeout);
+              } else {
+                vid.pause();
+                vid.muted = true;
+                playIcon?.classList.remove('hidden');
+                pauseIcon?.classList.add('hidden');
+                overlay?.classList.remove('opacity-0');
+                wrapper.classList.remove('playing');
+
+                isUserInteracting = false;
+                startAutoScroll();
+              }
+            });
+          });
+
+          // Observe new video nodes
+          allItems.forEach(item => {
+            const vid = item.querySelector('video');
+            if (vid) videoObserver.observe(vid);
+          });
+        };
+
+        // Wire filter buttons
+        const filterButtons = document.querySelectorAll('.testimonial-filter-btn');
+        filterButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const filterType = btn.getAttribute('data-filter') || 'all';
+            
+            // Toggle active classes on buttons
+            filterButtons.forEach(b => {
+              b.classList.remove('bg-accent-gold', 'text-white', 'border-accent-gold', 'shadow-sm', 'shadow-accent-gold/20');
+              b.classList.add('bg-transparent', 'text-primary-dark', 'hover:bg-accent-gold/10', 'border-accent-gold/20');
+            });
+            btn.classList.add('bg-accent-gold', 'text-white', 'border-accent-gold', 'shadow-sm', 'shadow-accent-gold/20');
+            btn.classList.remove('bg-transparent', 'text-primary-dark', 'hover:bg-accent-gold/10', 'border-accent-gold/20');
+
+            onInteractionStart();
+            renderTestimonials(filterType);
+            onInteractionEnd();
+          });
+        });
+
+        // Event Listeners for arrows
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+            onInteractionStart();
+            stopHoverScroll();
+            slideToPrev(true);
+            onInteractionEnd();
+          });
+          prevBtn.addEventListener('mouseenter', () => {
+            onInteractionStart();
+            startHoverScroll('prev');
+          });
+          prevBtn.addEventListener('mouseleave', () => {
+            stopHoverScroll();
+            onInteractionEnd();
+          });
+        }
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            onInteractionStart();
+            stopHoverScroll();
+            slideToNext(true);
+            onInteractionEnd();
+          });
+          nextBtn.addEventListener('mouseenter', () => {
+            onInteractionStart();
+            startHoverScroll('next');
+          });
+          nextBtn.addEventListener('mouseleave', () => {
+            stopHoverScroll();
+            onInteractionEnd();
+          });
+        }
 
         container.addEventListener('mouseenter', onInteractionStart);
         container.addEventListener('mouseleave', onInteractionEnd);
         container.addEventListener('touchstart', onInteractionStart, { passive: true });
         container.addEventListener('touchend', onInteractionEnd, { passive: true });
 
-        // Video Play/Pause Logic
-        const allWrappers = Array.from(container.querySelectorAll('.video-wrapper')) as HTMLElement[];
-
-        allWrappers.forEach((wrapper) => {
-          wrapper.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const vid = wrapper.querySelector('.testimonial-video') as HTMLVideoElement;
-            const playIcon = wrapper.querySelector('.play-icon');
-            const pauseIcon = wrapper.querySelector('.pause-icon');
-            const overlay = wrapper.querySelector('.video-overlay');
-
-            if (vid.paused) {
-              // Pause any other currently playing videos
-              container.querySelectorAll('.testimonial-video').forEach((v: any) => {
-                if (v !== vid && !v.paused) {
-                  v.pause();
-                  v.muted = true;
-                  const otherWrapper = v.closest('.video-wrapper');
-                  if (otherWrapper) {
-                    otherWrapper.querySelector('.play-icon')?.classList.remove('hidden');
-                    otherWrapper.querySelector('.pause-icon')?.classList.add('hidden');
-                    otherWrapper.querySelector('.video-overlay')?.classList.remove('opacity-0');
-                    otherWrapper.classList.remove('playing');
-                  }
-                }
-              });
-
-              if (!vid.getAttribute('src')) {
-                const dataSrc = vid.getAttribute('data-src');
-                if (dataSrc) {
-                  vid.setAttribute('src', dataSrc);
-                }
-              }
-
-              const playPromise = vid.play();
-              if (playPromise !== undefined) {
-                playPromise.then(() => {
-                  vid.muted = false;
-                  playIcon?.classList.add('hidden');
-                  pauseIcon?.classList.remove('hidden');
-                  overlay?.classList.add('opacity-0'); // Hide overlay to watch video clearly
-                  wrapper.classList.add('playing');
-                }).catch((err) => {
-                  console.error('Video playback failed:', err);
-                });
-              } else {
-                vid.muted = false;
-                playIcon?.classList.add('hidden');
-                pauseIcon?.classList.remove('hidden');
-                overlay?.classList.add('opacity-0');
-                wrapper.classList.add('playing');
-              }
-              
-              // Permanent pause of carousel while watching
-              isUserInteracting = true;
-              stopAutoScroll();
-              clearTimeout(interactionTimeout);
-            } else {
-              vid.pause();
-              vid.muted = true;
-              
-              playIcon?.classList.remove('hidden');
-              pauseIcon?.classList.add('hidden');
-              overlay?.classList.remove('opacity-0'); // Show play button again
-              wrapper.classList.remove('playing');
-              
-              // Resume carousel
-              isUserInteracting = false;
-              startAutoScroll();
-            }
-          });
-        });
-
-        // Initial setup
-        scrollToItem(currentIndex, true);
+        // Initial render
+        renderTestimonials('all');
         startAutoScroll();
       }
 

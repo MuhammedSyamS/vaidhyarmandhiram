@@ -118,6 +118,22 @@ const fullTitle = `${siteName} | ${title}`;
         from { opacity: 0; transform: translateY(30px) scale(0.98); }
         to { opacity: 1; transform: translateY(0) scale(1); }
       }
+
+      /* Hide WhatsApp and Chatbot buttons until Splash Intro completes */
+      #whatsapp-float-btn,
+      button[aria-label="Open AI Assistant"] {
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: translateY(20px) !important;
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+
+      body.splash-complete #whatsapp-float-btn,
+      body.splash-complete button[aria-label="Open AI Assistant"] {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: translateY(0) !important;
+      }
     </style>
 
     <!-- Structured Data -->
@@ -168,7 +184,7 @@ const fullTitle = `${siteName} | ${title}`;
     <MagneticEffect />
     <div class="min-h-screen flex flex-col relative">
       <slot name="header" />
-      <main class="flex-grow">
+      <main class="flex-grow m-0 p-0">
         <slot />
       </main>
       <slot name="footer" />
@@ -179,6 +195,7 @@ const fullTitle = `${siteName} | ${title}`;
 
     <!-- Floating WhatsApp Button (Bottom Right) -->
     <a 
+      id="whatsapp-float-btn"
       href="https://wa.me/918593821553" 
       target="_blank" 
       rel="noopener noreferrer" 

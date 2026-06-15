@@ -1,0 +1,8 @@
+---
+export const prerender = false;
+
+// Delete the admin session cookie by setting its expiry in the past
+Astro.cookies.delete('vaidhyar_admin_session', { path: '/' });
+
+return Astro.redirect('/admin/login');
+---

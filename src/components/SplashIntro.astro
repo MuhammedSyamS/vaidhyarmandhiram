@@ -32,6 +32,7 @@
     if ((window as any).__SPLASH_SHOWN__) {
       splash.style.display = 'none';
       splash.remove();
+      document.body.classList.add('splash-complete');
       return;
     }
     (window as any).__SPLASH_SHOWN__ = true;
@@ -119,6 +120,7 @@
       
       setTimeout(() => {
         splash.style.opacity = '0';
+        document.body.classList.add('splash-complete');
         setTimeout(() => splash.remove(), 300);
       }, 800);
     };
