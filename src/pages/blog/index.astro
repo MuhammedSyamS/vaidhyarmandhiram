@@ -30,62 +30,10 @@ const categories = ['All', ...Array.from(new Set(posts.map(post => post.data.cus
 
   <Section background="parchment">
     <div class="container mx-auto max-w-6xl px-4">
-      {posts.length === 0 ? (
-        <div class="text-center py-20 bg-white rounded-2xl shadow-lg border border-accent-gold/20 max-w-2xl mx-auto">
-          <h2 class="text-3xl text-primary-dark font-bold mb-4">Coming Soon</h2>
-          <p class="text-text-muted font-sans text-lg">We are currently preparing insightful articles about Ayurveda, health, and wellness. Check back soon!</p>
-        </div>
-      ) : (
-        <>
-          <!-- Category Filters -->
-          <div class="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map(category => (
-              <button
-                class={`blog-filter-btn px-5 py-2.5 rounded-full border-2 text-sm font-sans font-bold transition-all ${category === 'All' ? 'bg-accent-gold text-white border-accent-gold' : 'bg-transparent text-primary-dark border-accent-gold/30 hover:border-accent-gold hover:text-accent-gold'}`}
-                data-filter={category}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          <!-- Blog Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
-            {posts.map((post: CollectionEntry<'blog'>) => (
-              <a href={`/blog/${post.slug}`} class="blog-card bg-white group rounded-xl shadow-md border border-accent-gold/10 overflow-hidden hover:shadow-xl transition-all" data-category={post.data.customCategory || post.data.category}>
-                {post.data.image ? (
-                  <div class="aspect-[16/10] overflow-hidden relative">
-                    <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-accent-gold uppercase tracking-wider shadow-sm">
-                      {post.data.customCategory || post.data.category}
-                    </div>
-                  </div>
-                ) : (
-                  <div class="aspect-[16/10] bg-primary-dark/5 flex items-center justify-center relative">
-                    <span class="text-accent-gold/50 font-serif text-3xl font-bold">Vaidyarmandiram</span>
-                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-accent-gold uppercase tracking-wider shadow-sm">
-                      {post.data.customCategory || post.data.category}
-                    </div>
-                  </div>
-                )}
-                <div class="p-6 space-y-3 flex flex-col h-full">
-                  <span class="text-xs font-sans text-accent-gold font-bold uppercase tracking-widest">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                  
-                  <div class="flex flex-col">
-                    <h3 class="lang-en text-xl font-bold text-primary-dark group-hover:text-accent-gold transition-colors line-clamp-2">{post.data.title}</h3>
-                    <h3 class="lang-ml font-malayalam text-xl font-bold text-primary-dark group-hover:text-accent-gold transition-colors line-clamp-2">{post.data.titleMl}</h3>
-                  </div>
-                  
-                  <div class="flex flex-col flex-grow">
-                    <p class="lang-en text-sm text-text-muted font-sans line-clamp-3">{post.data.description}</p>
-                    <p class="lang-ml font-malayalam text-sm text-text-muted line-clamp-3">{post.data.descriptionMl}</p>
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </>
-      )}
+      <div class="text-center py-20 bg-white rounded-2xl shadow-lg border border-accent-gold/20 max-w-2xl mx-auto">
+        <h2 class="text-3xl text-primary-dark font-bold mb-4">Coming Soon</h2>
+        <p class="text-text-muted font-sans text-lg">We are currently preparing insightful articles about Ayurveda, health, and wellness. Check back soon!</p>
+      </div>
     </div>
   </Section>
 

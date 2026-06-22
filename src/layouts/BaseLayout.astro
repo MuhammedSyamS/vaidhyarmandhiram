@@ -21,24 +21,26 @@ const {
   title,
   description = "Experience authentic Kerala Ayurveda at Vaidyarmandiram Ayurveda Hospital. Founded by Dr. P. Abdul Sathar Gurukkal.",
   keywords = "Ayurveda hospital Kerala, authentic ayurveda, panchakarma treatment, Vaidyarmandiram, Dr. P. Abdul Sathar Gurukkal, traditional ayurvedic clinic",
-  image = "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/hero-bg.jpg",
-  canonicalURL = new URL(Astro.url.pathname, "https://www.vaidhyarmandhiram.com/"),
+  image = "/images/social-banner.jpg", // Use a local 1200x630 image for better control over social previews
+  canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://www.vaidhyarmandhiram.com/"),
   type = "website",
 } = Astro.props;
 
-const siteName = "Vaidhyarmandhiram";
-const fullTitle = `${siteName} | ${title}`;
+const siteName = "Vaidhyarmandhiram Ayurveda Hospital";
+const fullTitle = `${title} | ${siteName}`;
+const socialImageURL = new URL(image, Astro.site || "https://www.vaidhyarmandhiram.com/").toString();
 ---
 
 <!doctype html>
 <html lang="en" data-lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" href="/favicon.png?v=4" />
-    <link rel="shortcut icon" type="image/png" href="/favicon.png?v=4" />
-    <link rel="apple-touch-icon" href="/favicon.png?v=4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png?v=5" />
+    <link rel="shortcut icon" type="image/png" href="/favicon.png?v=5" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=5" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#1a362d" />
 
     <!-- Language: restore saved preference on initial load AND after every View Transition -->
     <script is:inline>
@@ -66,20 +68,26 @@ const fullTitle = `${siteName} | ${title}`;
     <meta name="keywords" content={keywords} />
     <meta name="robots" content="index, follow, max-image-preview:large" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vaidhyarmandhiram Ayurveda Hospital Banner" />
     <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={fullTitle} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.site)} />
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:domain" content="vaidhyarmandhiram.com" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:image:alt" content="Vaidhyarmandhiram Ayurveda Hospital Banner" />
 
     <!-- Google Fonts Preconnect for Malayalam -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
