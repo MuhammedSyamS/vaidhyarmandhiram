@@ -21,7 +21,7 @@ const {
   title,
   description = "Experience authentic Kerala Ayurveda at Vaidyarmandiram Ayurveda Hospital. Founded by Dr. P. Abdul Sathar Gurukkal.",
   keywords = "Ayurveda hospital Kerala, authentic ayurveda, panchakarma treatment, Vaidyarmandiram, Dr. P. Abdul Sathar Gurukkal, traditional ayurvedic clinic",
-  image = "https://res.cloudinary.com/dhqtquwxc/image/upload/w_1200,h_630,c_fill,f_jpg,q_80/v1/vaidhyarmandhiram/images/hero-bg.jpg", // Forced to JPG and 1200x630 for strict WhatsApp compatibility
+  image = "/favicon.png",
   canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://www.vaidhyarmandhiram.com/"),
   type = "website",
 } = Astro.props;
@@ -74,8 +74,6 @@ const socialImageURL = new URL(image, Astro.site || "https://www.vaidhyarmandhir
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImageURL} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Vaidhyarmandhiram Ayurveda Hospital Banner" />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content="en_US" />
