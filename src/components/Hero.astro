@@ -14,8 +14,8 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
       <div class="lg:col-span-6 flex flex-col justify-start space-y-3.5 lg:space-y-3 text-left relative z-10 lg:-mt-2 xl:-mt-4">
         <div>
           <!-- Double-Ring Gold Badge (Heritage Emblem) with Rotating Text -->
-          <div class="flex items-center gap-4 mb-3 lg:mb-2 group cursor-default" data-aos="fade-up">
-            <div class="relative flex items-center justify-center w-20 h-20 shrink-0">
+          <div class="flex items-center gap-2.5 sm:gap-4 mb-3 lg:mb-2 group cursor-default" data-aos="fade-up">
+            <div class="relative flex items-center justify-center w-14 h-14 sm:w-20 sm:h-20 shrink-0">
               <!-- Elegant static outer text ring with rotation -->
               <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full origin-center pointer-events-none select-none opacity-80 animate-spin-slow">
                 <path id="crestPath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
@@ -25,17 +25,17 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
               </svg>
               
               <!-- Static inner golden crest -->
-              <div class="w-14 h-14 rounded-full border border-accent-gold/45 bg-background-cream/60 flex flex-col items-center justify-center shadow-inner group-hover:scale-[1.03] transition-transform duration-500 relative">
-                <div class="absolute inset-[2.5px] rounded-full border border-dashed border-accent-gold/30"></div>
-                <span class="text-[7.5px] font-sans tracking-widest text-accent-gold font-bold uppercase leading-none z-10">Estd</span>
-                <span class="text-xs font-serif font-bold text-primary-dark mt-0.5 leading-none z-10">1983</span>
+              <div class="w-10 h-10 sm:w-14 sm:h-14 rounded-full border border-accent-gold/45 bg-background-cream/60 flex flex-col items-center justify-center shadow-inner group-hover:scale-[1.03] transition-transform duration-500 relative">
+                <div class="absolute inset-[2px] sm:inset-[2.5px] rounded-full border border-dashed border-accent-gold/30"></div>
+                <span class="text-[6.5px] sm:text-[7.5px] font-sans tracking-widest text-accent-gold font-bold uppercase leading-none z-10">Estd</span>
+                <span class="text-[10px] sm:text-xs font-serif font-bold text-primary-dark mt-0.5 leading-none z-10">1983</span>
               </div>
             </div>
             
-            <div class="flex flex-col justify-center">
-              <span class="lang-en text-[11px] font-sans tracking-[0.22em] text-accent-gold uppercase font-bold">Best Ayurvedic Hospital in Kerala</span>
-              <span class="lang-ml font-malayalam text-xs text-accent-gold font-semibold leading-none mb-0.5">കേരളത്തിലെ ഏറ്റവും മികച്ച ആയുർവേദ ആശുപത്രി</span>
-              <span class="text-[10px] text-text-muted mt-0.5 font-sans tracking-wider uppercase">Legacy of Holistic Healing Since 1983</span>
+            <div class="flex flex-col justify-center min-w-0">
+              <span class="lang-en whitespace-nowrap text-[9px] sm:text-[11px] font-sans tracking-[0.1em] sm:tracking-[0.22em] text-accent-gold uppercase font-bold">Best Ayurvedic Hospital in Kerala</span>
+              <span class="lang-ml font-malayalam whitespace-nowrap text-[10px] sm:text-xs text-accent-gold font-semibold leading-none mb-0.5">കേരളത്തിലെ ഏറ്റവും മികച്ച ആയുർവേദ ആശുപത്രി</span>
+              <span class="whitespace-nowrap text-[8.5px] sm:text-[10px] text-text-muted mt-0.5 font-sans tracking-wider uppercase">Legacy of Holistic Healing Since 1983</span>
             </div>
           </div>
 
@@ -126,16 +126,16 @@ import { ArrowRight, Sparkles, Quote } from 'lucide-react';
           </div>
         </div>
  
-        <!-- Buttons with Shimmer & Expand Effects -->
-        <div class="flex flex-col sm:flex-row gap-3 pt-2" data-aos="fade-up" data-aos-delay="350">
-          <a href="/appointment" class="magnetic btn-shimmer bg-primary hover:bg-primary-dark text-white flex items-center justify-center gap-2 group shadow-md hover:shadow-lg rounded-lg px-7 py-3.5 text-base font-serif font-bold transition-all duration-300 flex-1 sm:flex-initial">
+        <!-- Buttons with Shimmer & Expand Effects: strictly in one horizontal line -->
+        <div class="flex flex-row items-center gap-2 sm:gap-4 pt-3 max-w-xl" data-aos="fade-up" data-aos-delay="350">
+          <a href="/appointment" class="magnetic btn-shimmer bg-primary hover:bg-primary-dark text-white flex items-center justify-center gap-1.5 sm:gap-2 group shadow-md hover:shadow-lg rounded-lg px-2.5 sm:px-7 py-3 sm:py-3.5 text-xs sm:text-base font-serif font-bold transition-all duration-300 flex-1 whitespace-nowrap">
             <span class="lang-en">Book Consultation</span>
-            <span class="lang-ml font-malayalam normal-case tracking-normal">കൺസൾട്ടേഷൻ ബുക്ക് ചെയ്യൂ</span>
-            <ArrowRight size={18} className="transition-transform group-hover:translate-x-1 shrink-0" />
+            <span class="lang-ml font-malayalam normal-case tracking-normal text-[11px] sm:text-base">കൺസൾട്ടേഷൻ ബുക്ക് ചെയ്യൂ</span>
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1 shrink-0 hidden xs:inline-block sm:inline-block" />
           </a>
-          <a href="/treatments" class="btn-expand-border border-2 border-accent-gold/60 text-accent-gold hover:text-white flex items-center justify-center rounded-lg px-7 py-3.5 text-base font-serif font-bold transition-all duration-300 flex-1 sm:flex-initial">
+          <a href="/treatments" class="btn-expand-border border-2 border-accent-gold/60 text-accent-gold hover:text-white flex items-center justify-center rounded-lg px-2.5 sm:px-7 py-3 sm:py-3.5 text-xs sm:text-base font-serif font-bold transition-all duration-300 flex-1 text-center whitespace-nowrap">
             <span class="lang-en">Explore Treatments</span>
-            <span class="lang-ml font-malayalam normal-case tracking-normal">ചികിത്സകൾ കാണുക</span>
+            <span class="lang-ml font-malayalam normal-case tracking-normal text-[11px] sm:text-base">ചികിത്സകൾ കാണുക</span>
           </a>
         </div>
       </div>

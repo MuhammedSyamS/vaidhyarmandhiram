@@ -22,34 +22,35 @@ const treatments = [
 
 <footer class="bg-primary-dark text-background-parchment pt-16 pb-8 border-t-4 border-accent-gold">
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+    <!-- Main Footer Grid: horizontal side-by-side layout on smaller devices -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 md:gap-12 mb-12">
 
-      <!-- Brand -->
-      <div class="space-y-4" data-aos="fade-up" data-aos-duration="1000">
+      <!-- Brand Section -->
+      <div class="space-y-4 lg:col-span-1" data-aos="fade-up" data-aos-duration="1000">
         <div>
           <h2 class="lang-en text-xl md:text-2xl font-bold text-background-parchment tracking-widest uppercase">Vaidyarmandiram</h2>
           <h2 class="lang-ml font-malayalam text-xl md:text-2xl font-bold text-background-parchment">വൈദ്യർമന്ദിരം</h2>
           <p class="lang-en text-xs font-sans text-accent-gold tracking-[0.25em] uppercase mt-1">Ayurveda Hospital</p>
           <p class="lang-ml font-malayalam text-sm text-accent-gold font-semibold mt-1">ആയുർവേദ ഹോസ്പിറ്റൽ</p>
         </div>
-        <p class="lang-en text-background-parchment leading-relaxed font-sans text-sm">
+        <p class="lang-en text-background-parchment/90 leading-relaxed font-sans text-xs sm:text-sm">
           Dedicated to the ancient wisdom of Ayurveda, providing authentic healing and wellness since decades, rooted in the legacy of Dr. P. Abdul Sathar Gurukkal.
         </p>
-        <p class="lang-ml font-malayalam text-background-parchment text-sm leading-relaxed">
+        <p class="lang-ml font-malayalam text-background-parchment/90 text-xs sm:text-sm leading-relaxed">
           ഡോ. പി. അബ്ദുൾ സതാർ ഗുരുക്കളുടെ മഹനീയ പൈതൃകത്തിൽ ഊന്നിനിന്നുകൊണ്ടുള്ള ആധികാരിക ആയുർവേദ ചികിത്സ.
         </p>
-        <div class="flex gap-4 pt-2">
-          <a href="https://www.facebook.com/share/18S8gwjL7j/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-accent-gold flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-all" title="Facebook">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        <div class="flex gap-3 pt-1">
+          <a href="https://www.facebook.com/share/18S8gwjL7j/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full border border-accent-gold/60 flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-all" title="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
-          <a href="https://www.instagram.com/vm_ayurveda?igsh=bHphZTJ3bnE1djMw&utm_source=qr" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-accent-gold flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-all" title="Instagram">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          <a href="https://www.instagram.com/vm_ayurveda?igsh=bHphZTJ3bnE1djMw&utm_source=qr" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full border border-accent-gold/60 flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-all" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
           </a>
-          <a href="https://youtube.com/@vmayurveda?si=slWZ2sHOxjIG2lET" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-accent-gold flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-all" title="YouTube">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          <a href="https://youtube.com/@vmayurveda?si=slWZ2sHOxjIG2lET" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full border border-accent-gold/60 flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-all" title="YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
           </a>
-          <a href="https://wa.me/918593821553" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-accent-gold flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-all" title="WhatsApp">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <a href="https://wa.me/918593821553" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full border border-accent-gold/60 flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-all" title="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 11.08c0 4.9-3.95 8.92-8.8 8.92a9.07 9.07 0 0 1-4.22-1.03l-4.43 1.16 1.18-4.32a8.91 8.91 0 0 1-1.33-4.73C4.4 6.18 8.35 2.16 13.2 2.16S22 6.18 22 11.08z"/>
               <path d="M17.15 14.12c-.22-.11-1.3-.64-1.5-.71-.2-.08-.35-.11-.5.11-.15.23-.58.72-.71.87-.13.15-.26.17-.48.06a6.07 6.07 0 0 1-1.78-1.1 6.7 6.7 0 0 1-1.23-1.53c-.13-.23-.01-.35.1-.46.1-.1.22-.26.33-.39.11-.13.15-.22.22-.36.08-.15.04-.28-.02-.4-.06-.11-.5-1.21-.68-1.66-.18-.44-.36-.38-.5-.39-.13-.01-.28-.01-.43-.01s-.4.06-.6.28c-.22.22-.84.82-.84 2s.87 2.33.99 2.49c.12.16 1.71 2.61 4.15 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.43-.58 1.63-1.14.2-.56.2-1.04.14-1.14-.06-.1-.23-.16-.45-.27z" fill="currentColor"/>
             </svg>
@@ -57,60 +58,71 @@ const treatments = [
         </div>
       </div>
 
-      <!-- Quick Links -->
-      <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-        <h3 class="lang-en text-xl font-bold mb-5 text-accent-gold">Quick Links</h3>
-        <h3 class="lang-ml font-malayalam text-xl font-bold mb-5 text-accent-gold">പ്രധാന ലിങ്കുകൾ</h3>
-        <ul class="space-y-4 font-sans">
-          {quickLinks.map(link => (
-            <li>
-              <a href={link.href} class="hover:text-accent-gold transition-colors block">
-                <span class="lang-en">{link.en}</span>
-                <span class="lang-ml font-malayalam normal-case tracking-normal">{link.ml}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
+      <!-- Horizontal 2-Column Split on Mobile: Quick Links + Core Treatments -->
+      <div class="grid grid-cols-2 gap-6 sm:gap-8 lg:col-span-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+        <!-- Quick Links -->
+        <div>
+          <h3 class="lang-en text-base sm:text-xl font-bold mb-3 sm:mb-5 text-accent-gold">Quick Links</h3>
+          <h3 class="lang-ml font-malayalam text-base sm:text-xl font-bold mb-3 sm:mb-5 text-accent-gold">പ്രധാന ലിങ്കുകൾ</h3>
+          <ul class="space-y-2.5 sm:space-y-4 font-sans text-xs sm:text-sm">
+            {quickLinks.map(link => (
+              <li>
+                <a href={link.href} class="hover:text-accent-gold transition-colors block text-background-parchment/90">
+                  <span class="lang-en">{link.en}</span>
+                  <span class="lang-ml font-malayalam normal-case tracking-normal">{link.ml}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Core Treatments -->
+        <div>
+          <h3 class="lang-en text-base sm:text-xl font-bold mb-3 sm:mb-5 text-accent-gold">Core Treatments</h3>
+          <h3 class="lang-ml font-malayalam text-base sm:text-xl font-bold mb-3 sm:mb-5 text-accent-gold">ചികിത്സകൾ</h3>
+          <ul class="space-y-2.5 sm:space-y-4 text-xs sm:text-sm">
+            {treatments.map(t => (
+              <li>
+                <span class="lang-en text-background-parchment/90 font-sans block">{t.en}</span>
+                <span class="lang-ml font-malayalam text-background-parchment/90 block">{t.ml}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      <!-- Core Treatments -->
-      <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-        <h3 class="lang-en text-xl font-bold mb-5 text-accent-gold">Core Treatments</h3>
-        <h3 class="lang-ml font-malayalam text-xl font-bold mb-5 text-accent-gold">ചികിത്സകൾ</h3>
-        <ul class="space-y-4">
-          {treatments.map(t => (
-            <li>
-              <span class="lang-en text-background-parchment font-sans">{t.en}</span>
-              <span class="lang-ml font-malayalam text-background-parchment">{t.ml}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div class="space-y-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-        <h3 class="lang-en text-xl font-bold mb-5 text-accent-gold">Contact Us</h3>
-        <h3 class="lang-ml font-malayalam text-xl font-bold mb-5 text-accent-gold">ബന്ധപ്പെടുക</h3>
-        <div class="space-y-5 font-sans">
-          <div class="flex gap-3">
-            <MapPin className="text-accent-gold shrink-0 mt-0.5" size={18} />
+      <!-- Contact Us: Horizontal layout on smaller devices -->
+      <div class="space-y-4 lg:col-span-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+        <h3 class="lang-en text-base sm:text-xl font-bold mb-3 sm:mb-5 text-accent-gold">Contact Us</h3>
+        <h3 class="lang-ml font-malayalam text-base sm:text-xl font-bold mb-3 sm:mb-5 text-accent-gold">ബന്ധപ്പെടുക</h3>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 font-sans text-xs sm:text-sm">
+          <!-- Locations -->
+          <div class="flex gap-2.5 items-start">
+            <MapPin className="text-accent-gold shrink-0 mt-0.5" size={16} />
             <div>
-              <span class="lang-en text-background-parchment text-sm">Hospitals in Trivandrum, Kollam, & Alappuzha</span>
-              <span class="lang-ml font-malayalam text-background-parchment text-sm">തിരുവനന്തപുരം, കൊല്ലം, ആലപ്പുഴ</span>
+              <span class="lang-en text-background-parchment/90 block">Hospitals in Trivandrum, Kollam, & Alappuzha</span>
+              <span class="lang-ml font-malayalam text-background-parchment/90 block">തിരുവനന്തപുരം, കൊല്ലം, ആലപ്പുഴ</span>
             </div>
           </div>
-          <div class="flex gap-3 items-start">
-            <Phone className="text-accent-gold shrink-0 mt-0.5" size={18} />
+
+          <!-- Phone Numbers -->
+          <div class="flex gap-2.5 items-start">
+            <Phone className="text-accent-gold shrink-0 mt-0.5" size={16} />
             <div class="flex flex-col">
-              <span class="lang-en text-xs text-background-parchment/60 font-bold uppercase tracking-widest mb-1">Phone (All Branches)</span>
-              <span class="lang-ml font-malayalam text-xs text-background-parchment/60 font-bold mb-1">ഫോൺ (എല്ലാ ശാഖകൾക്കും)</span>
-              <a href="tel:+918593821553" class="text-background-parchment text-sm hover:text-accent-gold transition-colors">+91 85938 21553</a>
-              <a href="tel:+919495556497" class="text-background-parchment text-sm hover:text-accent-gold transition-colors">+91 94955 56497</a>
+              <span class="lang-en text-[10px] text-background-parchment/60 font-bold uppercase tracking-widest mb-0.5">Phone (All Branches)</span>
+              <span class="lang-ml font-malayalam text-[10px] text-background-parchment/60 font-bold mb-0.5">ഫോൺ (എല്ലാ ശാഖകൾക്കും)</span>
+              <div class="flex flex-wrap sm:flex-col gap-x-3 gap-y-0.5">
+                <a href="tel:+918593821553" class="text-background-parchment hover:text-accent-gold transition-colors font-medium">+91 85938 21553</a>
+                <a href="tel:+919495556497" class="text-background-parchment hover:text-accent-gold transition-colors font-medium">+91 94955 56497</a>
+              </div>
             </div>
           </div>
-          <div class="flex gap-3 items-center">
-            <Mail className="text-accent-gold shrink-0" size={18} />
-            <span class="text-background-parchment text-sm">vmayurveda1983@gmail.com</span>
+
+          <!-- Email -->
+          <div class="flex gap-2.5 items-center sm:col-span-2 lg:col-span-1">
+            <Mail className="text-accent-gold shrink-0" size={16} />
+            <span class="text-background-parchment/90 break-all text-xs sm:text-sm">vmayurveda1983@gmail.com</span>
           </div>
         </div>
       </div>

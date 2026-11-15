@@ -113,30 +113,43 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
       </div>
     </div>
 
-    <!-- Premium Features Grid -->
-    <div class="text-center mb-10">
+    <!-- Why Choose She Care Carousel -->
+    <div class="text-center mb-8 sm:mb-10">
       <h3 class="lang-en text-2xl md:text-3xl text-primary-dark font-serif font-bold mb-4">Why Choose She Care?</h3>
       <h3 class="lang-ml font-malayalam text-2xl md:text-3xl text-primary-dark font-bold mb-4">എന്തുകൊണ്ട് ഷീ കെയർ?</h3>
       <div class="w-24 h-1 bg-accent-gold mx-auto rounded-full"></div>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-      {
-        [
-          { titleEn: "Authentic Ayurveda", titleMl: "ആധികാരിക ആയുർവേദം", descEn: "Traditional Siddha & Ayurvedic therapies", descMl: "പരമ്പരാഗത സിദ്ധ, ആയുർവേദ ചികിത്സകൾ" },
-          { titleEn: "Personalized Diet", titleMl: "വ്യക്തിഗത ഭക്ഷണക്രമം", descEn: "Nutrition plans tailored to your dosha", descMl: "നിങ്ങളുടെ പ്രകൃതത്തിന് അനുയോജ്യമായ പോഷകാഹാരം" },
-          { titleEn: "Yoga & Wellness", titleMl: "യോഗ & വെൽനസ്", descEn: "Guided exercises for physical balance", descMl: "ശാരീരിക സന്തുലിതാവസ്ഥയ്ക്കുള്ള വ്യായാമങ്ങൾ" },
-          { titleEn: "Mental Health", titleMl: "മാനസികാരോഗ്യം", descEn: "Counseling and emotional support", descMl: "കൗൺസിലിംഗും വൈകാരിക പിന്തുണയും" }
-        ].map(benefit => (
-          <div class="bg-white/80 backdrop-blur-sm p-8 rounded-[1.5rem] border border-accent-gold/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center text-center">
-            <h4 class="lang-en text-primary-dark font-serif font-bold text-lg mb-2">{benefit.titleEn}</h4>
-            <h4 class="lang-ml font-malayalam text-primary-dark font-bold text-lg mb-2">{benefit.titleMl}</h4>
-            
-            <p class="lang-en text-text-muted font-sans text-sm leading-relaxed">{benefit.descEn}</p>
-            <p class="lang-ml font-malayalam text-text-muted text-sm leading-relaxed">{benefit.descMl}</p>
-          </div>
-        ))
-      }
+    <div class="relative w-full mb-16">
+      <div 
+        id="why-choose-carousel"
+        class="flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-4 sm:gap-6 pb-6 px-4 md:px-0 scroll-smooth md:grid md:grid-cols-4"
+      >
+        {
+          [
+            { titleEn: "Authentic Ayurveda", titleMl: "ആധികാരിക ആയുർവേദം", descEn: "Traditional Siddha & Ayurvedic therapies", descMl: "പരമ്പരാഗത സിദ്ധ, ആയുർവേദ ചികിത്സകൾ" },
+            { titleEn: "Personalized Diet", titleMl: "വ്യക്തിഗത ഭക്ഷണക്രമം", descEn: "Nutrition plans tailored to your dosha", descMl: "നിങ്ങളുടെ പ്രകൃതത്തിന് അനുയോജ്യമായ പോഷകാഹാരം" },
+            { titleEn: "Yoga & Wellness", titleMl: "യോഗ & വെൽനസ്", descEn: "Guided exercises for physical balance", descMl: "ശാരീരിക സന്തുലിതാവസ്ഥയ്ക്കുള്ള വ്യായാമങ്ങൾ" },
+            { titleEn: "Mental Health", titleMl: "മാനസികാരോഗ്യം", descEn: "Counseling and emotional support", descMl: "കൗൺസിലിംഗും വൈകാരിക പിന്തുണയും" }
+          ].map(benefit => (
+            <div class="why-choose-card w-[78vw] sm:w-[280px] md:w-auto shrink-0 snap-center bg-white/90 backdrop-blur-sm p-6 sm:p-8 rounded-[1.5rem] border border-accent-gold/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
+              <h4 class="lang-en text-primary-dark font-serif font-bold text-lg mb-2">{benefit.titleEn}</h4>
+              <h4 class="lang-ml font-malayalam text-primary-dark font-bold text-lg mb-2">{benefit.titleMl}</h4>
+              
+              <p class="lang-en text-text-muted font-sans text-sm leading-relaxed">{benefit.descEn}</p>
+              <p class="lang-ml font-malayalam text-text-muted text-sm leading-relaxed">{benefit.descMl}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Mobile Carousel Indicator Dots -->
+      <div class="flex md:hidden justify-center items-center gap-1.5 mt-2">
+        <span class="why-dot w-6 h-1.5 rounded-full bg-accent-gold transition-all duration-300"></span>
+        <span class="why-dot w-2 h-1.5 rounded-full bg-accent-gold/30 transition-all duration-300"></span>
+        <span class="why-dot w-2 h-1.5 rounded-full bg-accent-gold/30 transition-all duration-300"></span>
+        <span class="why-dot w-2 h-1.5 rounded-full bg-accent-gold/30 transition-all duration-300"></span>
+      </div>
     </div>
 
     <!-- Elegant CTA Box -->
@@ -500,6 +513,25 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
     }
 
     startAutoScroll();
+
+    // Why Choose She Care Mobile Carousel Indicator Tracking
+    const whyCarousel = document.getElementById('why-choose-carousel');
+    const whyDots = document.querySelectorAll('.why-dot');
+    if (whyCarousel && whyDots.length) {
+      whyCarousel.addEventListener('scroll', () => {
+        const itemWidth = whyCarousel.firstElementChild ? (whyCarousel.firstElementChild as HTMLElement).offsetWidth : whyCarousel.offsetWidth * 0.75;
+        const index = Math.round(whyCarousel.scrollLeft / itemWidth);
+        whyDots.forEach((dot, i) => {
+          if (i === Math.min(Math.max(0, index), whyDots.length - 1)) {
+            dot.classList.add('w-6', 'bg-accent-gold');
+            dot.classList.remove('w-2', 'bg-accent-gold/30');
+          } else {
+            dot.classList.remove('w-6', 'bg-accent-gold');
+            dot.classList.add('w-2', 'bg-accent-gold/30');
+          }
+        });
+      }, { passive: true });
+    }
   }
 
   initSheCareCarousel();

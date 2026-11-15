@@ -137,7 +137,7 @@ import { CalendarHeart, PhoneCall, CheckCircle2, Flower2, Heart, Leaf, Sparkles 
       <h3 class="lang-en text-3xl md:text-5xl text-white font-serif text-center mb-16">The Holistic She Care Approach</h3>
       <h3 class="lang-ml font-malayalam text-3xl md:text-5xl text-white font-bold text-center mb-16">സമഗ്ര ഷീ കെയർ സമീപനം</h3>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-4 sm:gap-6 pb-6 px-2 lg:px-0 lg:grid lg:grid-cols-4 lg:gap-8">
         {
           [
             { titleEn: "Authentic Ayurveda", titleMl: "ആധികാരിക ആയുർവേദം", descEn: "Traditional Siddha & Ayurvedic therapies crafted for female physiology.", descMl: "സ്ത്രീ ശരീരഘടനയ്ക്ക് അനുയോജ്യമായ പാരമ്പര്യ സിദ്ധ, ആയുർവേദ ചികിത്സകൾ." },
@@ -145,11 +145,13 @@ import { CalendarHeart, PhoneCall, CheckCircle2, Flower2, Heart, Leaf, Sparkles 
             { titleEn: "Yoga & Wellness", titleMl: "യോഗ & വെൽനസ്", descEn: "Guided exercises for physical balance, pelvic floor strength, and flexibility.", descMl: "ശാരീരിക സന്തുലിതാവസ്ഥ, പേശികളുടെ കരുത്ത് എന്നിവയ്ക്കുള്ള ഗൈഡഡ് വ്യായാമങ്ങൾ." },
             { titleEn: "Mental Health", titleMl: "മാനസികാരോഗ്യം", descEn: "Counseling and emotional support integrated into every treatment plan.", descMl: "ഓരോ ചികിത്സാ പദ്ധതിയിലും കൗൺസിലിംഗും വൈകാരിക പിന്തുണയും ഉൾപ്പെടുത്തിയിരിക്കുന്നു." }
           ].map(benefit => (
-            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl hover:bg-white/15 transition-all">
-              <h4 class="lang-en text-xl text-white font-bold mb-3">{benefit.titleEn}</h4>
-              <h4 class="lang-ml font-malayalam text-xl text-white font-bold mb-3">{benefit.titleMl}</h4>
-              <p class="lang-en text-white/80 leading-relaxed">{benefit.descEn}</p>
-              <p class="lang-ml font-malayalam text-white/80 leading-relaxed font-medium">{benefit.descMl}</p>
+            <div class="w-[78vw] sm:w-[280px] lg:w-auto shrink-0 snap-center bg-white/10 backdrop-blur-md border border-white/20 p-6 sm:p-8 rounded-2xl hover:bg-white/15 transition-all flex flex-col justify-between">
+              <div>
+                <h4 class="lang-en text-xl text-white font-bold mb-3">{benefit.titleEn}</h4>
+                <h4 class="lang-ml font-malayalam text-xl text-white font-bold mb-3">{benefit.titleMl}</h4>
+                <p class="lang-en text-white/80 leading-relaxed text-sm sm:text-base">{benefit.descEn}</p>
+                <p class="lang-ml font-malayalam text-white/80 leading-relaxed font-medium text-sm sm:text-base mt-1">{benefit.descMl}</p>
+              </div>
             </div>
           ))
         }

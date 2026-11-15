@@ -285,23 +285,23 @@ const testimonials = [...dbReviews, ...staticTestimonials].sort((a, b) => {
       </a>
     </div>
 
-    <!-- Testimonial Filter Tabs -->
-    <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 max-w-4xl mx-auto px-4" data-aos="fade-up">
+    <!-- Testimonial Filter Tabs (strictly in one horizontal line) -->
+    <div class="flex flex-nowrap justify-center items-center gap-1.5 sm:gap-3 mb-10 max-w-xl mx-auto px-2 overflow-x-auto no-scrollbar" data-aos="fade-up">
       <button 
         data-filter="all" 
-        class="testimonial-filter-btn px-5 py-2 sm:px-6 sm:py-2.5 rounded-full border border-accent-gold/20 font-sans font-semibold text-xs sm:text-sm transition-all duration-300 bg-accent-gold text-white shadow-sm shadow-accent-gold/25 outline-none cursor-pointer"
+        class="testimonial-filter-btn whitespace-nowrap px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full border border-accent-gold/20 font-sans font-semibold text-xs sm:text-sm transition-all duration-300 bg-accent-gold text-white shadow-sm shadow-accent-gold/25 outline-none cursor-pointer shrink-0"
       >
         All Reviews
       </button>
       <button 
         data-filter="video" 
-        class="testimonial-filter-btn px-5 py-2 sm:px-6 sm:py-2.5 rounded-full border border-accent-gold/20 text-primary-dark font-sans font-semibold text-xs sm:text-sm transition-all duration-300 hover:bg-accent-gold/10 bg-transparent outline-none cursor-pointer"
+        class="testimonial-filter-btn whitespace-nowrap px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full border border-accent-gold/20 text-primary-dark font-sans font-semibold text-xs sm:text-sm transition-all duration-300 hover:bg-accent-gold/10 bg-transparent outline-none cursor-pointer shrink-0"
       >
         Video Reviews
       </button>
       <button 
         data-filter="text" 
-        class="testimonial-filter-btn px-5 py-2 sm:px-6 sm:py-2.5 rounded-full border border-accent-gold/20 text-primary-dark font-sans font-semibold text-xs sm:text-sm transition-all duration-300 hover:bg-accent-gold/10 bg-transparent outline-none cursor-pointer"
+        class="testimonial-filter-btn whitespace-nowrap px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full border border-accent-gold/20 text-primary-dark font-sans font-semibold text-xs sm:text-sm transition-all duration-300 hover:bg-accent-gold/10 bg-transparent outline-none cursor-pointer shrink-0"
       >
         Written Reviews
       </button>
