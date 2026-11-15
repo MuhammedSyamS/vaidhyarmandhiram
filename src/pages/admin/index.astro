@@ -1,6 +1,7 @@
 ---
 export const prerender = false;
 
+import '../../styles/global.css';
 import fs from 'node:fs';
 import path from 'node:path';
 import { getCollection } from 'astro:content';
@@ -107,7 +108,7 @@ const blogPosts = blogPostsRaw.sort((a, b) => new Date(b.data.date).getTime() - 
 
 const dbReviewsRaw = await getCollection('reviews').catch(() => []);
 
-// Static testimonials cataloged in system
+// Verified Patient Testimonials
 const staticTestimonials = [
   { name: "Aleena", type: "youtube", videoId: "jaHb_aVKSE8", city: "Patient Testimonial", rating: 5 },
   { name: "Jesna", type: "youtube", videoId: "-Dob69A1z7s", city: "Patient Testimonial", rating: 5 },
@@ -209,7 +210,7 @@ const treatmentsList = [
 ---
 
 <!doctype html>
-<html lang="en" class="h-full bg-[#030d09] text-slate-100">
+<html lang="en" class="h-full bg-brand-dark text-slate-100">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -218,39 +219,15 @@ const treatmentsList = [
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              brand: {
-                dark: '#030d09',
-                deep: '#061a12',
-                card: '#0a241a',
-                border: '#15382a',
-                gold: '#c9993b',
-                goldHover: '#e0b04e',
-                goldLight: '#f6e7c1',
-                emerald: '#10b981',
-                cream: '#f9f6ef'
-              }
-            },
-            fontFamily: {
-              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-              serif: ['"Playfair Display"', 'serif'],
-              malayalam: ['"Noto Sans Malayalam"', 'sans-serif']
-            }
-          }
-        }
-      }
-    </script>
     <style>
       body {
         font-family: 'Plus Jakarta Sans', sans-serif;
       }
       .font-serif {
         font-family: 'Playfair Display', serif;
+      }
+      .font-malayalam {
+        font-family: 'Noto Sans Malayalam', sans-serif;
       }
       .custom-scrollbar::-webkit-scrollbar {
         width: 6px;
@@ -266,19 +243,18 @@ const treatmentsList = [
       .custom-scrollbar::-webkit-scrollbar-thumb:hover {
         background: #c9993b;
       }
-      [x-cloak] { display: none !important; }
     </style>
   </head>
-  <body class="h-full flex overflow-hidden bg-brand-dark text-slate-200">
+  <body class="h-full flex overflow-hidden bg-brand-dark text-slate-200 antialiased">
 
     <!-- Notification Toast -->
     {notification && (
       <div id="toast-notification" class={`fixed top-5 right-5 z-50 flex items-center gap-3 px-5 py-3.5 rounded-xl shadow-2xl border text-sm font-medium transition-all duration-300 animate-bounce ${
         notificationType === 'success' 
-          ? 'bg-emerald-950/90 border-emerald-500/50 text-emerald-200 shadow-emerald-950/50' 
-          : 'bg-rose-950/90 border-rose-500/50 text-rose-200 shadow-rose-950/50'
+          ? 'bg-emerald-950/95 border-emerald-500/50 text-emerald-200 shadow-emerald-950/50' 
+          : 'bg-rose-950/95 border-rose-500/50 text-rose-200 shadow-rose-950/50'
       }`}>
-        <span>{notificationType === 'success' ? '✓' : '⚠'}</span>
+        <span class="text-base font-bold">{notificationType === 'success' ? '✓' : '⚠'}</span>
         <span>{notification}</span>
         <button onclick="document.getElementById('toast-notification').remove()" class="ml-2 opacity-60 hover:opacity-100">✕</button>
       </div>
@@ -307,7 +283,7 @@ const treatmentsList = [
         <button 
           onclick="switchTab('overview')" 
           id="nav-overview" 
-          class="nav-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-brand-card/80 transition-all active-nav-tab"
+          class="nav-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-white bg-brand-card border-l-4 border-brand-gold transition-all"
         >
           <svg class="w-4 h-4 text-brand-gold shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
           <span>Dashboard Overview</span>
@@ -426,14 +402,16 @@ const treatmentsList = [
 
         <div class="flex items-center gap-3">
           <button 
+            type="button"
             onclick="openModal('modal-blog')" 
-            class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-950 transition-all cursor-pointer"
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-950 transition-all cursor-pointer"
           >
             <span>+</span> New Blog Article
           </button>
           <button 
+            type="button"
             onclick="openModal('modal-review')" 
-            class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-bold bg-brand-gold hover:bg-brand-goldHover text-brand-dark shadow-lg shadow-amber-950 transition-all cursor-pointer"
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-bold bg-brand-gold hover:bg-brand-goldHover text-brand-dark shadow-lg shadow-amber-950 transition-all cursor-pointer"
           >
             <span>+</span> Add Patient Review
           </button>
@@ -570,12 +548,22 @@ const treatmentsList = [
               <h3 class="font-bold text-lg text-white">Articles & Health Guides</h3>
               <p class="text-xs text-slate-400 mt-1">Manage articles published on the hospital website</p>
             </div>
-            <button 
-              onclick="openModal('modal-blog')" 
-              class="px-4 py-2.5 rounded-xl font-bold text-xs bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-950 transition-all flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <span>+</span> Write New Article
-            </button>
+            <div class="flex items-center gap-3">
+              <input 
+                type="text" 
+                id="blog-search" 
+                placeholder="Search articles..." 
+                class="px-3.5 py-2 rounded-xl text-xs bg-brand-deep border border-brand-border text-white placeholder-slate-500 outline-none focus:border-brand-gold"
+                oninput="filterArticles()"
+              />
+              <button 
+                type="button"
+                onclick="openModal('modal-blog')" 
+                class="px-4 py-2.5 rounded-xl font-bold text-xs bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-950 transition-all flex items-center justify-center gap-2 cursor-pointer shrink-0"
+              >
+                <span>+</span> Write New Article
+              </button>
+            </div>
           </div>
 
           <div class="bg-brand-card rounded-2xl border border-brand-border overflow-hidden shadow-xl">
@@ -590,9 +578,9 @@ const treatmentsList = [
                     <th class="py-3.5 px-4 font-bold text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody class="divide-y divide-brand-border/60">
+                <tbody id="blog-table-body" class="divide-y divide-brand-border/60">
                   {blogPosts.map((post) => (
-                    <tr class="hover:bg-brand-deep/40 transition-colors">
+                    <tr class="article-row hover:bg-brand-deep/40 transition-colors" data-title={post.data.title.toLowerCase()} data-category={post.data.category.toLowerCase()}>
                       <td class="py-4 px-4 font-medium text-white max-w-xs sm:max-w-md">
                         <div class="truncate font-semibold">{post.data.title}</div>
                         <div class="text-xs text-slate-400 font-malayalam truncate mt-0.5">{post.data.titleMl}</div>
@@ -641,44 +629,97 @@ const treatmentsList = [
               <h3 class="font-bold text-lg text-white">Patient Reviews & Testimonials</h3>
               <p class="text-xs text-slate-400 mt-1">Manage video testimonials and written patient feedback</p>
             </div>
-            <button 
-              onclick="openModal('modal-review')" 
-              class="px-4 py-2.5 rounded-xl font-bold text-xs bg-brand-gold hover:bg-brand-goldHover text-brand-dark shadow-lg shadow-amber-950 transition-all flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <span>+</span> Add New Testimonial
-            </button>
+            <div class="flex items-center gap-3">
+              <input 
+                type="text" 
+                id="review-search" 
+                placeholder="Search patient name..." 
+                class="px-3.5 py-2 rounded-xl text-xs bg-brand-deep border border-brand-border text-white placeholder-slate-500 outline-none focus:border-brand-gold"
+                oninput="filterReviews()"
+              />
+              <button 
+                type="button"
+                onclick="openModal('modal-review')" 
+                class="px-4 py-2.5 rounded-xl font-bold text-xs bg-brand-gold hover:bg-brand-goldHover text-brand-dark shadow-lg shadow-amber-950 transition-all flex items-center justify-center gap-2 cursor-pointer shrink-0"
+              >
+                <span>+</span> Add New Testimonial
+              </button>
+            </div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {staticTestimonials.map((item) => (
-              <div class="bg-brand-card p-5 rounded-2xl border border-brand-border hover:border-brand-gold/30 transition-all flex flex-col justify-between space-y-3">
-                <div>
-                  <div class="flex items-center justify-between mb-2">
-                    <span class="font-bold text-white text-base">{item.name}</span>
-                    <span class="text-amber-400 text-xs font-bold tracking-widest">★★★★★</span>
-                  </div>
-                  <div class="flex items-center gap-2 mb-2">
-                    <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-brand-deep text-brand-gold border border-brand-gold/20">
-                      {item.type}
-                    </span>
-                    <span class="text-xs text-slate-400">{item.city}</span>
-                  </div>
-                  {item.videoId && (
-                    <div class="bg-black/30 p-2 rounded-lg border border-white/5 flex items-center justify-between text-xs mt-2">
-                      <span class="text-slate-400 truncate">YouTube: <code class="text-brand-gold">{item.videoId}</code></span>
-                      <a href={`https://youtube.com/shorts/${item.videoId}`} target="_blank" class="text-brand-gold hover:underline text-[10px]">Watch ↗</a>
+          <!-- Dynamic DB Reviews (if any) -->
+          {dbReviewsRaw.length > 0 && (
+            <div class="space-y-3">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-brand-gold">Custom Admin Created Reviews ({dbReviewsRaw.length})</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {dbReviewsRaw.map((rev) => (
+                  <div class="review-card bg-brand-card p-5 rounded-2xl border border-brand-border hover:border-brand-gold/30 transition-all flex flex-col justify-between space-y-3" data-name={String(rev.data.reviewerName || rev.slug).toLowerCase()}>
+                    <div>
+                      <div class="flex items-center justify-between mb-2">
+                        <span class="font-bold text-white text-base">{rev.data.reviewerName || rev.slug}</span>
+                        <span class="text-amber-400 text-xs font-bold tracking-widest">{'★'.repeat(rev.data.rating || 5)}</span>
+                      </div>
+                      <div class="flex items-center gap-2 mb-2">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-brand-deep text-brand-gold border border-brand-gold/20">
+                          {rev.data.type}
+                        </span>
+                        <span class="text-xs text-slate-400">{rev.data.city || 'Patient Testimonial'}</span>
+                      </div>
+                      {rev.data.videoId && (
+                        <div class="bg-black/30 p-2 rounded-lg border border-white/5 flex items-center justify-between text-xs mt-2">
+                          <span class="text-slate-400 truncate">YouTube: <code class="text-brand-gold">{rev.data.videoId}</code></span>
+                          <a href={`https://youtube.com/shorts/${rev.data.videoId}`} target="_blank" class="text-brand-gold hover:underline text-[10px]">Watch ↗</a>
+                        </div>
+                      )}
                     </div>
-                  )}
-                  {item.text && (
-                    <p class="text-xs text-slate-300 italic mt-2 line-clamp-3">"{item.text}"</p>
-                  )}
-                </div>
-                <div class="pt-2 border-t border-brand-border/50 flex items-center justify-between text-[11px] text-slate-400">
-                  <span>Verified Patient</span>
-                  <span class="text-emerald-400 font-semibold">Active on Home & Gallery</span>
-                </div>
+                    <div class="pt-2 border-t border-brand-border/50 flex items-center justify-between text-[11px] text-slate-400">
+                      <span class="text-emerald-400 font-semibold">Active in Content</span>
+                      <form method="POST" onsubmit="return confirm('Delete this review?')">
+                        <input type="hidden" name="_action" value="delete_review" />
+                        <input type="hidden" name="slug" value={rev.slug} />
+                        <button type="submit" class="text-rose-400 hover:underline">Delete</button>
+                      </form>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+          )}
+
+          <!-- Static catalog of hospital testimonials -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Hospital Patient Testimonials ({staticTestimonials.length})</h4>
+            <div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {staticTestimonials.map((item) => (
+                <div class="review-card bg-brand-card p-5 rounded-2xl border border-brand-border hover:border-brand-gold/30 transition-all flex flex-col justify-between space-y-3" data-name={item.name.toLowerCase()}>
+                  <div>
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="font-bold text-white text-base">{item.name}</span>
+                      <span class="text-amber-400 text-xs font-bold tracking-widest">★★★★★</span>
+                    </div>
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-brand-deep text-brand-gold border border-brand-gold/20">
+                        {item.type}
+                      </span>
+                      <span class="text-xs text-slate-400">{item.city}</span>
+                    </div>
+                    {item.videoId && (
+                      <div class="bg-black/30 p-2 rounded-lg border border-white/5 flex items-center justify-between text-xs mt-2">
+                        <span class="text-slate-400 truncate">YouTube: <code class="text-brand-gold">{item.videoId}</code></span>
+                        <a href={`https://youtube.com/shorts/${item.videoId}`} target="_blank" class="text-brand-gold hover:underline text-[10px]">Watch ↗</a>
+                      </div>
+                    )}
+                    {item.text && (
+                      <p class="text-xs text-slate-300 italic mt-2 line-clamp-3">"{item.text}"</p>
+                    )}
+                  </div>
+                  <div class="pt-2 border-t border-brand-border/50 flex items-center justify-between text-[11px] text-slate-400">
+                    <span>Verified Patient</span>
+                    <span class="text-emerald-400 font-semibold">Active on Home & Gallery</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -835,10 +876,10 @@ const treatmentsList = [
 
     <!-- ================================= MODAL: NEW BLOG ARTICLE ================================= -->
     <div id="modal-blog" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-      <div class="bg-brand-card border border-brand-border rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <div class="bg-brand-card border border-brand-border rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
         <div class="p-5 border-b border-brand-border flex items-center justify-between bg-brand-deep">
           <h3 class="font-bold text-white text-base">Write New Blog Article</h3>
-          <button onclick="closeModal('modal-blog')" class="text-slate-400 hover:text-white text-lg">✕</button>
+          <button type="button" onclick="closeModal('modal-blog')" class="text-slate-400 hover:text-white text-lg">✕</button>
         </div>
 
         <form method="POST" class="p-6 overflow-y-auto custom-scrollbar space-y-4 text-xs">
@@ -894,10 +935,10 @@ const treatmentsList = [
 
     <!-- ================================= MODAL: NEW PATIENT REVIEW ================================= -->
     <div id="modal-review" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-      <div class="bg-brand-card border border-brand-border rounded-2xl w-full max-w-lg max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <div class="bg-brand-card border border-brand-border rounded-2xl w-full max-w-lg max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
         <div class="p-5 border-b border-brand-border flex items-center justify-between bg-brand-deep">
           <h3 class="font-bold text-white text-base">Add Patient Review</h3>
-          <button onclick="closeModal('modal-review')" class="text-slate-400 hover:text-white text-lg">✕</button>
+          <button type="button" onclick="closeModal('modal-review')" class="text-slate-400 hover:text-white text-lg">✕</button>
         </div>
 
         <form method="POST" class="p-6 overflow-y-auto custom-scrollbar space-y-4 text-xs">
@@ -957,7 +998,7 @@ const treatmentsList = [
       </div>
     </div>
 
-    <!-- Interactive Client Script for Tab Navigation & Modals -->
+    <!-- Interactive Client Script for Tab Navigation, Modals & Filtering -->
     <script is:inline>
       function switchTab(tabName) {
         // Hide all tab panes
@@ -1012,6 +1053,43 @@ const treatmentsList = [
       function closeModal(id) {
         const el = document.getElementById(id);
         if (el) el.classList.add('hidden');
+      }
+
+      // Close modal on escape key
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeModal('modal-blog');
+          closeModal('modal-review');
+        }
+      });
+
+      // Filter Blog Articles
+      function filterArticles() {
+        const q = (document.getElementById('blog-search')?.value || '').toLowerCase().trim();
+        const rows = document.querySelectorAll('.article-row');
+        rows.forEach(r => {
+          const title = r.getAttribute('data-title') || '';
+          const cat = r.getAttribute('data-category') || '';
+          if (!q || title.includes(q) || cat.includes(q)) {
+            r.classList.remove('hidden');
+          } else {
+            r.classList.add('hidden');
+          }
+        });
+      }
+
+      // Filter Reviews
+      function filterReviews() {
+        const q = (document.getElementById('review-search')?.value || '').toLowerCase().trim();
+        const cards = document.querySelectorAll('.review-card');
+        cards.forEach(c => {
+          const name = c.getAttribute('data-name') || '';
+          if (!q || name.includes(q)) {
+            c.classList.remove('hidden');
+          } else {
+            c.classList.add('hidden');
+          }
+        });
       }
 
       // Restore active tab on load

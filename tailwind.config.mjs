@@ -20,11 +20,22 @@ export default {
           DEFAULT: '#2C2C2C',
           muted: '#6B6B6B',
         },
+        brand: {
+          dark: '#030d09',
+          deep: '#061a12',
+          card: '#0a241a',
+          border: '#15382a',
+          gold: '#c9993b',
+          goldHover: '#e0b04e',
+          goldLight: '#f6e7c1',
+          emerald: '#10b981',
+          cream: '#f9f6ef'
+        }
       },
       fontFamily: {
-        serif: ['"Cormorant Garamond"', 'serif'],
-        sans: ['"Source Sans 3"', 'sans-serif'],
-        malayalam: ['"Noto Serif Malayalam"', 'serif'],
+        serif: ['"Cormorant Garamond"', '"Playfair Display"', 'serif'],
+        sans: ['"Plus Jakarta Sans"', '"Source Sans 3"', 'sans-serif'],
+        malayalam: ['"Noto Serif Malayalam"', '"Noto Sans Malayalam"', 'serif'],
       },
       animation: {
         'spin-slow': 'spin 15s linear infinite',

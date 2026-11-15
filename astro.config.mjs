@@ -1,4 +1,4 @@
-// Ensure Vercel Serverless Functions target nodejs20.x on newer Node build environments
+// Ensure Vercel Serverless Functions target nodejs20.x/22.x on newer Node build environments
 try {
   Object.defineProperty(process, 'version', { value: 'v20.18.0', configurable: true, writable: true });
 } catch (e) {}
@@ -8,7 +8,6 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
 import mdx from '@astrojs/mdx';
-import keystatic from '@keystatic/astro';
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
@@ -24,7 +23,6 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     mdx(),
-    keystatic(),
     sitemap(),
   ],
   vite: {
