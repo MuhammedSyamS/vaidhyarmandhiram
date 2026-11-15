@@ -123,15 +123,12 @@ import { Heart, Flower2, Sparkles, Leaf, Apple, Smile, CalendarHeart, PhoneCall,
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
       {
         [
-          { titleEn: "Authentic Ayurveda", titleMl: "ആധികാരിക ആയുർവേദം", descEn: "Traditional Siddha & Ayurvedic therapies", descMl: "പരമ്പരാഗത സിദ്ധ, ആയുർവേദ ചികിത്സകൾ", icon: Sparkles },
-          { titleEn: "Personalized Diet", titleMl: "വ്യക്തിഗത ഭക്ഷണക്രമം", descEn: "Nutrition plans tailored to your dosha", descMl: "നിങ്ങളുടെ പ്രകൃതത്തിന് അനുയോജ്യമായ പോഷകാഹാരം", icon: Apple },
-          { titleEn: "Yoga & Wellness", titleMl: "യോഗ & വെൽനസ്", descEn: "Guided exercises for physical balance", descMl: "ശാരീരിക സന്തുലിതാവസ്ഥയ്ക്കുള്ള വ്യായാമങ്ങൾ", icon: PersonStanding },
-          { titleEn: "Mental Health", titleMl: "മാനസികാരോഗ്യം", descEn: "Counseling and emotional support", descMl: "കൗൺസിലിംഗും വൈകാരിക പിന്തുണയും", icon: Smile }
+          { titleEn: "Authentic Ayurveda", titleMl: "ആധികാരിക ആയുർവേദം", descEn: "Traditional Siddha & Ayurvedic therapies", descMl: "പരമ്പരാഗത സിദ്ധ, ആയുർവേദ ചികിത്സകൾ" },
+          { titleEn: "Personalized Diet", titleMl: "വ്യക്തിഗത ഭക്ഷണക്രമം", descEn: "Nutrition plans tailored to your dosha", descMl: "നിങ്ങളുടെ പ്രകൃതത്തിന് അനുയോജ്യമായ പോഷകാഹാരം" },
+          { titleEn: "Yoga & Wellness", titleMl: "യോഗ & വെൽനസ്", descEn: "Guided exercises for physical balance", descMl: "ശാരീരിക സന്തുലിതാവസ്ഥയ്ക്കുള്ള വ്യായാമങ്ങൾ" },
+          { titleEn: "Mental Health", titleMl: "മാനസികാരോഗ്യം", descEn: "Counseling and emotional support", descMl: "കൗൺസിലിംഗും വൈകാരിക പിന്തുണയും" }
         ].map(benefit => (
           <div class="bg-white/80 backdrop-blur-sm p-8 rounded-[1.5rem] border border-accent-gold/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center text-center">
-            <div class="w-14 h-14 rounded-full bg-primary-dark/5 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-accent-gold/10 transition-all duration-300 border border-accent-gold/10">
-              <benefit.icon className="text-accent-gold w-6 h-6" />
-            </div>
             <h4 class="lang-en text-primary-dark font-serif font-bold text-lg mb-2">{benefit.titleEn}</h4>
             <h4 class="lang-ml font-malayalam text-primary-dark font-bold text-lg mb-2">{benefit.titleMl}</h4>
             

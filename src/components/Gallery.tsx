@@ -18,6 +18,12 @@ const mediaItems: MediaItem[] = [
   { id: 7, type: 'image', src: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/herbal-garden-2.jpg', category: 'Herbal Garden', alt: 'Drying Herbs' },
   { id: 8, type: 'image', src: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/spine-joint.jpg', category: 'Treatment Rooms', alt: 'Therapy Session' },
   // New Video Testimonials
+  { id: 27, type: 'youtube', videoId: 'jaHb_aVKSE8', category: 'Patient Testimonials', alt: 'Aleena Testimonial' },
+  { id: 28, type: 'youtube', videoId: '-Dob69A1z7s', category: 'Patient Testimonials', alt: 'Jesna Testimonial' },
+  // Patient Image Reviews
+  { id: 29, type: 'image', src: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/abhinu_sreejith.jpeg', category: 'Patient Testimonials', alt: 'Abhinu Sreejith - Postpartum Care Review' },
+  { id: 30, type: 'image', src: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/mrs_amina_rasi.jpg', category: 'Patient Testimonials', alt: 'Amina Rasi - Patient Review' },
+  { id: 31, type: 'image', src: 'https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/mrs_naseehath.jpg', category: 'Patient Testimonials', alt: 'Naseehath - Patient Review' },
   { id: 9, type: 'youtube', videoId: 'VltfB00alJg', category: 'Patient Testimonials', alt: 'Healing Experience' },
   { id: 10, type: 'youtube', videoId: 'jNgmz0PGPVc', category: 'Patient Testimonials', alt: 'Ayurvedic Journey' },
   { id: 11, type: 'youtube', videoId: 'eK7D6LQwX_4', category: 'Patient Testimonials', alt: 'Recovery Story' },
@@ -28,14 +34,14 @@ const mediaItems: MediaItem[] = [
   { id: 16, type: 'youtube', videoId: 'IyyYZOcOkAM', category: 'Patient Testimonials', alt: 'Health Transformation' },
   { id: 17, type: 'youtube', videoId: 'DcuYFXvicm4', category: 'Patient Testimonials', alt: 'Vaidyarmandiram Testimonial' },
   // Homepage Testimonials
-  { id: 18, type: 'youtube', videoId: 'UTZ7tBpqD9s', category: 'Patient Testimonials', alt: 'Mrs. Lateesha Testimonial' },
+  { id: 18, type: 'youtube', videoId: 'UTZ7tBpqD9s', category: 'Patient Testimonials', alt: 'Lateesha Testimonial' },
   { id: 19, type: 'youtube', videoId: 'OKdHB708p6I', category: 'Patient Testimonials', alt: 'Nikhi Testimonial' },
-  { id: 20, type: 'youtube', videoId: 's-ehW3aamw0', category: 'Patient Testimonials', alt: 'Mrs. Bismi Testimonial' },
-  { id: 21, type: 'youtube', videoId: 'tpC90rfXm4I', category: 'Patient Testimonials', alt: 'Ms. Reshmi Testimonial' },
-  { id: 22, type: 'youtube', videoId: 'AJtjtI7SkQA', category: 'Patient Testimonials', alt: 'Mrs. Jyothi Testimonial' },
+  { id: 20, type: 'youtube', videoId: 's-ehW3aamw0', category: 'Patient Testimonials', alt: 'Bismi Testimonial' },
+  { id: 21, type: 'youtube', videoId: 'tpC90rfXm4I', category: 'Patient Testimonials', alt: 'Reshmi Testimonial' },
+  { id: 22, type: 'youtube', videoId: 'AJtjtI7SkQA', category: 'Patient Testimonials', alt: 'Jyothi Testimonial' },
   { id: 23, type: 'youtube', videoId: 's0l83M4YfiU', category: 'Patient Testimonials', alt: 'Al Sila Testimonial' },
   { id: 24, type: 'youtube', videoId: 'obJ0o76Clm0', category: 'Patient Testimonials', alt: 'Simi Testimonial' },
-  { id: 25, type: 'youtube', videoId: 'hFZLc__xZRM', category: 'Patient Testimonials', alt: 'Miss Athira Testimonial' },
+  { id: 25, type: 'youtube', videoId: 'hFZLc__xZRM', category: 'Patient Testimonials', alt: 'Athira Testimonial' },
   { id: 26, type: 'youtube', videoId: 'SkjO74mjr1A', category: 'Patient Testimonials', alt: 'Husna Safeer Testimonial' },
 ];
 

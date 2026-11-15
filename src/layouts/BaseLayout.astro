@@ -27,7 +27,7 @@ const {
 } = Astro.props;
 
 const siteName = "Vaidhyarmandhiram Ayurveda Hospital";
-const fullTitle = `${title} | ${siteName}`;
+const fullTitle = title.includes("Vaidhyarmandhiram") || title.includes("Vaidyarmandiram") ? title : `${title} | ${siteName}`;
 const socialImageURL = new URL(image, Astro.site || "https://www.vaidhyarmandhiram.com/").toString();
 ---
 
@@ -147,7 +147,7 @@ const socialImageURL = new URL(image, Astro.site || "https://www.vaidhyarmandhir
       {
         "@context": "https://schema.org",
         "@type": "MedicalClinic",
-        "name": "Gurukkal's Vaidhyarmandhiram Hospital LLP",
+        "name": "Vaidhyarmandhiram Hospital LLP",
         "alternateName": "Vaidhyarmandhiram",
         "image": "https://www.vaidhyarmandhiram.com/images/hero-bg.jpg",
         "@id": "https://www.vaidhyarmandhiram.com/",
@@ -216,8 +216,7 @@ const socialImageURL = new URL(image, Astro.site || "https://www.vaidhyarmandhir
       </span>
     </a>
 
-    <!-- Lenis & AOS Scripts -->
-    <script is:inline src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- AOS Script -->
     <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script is:inline>
       function initAnimationsAndScroll() {
@@ -233,28 +232,26 @@ const socialImageURL = new URL(image, Astro.site || "https://www.vaidhyarmandhir
         // Gather Parallax Elements for this page
         window.parallaxElements = document.querySelectorAll('[data-parallax]');
 
-        // Initialize Lenis for Smooth Scrolling
-        if (typeof Lenis !== 'undefined' && !window.lenis) {
-          window.lenis = new Lenis({
-            lerp: 0.1,
-            smoothWheel: true,
-          });
-          
-          window.lenis.on('scroll', (e) => {
-            if (window.parallaxElements) {
-              window.parallaxElements.forEach(el => {
-                const speed = parseFloat(el.getAttribute('data-parallax')) || 0.15;
-                const yPos = -(e.scroll * speed);
-                el.style.transform = `translate3d(0, ${yPos}px, 0)`;
+        // Native smooth parallax scrolling without wheel hijacking
+        if (!window._parallaxScrollAttached) {
+          window._parallaxScrollAttached = true;
+          let ticking = false;
+          window.addEventListener('scroll', () => {
+            if (!ticking) {
+              window.requestAnimationFrame(() => {
+                const scrollY = window.scrollY || window.pageYOffset;
+                if (window.parallaxElements && window.parallaxElements.length > 0) {
+                  window.parallaxElements.forEach(el => {
+                    const speed = parseFloat(el.getAttribute('data-parallax')) || 0.15;
+                    const yPos = -(scrollY * speed);
+                    el.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                  });
+                }
+                ticking = false;
               });
+              ticking = true;
             }
-          });
-          
-          function raf(time) {
-            window.lenis.raf(time);
-            requestAnimationFrame(raf);
-          }
-          requestAnimationFrame(raf);
+          }, { passive: true });
         }
       }
 

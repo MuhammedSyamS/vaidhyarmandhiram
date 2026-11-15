@@ -108,18 +108,40 @@
 }
 
 /* Utilities */
-::-webkit-scrollbar {
-  display: none;
-}
-html, body {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+/* Elegant, slim scrollbar for desktop */
+@media (min-width: 768px) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #1B4332 #FAF6EF;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #FAF6EF;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1B4332;
+    border-radius: 4px;
+    border: 1px solid #FAF6EF;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #B8860B;
+  }
 }
 
-.no-scrollbar::-webkit-scrollbar {
+/* Hide scrollbar utility for carousels & horizontal scroll containers */
+.no-scrollbar::-webkit-scrollbar,
+.hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
-.no-scrollbar {
+.no-scrollbar,
+.hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }

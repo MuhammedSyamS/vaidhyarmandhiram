@@ -9,7 +9,7 @@ import TreatmentsGrid from '../components/TreatmentsGrid.astro';
 import ConsultationOptions from '../components/ConsultationOptions.astro';
 import SheCarePackage from '../components/SheCarePackage.astro';
 import FAQ from '../components/FAQ.astro';
-import { CheckCircle2, Star, Quote, Award, Shield, FileCheck } from 'lucide-react';
+import { CheckCircle2, Star, Quote } from 'lucide-react';
 import { getCollection } from 'astro:content';
 
 interface Testimonial {
@@ -81,7 +81,7 @@ const staticTestimonials: Testimonial[] = [
   },
   {
     type: "youtube",
-    name: "Mrs. Lateesha",
+    name: "Lateesha",
     city: "Patient Testimonial",
     videoId: "UTZ7tBpqD9s",
     image: null,
@@ -97,7 +97,7 @@ const staticTestimonials: Testimonial[] = [
   },
   {
     type: "youtube",
-    name: "Mrs. Bismi",
+    name: "Bismi",
     city: "Patient Testimonial",
     videoId: "s-ehW3aamw0",
     image: null,
@@ -105,7 +105,7 @@ const staticTestimonials: Testimonial[] = [
   },
   {
     type: "youtube",
-    name: "Ms. Reshmi",
+    name: "Reshmi",
     city: "Patient Testimonial",
     videoId: "tpC90rfXm4I",
     image: null,
@@ -113,7 +113,7 @@ const staticTestimonials: Testimonial[] = [
   },
   {
     type: "youtube",
-    name: "Mrs. Jyothi",
+    name: "Jyothi",
     city: "Patient Testimonial",
     videoId: "AJtjtI7SkQA",
     image: null,
@@ -137,7 +137,7 @@ const staticTestimonials: Testimonial[] = [
   },
   {
     type: "youtube",
-    name: "Miss Athira",
+    name: "Athira",
     city: "Patient Testimonial",
     videoId: "hFZLc__xZRM",
     image: null,
@@ -152,34 +152,28 @@ const staticTestimonials: Testimonial[] = [
     rating: 5,
   },
   {
-    type: "image",
-    name: "Mrs. Abhinu Sreejith",
-    city: "Postpartum Care",
-    image: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/abhinu_sreejith.jpeg",
+    type: "youtube",
+    name: "Aleena",
+    city: "Patient Testimonial",
+    videoId: "jaHb_aVKSE8",
+    image: null,
     rating: 5,
-    isSheCare: true
   },
   {
-    type: "image",
-    name: "Mrs. Amina Rasi",
+    type: "youtube",
+    name: "Jesna",
     city: "Patient Testimonial",
-    image: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/mrs_amina_rasi.jpg",
-    rating: 5
-  },
-  {
-    type: "image",
-    name: "Mrs. Naseehath",
-    city: "Patient Testimonial",
-    image: "https://res.cloudinary.com/dhqtquwxc/image/upload/f_auto,q_auto/v1/vaidhyarmandhiram/images/mrs_naseehath.jpg",
-    rating: 5
+    videoId: "-Dob69A1z7s",
+    image: null,
+    rating: 5,
   }
 ];
 
 const orderMap: Record<string, number> = {
-  'image': 1,
-  'text': 2,
-  'youtube': 3,
-  'video': 3,
+  'youtube': 1,
+  'video': 1,
+  'image': 2,
+  'text': 3,
 };
 const testimonials = [...dbReviews, ...staticTestimonials].sort((a, b) => {
   const orderA = orderMap[a.type] || 2;
@@ -188,7 +182,7 @@ const testimonials = [...dbReviews, ...staticTestimonials].sort((a, b) => {
 });
 ---
 
-<BaseLayout title="Best Ayurveda Clinic in Trivandrum | Traditional Ayurvedic Hospital" description="Recognized as the best Ayurveda clinic in Trivandrum, Vaidyarmandiram Hospital offers authentic Panchakarma treatments, spine care, and holistic healing.">
+<BaseLayout title="Best Ayurvedic Hospital in Kerala | Vaidyarmandhiram" description="Recognized as the best Ayurvedic hospital in Kerala, Vaidyarmandhiram Hospital offers authentic Panchakarma treatments, spine & joint care, and holistic healing.">
   <Header slot="header" />
 
   <Hero />
@@ -227,38 +221,27 @@ const testimonials = [...dbReviews, ...staticTestimonials].sort((a, b) => {
             ml: 'അക്രഡിറ്റഡ് ഹോസ്പിറ്റൽ', 
             badge: 'NABH APPROVED', 
             badgeML: 'NABH അംഗീകൃത',
-            icon: Shield
           },
           { 
             en: 'Government Certified', 
             ml: 'ഗവൺമെന്റ് സർട്ടിഫൈഡ്', 
             badge: 'MINISTRY OF AYUSH', 
             badgeML: 'മിനിസ്ട്രി ഓഫ് ആയുഷ്',
-            icon: Award
           },
           { 
             en: 'Quality Management', 
             ml: 'ഗുണനിലവാര മാനേജ്മെൻ്റ്', 
             badge: 'ISO 9001:2015', 
             badgeML: 'ISO 9001:2015',
-            icon: FileCheck
           },
-        ].map((item, index) => {
-          const IconComponent = item.icon;
-          return (
-            <div class="flex flex-col md:flex-row items-center gap-1.5 sm:gap-3 md:gap-4 bg-white p-2.5 sm:p-4 md:p-5 rounded-lg md:rounded-xl border border-accent-gold/15 shadow-sm hover:shadow-md md:hover:-translate-y-0.5 transition-all duration-300 group text-center md:text-left" data-aos="zoom-in" data-aos-delay={index * 100}>
-              <div class="w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary/5 flex items-center justify-center border border-accent-gold/10 group-hover:bg-accent-gold/10 transition-colors duration-300 shrink-0">
-                <IconComponent className="text-accent-gold w-4 h-4 md:w-6 md:h-6" />
-              </div>
-              <div class="flex flex-col">
-                <span class="lang-en text-[7px] sm:text-[9px] md:text-[10px] font-sans tracking-wider md:tracking-[0.15em] text-text-muted uppercase font-bold">{item.en}</span>
-                <span class="lang-ml font-malayalam text-[8px] sm:text-[10px] md:text-xs text-text-muted font-bold leading-tight">{item.ml}</span>
-                <span class="lang-en text-[9px] sm:text-xs md:text-sm font-serif font-bold text-primary-dark tracking-wide mt-0.5 leading-tight">{item.badge}</span>
-                <span class="lang-ml font-malayalam text-[9px] sm:text-xs md:text-sm font-bold text-primary-dark mt-0.5 leading-tight">{item.badgeML}</span>
-              </div>
-            </div>
-          );
-        })}
+        ].map((item, index) => (
+          <div class="flex flex-col items-center justify-center bg-white p-3 sm:p-4 md:p-5 rounded-lg md:rounded-xl border border-accent-gold/15 shadow-sm hover:shadow-md md:hover:-translate-y-0.5 transition-all duration-300 text-center" data-aos="zoom-in" data-aos-delay={index * 100}>
+            <span class="lang-en text-[8px] sm:text-[10px] md:text-[11px] font-sans tracking-wider md:tracking-[0.15em] text-text-muted uppercase font-bold">{item.en}</span>
+            <span class="lang-ml font-malayalam text-[8px] sm:text-[10px] md:text-xs text-text-muted font-bold leading-tight">{item.ml}</span>
+            <span class="lang-en text-[10px] sm:text-xs md:text-sm font-serif font-bold text-primary-dark tracking-wide mt-1 leading-tight">{item.badge}</span>
+            <span class="lang-ml font-malayalam text-[9px] sm:text-xs md:text-sm font-bold text-primary-dark mt-1 leading-tight">{item.badgeML}</span>
+          </div>
+        ))}
       </div>
     </div>
   </div>
@@ -311,22 +294,16 @@ const testimonials = [...dbReviews, ...staticTestimonials].sort((a, b) => {
         All Reviews
       </button>
       <button 
-        data-filter="image" 
+        data-filter="video" 
         class="testimonial-filter-btn px-5 py-2 sm:px-6 sm:py-2.5 rounded-full border border-accent-gold/20 text-primary-dark font-sans font-semibold text-xs sm:text-sm transition-all duration-300 hover:bg-accent-gold/10 bg-transparent outline-none cursor-pointer"
       >
-        Photo Reviews
+        Video Reviews
       </button>
       <button 
         data-filter="text" 
         class="testimonial-filter-btn px-5 py-2 sm:px-6 sm:py-2.5 rounded-full border border-accent-gold/20 text-primary-dark font-sans font-semibold text-xs sm:text-sm transition-all duration-300 hover:bg-accent-gold/10 bg-transparent outline-none cursor-pointer"
       >
         Written Reviews
-      </button>
-      <button 
-        data-filter="video" 
-        class="testimonial-filter-btn px-5 py-2 sm:px-6 sm:py-2.5 rounded-full border border-accent-gold/20 text-primary-dark font-sans font-semibold text-xs sm:text-sm transition-all duration-300 hover:bg-accent-gold/10 bg-transparent outline-none cursor-pointer"
-      >
-        Video Reviews
       </button>
     </div>
 
