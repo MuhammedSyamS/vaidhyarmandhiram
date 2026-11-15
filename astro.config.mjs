@@ -1,3 +1,8 @@
+// Ensure Vercel Serverless Functions target nodejs20.x on newer Node build environments
+try {
+  Object.defineProperty(process, 'version', { value: 'v20.18.0', configurable: true, writable: true });
+} catch (e) {}
+
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
